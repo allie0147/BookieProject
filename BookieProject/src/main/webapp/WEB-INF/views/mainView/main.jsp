@@ -17,7 +17,23 @@
       font-size: 30pt;
       font-family: cursive;
     }
+	.thumbnail a{
+		text-decoration: none;
+	}
+	.img{
+		background-repeat:no-repeat;
+		background-size:cover;
+		opacity:0.7;
+		text-align: center;
+		width:100%; height:300px;
+	}
 	
+	.imag > .caption{
+		color:white;
+		margin:auto;
+		background-color: rgba( 255, 255, 255, 0.5 );
+		
+	}
   </style>
 </head>
 <body>
@@ -47,7 +63,7 @@
 					<li><a href="/qna/main?g=7">예술</a></li>
 				</ul>
       		</li>
-		<li><a href="/bookcard/main">독서 클럽</a></li>
+		<li><a href="/club/main">독서 클럽</a></li>
 		<li><a href="/bookie/cs">고객센터</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
@@ -95,102 +111,85 @@
 
 
 <!-- 각 게시판 제목 보다 오른쪽으로 이동 -->
-      <div class="container">
-        <h2>Sentence</h2>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="thumbnail">
-              <a href="" target="_blank">
-                <img src="images/conan.jpg" alt="Lights" style="width:100%; height:300px">
-                <div class="caption">
-                  <p>추천 많이 받은 글귀들어갈곳1</p>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="thumbnail">
-              <a href="" target="_blank">
-                <img src="images/ddotty.jpg" alt="Nature" style="width:100%; height:300px">
-                <div class="caption">
-                  <p>추천 많이 받은 글귀들어갈곳2</p>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="thumbnail">
-              <a href="" target="_blank">
-                <img src="images/spider.jpg" alt="Fjords" style="width:100%; height:300px">
-                <div class="caption">
-                  <p>추천 많이 받은 글귀들어갈곳3</p>
-                </div>
-              </a>
-            </div>
-          </div>
+<!-- 이 곳 a 태그들에 따로 디자인 주기(a태그 안의 텍스트에 폰트 변경, 크기 키우기 -->
+	<div class="container">
+		<h2><a href="/bookcard/main">BookCard</a></h2>
+		<div class="row">
+			<c:forEach var="board" items="${bookCardBoardList }" varStatus="status">
+				<div class="col-md-4">
+					<div class="thumbnail">
+						<a href="/bookcard/detail?b=${board.id }" target="_blank">
+							<!-- 
+								.img{
+									background-repeat:no-repeat;
+									background-size:cover;
+									opacity:0.7;
+									text-align: center;
+									width:100%; height:300px;
+								}
+								
+								.imag > .caption{
+									color:white;
+									margin:auto;
+									opacity: 1.0;
+								}
+							 -->
+							<c:if test="${randomImageNumIter.hasNext() }">
+								<div class="img" style="background-image:url('../resources/images/bookcard-images-${randomImageNumIter.next()}.jpg')" >
+									<p class="caption">안녕하세요 반갑습니다 헬로</p><!-- ${board.content } -->
+								</div>
+							</c:if>
+						</a>
+					</div>
+				</div>
+			</c:forEach>	
+			
+		</div>
+	</div>
+		<!-- 글이 없어도 어느 정도 공간을 유지하도록 박스 크기 지정 -->
+	<div class="container">
+		<div class="row col-md-6">
+			<h2><a href="/qna/main">Q&A</a></h2>
+			<ul class="qnaUl">
+				<c:forEach var="board" items="${MainQnaBoardList }" varStatus="status">
+					<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+				</c:forEach>
+			</ul>
         </div>
-
-      </div>
-
-      <div class="container">
-        <div class="row col-md-6">
-          <h2><a href="/qna/main">Q&A</a></h2>
-          <ul class="qnaUl">
-<<<<<<< HEAD
-			<c:forEach var="board" items="${MainQnaBoardList }" varStatus="status">
-				<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
-			</c:forEach>
-=======
-            <li><em>1. </em><a href="#">내 친구가 네 얘기를 해 좋아보였단 말에 괜히 화를 내 어쩌면 아직도 나 땜에 네가힘들어하길 바랬는지 몰라</a></li>
-            <li><em>2. </em><a href="#">요즘 가끔 나도 모르게 우리 함께듣던 노래를해 이유없이 보고 싶어지는밤 그대내가 너무 어렸었어 </a></li>
-            <li><em>3. </em><a href="#">난부담이 됐고우고 불만이됐죠 끝내너를 지우고 오늘이지나면 난 사라질 먼지 사랑이 먼지</a></li>
-            <li><em>4. </em><a href="#">나 슬퍼 보인다면 그눈물은 연기 춤추는 연기 처럼 내일이면 또아무렇지 않게 또하루가 시작되</a></li>
-            <li><em>5. </em><a href="#">널 잊고 살겠죠 그대내가 행복해지기만을 이곳에서 남아서 웃으며 기다릴꼐</a></li>
->>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
-          </ul>
-        </div>
-        <div class="row col-md-6">
-          <h2><a href="/club/main">BookClub</a></h2>
-          <ul class="qnaUl">
-<<<<<<< HEAD
-            <c:forEach var="board" items="${MainClubBoardList }" varStatus="status">
-				<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
-			</c:forEach>
-=======
-            <li><em>1. </em><a href="#">내 친구가 네 얘기를 해 좋아보였단 말에 괜히 화를 내 어쩌면 아직도 나 땜에 네가힘들어하길 바랬는지 몰라</a></li>
-            <li><em>2. </em><a href="#">요즘 가끔 나도 모르게 우리 함께듣던 노래를해 이유없이 보고 싶어지는밤 그대내가 너무 어렸었어 </a></li>
-            <li><em>3. </em><a href="#">난부담이 됐고우고 불만이됐죠 끝내너를 지우고 오늘이지나면 난 사라질 먼지 사랑이 먼지</a></li>
-            <li><em>4. </em><a href="#">나 슬퍼 보인다면 그눈물은 연기 춤추는 연기 처럼 내일이면 또아무렇지 않게 또하루가 시작되</a></li>
-            <li><em>5. </em><a href="#">널 잊고 살겠죠 그대내가 행복해지기만을 이곳에서 남아서 웃으며 기다릴꼐</a></li>
->>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
-          </ul>
-        </div>
-      </div>
+        <!-- 글이 없어도 어느 정도 공간을 유지하도록 박스 크기 지정 -->
+		<div class="row col-md-6">
+			<h2><a href="/club/main">BookClub</a></h2>
+			<ul class="qnaUl">
+				<c:forEach var="board" items="${MainClubBoardList }" varStatus="status">
+					<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
 
 	<!-- store의 글자들 클릭한 뒤 다시 뒤로가기 해도 글자색 변경되지 않게 -->
-      <footer style="background-color: #333333; color: #ffffff;">
-        <div class="container">
-          <br>
-          <div class="row" style="color: #9D9D9D;">
-            <div class="col-sm-4"><h4>Introduce</h4><p>I have studied Java, HTML, Python, Jquari, etc. and I want to make a space where I can exchange questions and answers related to books.</p>
-            </div>
-            <div class="col-sm-4"><h4>Contact</h4>
-              <p><span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul</p>
-              <p><span class="glyphicon glyphicon-phone"></span>Phone: +82 1082747414</p>
-              <p><span class="glyphicon glyphicon-envelope"></span>Email: hth0411@naver.com</p>
-            </div>
-            <div class="col-sm-4">
-              <h4>store</h4>
-              <h5><a href="https://www.aladin.co.kr/" target="_blank">aladin</a></h5> <!-- target 설정: 새창으로 변경 -->
-              <h5><a href="http://www.bandinlunis.com/" target="_blank">bandinluis</a></h5>
-              <h5><a href="http://www.yes24.com/" target="_blank">yes24</a></h5>
-            </div>
-            <br>
-            <div class="col-sm-12" style="text-align: center;">
-              <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohee Kim</h5>
-            </div>
-          </div>
-        </div>
-      </footer>
+	<footer style="background-color: #333333; color: #ffffff;">
+		<div class="container">
+			<br>
+			<div class="row" style="color: #9D9D9D;">
+				<div class="col-sm-4"><h4>Introduce</h4><p>I have studied Java, HTML, Python, Jquari, etc. and I want to make a space where I can exchange questions and answers related to books.</p></div>
+				<div class="col-sm-4"><h4>Contact</h4>
+					<p><span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul</p>
+					<p><span class="glyphicon glyphicon-phone"></span>Phone: +82 1082747414</p>
+					<p><span class="glyphicon glyphicon-envelope"></span>Email: hth0411@naver.com</p>
+				</div>
+				<div class="col-sm-4">
+					<h4>store</h4>
+					<h5><a href="https://www.aladin.co.kr/" target="_blank">aladin</a></h5> <!-- target 설정: 새창으로 변경 -->
+					<h5><a href="http://www.bandinlunis.com/" target="_blank">bandinluis</a></h5>
+					<h5><a href="http://www.yes24.com/" target="_blank">yes24</a></h5>
+				</div>
+				<br>
+				<div class="col-sm-12" style="text-align: center;">
+					<h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohee Kim</h5>
+				</div>
+			</div>
+		</div>
+	</footer>
   </body>
 </html>

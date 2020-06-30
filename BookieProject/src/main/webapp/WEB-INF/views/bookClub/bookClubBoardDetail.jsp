@@ -94,7 +94,6 @@
 <body>
 	<table class="board_table">
 		<thead>
-
 			<tr>
 				<td class="title" colspan="3">${board.title }</td>
 			</tr>
