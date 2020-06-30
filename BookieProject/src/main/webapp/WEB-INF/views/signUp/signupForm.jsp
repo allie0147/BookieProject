@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +16,22 @@
 </head>
 
 <body>
-<form action="/bookie/userForm" method="post">
+	<form action="/bookie/userForm" method="post">
 		<!-- spring 유효성 검사로 post : SignUpController.java-->
 		<h1>회원 가입 폼폼이</h1>
 		<div>
 			<span>이메일</span><span>*필수</span>
 		</div>
 		<div>
-			<input type="text" class="input" name="uEmail" id="email">
+			<c:choose>
+				<c:when test="${uEmail!=null }">
+					<input type="text" class="input" value="${ uEmail}" name="uEmail"
+						id="email" readonly="readonly">
+				</c:when>
+				<c:otherwise>
+					<input type="text" class="input" name="uEmail" id="email">
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div>
 			<button type="button" name="emailBtn">이메일 인증</button>
@@ -53,7 +61,15 @@
 			<span>닉네임</span><span>*필수</span>
 		</div>
 		<div>
-			<input type="text" class="input" name="nickname" id="nickname">
+			<c:choose>
+				<c:when test="${nickname!=null }">
+					<input type="text" class="input" name="nickname" id="nickname"
+						value="${nickname }" readonly="readonly">
+				</c:when>
+				<c:otherwise>
+					<input type="text" class="input" name="nickname" id="nickname">
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div>
 			<button type="button" name="nickBtn">사용하기</button>
@@ -100,30 +116,50 @@
 			<input type="submit" value="가입하기" name="submit">
 		</div>
 	</form>
-		
+
 	<footer style="background-color: #333333; color: #ffffff;">
-	  <div class="container">
-	    <br>
-	    <div class="row" style="color: #9D9D9D;">
-	      <div class="col-sm-4"><h4>Introduce</h4><p>I have studied Java, HTML, Python, Jquari, etc. and I want to make a space where I can exchange questions and answers related to books.</p>
-	      </div>
-	      <div class="col-sm-4"><h4>Contact</h4>
-	        <p><span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul</p>
-	        <p><span class="glyphicon glyphicon-phone"></span>Phone: +82 1082747414</p>
-	        <p><span class="glyphicon glyphicon-envelope"></span>Email: hth0411@naver.com</p>
-	      </div>
-	            <div class="col-sm-4">
-	              <h4>store</h4>
-	              <h5><a href="https://www.aladin.co.kr/">aladin</a></h5>
-	              <h5><a href="http://www.bandinlunis.com/">bandinluis</a></h5>
-	              <h5><a href="http://www.yes24.com/">yes24</a></h5>
-	            </div>
-	      <br>
-	      <div class="col-sm-12" style="text-align: center;">
-	        <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohee Kim</h5>
-	      </div>
-	    </div>
-	  </div>
+		<div class="container">
+			<br>
+			<div class="row" style="color: #9D9D9D;">
+				<div class="col-sm-4">
+					<h4>Introduce</h4>
+					<p>I have studied Java, HTML, Python, Jquari, etc. and I want
+						to make a space where I can exchange questions and answers related
+						to books.</p>
+				</div>
+				<div class="col-sm-4">
+					<h4>Contact</h4>
+					<p>
+						<span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul
+					</p>
+					<p>
+						<span class="glyphicon glyphicon-phone"></span>Phone: +82
+						1082747414
+					</p>
+					<p>
+						<span class="glyphicon glyphicon-envelope"></span>Email:
+						hth0411@naver.com
+					</p>
+				</div>
+				<div class="col-sm-4">
+					<h4>store</h4>
+					<h5>
+						<a href="https://www.aladin.co.kr/">aladin</a>
+					</h5>
+					<h5>
+						<a href="http://www.bandinlunis.com/">bandinluis</a>
+					</h5>
+					<h5>
+						<a href="http://www.yes24.com/">yes24</a>
+					</h5>
+				</div>
+				<br>
+				<div class="col-sm-12" style="text-align: center;">
+					<h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5>
+					<h5>Allie Dohee Kim</h5>
+				</div>
+			</div>
+		</div>
 	</footer>
 </body>
 

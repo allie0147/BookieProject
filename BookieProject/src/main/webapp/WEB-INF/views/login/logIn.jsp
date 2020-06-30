@@ -62,7 +62,7 @@
 	<p><a href="naver.com" target="_blank">아이디 </a>/<a href="naver.com" target="_blank"> 비밀번호 찾기</a><br></p>
 	<br>
 	<button class="naver" type="button" name="naverButton" onclick="alert('네이버')">NAVER</button><br>
-	<a href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/kakaologin&response_type=code">카카오 로그인</a>
+	<a href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/bookie/kakaologin&response_type=code">카카오 로그인</a>
 </form>
 </body>
 </html>
