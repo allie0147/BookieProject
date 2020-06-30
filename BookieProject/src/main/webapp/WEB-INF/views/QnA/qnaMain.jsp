@@ -7,10 +7,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/totalCss.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="/resources/css/totalCss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="resources/css/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function search() {
@@ -97,6 +101,7 @@
 	margin: auto;
 }
 
+<<<<<<< HEAD
 #boardList {
 	width: 600px;
 	margin: auto;
@@ -161,6 +166,56 @@ thead>tr {
 	width: 600px;
 	text-align: right;
 }
+=======
+	.board_qna{
+		border:1px solid black;
+		border-radius: 7px;	
+		width:100%;
+		height:100%;
+		text-align: center;
+	}
+	.board_qna tr{
+		border:1px solid black;
+	}
+	thead>tr{
+		color:black;
+	}
+	.page{
+		text-align: center;
+	}
+	.pagenation{
+		list-style:none;
+		display:inline-block;
+		margin:auto;
+		width: 60%;
+		height:10px;
+		text-align:center;
+		text-decoration: none;
+	}
+	.pagenation li{
+		display: inline-block;
+		text-align: center;
+	}
+	.pagenation a{
+		display:inline-block;
+		text-decoration: none;
+		color:black;
+		padding:5px 12px;
+	}
+	.pagenation a:hover {
+		background-color:lightgray;
+		border-radius: 4px;
+	}
+	.pageNumber{
+		margin:auto 5px auto 5px;
+		text-decoration: none;
+		color:black;
+	}
+	.searchBar{
+		margin:auto;
+		width:600px;
+		text-align: right;
+	}
 </style>
 </head>
 <body>
@@ -312,7 +367,7 @@ thead>tr {
 				<br>
 				<div class="col-sm-12" style="text-align: center;">
 					<h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5>
-					<h5>Allie Dohie Kim</h5>
+					<h5>Allie Dohee Kim</h5>
 				</div>
 			</div>
 		</div>

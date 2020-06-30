@@ -134,23 +134,35 @@
 
       <div class="container">
         <div class="row col-md-6">
-          <h2><a href="#">Q&A</a></h2>
+          <h2><a href="/qna/main">Q&A</a></h2>
           <ul class="qnaUl">
+<<<<<<< HEAD
+			<c:forEach var="board" items="${MainQnaBoardList }" varStatus="status">
+				<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+			</c:forEach>
+=======
             <li><em>1. </em><a href="#">내 친구가 네 얘기를 해 좋아보였단 말에 괜히 화를 내 어쩌면 아직도 나 땜에 네가힘들어하길 바랬는지 몰라</a></li>
             <li><em>2. </em><a href="#">요즘 가끔 나도 모르게 우리 함께듣던 노래를해 이유없이 보고 싶어지는밤 그대내가 너무 어렸었어 </a></li>
             <li><em>3. </em><a href="#">난부담이 됐고우고 불만이됐죠 끝내너를 지우고 오늘이지나면 난 사라질 먼지 사랑이 먼지</a></li>
             <li><em>4. </em><a href="#">나 슬퍼 보인다면 그눈물은 연기 춤추는 연기 처럼 내일이면 또아무렇지 않게 또하루가 시작되</a></li>
             <li><em>5. </em><a href="#">널 잊고 살겠죠 그대내가 행복해지기만을 이곳에서 남아서 웃으며 기다릴꼐</a></li>
+>>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
           </ul>
         </div>
         <div class="row col-md-6">
-          <h2><a href="#">BookClub</a></h2>
+          <h2><a href="/club/main">BookClub</a></h2>
           <ul class="qnaUl">
+<<<<<<< HEAD
+            <c:forEach var="board" items="${MainClubBoardList }" varStatus="status">
+				<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+			</c:forEach>
+=======
             <li><em>1. </em><a href="#">내 친구가 네 얘기를 해 좋아보였단 말에 괜히 화를 내 어쩌면 아직도 나 땜에 네가힘들어하길 바랬는지 몰라</a></li>
             <li><em>2. </em><a href="#">요즘 가끔 나도 모르게 우리 함께듣던 노래를해 이유없이 보고 싶어지는밤 그대내가 너무 어렸었어 </a></li>
             <li><em>3. </em><a href="#">난부담이 됐고우고 불만이됐죠 끝내너를 지우고 오늘이지나면 난 사라질 먼지 사랑이 먼지</a></li>
             <li><em>4. </em><a href="#">나 슬퍼 보인다면 그눈물은 연기 춤추는 연기 처럼 내일이면 또아무렇지 않게 또하루가 시작되</a></li>
             <li><em>5. </em><a href="#">널 잊고 살겠죠 그대내가 행복해지기만을 이곳에서 남아서 웃으며 기다릴꼐</a></li>
+>>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
           </ul>
         </div>
       </div>
