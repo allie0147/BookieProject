@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.bookie.mapper.comment.QnaCommentMapper">
+	<resultMap type="comment" id="cmt">
+		<id property="id" column="id"/>
+		<result property="boardId" column="qna_board_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="writer" column="writer"/>
+		<result property="message" column="message"/>
+		<result property="wtDate" column="w_date"/>
+		<collection property="replyList" column="id" select="getReplyByCommentId"/>
+	</resultMap>
+	<resultMap type="reply" id="rpl">
+		<id property="id" column="id"/>
+		<result property="boardId" column="qna_board_id"/>
+		<result property="commentId" column="qna_comment_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="writer" column="writer"/>
+		<result property="message" column="message"/>
+		<result property="wtDate" column="w_date"/>
+	</resultMap>
+	<!-- 댓글 하나당 달린 리플 -->
+	<select id="getReplyListByCommentId" resultMap="rpl">
+		select qna_reply.id as id, qna_board_id, qna_comment_id, user_id, user.nickname as writer,  message 
+		from qna_reply join user on qna_reply.user_id = user.id where qna_comment_id=#{commentId}
+	</select>
+
+</mapper>
