@@ -145,29 +145,34 @@
 	</table>
 </c:if>
 
-<footer style="background-color: #333333; color: #ffffff;">
-  <div class="container">
-    <br>
-    <div class="row" style="color: #9D9D9D;">
-      <div class="col-sm-4"><h4>Introduce</h4><p>I have studied Java, HTML, Python, Jquari, etc. and I want to make a space where I can exchange questions and answers related to books.</p>
-      </div>
-      <div class="col-sm-4"><h4>Contact</h4>
-        <p><span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul</p>
-        <p><span class="glyphicon glyphicon-phone"></span>Phone: +82 1082747414</p>
-        <p><span class="glyphicon glyphicon-envelope"></span>Email: hth0411@naver.com</p>
-      </div>
-            <div class="col-sm-4">
-              <h4>store</h4>
-              <h5><a href="https://www.aladin.co.kr/">aladin</a></h5>
-              <h5><a href="http://www.bandinlunis.com/">bandinluis</a></h5>
-              <h5><a href="http://www.yes24.com/">yes24</a></h5>
-            </div>
+  <footer id="footerBg">
+    <div class="container">
       <br>
-      <div class="col-sm-12" style="text-align: center;">
-        <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohie Kim</h5>
+      <div class="row" id="footerFont">
+        <div class="col-sm-4">
+          <h4>Introduce</h4>
+          <p>I have studied Java, HTML, Python, Jquari, etc. and I want to make a space where I can exchange questions
+            and answers related to books.</p>
+        </div>
+        <div class="col-sm-4">
+          <h4>Contact</h4>
+          <p><span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul</p>
+          <p><span class="glyphicon glyphicon-phone"></span>Phone: +82 1082747414</p>
+          <p><span class="glyphicon glyphicon-envelope"></span>Email: hth0411@naver.com</p>
+        </div>
+        <div class="col-sm-4">
+          <h4>store</h4>
+          <h5><a href="https://www.aladin.co.kr/">aladin</a></h5>
+          <h5><a href="http://www.bandinlunis.com/">bandinluis</a></h5>
+          <h5><a href="http://www.yes24.com/">yes24</a></h5>
+        </div>
+        <br>
+        <div class="col-sm-12 text-center">
+          <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5>
+          <h5>Allie Dohee Kim</h5>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>

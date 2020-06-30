@@ -5,7 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>실제 글 페이지</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/totalCss.css">
+<link rel="stylesheet" href="/resources/css/QnA/detail.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="resources/css/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function name(){
 		function ComUpdateForm(id){
@@ -25,71 +32,6 @@
 		}
 	});
 </script>
-<style type="text/css">
-	/* board */
-	.board_table{
-		border-collapse: collapse;
-		border:1px solid black;
-		width:900px;
-	}
-	.board_table tr{
-		border:1px solid black;
-	}
-	.board_table .title{
-		text-align: center;
-	}
-	board_table .wtDate{
-		width:150px;
-	}
-	board_table .upDate{
-		width:150px;
-	}
-	board_table .writer{
-		width:600px;
-		text-align: right;
-		padding-right:5px;
-	}
-	
-	/* comment */
-	.comment_table{
-		border-collapse: collapse;
-		border:1px solid black;
-		width:900px;
-	}
-	.comment_table .comment_title{
-		text-align: center;
-	}
-	.comment_table tr{
-		border:1px solid black;
-	}
-	.comment_table .comment_index{
-		width:5%;
-	}
-	.comment_table .comment_message{
-		width:69%;
-	}
-	.comment_table .comment_writer{
-		width:15%;
-	}
-	.comment_table .comment_button{
-		width:11%;
-	}
-	
-	/* reply */
-	.reply_rep{
-		width:5%;
-		text-align: right;
-	}
-	.reply_message{
-		width:69%;
-	}
-	.reply_writer{
-		width:15%;
-	}
-	.reply_button{
-		width:11%;
-	}
-</style>
 </head>
 <body>
 	<table class="board_table">

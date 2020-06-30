@@ -1,0 +1,17 @@
+input {
+	border: none;
+	background: none;
+}
+
+.div-container {
+	border: 1px solid #bbbbbb;
+	padding: 10% 20%;
+	margin: 20px 0;
+	border-radius: 20px;
+	line-height: 30px;
+}
+
+.col-md-auto {
+	border: 1px solid #bbbbbb;
+	padding: 20px 30vh;
+}

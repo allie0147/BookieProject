@@ -9,217 +9,14 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <link rel="stylesheet" href="/resources/css/totalCss.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/resources/css/QnA/main.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="resources/css/bootstrap.min.js"></script>
-<script type="text/javascript">
-	$(function search() {
-		$("form")
-				.on(
-						"submit",
-						function() {
-							var formData = $("form").eq(0).serialize();
-
-							console.log(formData);
-
-							if (formData.searchInfo !== "") {
-								$
-										.ajax({
-											url : "/qna/main",
-											type : "post",
-											data : formData,
-											success : function(boardViewList) {
-
-												console.dir(boardViewList);
-
-												if (boardViewList.boardList != null) {
-													$("#boardList")
-															.html(
-																	"<table style='border:1px solid black'>"
-																			+ +"<thead>"
-																			+ "<tr>"
-																			+ "<td>글번호</td>"
-																			+ "<td>제목</td>"
-																			+ "<td>작성자명</td>"
-																			+ "<td>작성일시</td>"
-																			+ "</tr>"
-																			+ "</thead>");
-													$("#boardList").append(
-															"<tbody>");
-													boardViewList.boardList
-															.forEach(function(
-																	board) {
-																console
-																		.dir(board);
-																$("#boardList")
-																		.append(
-																				"<tr><td>"
-																						+ board.id
-																						+ "</td>");
-																$("#boardList")
-																		.append(
-																				"<td>"
-																						+ board.title
-																						+ "</td>");
-																$("#boardList")
-																		.append(
-																				"<td>"
-																						+ board.writer
-																						+ "</td>");
-																$("#boardList")
-																		.append(
-																				"<td>"
-																						+ board.wtDate
-																						+ "</td></tr>");
-															});
-													$("#boardList").append(
-															"</tbody>");
-													$("#boardList").append(
-															"</table>")
-												} else {
-													$("#boardList")
-															.html(
-																	"해당 조건을 만족하는 게시글이 없습니다.");
-												}
-											}
-										});
-							} else {
-								alert("검색 요소를 입력해주세요.");
-							}
-							return false;
-						});
-	});
-</script>
-<style>
-#board_title {
-	display: inline-block;
-	text-align: center;
-	margin: auto;
-}
-
-<<<<<<< HEAD
-#boardList {
-	width: 600px;
-	margin: auto;
-	height: 500px;
-}
-
-.board_qna {
-	border: 1px solid black;
-	border-radius: 7px;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-}
-
-.board_qna tr {
-	border: 1px solid black;
-}
-
-thead>tr {
-	color: black;
-}
-
-.page {
-	text-align: center;
-}
-
-.pagenation {
-	list-style: none;
-	display: inline-block;
-	margin: auto;
-	width: 60%;
-	height: 10px;
-	text-align: center;
-	text-decoration: none;
-}
-
-.pagenation li {
-	display: inline;
-	text-align: center;
-}
-
-.pagenation a {
-	display: inline-block;
-	text-decoration: none;
-	color: black;
-	padding: 5px 12px;
-}
-
-.pagenation a:hover {
-	background-color: lightgray;
-	border-radius: 4px;
-}
-
-.pageNumber {
-	margin: auto 5px auto 5px;
-	text-decoration: none;
-	color: black;
-}
-
-.searchBar {
-	margin: auto;
-	width: 600px;
-	text-align: right;
-}
-=======
-	.board_qna{
-		border:1px solid black;
-		border-radius: 7px;	
-		width:100%;
-		height:100%;
-		text-align: center;
-	}
-	.board_qna tr{
-		border:1px solid black;
-	}
-	thead>tr{
-		color:black;
-	}
-	.page{
-		text-align: center;
-	}
-	.pagenation{
-		list-style:none;
-		display:inline-block;
-		margin:auto;
-		width: 60%;
-		height:10px;
-		text-align:center;
-		text-decoration: none;
-	}
-	.pagenation li{
-		display: inline-block;
-		text-align: center;
-	}
-	.pagenation a{
-		display:inline-block;
-		text-decoration: none;
-		color:black;
-		padding:5px 12px;
-	}
-	.pagenation a:hover {
-		background-color:lightgray;
-		border-radius: 4px;
-	}
-	.pageNumber{
-		margin:auto 5px auto 5px;
-		text-decoration: none;
-		color:black;
-	}
-	.searchBar{
-		margin:auto;
-		width:600px;
-		text-align: right;
-	}
-</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/QnA/main.js"></script>
 </head>
 <body>
-
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -327,11 +124,11 @@ thead>tr {
 			</ul>
 		</div>
 	</c:if>
-	<!-- footer -->
-	<footer style="background-color: #333333; color: #ffffff;">
+
+	<footer id="footerBg">
 		<div class="container">
 			<br>
-			<div class="row" style="color: #9D9D9D;">
+			<div class="row" id="footerFont">
 				<div class="col-sm-4">
 					<h4>Introduce</h4>
 					<p>I have studied Java, HTML, Python, Jquari, etc. and I want
@@ -365,7 +162,7 @@ thead>tr {
 					</h5>
 				</div>
 				<br>
-				<div class="col-sm-12" style="text-align: center;">
+				<div class="col-sm-12 text-center">
 					<h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5>
 					<h5>Allie Dohee Kim</h5>
 				</div>

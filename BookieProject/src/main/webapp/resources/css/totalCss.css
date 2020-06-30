@@ -1,16 +1,52 @@
-.navbar-header>a{
-  font-size: 30pt;
-  font-family: cursive;
+#footerFont {
+	color: #9D9D9D;
 }
-body{
+
+#footerBg {
+	background: #333333;
+	color: #ffffff;
+}
+
+.navbar-header>a {
+	font-size: 30pt;
+	font-family: cursive;
+}
+
+body {
+	padding-top: 51px;
+	background-color: ivory;
+}
+
+a, a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #bbbbbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.qnaUl {
+	list-style-type: decimal;
+}
+
+.qnaUl>li {
+	font-size: 13pt;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 25px;
+}
+
+#searchButton {
+	float: right;
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+
+body {
 	background: ivory;
-}
-a, a:visited{
-  color: #000000;
-  text-decoration: none;
-}
-a:hover{
-  color: #bbbbbb;
-  text-decoration: none;
-  cursor: pointer;
 }

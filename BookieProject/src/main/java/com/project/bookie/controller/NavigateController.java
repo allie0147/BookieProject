@@ -89,6 +89,9 @@ public class NavigateController {
 //		로그인화면 보여주기
 		return "login/logIn";
 	}
-	
+	@GetMapping("/mypageUpdate")
+	public String showMypageUpdate() {
+		return "myPage/myPageUpdate";
+	}
 
 }

@@ -9,32 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
+<link rel="stylesheet" href="/resources/css/mainview/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style>
-
-    .navbar-header>a{
-      font-size: 30pt;
-      font-family: cursive;
-    }
-	.thumbnail a{
-		text-decoration: none;
-	}
-	.img{
-		background-repeat:no-repeat;
-		background-size:cover;
-		opacity:0.7;
-		text-align: center;
-		width:100%; height:300px;
-	}
-	
-	.imag > .caption{
-		color:white;
-		margin:auto;
-		background-color: rgba( 255, 255, 255, 0.5 );
-		
-	}
-  </style>
 </head>
 <body>
 	<!-- 주소 이걸로 쓰면됨 -->
@@ -119,21 +96,6 @@
 				<div class="col-md-4">
 					<div class="thumbnail">
 						<a href="/bookcard/detail?b=${board.id }" target="_blank">
-							<!-- 
-								.img{
-									background-repeat:no-repeat;
-									background-size:cover;
-									opacity:0.7;
-									text-align: center;
-									width:100%; height:300px;
-								}
-								
-								.imag > .caption{
-									color:white;
-									margin:auto;
-									opacity: 1.0;
-								}
-							 -->
 							<c:if test="${randomImageNumIter.hasNext() }">
 								<div class="img" style="background-image:url('../resources/images/bookcard-images-${randomImageNumIter.next()}.jpg')" >
 									<p class="caption">안녕하세요 반갑습니다 헬로</p><!-- ${board.content } -->
@@ -152,7 +114,7 @@
 			<h2><a href="/qna/main">Q&A</a></h2>
 			<ul class="qnaUl">
 				<c:forEach var="board" items="${MainQnaBoardList }" varStatus="status">
-					<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+					<li><a href="qna/detail?b=${status.index+1 }"><em>${status.index +1}</em>${board.title }</a></li>
 				</c:forEach>
 			</ul>
         </div>
@@ -161,35 +123,37 @@
 			<h2><a href="/club/main">BookClub</a></h2>
 			<ul class="qnaUl">
 				<c:forEach var="board" items="${MainClubBoardList }" varStatus="status">
-					<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+					<!-- <a href="qna/detail?b=${status.index }"> a 태그 클릭시 이동 페이지 status.index 수정 -->
+					<li><a href="qna/detail?b=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
 				</c:forEach>
 			</ul>
 		</div>
 	</div>
 
 	<!-- store의 글자들 클릭한 뒤 다시 뒤로가기 해도 글자색 변경되지 않게 -->
-	<footer style="background-color: #333333; color: #ffffff;">
-		<div class="container">
+	 <footer id="footerBg">
+      <div class="container">
+        <br>
+        <div class="row" id="footerFont">
+          <div class="col-sm-4"><h4>Introduce</h4><p>I have studied Java, HTML, Python, Jquari, etc. and I want to make a space where I can exchange questions and answers related to books.</p>
+          </div>
+          <div class="col-sm-4"><h4>Contact</h4>
+            <p><span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul</p>
+            <p><span class="glyphicon glyphicon-phone"></span>Phone: +82 1082747414</p>
+            <p><span class="glyphicon glyphicon-envelope"></span>Email: hth0411@naver.com</p>
+          </div>
+          <div class="col-sm-4">
+			<h4>store</h4>
+			<h5><a href="https://www.aladin.co.kr/" target="_blank">aladin</a></h5> <!-- target 설정: 새창으로 변경 -->
+			<h5><a href="http://www.bandinlunis.com/" target="_blank">bandinluis</a></h5>
+			<h5><a href="http://www.yes24.com/" target="_blank">yes24</a></h5>
+		  </div>
 			<br>
-			<div class="row" style="color: #9D9D9D;">
-				<div class="col-sm-4"><h4>Introduce</h4><p>I have studied Java, HTML, Python, Jquari, etc. and I want to make a space where I can exchange questions and answers related to books.</p></div>
-				<div class="col-sm-4"><h4>Contact</h4>
-					<p><span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul</p>
-					<p><span class="glyphicon glyphicon-phone"></span>Phone: +82 1082747414</p>
-					<p><span class="glyphicon glyphicon-envelope"></span>Email: hth0411@naver.com</p>
-				</div>
-				<div class="col-sm-4">
-					<h4>store</h4>
-					<h5><a href="https://www.aladin.co.kr/" target="_blank">aladin</a></h5> <!-- target 설정: 새창으로 변경 -->
-					<h5><a href="http://www.bandinlunis.com/" target="_blank">bandinluis</a></h5>
-					<h5><a href="http://www.yes24.com/" target="_blank">yes24</a></h5>
-				</div>
-				<br>
-				<div class="col-sm-12" style="text-align: center;">
-					<h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohee Kim</h5>
-				</div>
-			</div>
-		</div>
+		  <div class="col-sm-12 text-center">
+            <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohee Kim</h5>
+          </div>
+        </div>
+      </div>
 	</footer>
   </body>
 </html>

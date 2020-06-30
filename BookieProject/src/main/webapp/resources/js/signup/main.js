@@ -1,7 +1,7 @@
 $(function () {
     $(".error").hide();
 
-    $("input[class=input]").on({
+    $("input[class=form-control]").on({
         "focus": function () {
             $(this).css({
                 "background": "lavenderblush",

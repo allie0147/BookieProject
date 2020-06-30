@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>실제 글 페이지</title>
+<link rel="stylesheet" href="/resources/css/bookclub/detail.css">
 <script type="text/javascript">
 	$(function name(){
 		function ComUpdateForm(id){
@@ -25,71 +26,6 @@
 		}
 	});
 </script>
-<style type="text/css">
-	/* board */
-	.board_table{
-		border-collapse: collapse;
-		border:1px solid black;
-		width:900px;
-	}
-	.board_table tr{
-		border:1px solid black;
-	}
-	.board_table .title{
-		text-align: center;
-	}
-	board_table .wtDate{
-		width:150px;
-	}
-	board_table .upDate{
-		width:150px;
-	}
-	board_table .writer{
-		width:600px;
-		text-align: right;
-		padding-right:5px;
-	}
-	
-	/* comment */
-	.comment_table{
-		border-collapse: collapse;
-		border:1px solid black;
-		width:900px;
-	}
-	.comment_table .comment_title{
-		text-align: center;
-	}
-	.comment_table tr{
-		border:1px solid black;
-	}
-	.comment_table .comment_index{
-		width:5%;
-	}
-	.comment_table .comment_message{
-		width:69%;
-	}
-	.comment_table .comment_writer{
-		width:15%;
-	}
-	.comment_table .comment_button{
-		width:11%;
-	}
-	
-	/* reply */
-	.reply_rep{
-		width:5%;
-		text-align: right;
-	}
-	.reply_message{
-		width:69%;
-	}
-	.reply_writer{
-		width:15%;
-	}
-	.reply_button{
-		width:11%;
-	}
-</style>
 </head>
 <body>
 	<table class="board_table">
@@ -144,29 +80,34 @@
 		</c:forEach>
 	</table>
 	
-	<footer style="background-color: #333333; color: #ffffff;">
-	  <div class="container">
-	    <br>
-	    <div class="row" style="color: #9D9D9D;">
-	      <div class="col-sm-4"><h4>Introduce</h4><p>I have studied Java, HTML, Python, Jquari, etc. and I want to make a space where I can exchange questions and answers related to books.</p>
-	      </div>
-	      <div class="col-sm-4"><h4>Contact</h4>
-	        <p><span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul</p>
-	        <p><span class="glyphicon glyphicon-phone"></span>Phone: +82 1082747414</p>
-	        <p><span class="glyphicon glyphicon-envelope"></span>Email: hth0411@naver.com</p>
-	      </div>
-	            <div class="col-sm-4">
-	              <h4>store</h4>
-	              <h5><a href="https://www.aladin.co.kr/">aladin</a></h5>
-	              <h5><a href="http://www.bandinlunis.com/">bandinluis</a></h5>
-	              <h5><a href="http://www.yes24.com/">yes24</a></h5>
-	            </div>
-	      <br>
-	      <div class="col-sm-12" style="text-align: center;">
-	        <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohie Kim</h5>
-	      </div>
-	    </div>
-	  </div>
-	</footer>
+  <footer id="footerBg">
+    <div class="container">
+      <br>
+      <div class="row" id="footerFont">
+        <div class="col-sm-4">
+          <h4>Introduce</h4>
+          <p>I have studied Java, HTML, Python, Jquari, etc. and I want to make a space where I can exchange questions
+            and answers related to books.</p>
+        </div>
+        <div class="col-sm-4">
+          <h4>Contact</h4>
+          <p><span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul</p>
+          <p><span class="glyphicon glyphicon-phone"></span>Phone: +82 1082747414</p>
+          <p><span class="glyphicon glyphicon-envelope"></span>Email: hth0411@naver.com</p>
+        </div>
+        <div class="col-sm-4">
+          <h4>store</h4>
+          <h5><a href="https://www.aladin.co.kr/">aladin</a></h5>
+          <h5><a href="http://www.bandinlunis.com/">bandinluis</a></h5>
+          <h5><a href="http://www.yes24.com/">yes24</a></h5>
+        </div>
+        <br>
+        <div class="col-sm-12 text-center">
+          <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5>
+          <h5>Allie Dohee Kim</h5>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
