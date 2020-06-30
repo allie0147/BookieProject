@@ -15,6 +15,15 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* 수정 */
+.vertical {
+	border-left: 1px solid black;
+	height: 10px;
+	position: absolute;
+	left: 50%;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -63,8 +72,11 @@
 					<button type="submit" class="btn btn-block btn-danger">Log
 						In</button>
 					<p class="text-center">
-						<a href="#">이메일</a> / <a href="#">비밀번호 찾기</a>
+						<button type="submit" class="btn btn-block">회원가입</button>
+						<!-- 글씨 크기 좀더 작게, 슬래시 대신에 쓸 세로 줄  -->
+						<a href="#">이메일</a> <div class="vertical"></div><a href="#">비밀번호 찾기</a>
 					</p>
+
 					<hr>
 					<button type="submit" class="btn btn-success btn-block">naver</button>
 					<a
