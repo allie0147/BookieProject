@@ -28,18 +28,24 @@ public class User {
 	private String uEmail;
 
 	@NotEmpty
+	@Length(min = 8, max = 16)
+	@Pattern(regexp = "^[가-힣a-zA-Z0-9\\S]+$")
+	private String uPwd;
+
+	@NotEmpty
 	@Pattern(regexp = "^[가-힣a-zA-Z0-9\\S]*$")
 	@Length(min = 2, max = 8)
 	private String nickname;
 
+	@NotEmpty
 	@Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$")
 	private String phone;
-//	갯수 체크
+
 	@NotEmpty
-	@Size(min = 1)
+	@Size(min = 1, max = 2)
 	private String[] interest;
 	@DateTimeFormat
 	private LocalDateTime regDate;
-	// password는 암호화 테이블 생성 예정
+
 	private List<Board> boardList;
 }

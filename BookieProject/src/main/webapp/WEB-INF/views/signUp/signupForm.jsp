@@ -6,47 +6,69 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/css/totalCss.css">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="<c:url value="/resources/js/signupForm.js" />"></script>
+<script src="resources/css/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/signUp.js" />"></script>
 </head>
 
 <body>
-	<form action="userForm" method="post">
-		<!--action 수정하세요-->
+<form action="/bookie/userForm" method="post">
+		<!-- spring 유효성 검사로 post : SignUpController.java-->
 		<h1>회원 가입 폼폼이</h1>
 		<div>
-			<span>이메일</span>
+			<span>이메일</span><span>*필수</span>
+		</div>
+		<div>
+			<input type="text" class="input" name="uEmail" id="email">
 		</div>
 		<div>
 			<button type="button" name="emailBtn">이메일 인증</button>
 		</div>
-		<div>
-			<input type="text" name="uEmail">
+		<div class="errorBox">
+			<span class='error' id='error01'>에러 01</span>
 		</div>
 		<div>
-			<span>비밀번호</span>
+			<span>비밀번호</span><span>*필수</span>
 		</div>
 		<div>
-			<input type="password" name="uPwd">
+			<input type="password" class="input" name="uPwd" id="uPwd">
+		</div>
+		<div class="errorBox">
+			<span class='error' id='error02'>에러 02</span>
 		</div>
 		<div>
-			<span>비밀번호 확인</span>
+			<span>비밀번호 확인</span><span>*필수</span>
 		</div>
 		<div>
-			<input type="password" name="uPwdRe">
+			<input type="password" class="input" name="uPwdRe" id="uPwdRe">
+		</div>
+		<div class="errorBox">
+			<span class='error' id='error03'>에러 03</span>
 		</div>
 		<div>
-			<span>닉네임</span>
+			<span>닉네임</span><span>*필수</span>
 		</div>
 		<div>
-			<input type="text" name="nickname">
+			<input type="text" class="input" name="nickname" id="nickname">
 		</div>
 		<div>
-			<span>핸드폰</span>
+			<button type="button" name="nickBtn">사용하기</button>
+		</div>
+		<div class="errorBox">
+			<span class='error' id='error04'>에러 04</span>
 		</div>
 		<div>
-			<input type="tel" name="phone">
+			<span>휴대폰</span><span>*필수</span>
+		</div>
+		<div>
+			<input type="tel" class="input" name="phone" id="phone">
+		</div>
+		<div class="errorBox">
+			<span class='error' id='error05'>에러 05</span>
 		</div>
 		<div>
 			<input type="checkbox" name="interest" id="1" value="1"><label
@@ -60,13 +82,25 @@
 				type="checkbox" name="interest" id="7" value="7"><label
 				for="7">예술</label>
 		</div>
+		<div class="errorBox">
+			<span class='error' id='error06'>에러 06</span>
+		</div>
+		<div class="errordiv">
+			<c:if test="${EuEmail!=null}">
+				<strong>올바른 이메일 형식이 아닙니다</strong>
+			</c:if>
+			<c:if test="${Enickname!=null}">
+				<strong>올바른 닉네임 형식이 아닙니다</strong>
+			</c:if>
+			<c:if test="${Ephone!=null}">
+				<strong>올바른 휴대폰번호가 아닙니다</strong>
+			</c:if>
+		</div>
 		<div>
 			<input type="submit" value="가입하기" name="submit">
 		</div>
 	</form>
-	
-	
-	
+		
 	<footer style="background-color: #333333; color: #ffffff;">
 	  <div class="container">
 	    <br>
@@ -86,7 +120,7 @@
 	            </div>
 	      <br>
 	      <div class="col-sm-12" style="text-align: center;">
-	        <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohie Kim</h5>
+	        <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohee Kim</h5>
 	      </div>
 	    </div>
 	  </div>

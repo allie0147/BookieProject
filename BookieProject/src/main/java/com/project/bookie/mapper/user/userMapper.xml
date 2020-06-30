@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.bookie.mapper.UserMapper">
+<mapper namespace="com.project.bookie.mapper.user.UserMapper">
 	<resultMap type="user" id="user">
 		<id property="id" column="id" />
 		<result property="uEmail" column="u_email" />
-		<result property="uPwd" column="u_pwd"/>
+		<result property="uPwd" column="u_pwd" />
 		<result property="uPwd" column="nickname" />
 		<result property="phone" column="phone" />
 		<result property="regDate" column="reg_date" />
@@ -24,8 +24,8 @@
 
 	<!-- 이메일로 비밀번호 찾기(일치하는 이메일 존재시 이메일 인증 필요 - 이메일로 비밀번호 전송 or 이메일 인증 성공시 페이지에서 
 		비밀번호 재설정 - 이메일로 난수 임시 난수비밀번호 전송(이같은 경우 차후에 비밀번호 재설정 과정이 필요) -->
-	<select id="getUserByEmail" resultMap="user">
-		select * from user where email=#{email}
+	<select id="getUserByEmail" resultType="user">  <!-- result type으로 변경 -->
+		select * from user where u_email=#{uEmail}
 	</select>
 	<!-- 이메일 중복 검사!!! -->
 	<select id="countUserByEmail" resultType="int">
@@ -38,14 +38,21 @@
 		user where nickname=#{nickname}
 	</select>
 	<!-- 휴대폰번호로 이메일 혹은 비밀번호 찾기(비밀번호 재설정 기능 필요) -->
-	<select id="getUserByPhone" resultMap="user">
-		select * from user where phone=#{phone}
+	<select id="getUserByPhone" resultType="user"> <!-- result type으로 변경 -->
+		select * from user where
+		phone=#{phone}
 	</select>
 	<!-- 회원 정보 등록 -->
 	<insert id="insertUser" parameterType="user">
-		insert into user (u_email, u_pwd, nickname, phone)
+		insert into user (u_email,
+		u_pwd, nickname, phone)
 		values
-		(#{uEmail}, #{uPwd}, #{nickname}, #{phone})
+		(#{uEmail}, #{uPwd}, #{nickname},
+		#{phone})
+	</insert>
+	<insert id="insertInterest">
+		insert into interest (user_id, genre_id) values
+		(#{userId},#{genreId})
 	</insert>
 
 	<!-- 비밀번호 재설정 기능 : 비밀번호는 별도의 테이블로 관리하기 때문에 다른 mapper에 작성될 수 있음 -->
