@@ -69,6 +69,7 @@
 </div>
 <div class="container">
 	<h3>독서클럽</h3>
+	<a href="club/main?g=1"></a>
 	<table class="table table-hover">
 		<thead>
 			<tr>

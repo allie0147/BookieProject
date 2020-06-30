@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.board.BookCardBoard;
-import com.project.bookie.dto.boardViewList.BoardViewList;
 import com.project.bookie.dto.boardViewList.BookCardBoardViewList;
 import com.project.bookie.service.BookCardBoardService;
 import com.project.bookie.service.BookCardBoardViewListService;

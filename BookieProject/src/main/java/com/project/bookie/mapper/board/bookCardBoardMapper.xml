@@ -25,7 +25,7 @@
 	<select id="getBoardListToMain" resultMap="bcb">
 		select bookcard_board.id, title, user.nickname as writer, w_date 
 		from bookcard_board join user on bookcard_board.user_id = user.id 
-		order by id desc limit 5
+		order by id desc limit 3
 	</select>
 	
 	<!-- 제목으로 글 검색 -->
