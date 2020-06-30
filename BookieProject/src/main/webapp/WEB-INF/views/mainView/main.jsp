@@ -39,12 +39,12 @@
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" >Q&A<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
-					<li><a href="/qna/maing=2">에세이</a></li>
-					<li><a href="/qna/maing=3">인문학</a></li>
-					<li><a href="/qna/maing=4">경제경영</a></li>
-					<li><a href="/qna/maing=5">사회과학</a></li>
-					<li><a href="/qna/maing=6">종교</a></li>
-					<li><a href="/qna/maing=7">예술</a></li>
+					<li><a href="/qna/main?g=2">에세이</a></li>
+					<li><a href="/qna/main?g=3">인문학</a></li>
+					<li><a href="/qna/main?g=4">경제경영</a></li>
+					<li><a href="/qna/main?g=5">사회과학</a></li>
+					<li><a href="/qna/main?g=6">종교</a></li>
+					<li><a href="/qna/main?g=7">예술</a></li>
 				</ul>
       		</li>
 		<li><a href="/bookcard/main">독서 클럽</a></li>
@@ -134,26 +134,19 @@
 
       <div class="container">
         <div class="row col-md-6">
-          <h2><a href="#">Q&A</a></h2>
+          <h2><a href="/qna/main">Q&A</a></h2>
           <ul class="qnaUl">
-            <li><em>1. </em><a href="#">내 친구가 네 얘기를 해 좋아보였단 말에 괜히 화를 내 어쩌면 아직도 나 땜에 네가힘들어하길 바랬는지 몰라</a></li>
-            <li><em>2. </em><a href="#">요즘 가끔 나도 모르게 우리 함께듣던 노래를해 이유없이 보고 싶어지는밤 그대내가 너무 어렸었어 </a></li>
-            <li><em>3. </em><a href="#">난부담이 됐고우고 불만이됐죠 끝내너를 지우고 오늘이지나면 난 사라질 먼지 사랑이 먼지</a></li>
-            <li><em>4. </em><a href="#">나 슬퍼 보인다면 그눈물은 연기 춤추는 연기 처럼 내일이면 또아무렇지 않게 또하루가 시작되</a></li>
-            <li><em>5. </em><a href="#">널 잊고 살겠죠 그대내가 행복해지기만을 이곳에서 남아서 웃으며 기다릴꼐</a></li>
-            <li><em>6. </em><a href="#">마침 나오는 래디오에서 공감되는사연 너도나와 똑같다면 혹시 니가 아닐까 생각하다 잠이와</a></li>
-
+			<c:forEach var="board" items="${MainQnaBoardList }" varStatus="status">
+				<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+			</c:forEach>
           </ul>
         </div>
         <div class="row col-md-6">
-          <h2><a href="#">BookClub</a></h2>
+          <h2><a href="/club/main">BookClub</a></h2>
           <ul class="qnaUl">
-            <li><em>1. </em><a href="#">내 친구가 네 얘기를 해 좋아보였단 말에 괜히 화를 내 어쩌면 아직도 나 땜에 네가힘들어하길 바랬는지 몰라</a></li>
-            <li><em>2. </em><a href="#">요즘 가끔 나도 모르게 우리 함께듣던 노래를해 이유없이 보고 싶어지는밤 그대내가 너무 어렸었어 </a></li>
-            <li><em>3. </em><a href="#">난부담이 됐고우고 불만이됐죠 끝내너를 지우고 오늘이지나면 난 사라질 먼지 사랑이 먼지</a></li>
-            <li><em>4. </em><a href="#">나 슬퍼 보인다면 그눈물은 연기 춤추는 연기 처럼 내일이면 또아무렇지 않게 또하루가 시작되</a></li>
-            <li><em>5. </em><a href="#">널 잊고 살겠죠 그대내가 행복해지기만을 이곳에서 남아서 웃으며 기다릴꼐</a></li>
-            <li><em>6. </em><a href="#">마침 나오는 래디오에서 공감되는사연 너도나와 똑같다면 혹시 니가 아닐까 생각하다 잠이와</a></li>
+            <c:forEach var="board" items="${MainClubBoardList }" varStatus="status">
+				<li><a href="qna/detail?n=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+			</c:forEach>
           </ul>
         </div>
       </div>

@@ -36,4 +36,9 @@ public class QnaBoardService {
 		}
 		return boardList;
 	}
+	
+	public List<Board> getBoardListLatest(){
+		List<Board> boardList = mapper.getBoardListToMain();
+		return boardList;
+	}
 }

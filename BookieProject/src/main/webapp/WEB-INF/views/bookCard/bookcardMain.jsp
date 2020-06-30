@@ -6,11 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/resources/css/bootMain.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style media="screen">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/totalCss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style media="screen">
     #searchButton{
       float: right;
       margin-top: 0;
@@ -86,7 +87,7 @@
 		width:600px;
 		text-align: right;
 	}
-  </style>
+</style>
 </head>
 <body>
 	<!--로고 글귀 q&a 독서클럽 고객센터 마이페이지 로그인-->
@@ -100,12 +101,12 @@
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
-						<li><a href="/qna/maing=2">에세이</a></li>
-						<li><a href="/qna/maing=3">인문학</a></li>
-						<li><a href="/qna/maing=4">경제경영</a></li>
-						<li><a href="/qna/maing=5">사회과학</a></li>
-						<li><a href="/qna/maing=6">종교</a></li>
-						<li><a href="/qna/maing=7">예술</a></li>
+						<li><a href="/qna/main?g=2">에세이</a></li>
+						<li><a href="/qna/main?g=3">인문학</a></li>
+						<li><a href="/qna/main?g=4">경제경영</a></li>
+						<li><a href="/qna/main?g=5">사회과학</a></li>
+						<li><a href="/qna/main?g=6">종교</a></li>
+						<li><a href="/qna/main?g=7">예술</a></li>
 				</ul>
 	      </li>
 	      <li><a href="/club/main">독서 클럽</a></li>
