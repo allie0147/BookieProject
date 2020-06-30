@@ -11,9 +11,13 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<<<<<<< HEAD
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <style media="resources/css/screen">
+=======
+<script src="resources/css/bootstrap.min.js"></script>
+>>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 <script type="text/javascript">
 	$(function search(){
 		$("form").on("submit", function(){
