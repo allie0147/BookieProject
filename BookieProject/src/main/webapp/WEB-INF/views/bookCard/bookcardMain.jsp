@@ -23,54 +23,115 @@
     body{
     background: ivory;
     }
+    	#board_title{
+		display:inline-block;
+		text-align:center;
+		margin:auto;
+	}
+	#boardList{
+		width:600px;
+		margin:auto;
+		height:500px;
+	}
+
+	.board_qna{
+		border:1px solid black;
+		border-radius: 7px;	
+		width:100%;
+		height:100%;
+		text-align: center;
+	}
+	.board_qna tr{
+		border:1px solid black;
+	}
+	thead>tr{
+		color:black;
+	}
+	.page{
+		text-align: center;
+		margin-top:10px;
+		margin-bottom:20px;
+	}
+	.pagenation{
+		list-style:none;
+		display:inline-block;
+		margin:auto;
+		width: 60%;
+		height:10px;
+		text-align:center;
+		text-decoration: none;
+	}
+	.pagenation li{
+		display: inline;
+		text-align: center;
+	}
+	.pagenation a{
+		display:inline-block;
+		text-decoration: none;
+		color:black;
+		padding:5px 12px;
+	}
+	.pagenation a:hover {
+		background-color:lightgray;
+		border-radius: 4px;
+		
+	}
+	.pageNumber{
+		margin:auto 5px auto 5px;
+		text-decoration: none;
+		color:black;
+	}
+	.searchBar{
+		margin:auto;
+		width:600px;
+		text-align: right;
+	}
   </style>
 </head>
 <body>
-<!--로고 글귀 q&a 독서클럽 고객센터 마이페이지 로그인-->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/bookie/main">BooKie</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/bookcard/main">글귀</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-                <li><a href="/bookie/QnA?g=1">소설 시 희곡</a></li>
-                <li><a href="/bookie/QnA?g=2">에세이</a></li>
-                <li><a href="/bookie/QnA?g=3">인문학</a></li>
-                <li><a href="/bookie/QnA?g=4">경제경영</a></li>
-                <li><a href="/bookie/QnA?g=5">사회과학</a></li>
-                <li><a href="/bookie/QnA?g=6">종교</a></li>
-                <li><a href="/bookie/QnA?g=7">예술</a></li>
-              </ul>
-            </li>
-            <li class="active"><a href="/bookcard/main">독서 클럽</a></li>
-      <li><a href="#">고객센터</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/bookie/mypage"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
-            <li><a href="/bookie/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-    </ul>
-  </div>
-</nav>
+	<!--로고 글귀 q&a 독서클럽 고객센터 마이페이지 로그인-->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/bookie/main">BooKie</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+			<li class="active"><a href="/bookcard/main">글귀</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
+						<li><a href="/qna/maing=2">에세이</a></li>
+						<li><a href="/qna/maing=3">인문학</a></li>
+						<li><a href="/qna/maing=4">경제경영</a></li>
+						<li><a href="/qna/maing=5">사회과학</a></li>
+						<li><a href="/qna/maing=6">종교</a></li>
+						<li><a href="/qna/maing=7">예술</a></li>
+				</ul>
+	      </li>
+	      <li><a href="/club/main">독서 클럽</a></li>
+	      <li><a href="/bookie/cs">고객센터</a></li>
+	    </ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/bookie/mypage"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
+			<li><a href="/bookie/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+	    </ul>
+	  </div>
+	</nav>
 <div class="container">
-  <h2>Rounded Corners</h2>
-  <p>게시판 이미지 들어갈곳</p>
-  <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px">
+	<h2>Rounded Corners</h2>
+	<div style="margin-top:50px; background:lightgray; width:95%; height:250px; margin:50px auto 50px auto"></div>
+	<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
 </div>
 <div class="container">
 
   <div class="container">
-    <h2>ฅ^•.ᴥ•^ฅ< Best3</h2>
+    <h2>Best3</h2>
     <div class="row">
       <div class="col-md-4">
         <div class="thumbnail">
           <a href="" target="_blank">
             <img src="" alt="Lights" style="width:100%; height:400px">
-            <div class="caption">
-              <p>.</p>
-            </div>
+            <p class="caption"></p>
           </a>
         </div>
       </div>
@@ -104,7 +165,7 @@
   </div>
 
 
-<h2>ฅ^•.ᴥ•^ฅ< Recommend</h2>
+<h2>Recommend</h2>
   <div class="row">
     <div class="col-md-4">
       <div class="thumbnail">

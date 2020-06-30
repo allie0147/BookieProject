@@ -6,17 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/resources/css/totalCss.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/totalCss.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="resources/css/bootstrap.min.js"></script>
-<style media="resources/css/screen">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
 
     .navbar-header>a{
       font-size: 30pt;
       font-family: cursive;
     }
-
+	
   </style>
 </head>
 <body>
@@ -30,27 +31,27 @@
 <a href="/bookie/login">로그인</a> -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/bookie/main">BooKie</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/bookcard/main">글귀</a></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/qna/main">Q&A<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/bookie/QnA?g=1">소설 시 희곡</a></li>
-                <li><a href="/bookie/QnA?g=2">에세이</a></li>
-                <li><a href="/bookie/QnA?g=3">인문학</a></li>
-                <li><a href="/bookie/QnA?g=4">경제경영</a></li>
-                <li><a href="/bookie/QnA?g=5">사회과학</a></li>
-                <li><a href="/bookie/QnA?g=6">종교</a></li>
-                <li><a href="/bookie/QnA?g=7">예술</a></li>
-              </ul>
-            </li>
-            <li class="active"><a href="/bookcard/main">독서 클럽</a></li>
-            <li><a href="/bookie/cs">고객센터</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/bookie/mypage"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/bookie/main">BooKie</a>
+		</div>
+		<ul class="nav navbar-nav">
+            <li><a href="/bookcard/main">글귀</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" >Q&A<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
+					<li><a href="/qna/maing=2">에세이</a></li>
+					<li><a href="/qna/maing=3">인문학</a></li>
+					<li><a href="/qna/maing=4">경제경영</a></li>
+					<li><a href="/qna/maing=5">사회과학</a></li>
+					<li><a href="/qna/maing=6">종교</a></li>
+					<li><a href="/qna/maing=7">예술</a></li>
+				</ul>
+      		</li>
+		<li><a href="/bookcard/main">독서 클럽</a></li>
+		<li><a href="/bookie/cs">고객센터</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/bookie/mypage"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
             <li><a href="/bookie/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
           </ul>
         </div>

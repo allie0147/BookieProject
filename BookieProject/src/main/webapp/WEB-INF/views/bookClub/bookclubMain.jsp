@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/resources/css/bootMain.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style media="screen">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/bootMain.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style media="screen">
     #searchButton{
       float: right;
       margin-top: 0;
@@ -41,16 +41,16 @@
       <a class="navbar-brand" href="/bookie/main">BooKie</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/bookcard/main">글귀</a></li>
+      <li><a href="/bookcard/main">글귀</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
         <ul class="dropdown-menu">
-			<li><a href="/bookie/QnA?g=1">소설 시 희곡</a></li>
-			<li><a href="/bookie/QnA?g=2">에세이</a></li>
-			<li><a href="/bookie/QnA?g=3">인문학</a></li>
-			<li><a href="/bookie/QnA?g=4">경제경영</a></li>
-			<li><a href="/bookie/QnA?g=5">사회과학</a></li>
-			<li><a href="/bookie/QnA?g=6">종교</a></li>
-			<li><a href="/bookie/QnA?g=7">예술</a></li>
+			<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
+			<li><a href="/qna/main?g=2">에세이</a></li>
+			<li><a href="/qna/main?g=3">인문학</a></li>
+			<li><a href="/qna/main?g=4">경제경영</a></li>
+			<li><a href="/qna/main?g=5">사회과학</a></li>
+			<li><a href="/qna/main?g=6">종교</a></li>
+			<li><a href="/qna/main?g=7">예술</a></li>
         </ul>
       </li>
       <li class="active"><a href="/club/main">독서클럽</a></li>
@@ -63,9 +63,9 @@
   </div>
 </nav>
 <div class="container">
-  <h2>Rounded Corners</h2>
-  <p>독서클럽 이미지 들어갈곳</p>
-  <img src="images/bookClub.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="300px">
+	<h2>Rounded Corners</h2>
+	<div style="margin-top:50px; background:lightgray; width:95%; height:250px; margin:50px auto 50px auto"></div>
+	<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
 </div>
 <div class="container">
 	<h3>독서클럽</h3>
