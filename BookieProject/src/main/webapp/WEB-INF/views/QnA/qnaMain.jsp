@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="resources/css/bootstrap.min.js"></script>
-<style media="resources/css/screen">
 <script type="text/javascript">
 	$(function search(){
 		$("form").on("submit", function(){

@@ -39,12 +39,12 @@
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" >Q&A<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
-					<li><a href="/qna/maing=2">에세이</a></li>
-					<li><a href="/qna/maing=3">인문학</a></li>
-					<li><a href="/qna/maing=4">경제경영</a></li>
-					<li><a href="/qna/maing=5">사회과학</a></li>
-					<li><a href="/qna/maing=6">종교</a></li>
-					<li><a href="/qna/maing=7">예술</a></li>
+					<li><a href="/qna/main?g=2">에세이</a></li>
+					<li><a href="/qna/main?g=3">인문학</a></li>
+					<li><a href="/qna/main?g=4">경제경영</a></li>
+					<li><a href="/qna/main?g=5">사회과학</a></li>
+					<li><a href="/qna/main?g=6">종교</a></li>
+					<li><a href="/qna/main?g=7">예술</a></li>
 				</ul>
       		</li>
 		<li><a href="/bookcard/main">독서 클럽</a></li>
@@ -141,8 +141,6 @@
             <li><em>3. </em><a href="#">난부담이 됐고우고 불만이됐죠 끝내너를 지우고 오늘이지나면 난 사라질 먼지 사랑이 먼지</a></li>
             <li><em>4. </em><a href="#">나 슬퍼 보인다면 그눈물은 연기 춤추는 연기 처럼 내일이면 또아무렇지 않게 또하루가 시작되</a></li>
             <li><em>5. </em><a href="#">널 잊고 살겠죠 그대내가 행복해지기만을 이곳에서 남아서 웃으며 기다릴꼐</a></li>
-            <li><em>6. </em><a href="#">마침 나오는 래디오에서 공감되는사연 너도나와 똑같다면 혹시 니가 아닐까 생각하다 잠이와</a></li>
-
           </ul>
         </div>
         <div class="row col-md-6">
@@ -153,7 +151,6 @@
             <li><em>3. </em><a href="#">난부담이 됐고우고 불만이됐죠 끝내너를 지우고 오늘이지나면 난 사라질 먼지 사랑이 먼지</a></li>
             <li><em>4. </em><a href="#">나 슬퍼 보인다면 그눈물은 연기 춤추는 연기 처럼 내일이면 또아무렇지 않게 또하루가 시작되</a></li>
             <li><em>5. </em><a href="#">널 잊고 살겠죠 그대내가 행복해지기만을 이곳에서 남아서 웃으며 기다릴꼐</a></li>
-            <li><em>6. </em><a href="#">마침 나오는 래디오에서 공감되는사연 너도나와 똑같다면 혹시 니가 아닐까 생각하다 잠이와</a></li>
           </ul>
         </div>
       </div>
@@ -172,13 +169,13 @@
             </div>
             <div class="col-sm-4">
               <h4>store</h4>
-              <h5><a href="https://www.aladin.co.kr/">aladin</a></h5>
-              <h5><a href="http://www.bandinlunis.com/">bandinluis</a></h5>
-              <h5><a href="http://www.yes24.com/">yes24</a></h5>
+              <h5><a href="https://www.aladin.co.kr/" target="_blank">aladin</a></h5> <!-- target 설정: 새창으로 변경 -->
+              <h5><a href="http://www.bandinlunis.com/" target="_blank">bandinluis</a></h5>
+              <h5><a href="http://www.yes24.com/" target="_blank">yes24</a></h5>
             </div>
             <br>
             <div class="col-sm-12" style="text-align: center;">
-              <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohie Kim</h5>
+              <h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5><h5>Allie Dohee Kim</h5>
             </div>
           </div>
         </div>
