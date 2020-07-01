@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/login/main.css">
@@ -19,8 +18,14 @@
 .vertical {
 	border-left: 1px solid black;
 	height: 10px;
-	position: absolute;
 	left: 50%;
+}
+.d-inline{
+	display: inline;
+	width: 30px;
+}
+.form-group{
+	margin-bottom:0;
 }
 </style>
 <script>
@@ -67,23 +72,31 @@
 							class="form-control" id="inputEmail1" name="uEmail"
 							aria-describedby="emailHelp">
 					</div>
+					<div>
+						<em>이메일 오류</em>
+					</div>
 					<div class="form-group">
 						<label for="inputPassword1">Password</label> <input
 							type="password" class="form-control" id="inputPassword1" name="pwd">
 					</div>
-					<button type="submit" class="btn btn-block btn-info">Log
-						In</button>
-					<p class="text-center">
-						<button type="button" class="btn btn-block">회원가입</button>
-						<!-- 글씨 크기 좀더 작게, 슬래시 대신에 쓸 세로 줄  -->
-						<a href="#">이메일</a>
-					<div class="vertical"></div>
-					<a href="#">비밀번호 찾기</a>
-					</p>
+					<div>
+						<em>패스워드 오류</em>
+					</div>
+					<button type="submit" class="btn btn-block btn-info">LogIn</button>
+					<button type="button" class="btn btn-block">회원가입</button>
+					<div class="text-center">
+						<p>
+							<span><a href="#">이메일</a></span>
+							<span class="vertical"></span>&nbsp;
+							<span><a href="#">비밀번호 찾기</a></span>
+						</p>
+					</div>
 
 					<hr>
-					<button type="button" class="btn btn-success btn-block">naver</button>
-					<a
+					<a class="btn btn-success btn-block"
+						href="https://www.naver.com/">네이버
+						로그인</a>
+					<a class="btn btn-block btn-warning"
 						href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/bookie/kakaologin&response_type=code">카카오
 						로그인</a>
 				</form>
