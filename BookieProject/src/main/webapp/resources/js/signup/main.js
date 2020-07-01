@@ -33,6 +33,7 @@ $(function () {
         .on(
             "click",
             function () {
+            	$(this).css("background", "#33d299").css("border-color", "#33d299")
                 let u_email = $("input[name=uEmail]").val();
                 console.log(u_email);
                 let emailCheck = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
@@ -270,6 +271,13 @@ $(function () {
             }
         }
     });
+    
+    $('input[name=submit]').on("click",function(){
+    	$(this).css("background","#33d299").css("border-color", "#33d299");
+    })
+    
+        	
+        	
     // submit
     $("form").submit(
         function () {

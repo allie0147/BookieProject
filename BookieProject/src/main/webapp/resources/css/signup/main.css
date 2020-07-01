@@ -15,11 +15,19 @@
 	box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
 	border-radius: 10px;
 }
-.btn-warning{
+.btn-default{
 	background-color:#53d9a9;
 	border-color:#53d9a9;
 }
-.btn-warning:hover, .btn-warning:focus{
+.btn-default:hover{
+	background-color:#33d299;
+	border-color:#33d299;
+}
+.btn-default:focus{
+	background-color:#33d299;
+	border-color:#33d299;
+}
+.btn-default:active{
 	background-color:#33d299;
 	border-color:#33d299;
 }

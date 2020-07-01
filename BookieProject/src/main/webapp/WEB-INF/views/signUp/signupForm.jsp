@@ -65,7 +65,7 @@
 						</c:choose>
 					</div>
 					<div>
-						<button class="btn btn-warning" type="button" name="emailBtn">이메일
+						<button class="btn btn-default" type="button" name="emailBtn">이메일
 							인증</button>
 					</div>
 					<div class="errorBox">
@@ -150,7 +150,7 @@
 						</c:if>
 					</div>
 					<div>
-						<input type="submit" class="btn btn-block btn-warning"
+						<input type="submit" class="btn btn-block btn-default"
 							value="가입하기" name="submit">
 					</div>
 				</form>
