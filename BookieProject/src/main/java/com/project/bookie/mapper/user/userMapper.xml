@@ -73,6 +73,11 @@
 		update user
 		set nickname=#{nickname} where id=#{id}
 	</update>
+	
+	<update id="updateUserWithId" parameterType="int">
+		update user
+		set certification=1 where id=${uId}
+	</update>
 	<!-- 회원 정보 삭제 -->
 	<delete id="deleteUser">
 		delete from user where id=#{id}

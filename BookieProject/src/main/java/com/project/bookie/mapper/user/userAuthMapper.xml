@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper>
+	<select id="checkCertification" resultType="int">
+		select certification from user where id=#{uId}
+	</select>
+	<!-- 이메일 인증시 회원의 아이디에 따른 인증 키 확인 -->
+	<select id="selectUserWithId" resultType="String">
+		select authkey from userAuth where user_id=#{uId}
+	</select>
+	<update id="updateUserCertification">
+		update user set certification = 1 where id=#{uId}
+	</update>
+</mapper>

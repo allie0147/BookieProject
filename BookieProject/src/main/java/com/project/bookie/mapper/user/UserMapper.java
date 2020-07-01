@@ -40,7 +40,10 @@ public interface UserMapper {
 
 	// 회원 별명 변경
 	public void updateUserWithNickName(User user);
-
+	
+	//회원 이메일 인증 여부 변경
+	public void updateUserWithId(int uId);
+	
 	// 회원 정보 삭제(탈퇴)
 	public void deleteUser(int id);
 
