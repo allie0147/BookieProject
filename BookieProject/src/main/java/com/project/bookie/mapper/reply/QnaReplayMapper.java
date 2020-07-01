@@ -1,4 +1,4 @@
-package com.project.bookie.mapper.comment;
+package com.project.bookie.mapper.reply;
 
 import com.project.bookie.dto.reply.Reply;
 

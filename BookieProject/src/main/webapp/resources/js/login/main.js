@@ -18,6 +18,15 @@ function submitFuc(inputClass) {
 	inputClass.focus();
 }
 
+
+$(function(){
+		$("#signup")
+			.click(
+					function() {
+						location.href="/userForm";
+					}
+			)
+});
 $(function() {
 	$("form")
 			.submit(

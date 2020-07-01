@@ -93,7 +93,7 @@
 						<input type="submit" class="btn btn-block btn-info" value="LogIn">
 					</form>
 
-					<button type="button" class="btn btn-block">회원가입</button>
+					<button id="signup" type="button" class="btn btn-block">회원가입</button>
 					<div class="text-center">
 						<p>
 							<span><a href="#">이메일</a></span> <span class="vertical"></span>&nbsp;

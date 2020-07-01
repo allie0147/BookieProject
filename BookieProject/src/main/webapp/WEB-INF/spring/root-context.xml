@@ -34,11 +34,16 @@
 			value="classpath:database/myBatisConfig.xml" />
 		<property name="mapperLocations">
 			<list>
+				<!-- 회원 정보 관련 매퍼 -->
 				<value>classpath:com/project/bookie/mapper/user/userMapper.xml</value>
+				<value>classpath:com/project/bookie/mapper/user/userAuthMapper.xml</value>
+				<!-- 게시글 관련 매퍼 -->
 				<value>classpath:com/project/bookie/mapper/board/bookCardBoardMapper.xml</value>
 				<value>classpath:com/project/bookie/mapper/board/clubBoardMapper.xml</value>
 				<value>classpath:com/project/bookie/mapper/board/qnaBoardMapper.xml</value>
+				<!-- 댓글 관련 매퍼 -->
 				<value>classpath:com/project/bookie/mapper/comment/qnaCommentMapper.xml</value>
+				
 			</list>
 		</property>
 	</bean>

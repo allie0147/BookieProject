@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.board.BookCardBoard;
-import com.project.bookie.dto.comment.Comment;
 
 public interface BookCardBoardMapper {
 	

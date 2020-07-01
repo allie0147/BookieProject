@@ -1,9 +1,10 @@
 package com.project.bookie.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.bookie.mapper.user.UserAuthMapper;
-
+@Service
 public class UserAuthService {
 	
 	@Autowired

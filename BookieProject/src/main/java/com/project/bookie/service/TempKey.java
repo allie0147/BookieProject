@@ -1,0 +1,43 @@
+package com.project.bookie.service;
+
+import java.util.Random;
+
+import org.springframework.stereotype.Component;
+@Component
+public class TempKey {
+	private int size; 
+	private boolean lowerCheck; 
+    
+    public String getKey(int size, boolean lowerCheck) {
+        this.size = size;
+        this.lowerCheck = lowerCheck;
+        return init();
+    }
+    
+    private String init() {
+        Random ran = new Random();
+        StringBuffer sb = new StringBuffer(); //StringBuffer : append()를 통해 계속해서 문자열 추가 가능
+        
+        int num = 0;
+        
+        do {
+            num = ran.nextInt(75) + 48; //48~123
+            
+            if((num >= 48 && num <= 57) || (num >= 65 && num <= 90) || (num >= 97 && num <= 122)) {
+                sb.append((char)num);
+            }else {
+                continue;
+            }
+            System.out.println("num : "+num);
+            System.out.println("sb : "+sb);
+        } while (sb.length() < size);
+        
+        if(lowerCheck) {
+            return sb.toString().toLowerCase();
+            
+        }
+        
+        return sb.toString();
+    }
+
+}

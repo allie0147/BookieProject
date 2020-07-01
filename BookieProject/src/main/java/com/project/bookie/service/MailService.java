@@ -9,6 +9,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.project.bookie.dto.user.User;
+import com.project.bookie.mapper.user.UserAuthMapper;
+import com.project.bookie.mapper.user.UserMapper;
 
 @Service
 public class MailService {
@@ -18,16 +20,21 @@ public class MailService {
 	
 	@Autowired
 	TempKey tempKey;
+	
+	@Autowired
+	UserAuthMapper userAuthMapper;
+	
 	public String sendMail(User user) {
 		
 		String authKey = tempKey.getKey(10, false);
+		userAuthMapper.updateUserWithKey(user.getId(), authKey);
 		
 		String setFrom = "teambookiecs@gmail.com";
 		String tomail = user.getUEmail();
 		String title = "bookie 회원가입 인증 메일";
 		String content = "<h2>안녕하세요."+user.getNickname()+"</h2>"
 				+ "<p>본인이 가입하신것이 맞다면 다음 링크를 눌러주세요.</p>"
-				+ "인증하기 링크 : <a href='http://localhost:8080/certificationEmail?uId="+user.getId()+"&authkey="+authKey+"'>";
+				+ "인증하기 링크 : <a href='http://localhost:8080/certificationEmail?uId="+user.getId()+"&authkey="+authKey+"'>인증하기</a>";
 		
 		MimeMessage message = mailSender.createMimeMessage();
 		
@@ -37,7 +44,7 @@ public class MailService {
 			messageHelper.setFrom(setFrom);
 			messageHelper.setTo(tomail);
 			messageHelper.setSubject(title);
-			messageHelper.setText(content);
+			messageHelper.setText(content, true); //html형식으로 전송
 			
 			mailSender.send(message);
 			return "인증 메일 전송 성공";

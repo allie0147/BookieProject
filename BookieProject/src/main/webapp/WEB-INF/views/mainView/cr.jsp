@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/totalCss.css">
+<link rel="stylesheet" href="/resources/css/mainview/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -37,16 +44,16 @@
 	</nav>
 
 
-<div class="certification_result" style="text-align:center">
-	<c:if test="${result == true }">
-		인증되었습니다.
-		<a href="/">메인 화면으로 가기</a>
-	</c:if>
-	<c:if test="${result == false }">
-		인증에 실패했습니다.
-		고객센터로 문의 바랍니다.
-		<a href="/">메인 화면으로 가기</a>
-	</c:if>
-</div>
+	<div class="certification_result" style="text-align:center">
+		<c:if test="${result == true }">
+			인증되었습니다.
+			<a href="/">메인 화면으로 가기</a>
+		</c:if>
+		<c:if test="${result == false }">
+			인증에 실패했습니다.
+			고객센터로 문의 바랍니다.
+			<a href="/">메인 화면으로 가기</a>
+		</c:if>
+	</div>
 </body>
 </html>

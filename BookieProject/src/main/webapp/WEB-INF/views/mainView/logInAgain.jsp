@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	window.addEventListener("DOMContentLoaded",function(){
-		alert("로그아웃 되었습니다. 다시 로그인 해 주세요.");
+		alert("인증 메일을 전송하였습니다. 확인해주세요");
 		location.replace("/");
 	});
 </script>

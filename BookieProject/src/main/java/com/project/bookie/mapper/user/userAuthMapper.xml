@@ -2,14 +2,21 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
+<mapper namespace="com.project.bookie.mapper.user.UserAuthMapper">
+	<!-- 회원 인증 테이블에 회원 아이디와 회원 인증키 추가 -->
+	<insert id="updateUserWithKey">
+		insert into userauth(user_id, authkey) values(#{uId}, #{authKey})
+	</insert>
+
+	<!-- 이미 인증한 회원인지 확인하기 위해 키를 가져옴 -->
 	<select id="checkCertification" resultType="int">
 		select certification from user where id=#{uId}
 	</select>
 	<!-- 이메일 인증시 회원의 아이디에 따른 인증 키 확인 -->
-	<select id="selectUserWithId" resultType="String">
-		select authkey from userAuth where user_id=#{uId}
+	<select id="selectKeyWithId" resultType="String">
+		select authkey from userauth where user_id=#{uId}
 	</select>
+	<!-- 회원의 이메일 인증 여부 상태 변경 -->
 	<update id="updateUserCertification">
 		update user set certification = 1 where id=#{uId}
 	</update>
