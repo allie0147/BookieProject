@@ -36,7 +36,7 @@ public class SignUpController {
 	public String signupProc(Model m, @ModelAttribute @Valid User user, BindingResult bindingResult,
 			RedirectAttributes rttr) {
 //		회원가입 완료 후 페이지 이동(alert만 있는 logInAgain)
-		System.out.println("post" + user);
+		System.out.println("post: " + user);
 		if (bindingResult.hasErrors()) {
 			System.out.println(bindingResult);
 			List<FieldError> errors = bindingResult.getFieldErrors();
