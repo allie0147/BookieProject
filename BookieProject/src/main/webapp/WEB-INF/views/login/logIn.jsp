@@ -67,14 +67,12 @@
 			</ul>
 		</div>
 	</nav>
+
 	<div class="container-fluid bg">
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
-<<<<<<< HEAD
-
 				<div class="form-container">
-
 					<form action="/login" method="post">
 						<div class="form-group text-white">
 							<label for="inputEmail1">Email</label> <input type="email"
@@ -101,7 +99,6 @@
 							<span><a href="#">이메일</a></span> <span class="vertical"></span>&nbsp;
 							<span><a href="#">비밀번호 찾기</a></span>
 						</p>
-
 					</div>
 					<hr>
 					<a class="btn btn-success btn-block" href="https://www.naver.com/">네이버
@@ -109,39 +106,9 @@
 						href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/bookie/kakaologin&response_type=code">카카오
 						로그인</a>
 				</div>
-=======
-				<form class="form-container" action="/login" method="post">
-					<div class="form-group text-white">
-						<label for="inputEmail1">Email</label> <input type="email"
-							class="form-control" id="inputEmail1" name="uEmail"
-							aria-describedby="emailHelp">
-					</div>
-					<div class="form-group">
-						<label for="inputPassword1">Password</label> <input
-							type="password" class="form-control" id="inputPassword1"
-							name="uPwd">
-					</div>
-					<button type="submit" class="btn btn-block btn-info">Log
-						In</button>
-				</form>
-				<p class="text-center">
-					<button type="button" class="btn btn-block">회원가입</button>
-					<!-- 글씨 크기 좀더 작게, 슬래시 대신에 쓸 세로 줄  -->
-					<a href="#">이메일</a>
-				<div class="vertical"></div>
-				<a href="#">비밀번호 찾기</a>
-				</p>
-
-				<hr>
-				<button type="button" class="btn btn-success btn-block">naver</button>
-				<a
-					href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/bookie/kakaologin&response_type=code">카카오
-					로그인</a>
->>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 		</div>
-
 	</div>
 	<footer id="footerBg">
 		<div class="container">
