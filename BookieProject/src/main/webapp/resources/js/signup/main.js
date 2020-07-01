@@ -2,16 +2,16 @@ $(function () {
     $(".error").hide();
 
     $("input[class=form-control]").on({
-      /*  "focus": function () {
+        "focus": function () {
             $(this).css({
-                "background": "lavenderblush",
-                "outline-color": "pink"
+            "border-color": "#28a745",
+        	"box-shadow": "0 0 0 0.2rem rgba(40, 167, 69, 0.25)"
             });
-        },*/
+        },
         "blur": function () {
             $(this).css({
-                "border": "",
-                "background": ""
+            	"border-color": "",
+            	"box-shadow": ""
             });
         }
     });
@@ -245,7 +245,7 @@ $(function () {
                 }
             }
         });
-//    interest checked max 2
+// interest checked max 2
     const limit = 2;
     $('input[name=interest]').on('change', function(evt) {
        if($(this).siblings(':checked').length >= limit) {
