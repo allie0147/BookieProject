@@ -11,8 +11,10 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/login/main.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="/resources/js/login/main.js"></script>
 <style type="text/css">
 /* 수정 */
@@ -24,42 +26,44 @@
 }
 </style>
 <script>
-
+	
 </script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="/">BooKie</a>
-	    </div>
-	    <ul class="nav navbar-nav">
-			<li class="active"><a href="/">글귀</a></li>
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">BooKie</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">글귀</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
 						<li><a href="/qna/main?g=2">에세이</a></li>
 						<li><a href="/qna/main?g=3">인문학</a></li>
 						<li><a href="/qna/main?g=4">경제경영</a></li>
 						<li><a href="/qna/main?g=5">사회과학</a></li>
 						<li><a href="/qna/main?g=6">종교</a></li>
 						<li><a href="/qna/main?g=7">예술</a></li>
-				</ul>
-	      </li>
-	      <li><a href="/club/main">독서 클럽</a></li>
-	      <li><a href="/cs">고객센터</a></li>
-	    </ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="/mypage"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
-			<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-	    </ul>
-	  </div>
+					</ul></li>
+				<li><a href="/club/main">독서 클럽</a></li>
+				<li><a href="/cs">고객센터</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/mypage"><span
+						class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
+				<li><a href="/login"><span
+						class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+			</ul>
+		</div>
 	</nav>
 	<div class="container-fluid bg">
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
-				<form class="form-container" action="/bookie/login" method="post">
+				<form class="form-container" action="/login" method="post">
 					<div class="form-group text-white">
 						<label for="inputEmail1">Email</label> <input type="email"
 							class="form-control" id="inputEmail1" name="uEmail"
@@ -67,24 +71,25 @@
 					</div>
 					<div class="form-group">
 						<label for="inputPassword1">Password</label> <input
-							type="password" class="form-control" id="inputPassword1" name="pwd">
+							type="password" class="form-control" id="inputPassword1"
+							name="uPwd">
 					</div>
 					<button type="submit" class="btn btn-block btn-info">Log
 						In</button>
-					<p class="text-center">
-						<button type="button" class="btn btn-block">회원가입</button>
-						<!-- 글씨 크기 좀더 작게, 슬래시 대신에 쓸 세로 줄  -->
-						<a href="#">이메일</a>
-					<div class="vertical"></div>
-					<a href="#">비밀번호 찾기</a>
-					</p>
-
-					<hr>
-					<button type="button" class="btn btn-success btn-block">naver</button>
-					<a
-						href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/bookie/kakaologin&response_type=code">카카오
-						로그인</a>
 				</form>
+				<p class="text-center">
+					<button type="button" class="btn btn-block">회원가입</button>
+					<!-- 글씨 크기 좀더 작게, 슬래시 대신에 쓸 세로 줄  -->
+					<a href="#">이메일</a>
+				<div class="vertical"></div>
+				<a href="#">비밀번호 찾기</a>
+				</p>
+
+				<hr>
+				<button type="button" class="btn btn-success btn-block">naver</button>
+				<a
+					href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/bookie/kakaologin&response_type=code">카카오
+					로그인</a>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 		</div>
