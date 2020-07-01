@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/signup/main.css">
@@ -64,8 +65,8 @@
 						</c:choose>
 					</div>
 					<div>
-						<button class="btn btn-warning" type="button" name="emailBtn">이메일 중복 체크</button>
-						<button class="btn btn-warning" type="button" name="emailCkBtn">이메일 인증</button>
+						<button class="btn btn-default" type="button" name="emailBtn">이메일 중복 체크</button>
+						<button class="btn btn-default" type="button" name="emailCkBtn">이메일 인증</button>
 					</div>
 					<div class="errorBox">
 						<span class='error' id='error01'>에러 01</span>
@@ -149,7 +150,7 @@
 						</c:if>
 					</div>
 					<div>
-						<input type="submit" class="btn btn-block btn-warning"
+						<input type="submit" class="btn btn-block btn-default"
 							value="가입하기" name="submit">
 					</div>
 				</form>

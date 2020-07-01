@@ -9,9 +9,25 @@
 	color: #808080;
 	border: 1px solid #bbbbbb;
 	padding: 10px 20px;
-	margin-top: 18vh;
+	margin: 30% auto;
 	-webkit-box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
 	box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
 	border-radius: 10px;
+}
+.btn-default{
+	background-color:#53d9a9;
+	border-color:#53d9a9;
+}
+.btn-default:hover{
+	background-color:#33d299;
+	border-color:#33d299;
+}
+.btn-default:focus{
+	background-color:#33d299;
+	border-color:#33d299;
+}
+.btn-default:active{
+	background-color:#33d299;
+	border-color:#33d299;
 }
