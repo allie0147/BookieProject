@@ -63,6 +63,7 @@ public class NavigateController {
 	@GetMapping("/mypage")
 	public String showMypage() {
 //		mypage 보여주기
+//		user 정보 받아오기
 		return "myPage/myPage";
 	}
 

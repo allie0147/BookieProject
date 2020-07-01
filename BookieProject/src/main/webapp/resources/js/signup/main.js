@@ -117,7 +117,7 @@ $(function () {
                         "display", "inline-block").css("color",
                         "mediumvioletred").css("font-size",
                         "small").css('font-weight', 'bold');
-                } else if (pwd.length > 17) {
+                } else if (pwd.length > 17||pwd.length < 8) {
                     $('#error02').text(
                         '최소 8자리 이상 16자리 이하의 비밀번호를 입력하세요').css(
                         'display', 'inline-block').css("color",
