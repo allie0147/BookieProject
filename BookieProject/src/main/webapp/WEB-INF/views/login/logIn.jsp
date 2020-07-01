@@ -11,10 +11,9 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/login/main.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/resources/js/login/main.js"></script>
 <style type="text/css">
 /* 수정 */
 .vertical {
@@ -62,7 +61,7 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
-				<form class="form-container">
+				<form class="form-container" action="/bookie/login" method="post">
 					<div class="form-group text-white">
 						<label for="inputEmail1">Email</label> <input type="email"
 							class="form-control" id="inputEmail1" name="uEmail"
@@ -75,7 +74,7 @@
 					<button type="submit" class="btn btn-block btn-info">Log
 						In</button>
 					<p class="text-center">
-						<button type="submit" class="btn btn-block">회원가입</button>
+						<button type="button" class="btn btn-block">회원가입</button>
 						<!-- 글씨 크기 좀더 작게, 슬래시 대신에 쓸 세로 줄  -->
 						<a href="#">이메일</a>
 					<div class="vertical"></div>
@@ -83,7 +82,7 @@
 					</p>
 
 					<hr>
-					<button type="submit" class="btn btn-success btn-block">naver</button>
+					<button type="button" class="btn btn-success btn-block">naver</button>
 					<a
 						href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/bookie/kakaologin&response_type=code">카카오
 						로그인</a>

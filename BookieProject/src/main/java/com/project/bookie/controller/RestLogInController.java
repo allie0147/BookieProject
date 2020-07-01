@@ -17,13 +17,6 @@ public class RestLogInController {
 	@Autowired
 	UserService userService;
 
-	@PostMapping("/login")
-//	로그인 성공시 user 정보 session에 담기
-	public String getInfo() {
-
-		return "mainView/main";
-	}
-
 //  중복 체크 : 1->있음, 0->없음
 	@GetMapping(value = "/loginEmail", produces = "text/plain")
 	@ResponseBody
