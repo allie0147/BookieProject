@@ -59,7 +59,7 @@
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 			<!-- form action 추가 및 user dto 가져오기 -->
-				<form class="form-container" action="#" method="post">
+				<form class="form-container" action="/bookie/mypage" method="post">
 					<div class="form-group text-white">
 						<b>Email</b> <input type="email" class="form-control" name="name"
 							value="my@email.com" readonly="readonly">

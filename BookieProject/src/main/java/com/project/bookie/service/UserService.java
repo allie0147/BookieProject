@@ -10,11 +10,11 @@ import com.project.bookie.mapper.user.UserMapper;
 public class UserService {
 	@Autowired
 	UserMapper userMapper;
-	
+
 	public void setUser(User user) {
 		userMapper.insertUser(user);
 	}
-	
+
 	public User getUserInfo() {
 		User user = new User();
 		return user;
@@ -27,13 +27,19 @@ public class UserService {
 		}
 	}
 
-//	 중복 체크 : 1->중복, 0->가능
+//	 중복 체크 : 1->있음, 0->없음
 	public int emailCheck(String uEmail) {
 		return userMapper.countUserByEmail(uEmail);
 	}
 
+//	 중복 체크 : 1->있음, 0->없음
 	public int nickCheck(String nickname) {
 		return userMapper.countUserByNickname(nickname);
+	}
+
+//	 중복 체크 : 1->있음, 0->없음
+	public int pwdCheck(String pwd) {
+		return userMapper.countUserByPwd(pwd);
 	}
 
 	public User getUserId(String uEmail) {

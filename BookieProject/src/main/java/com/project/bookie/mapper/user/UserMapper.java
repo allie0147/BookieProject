@@ -20,11 +20,14 @@ public interface UserMapper {
 	// 연락처로 회원 조회(아이디 찾기, 비밀번호 찾기)
 	public User getUserByPhone(String phone);
 
-	// 이메일 중복검사!!!
+	// 이메일 검사!!! (login, signup)
 	public int countUserByEmail(String uEmail);
 
-	// 닉네임 중복검사!!!
+	// 닉네임 검사!!! (signup)
 	public int countUserByNickname(String nickname);
+
+	// 비밀번호 검사 !!! (login, signup)
+	public int countUserByPwd(String pwd);
 
 	// 회원 정보 등록
 	public void insertUser(User user);
@@ -40,4 +43,5 @@ public interface UserMapper {
 
 	// 회원 정보 삭제(탈퇴)
 	public void deleteUser(int id);
+
 }
