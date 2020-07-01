@@ -1,0 +1,15 @@
+package com.project.bookie.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/bookie")
+public class MyPageUpdateController {
+
+	@PostMapping("/mypage")
+	public String updateMyPage() {
+		return "";
+	}
+}

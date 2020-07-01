@@ -24,6 +24,9 @@
 	left: 50%;
 }
 </style>
+<script>
+
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -62,19 +65,21 @@
 				<form class="form-container">
 					<div class="form-group text-white">
 						<label for="inputEmail1">Email</label> <input type="email"
-							class="form-control" id="inputEmail1"
+							class="form-control" id="inputEmail1" name="uEmail"
 							aria-describedby="emailHelp">
 					</div>
 					<div class="form-group">
 						<label for="inputPassword1">Password</label> <input
-							type="password" class="form-control" id="inputPassword1">
+							type="password" class="form-control" id="inputPassword1" name="pwd">
 					</div>
-					<button type="submit" class="btn btn-block btn-danger">Log
+					<button type="submit" class="btn btn-block btn-info">Log
 						In</button>
 					<p class="text-center">
 						<button type="submit" class="btn btn-block">회원가입</button>
 						<!-- 글씨 크기 좀더 작게, 슬래시 대신에 쓸 세로 줄  -->
-						<a href="#">이메일</a> <div class="vertical"></div><a href="#">비밀번호 찾기</a>
+						<a href="#">이메일</a>
+					<div class="vertical"></div>
+					<a href="#">비밀번호 찾기</a>
 					</p>
 
 					<hr>
