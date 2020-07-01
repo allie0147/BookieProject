@@ -17,7 +17,6 @@ import com.project.bookie.service.KakaoAccessToken;
 import com.project.bookie.service.KakaoUserInfo;
 
 @Controller
-@RequestMapping("/bookie")
 public class KakaoController {
 
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = { RequestMethod.GET,

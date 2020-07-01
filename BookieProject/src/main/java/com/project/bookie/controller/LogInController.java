@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.project.bookie.service.UserService;
 
 @Controller
-@RequestMapping("/bookie")
 public class LogInController {
 	@Autowired
 	UserService userService;

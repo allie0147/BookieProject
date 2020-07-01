@@ -19,7 +19,6 @@ import com.project.bookie.dto.user.User;
 import com.project.bookie.service.UserService;
 
 @Controller
-@RequestMapping("/bookie")
 public class SignUpController {
 
 	@Autowired
