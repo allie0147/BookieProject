@@ -2,12 +2,12 @@ $(function () {
     $(".error").hide();
 
     $("input[class=form-control]").on({
-        "focus": function () {
+      /*  "focus": function () {
             $(this).css({
                 "background": "lavenderblush",
                 "outline-color": "pink"
             });
-        },
+        },*/
         "blur": function () {
             $(this).css({
                 "border": "",

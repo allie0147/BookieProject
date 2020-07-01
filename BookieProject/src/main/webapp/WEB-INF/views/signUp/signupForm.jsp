@@ -122,6 +122,9 @@
 						<span class='error' id='error05'>에러 05</span>
 					</div>
 					<div>
+						<span>선호하는 장르</span><span>*필수</span>
+					</div>
+					<div>
 						<input type="checkbox" name="interest" id="1" value="1"><label
 							for="1">소설/시/희곡</label><input type="checkbox" name="interest"
 							id="2" value="2"><label for="2">에세이</label><input
