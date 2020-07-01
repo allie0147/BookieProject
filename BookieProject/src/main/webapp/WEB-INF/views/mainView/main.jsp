@@ -23,32 +23,32 @@
 <a href="/bookie/cs">고객센터</a><br /> 
 <a href="/bookie/login">로그인</a> -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/bookie/main">BooKie</a>
-		</div>
-		<ul class="nav navbar-nav">
-            <li><a href="/bookcard/main">글귀</a></li>
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" >Q&A<span class="caret"></span></a>
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">BooKie</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+			<li class="active"><a href="/">글귀</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
-					<li><a href="/qna/main?g=2">에세이</a></li>
-					<li><a href="/qna/main?g=3">인문학</a></li>
-					<li><a href="/qna/main?g=4">경제경영</a></li>
-					<li><a href="/qna/main?g=5">사회과학</a></li>
-					<li><a href="/qna/main?g=6">종교</a></li>
-					<li><a href="/qna/main?g=7">예술</a></li>
+						<li><a href="/qna/main?g=2">에세이</a></li>
+						<li><a href="/qna/main?g=3">인문학</a></li>
+						<li><a href="/qna/main?g=4">경제경영</a></li>
+						<li><a href="/qna/main?g=5">사회과학</a></li>
+						<li><a href="/qna/main?g=6">종교</a></li>
+						<li><a href="/qna/main?g=7">예술</a></li>
 				</ul>
-      		</li>
-		<li><a href="/club/main">독서 클럽</a></li>
-		<li><a href="/bookie/cs">고객센터</a></li>
-		</ul>
+	      </li>
+	      <li><a href="/club/main">독서 클럽</a></li>
+	      <li><a href="/cs">고객센터</a></li>
+	    </ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="/bookie/mypage"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
-            <li><a href="/bookie/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-          </ul>
-        </div>
-      </nav>
+			<li><a href="/mypage"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
+			<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+	    </ul>
+	  </div>
+	</nav>
       <div class="container">
         <h2>Carousel Example</h2>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
