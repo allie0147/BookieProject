@@ -55,7 +55,7 @@ $(function () {
                                             "display",
                                             "inline-block").css(
                                             "color",
-                                            "mediumvioletred").css(
+                                            "#ff070b").css(
                                             "font-size", "small")
                                         .css('font-weight',
                                             'bold');
@@ -65,7 +65,7 @@ $(function () {
                                             "display",
                                             "inline-block").css(
                                             "color",
-                                            "mediumvioletred").css(
+                                            "#ff070b").css(
                                             "font-size", "small")
                                         .css('font-weight',
                                             'bold');
@@ -79,14 +79,14 @@ $(function () {
                     console.log("빈값");
                     $('#error01').text('이메일을 입력해주세요').css("display",
                             "inline-block").css("color",
-                            "mediumvioletred")
+                            "#ff070b")
                         .css("font-size", "small").css(
                             'font-weight', 'bold');
                 } else if (emailCheck.test(u_email) == false) {
                     console.log("false");
                     $('#error01').text('이메일 양식이 아닙니다').css("display",
                             "inline-block").css("color",
-                            "mediumvioletred")
+                            "#ff070b")
                         .css("font-size", "small").css(
                             'font-weight', 'bold');
                 }
@@ -108,20 +108,20 @@ $(function () {
                 } else if (pwd == "") {
                     $('#error02').text('비밀번호를 입력해주세요').css(
                         "display", "inline-block").css("color",
-                        "mediumvioletred").css("font-size",
+                        "#ff070b").css("font-size",
                         "small").css('font-weight', 'bold');
                 } else if ((num < 0 && eng < 0) ||
                     (eng < 0 && spe < 0) ||
                     (spe < 0 && num < 0)) {
                     $('#error02').text('사용불가능한 비밀번호입니다').css(
                         "display", "inline-block").css("color",
-                        "mediumvioletred").css("font-size",
+                        "#ff070b").css("font-size",
                         "small").css('font-weight', 'bold');
                 } else if (pwd.length > 17||pwd.length < 8) {
                     $('#error02').text(
                         '최소 8자리 이상 16자리 이하의 비밀번호를 입력하세요').css(
                         'display', 'inline-block').css("color",
-                        "mediumvioletred").css("font-size",
+                        "#ff070b").css("font-size",
                         "small").css('font-weight', 'bold');
                 }
             }
@@ -136,7 +136,7 @@ $(function () {
                 $('#error03').hide();
             } else {
                 $('#error03').text('비밀번호가 다릅니다').css('display',
-                        'inline-block').css("color", "mediumvioletred")
+                        'inline-block').css("color", "#ff070b")
                     .css("font-size", "small").css('font-weight',
                         'bold');
             }
@@ -156,7 +156,7 @@ $(function () {
                     if (nickname.length < 2 || nickname.length > 11) {
                         $('#error04').text('닉네임은 2~11길이로 정하세요').css(
                             "display", "inline-block").css(
-                            "color", "mediumvioletred").css(
+                            "color", "#ff070b").css(
                             "font-size", "small").css(
                             'font-weight', 'bold');
                     } else {
@@ -178,7 +178,7 @@ $(function () {
                                             .css("display",
                                                 "inline-block")
                                             .css("color",
-                                                "mediumvioletred")
+                                                "#ff070b")
                                             .css(
                                                 "font-size",
                                                 "small")
@@ -192,7 +192,7 @@ $(function () {
                                             .css("display",
                                                 "inline-block")
                                             .css("color",
-                                                "mediumvioletred")
+                                                "#ff070b")
                                             .css(
                                                 "font-size",
                                                 "small")
@@ -209,12 +209,12 @@ $(function () {
                 } else if (nickname == "") {
                     $('#error04').text('닉네임을 입력해주세요').css(
                         "display", "inline-block").css("color",
-                        "mediumvioletred").css("font-size",
+                        "#ff070b").css("font-size",
                         "small").css('font-weight', 'bold');
                 } else {
                     $('#error04').text('한글,영문,숫자만 가능합니다').css(
                         "display", "inline-block").css("color",
-                        "mediumvioletred").css("font-size",
+                        "#ff070b").css("font-size",
                         "small").css('font-weight', 'bold');
                 }
             }
@@ -228,7 +228,7 @@ $(function () {
                 if (phoneCheck.test(trans_phone) == false) {
                     $('#error05').text('핸드폰 번호 양식이 아닙니다').css(
                         "display", "inline-block").css("color",
-                        "mediumvioletred").css("font-size",
+                        "#ff070b").css("font-size",
                         "small").css('font-weight', 'bold');
                 } else {
                     submitphone = true;
@@ -262,7 +262,7 @@ $(function () {
             if (interest.length == 0 || interest.length > 2) {
                 $('#error06').text('하나 또는 두개의 관심분야를 선택하세요').css(
                         "display", "inline-block").css("color",
-                        "mediumvioletred").css("font-size", "small")
+                        "#ff070b").css("font-size", "small")
                     .css('font-weight', 'bold');
                 return false;
             } else {
@@ -275,7 +275,7 @@ $(function () {
         function () {
             if (submitEmail == false) {
                 $('#error01').text('이메일 양식을 확인해주세요').css("display",
-                        "inline-block").css("color", "mediumvioletred")
+                        "inline-block").css("color", "#ff070b")
                     .css("font-size", "small").css('font-weight',
                         'bold');
                 submitFuc(document.getElementById('email'));
@@ -283,7 +283,7 @@ $(function () {
                  } else if (submitPwd == false) {
                  $('#error02').text('비밀번호 양식을 확인해주세요').css("display",
                  "inline-block").css(
-                 "color", "mediumvioletred").css("font-size",
+                 "color", "#ff070b").css("font-size",
                  "small").css('font-weight',
                  'bold');
                  submitFuc(document.getElementById('uPwd'));
@@ -291,21 +291,21 @@ $(function () {
                  } else if (submitPwdRe == false) {
                  $('#error03').text('비밀번호가 다릅니다').css("display",
                  "inline-block").css(
-                 "color", "mediumvioletred").css("font-size",
+                 "color", "#ff070b").css("font-size",
                  "small").css('font-weight',
                  'bold');
                  submitFuc(document.getElementById('uPwdRe'));
                  return false;
             } else if (submitNickname == false) {
                 $('#error04').text('닉네임 양식을 확인해주세요').css("display",
-                        "inline-block").css("color", "mediumvioletred")
+                        "inline-block").css("color", "#ff070b")
                     .css("font-size", "small").css('font-weight',
                         'bold');
                 submitFuc(document.getElementById('nickname'));
                 return false;
             } else if (submitphone == false) {
                 $('#error05').text('핸드폰번호 양식을 확인해주세요').css("display",
-                        "inline-block").css("color", "mediumvioletred")
+                        "inline-block").css("color", "#ff070b")
                     .css("font-size", "small").css('font-weight',
                         'bold');
                 submitFuc(document.getElementById('phone'));

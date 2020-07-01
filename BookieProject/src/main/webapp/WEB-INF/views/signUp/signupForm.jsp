@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/signup/main.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="resources/css/bootstrap.min.js"></script>
+<script src="/resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/signup/main.js"></script>
 </head>
 <body>
