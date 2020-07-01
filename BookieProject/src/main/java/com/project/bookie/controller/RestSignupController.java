@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.bookie.service.UserService;
 
 @RestController
-@RequestMapping("/bookie")
 public class RestSignupController {
 	@Autowired
 	UserService userService;

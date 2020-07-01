@@ -42,7 +42,7 @@ $(function () {
                     u_email = encodeURIComponent(u_email);
                     $
                         .ajax({
-                            url: "/bookie/chkEmail?email=" +
+                            url: "/chkEmail?email=" +
                                 u_email,
                             type: "get",
                             success: function (data) {
@@ -164,7 +164,7 @@ $(function () {
                         nickname = encodeURIComponent(nickname);
                         $
                             .ajax({
-                                url: "/bookie/chkNick?nickname=" +
+                                url: "/chkNick?nickname=" +
                                     nickname,
                                 type: "get",
                                 success: function (data) {

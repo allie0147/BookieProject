@@ -15,7 +15,7 @@ function emailCheck(inputName, inputId) {
         $('#error01').hide();
         u_email = encodeURIComponent(u_email);
         $.ajax({
-            url: "/bookie/loginEmail?email=" + u_email,
+            url: "/loginEmail?email=" + u_email,
             type: "get",
             success: function (data) {
                 console.log(data);
@@ -51,7 +51,7 @@ function pwdCheck(inputName, inputId) {
         console.log("확인");
         pwd = encodeURIComponent(pwd);
         $.ajax({
-            url: "/bookie/loginPwd?pwd=" + pwd,
+            url: "/loginPwd?pwd=" + pwd,
             type: "get",
             success: function (data) {
                 console.log(data);

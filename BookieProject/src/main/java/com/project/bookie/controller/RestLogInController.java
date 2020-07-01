@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.bookie.service.UserService;
 
 @Controller
-@RequestMapping("/bookie")
 public class RestLogInController {
 
 	@Autowired

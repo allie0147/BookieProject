@@ -21,7 +21,6 @@ import com.project.bookie.service.QnaBoardService;
 import com.project.bookie.service.UserService;
 
 @Controller
-@RequestMapping("/bookie")
 public class NavigateController {
 	
 	@Autowired
@@ -33,7 +32,7 @@ public class NavigateController {
 	@Autowired
 	ClubBoardService cbService;
 	
-	@GetMapping("/main")
+	@GetMapping("/")
 	public String showMain(Model m) {
 //			main화면 보여주기
 		//랜덤으로 이미지 불러오기
