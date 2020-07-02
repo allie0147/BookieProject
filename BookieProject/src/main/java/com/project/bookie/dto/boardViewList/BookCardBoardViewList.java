@@ -2,7 +2,6 @@ package com.project.bookie.dto.boardViewList;
 
 import java.util.List;
 
-import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.board.BookCardBoard;
 
 import lombok.Data;

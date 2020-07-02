@@ -66,7 +66,6 @@
 					</div>
 					<div>
 						<button class="btn btn-default" type="button" name="emailBtn">이메일 중복 체크</button>
-						<button class="btn btn-default" type="button" name="emailCkBtn">이메일 인증</button>
 					</div>
 					<div class="errorBox">
 						<span class='error' id='error01'>에러 01</span>

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.project.bookie.dto.user.User;
 import com.project.bookie.mapper.user.UserAuthMapper;
-import com.project.bookie.mapper.user.UserMapper;
 
 @Service
 public class MailService {
