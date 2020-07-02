@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>글 귀</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
@@ -21,7 +22,7 @@
 	      <a class="navbar-brand" href="/">BooKie</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-			<li class="active"><a href="/">글귀</a></li>
+			<li><a href="/bookcard/main">글귀</a></li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
@@ -43,7 +44,6 @@
 	  </div>
 	</nav>
 	<div class="container">
-		<h2>Rounded Corners</h2>
 		<div style="margin-top:50px; background:lightgray; width:95%; height:250px; margin:50px auto 50px auto"></div>
 		<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
 	</div>
@@ -56,8 +56,7 @@
 	        <div class="thumbnail">
 	          <a href="" target="_blank">
 	            <img src="" alt="Lights" style="width:100%; height:400px">
-	             <div class="caption">
-	              <p>.</p>
+	             <div class="caption">..</div>
 	          </a>
 	        </div>
 	      </div>
@@ -65,9 +64,7 @@
 	        <div class="thumbnail">
 	          <a href="" target="_blank">
 	            <img src="" alt="Nature" style="width:100%; height:400px">
-	            <div class="caption">
-	              <p>.</p>
-	            </div>
+	            <div class="caption">..</div>
 	          </a>
 	        </div>
 	      </div>
@@ -75,9 +72,7 @@
 	        <div class="thumbnail">
 	          <a href="" target="_blank">
 	            <img src="" alt="Fjords" style="width:100%; height:400px">
-	            <div class="caption">
-	              <p>.</p>
-	            </div>
+	            <div class="caption">..</div>
 	          </a>
 	        </div>
 	      </div>
@@ -88,6 +83,7 @@
 	        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 	      </div>
 	    </div>
+	    <hr>
 	  </div>
 
 

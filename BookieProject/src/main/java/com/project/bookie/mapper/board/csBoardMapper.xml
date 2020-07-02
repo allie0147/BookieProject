@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="com.project.bookie.mapper.board.CSBoardMapper">
+	<resultMap type="board" id="brd">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="wtDate" column="w_date"/>
+	</resultMap>
+	<!-- 글 전체 -->
+	<select id="getAllBoards" resultMap="brd">
+		select user.id as id, title, w_date, from user
+	</select>
+	
+	<!-- 글 등록(id는 auto_incement, w_date는 기본값이 current_timestamp로 자동 생성) -->
+	<insert id="insertBoard" parameterType="board"><!--  @Param("board")Board board, @Param("userId")int userId -->
+		insert into cs_board(title, content) values(#{title}, #{content}) where role=
+	</insert>
+	
+	<!-- 글 수정 -->
+	<update id="updateBoard" parameterType="board">
+		update cs_board set title=#{title}, content=#{content} where id=#{id}
+	</update>
+	
+	<!-- 글 삭제(글의 id 필요) -->
+	<delete id="deleteBoard">
+		delete from cs_board where id=#{id}
+	</delete>
+	
+	<!-- 페이지네이션 -->
+	<!-- 한 페이지에 보여질 게시글 리스트 -->
+	<select id="getBoardListByCurrentPage" resultMap="brd">
+		select cs_board.id as id, title, content, w_date 
+		from cs_board order by id desc limit #{firstRow}, #{endRow}
+	</select>
+	
+	<!-- 전체 게시글 수 -->
+	<select id="getCountOfTotalBoard" resultType="int">
+		select count(*) from cs_board order by id
+	</select>
+</mapper>

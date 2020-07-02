@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>QnA게시판</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
@@ -23,7 +23,7 @@
 	      <a class="navbar-brand" href="/">BooKie</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-			<li class="active"><a href="/">글귀</a></li>
+			<li><a href="/">글귀</a></li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
@@ -46,13 +46,14 @@
 	</nav>
 
 	<div class="container">
-		<h2>Rounded Corners</h2>
 		<div
 			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
 		<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
 	</div>
-
-	<h3 id="board_title">QnA</h3>
+	<div class="text-center" id="qnaTitle">
+		<h3 id="board_title">QnA</h3>
+	</div>
+	
 	<div id="boardList">
 		<c:if test="${boardViewList.boardList.size() == 0 }">
 			<!-- 글 개수가 0개일 때 -->

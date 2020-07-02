@@ -23,7 +23,7 @@
 	      <a class="navbar-brand" href="/">BooKie</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-			<li class="active"><a href="/">글귀</a></li>
+			<li><a href="/bookcard/main">글귀</a></li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
@@ -45,7 +45,7 @@
 	  </div>
 	</nav>
 	<div class="container">
-		<h2>Rounded Corners</h2>
+		<h2>내정보 수정페이지</h2>
 		<div
 			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
 		<!-- <img src="images/mypage2.png" class="img-rounded" alt="Cinque Terre" width="95%" height="250px">-->
