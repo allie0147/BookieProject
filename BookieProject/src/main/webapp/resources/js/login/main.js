@@ -1,16 +1,19 @@
-$("input[class=form-control]").on({
-	"focus" : function() {
-		$(this).css({
-			"border-color" : "#28a745",
-			"box-shadow" : "0 0 0 0.2rem rgba(40, 167, 69, 0.25)"
-		});
-	},
-	"blur" : function() {
-		$(this).css({
-			"border-color" : "",
-			"box-shadow" : ""
-		});
-	}
+$(function() {
+	$(".error").hide();
+	$("input[class=form-control]").on({
+		"focus" : function() {
+			$(this).css({
+				"border-color" : "#28a745",
+				"box-shadow" : "0 0 0 0.2rem rgba(40, 167, 69, 0.25)"
+			});
+		},
+		"blur" : function() {
+			$(this).css({
+				"border-color" : "",
+				"box-shadow" : ""
+			});
+		}
+	});
 });
 
 // 틀린 정보에 리포커스
@@ -18,14 +21,10 @@ function submitFuc(inputClass) {
 	inputClass.focus();
 }
 
-
-$(function(){
-		$("#signup")
-			.click(
-					function() {
-						location.href="/userForm";
-					}
-			)
+$(function() {
+	$("#signup").click(function() {
+		location.href = "/userForm";
+	})
 });
 $(function() {
 	$("form")
@@ -56,12 +55,18 @@ $(function() {
 									}); // ajax end
 						} else if (u_email == "") {
 							console.log("빈값");
-							alert("이메일을 입력해주세요");
+							$('#error01').text('이메일을 입력해주세요').css("display",
+									"inline-block").css("color", "#ff070b")
+									.css("font-size", "small").css(
+											'font-weight', 'bold');
 							submitFuc(document.getElementById('inputEmail1'));
 							return false;
 						} else if (emailCheck.test(u_email) == false) {
 							console.log("false");
-							alert("이메일 양식이 아닙니다");
+							$('#error01').text('이메일양식이 아닙니다').css("display",
+									"inline-block").css("color", "#ff070b")
+									.css("font-size", "small").css(
+											'font-weight', 'bold');
 							submitFuc(document.getElementById('inputEmail1'));
 							return false;
 						}
@@ -93,18 +98,27 @@ $(function() {
 									}); // ajax end
 						} else if (pwd == "") {
 							console.log("빈값");
-							alert("비밀번호를 입력해주세요");
+							$('#error02').text('비밀번호를 입력해주세요').css(
+			                        "display", "inline-block").css("color",
+			                        "#ff070b").css("font-size",
+			                        "small").css('font-weight', 'bold');
 							submitFuc(document.getElementById('inputPassword1'));
 							return false;
 						} else if ((num < 0 && eng < 0) || (eng < 0 && spe < 0)
 								|| (spe < 0 && num < 0)) {
 							console.log("비밀번호 양식 오류");
-							alert("비밀번호 양식을 확인해주세요");
+							$('#error02').text('비밀번호 양식을 확인해주세요').css(
+			                        "display", "inline-block").css("color",
+			                        "#ff070b").css("font-size",
+			                        "small").css('font-weight', 'bold');
 							submitFuc(document.getElementById('inputPassword1'));
 							return false;
 						} else if (pwd.length > 17 || pwd.length < 8) {
 							console.log("짧은 비밀번호");
-							alert("최소 8자리 이상 16자리 이하의 비밀번호를 입력하세요");
+							$('#error02').text('비밀번호가 너무 길거나 짧습니다').css(
+			                        "display", "inline-block").css("color",
+			                        "#ff070b").css("font-size",
+			                        "small").css('font-weight', 'bold');
 							submitFuc(document.getElementById('inputPassword1'));
 							return false;
 						}

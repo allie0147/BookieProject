@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>고객 센터</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -18,6 +19,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
+<<<<<<< HEAD
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/">BooKie</a>
@@ -28,6 +30,17 @@
 					data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
+=======
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">BooKie</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+			<li><a href="/bookcard/main">글귀</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
+>>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 						<li><a href="/qna/main?g=2">에세이</a></li>
 						<li><a href="/qna/main?g=3">인문학</a></li>
 						<li><a href="/qna/main?g=4">경제경영</a></li>
@@ -47,9 +60,13 @@
 		</div>
 	</nav>
 	<div class="container">
+<<<<<<< HEAD
 		<h2>Rounded Corners</h2>
 		<div
 			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
+=======
+		<div style="margin-top:50px; background:lightgray; width:95%; height:250px; margin:50px auto 50px auto"></div>
+>>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 		<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
 	</div>
 
