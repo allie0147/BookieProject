@@ -32,6 +32,21 @@
 .form-group {
 	margin-bottom: 0;
 }
+p{
+	margin: 10px
+}
+.btn-default{
+	background: #d2e4e2;
+	border-color: #d2e4e2;
+}
+.btn-default:hover{
+	background: #d5e1e0;
+	border-color: #d5e1e0;
+}
+.btn-default:focus{
+	background: #d5e1e0;
+	border-color: #d5e1e0;
+}
 </style>
 <script>
 	
@@ -93,7 +108,7 @@
 						<input type="submit" class="btn btn-block btn-info" value="LogIn">
 					</form>
 
-					<button id="signup" type="button" class="btn btn-block">회원가입</button>
+					<button id="signup" type="button" class="btn btn-block btn-default">회원가입</button>
 					<div class="text-center">
 						<p>
 							<span><a href="#">이메일</a></span> <span class="vertical"></span>&nbsp;
@@ -102,7 +117,7 @@
 					</div>
 					<hr>
 					<a class="btn btn-success btn-block" href="https://www.naver.com/">네이버
-						로그인</a> <a class="btn btn-block btn-default"
+						로그인</a> <a class="btn btn-block btn-warning"
 						href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/kakaologin&response_type=code">카카오
 						로그인</a>
 				</div>

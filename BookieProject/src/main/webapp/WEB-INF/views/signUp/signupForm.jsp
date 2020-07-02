@@ -105,7 +105,7 @@
 						</c:choose>
 					</div>
 					<div>
-						<button type="button" name="nickBtn">사용하기</button>
+						<button class="btn btn-info" type="button" name="nickBtn">사용하기</button>
 					</div>
 					<div class="errorBox">
 						<span class='error' id='error04'>에러 04</span>
