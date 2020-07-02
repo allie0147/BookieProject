@@ -15,16 +15,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board{
+public class Board {
 	private long id;
 	private String title;
 	private long userId;
-	private String writer; //게시판에서 board의 '작성자id'가 아닌 '작성자명'으로 가져오기 위해 사용
+	private String writer; // 게시판에서 board의 '작성자id'가 아닌 '작성자명'으로 가져오기 위해 사용
 	private String content;
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")	
-	private LocalDateTime wtDate; 
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")	
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime wtDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime upDate;
 	private List<Comment> commentList;
-	
 }
