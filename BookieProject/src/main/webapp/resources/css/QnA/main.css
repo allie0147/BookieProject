@@ -4,10 +4,11 @@ hr {
 
 #board_title {
 	display: inline-block;
-	text-align: center;
 	margin: auto;
 }
-
+#qnaTitle{
+	margin-bottom: 20px;
+}
 #boardList {
 	width: 600px;
 	margin: auto;

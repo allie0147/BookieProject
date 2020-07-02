@@ -20,9 +20,9 @@
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="/">BooKie</a>
-	    </div>
+	    </div> 
 	    <ul class="nav navbar-nav">
-			<li class="active"><a href="/">글귀</a></li>
+			<li><a href="/">글귀</a></li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>

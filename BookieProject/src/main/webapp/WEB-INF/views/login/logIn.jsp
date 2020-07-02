@@ -59,7 +59,7 @@ p{
 				<a class="navbar-brand" href="/">BooKie</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">글귀</a></li>
+				<li><a href="/bookcard/main">글귀</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 					<ul class="dropdown-menu">

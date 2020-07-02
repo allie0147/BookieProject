@@ -30,6 +30,9 @@
 			line-height: 30px;
 			width: 300px;
 }
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 	</style>
 </head>
 <body>
@@ -39,7 +42,7 @@
 				<a class="navbar-brand" href="/">BooKie</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">글귀</a></li>
+				<li><a href="/bookcard/main">글귀</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -63,7 +66,6 @@
 		</div>
 	</nav>
 	<div class="container">
-		<h2>Rounded Corners</h2>
 		<div
 			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
 		<!-- <img src="images/mypage2.png" class="img-rounded" alt="Cinque Terre" width="95%" height="250px">-->
@@ -94,7 +96,7 @@
 					<div class="">2020-06-30</div>
 				</div>
 				<div class="text-center">
-					<button type="submit" class="btn btn-md btn-default">수정하기</button>
+					<button type="button" href="/" class="btn btn-md btn-default">수정하기</button>
 
 				</div>
 			</div>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 이메일 인증</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
@@ -21,7 +21,7 @@
 	      <a class="navbar-brand" href="/">BooKie</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-			<li class="active"><a href="/">글귀</a></li>
+			<li><a href="/bookcard/main">글귀</a></li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
