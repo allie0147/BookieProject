@@ -56,8 +56,7 @@
 	        <div class="thumbnail">
 	          <a href="" target="_blank">
 	            <img src="" alt="Lights" style="width:100%; height:400px">
-	             <div class="caption">
-	              <p>.</p>
+	             <div class="caption">..</div>
 	          </a>
 	        </div>
 	      </div>
@@ -65,9 +64,7 @@
 	        <div class="thumbnail">
 	          <a href="" target="_blank">
 	            <img src="" alt="Nature" style="width:100%; height:400px">
-	            <div class="caption">
-	              <p>.</p>
-	            </div>
+	            <div class="caption">..</div>
 	          </a>
 	        </div>
 	      </div>
@@ -75,9 +72,7 @@
 	        <div class="thumbnail">
 	          <a href="" target="_blank">
 	            <img src="" alt="Fjords" style="width:100%; height:400px">
-	            <div class="caption">
-	              <p>.</p>
-	            </div>
+	            <div class="caption">..</div>
 	          </a>
 	        </div>
 	      </div>
@@ -88,6 +83,7 @@
 	        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 	      </div>
 	    </div>
+	    <hr>
 	  </div>
 
 
