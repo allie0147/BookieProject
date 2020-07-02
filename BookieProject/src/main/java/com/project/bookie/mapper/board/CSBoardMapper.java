@@ -12,9 +12,6 @@ public interface CSBoardMapper {
 	// 게시판 글 전체를 불러오는 기능
 	public List<Board> getAllBoards();
 
-	// admin계정 체크
-	public boolean getRole(String role);
-	
 	// 글 등록
 	public void insertBoard(@Param("board") Board board, @Param("role") String role);
 

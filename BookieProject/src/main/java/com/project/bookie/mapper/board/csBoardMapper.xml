@@ -11,12 +11,12 @@
 	</resultMap>
 	<!-- 글 전체 -->
 	<select id="getAllBoards" resultMap="brd">
-		select cs_board.id as id, title, w_date, from cs_board
+		select user.id as id, title, w_date, from user
 	</select>
 	
 	<!-- 글 등록(id는 auto_incement, w_date는 기본값이 current_timestamp로 자동 생성) -->
 	<insert id="insertBoard" parameterType="board"><!--  @Param("board")Board board, @Param("userId")int userId -->
-		insert into cs_board(title, content) values(#{title}, #{content})
+		insert into cs_board(title, content) values(#{title}, #{content}) where role=
 	</insert>
 	
 	<!-- 글 수정 -->
@@ -40,6 +40,4 @@
 	<select id="getCountOfTotalBoard" resultType="int">
 		select count(*) from cs_board order by id
 	</select>
-
-
 </mapper>
