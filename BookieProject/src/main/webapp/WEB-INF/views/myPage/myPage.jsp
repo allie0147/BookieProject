@@ -16,24 +16,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<style>
-	div.div-container {
-			background: ivory;
-			color: #000000;
-			border: 1px solid #bbbbbb;
-			padding: 50px 60px;
-			margin: 5% auto;
-			-webkit-box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
-			-moz-box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
-			box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
-			border-radius: 10px;
-			line-height: 30px;
-			width: 300px;
-}
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-	</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -70,10 +52,8 @@
 			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
 		<!-- <img src="images/mypage2.png" class="img-rounded" alt="Cinque Terre" width="95%" height="250px">-->
 	</div>
-	<h2 class="text-center">INFO</h2>
+	
 	<div class="container">
-
-
 		<div class="container-fluid bg">
 			<div class="div-container">
 				<div class="container">
@@ -96,12 +76,12 @@
 					<div class="">2020-06-30</div>
 				</div>
 				<div class="text-center">
-					<button type="button" href="/" class="btn btn-md btn-default">수정하기</button>
-
+					<a href="/mypageUpdate" class="btn btn-md btn-default">수정하기</a>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<footer id="footerBg">
 		<div class="container">
 			<br>

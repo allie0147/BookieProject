@@ -1,8 +1,14 @@
 .form-container {
-	background: #ffffff;
-	color: #808080;
+	color: #000000;
 	border: 1px solid #bbbbbb;
 	padding: 20px 30px;
-	margin: 20px 0;
+	margin: 0 auto 5%;
 	border-radius: 20px;
+	-webkit-box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
+	box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
+	border-radius: 10px;
+	line-height: 30px;
+	width: 390px;
 }
+

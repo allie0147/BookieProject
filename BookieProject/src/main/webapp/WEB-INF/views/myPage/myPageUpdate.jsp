@@ -45,19 +45,16 @@
 	  </div>
 	</nav>
 	<div class="container">
-		<h2>내정보 수정페이지</h2>
 		<div
 			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
 		<!-- <img src="images/mypage2.png" class="img-rounded" alt="Cinque Terre" width="95%" height="250px">-->
 	</div>
 
-	<h2 class="text-center">INFO UPDATE</h2>
-	<div class="container-fluid bg">
-		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-			<!-- form action 추가 및 user dto 가져오기 -->
-				<form class="form-container" action="/mypage" method="post">
+<div class="container">
+  <div class="container-fluid bg">
+		<div class="div-container">
+
+				<form class="form-container" action="#" method="post">
 					<div class="form-group text-white">
 						<b>Email</b> <input type="email" class="form-control" name="name"
 							value="my@email.com" readonly="readonly">
@@ -92,13 +89,14 @@
 							name="inputRegDate" value="2020-06-30" readonly="readonly">
 					</div>
 					<p>* Email과 가입일은 수정 할 수 없습니다</p>
+          <hr>
 					<div class="col text-center">
 						<button type="submit" class="btn btn-danger">수 정</button>
 					</div>
-					<hr>
 				</form>
-			</div>
 		</div>
+	</div>
+</div>
 		<footer id="footerBg">
 			<div class="container">
 				<br>
@@ -144,6 +142,6 @@
 				</div>
 			</div>
 		</footer>
-	</div>
+	
 </body>
 </html>
