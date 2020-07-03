@@ -15,6 +15,11 @@
 <script src="resources/css/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/QnA/main.js"></script>
+<style>
+.pagenation:hover{
+	background: none;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -50,79 +55,91 @@
 			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
 		<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
 	</div>
-	<div class="text-center" id="qnaTitle">
-		<h3 id="board_title">QnA</h3>
-	</div>
-	
-	<div id="boardList">
-		<c:if test="${boardViewList.boardList.size() == 0 }">
-			<!-- 글 개수가 0개일 때 -->
-			<div class="content">글이 존재하지 않습니다.</div>
-		</c:if>
-		<c:if test="${boardViewList.boardList.size() > 0 }">
-			<!-- 글 개수가 1개이상일 때 -->
-			<table class="board_qna">
-				<thead>
-					<tr>
-						<td>글번호</td>
-						<td>제목</td>
-						<td>작성자</td>
-						<td>작성일</td>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="board" items="${boardViewList.boardList }">
-						<!-- onclick fucntion 빼기 -->
-						<tr onclick="location.href='/qna/detail?b=${board.id}'"
-							style="cursor: pointer">
-							<td>${board.id }</td>
-							<td>${board.title }</td>
-							<td>${board.writer }</td>
-							<td>${board.wtDate }</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</c:if>
-	</div>
-	<hr>
 
-	<!-- 검색 창 -->
-	<div class="searchBar">
-		<form>
-			<select name="option">
-				<option value="title">제목</option>
-				<option value="content">내용</option>
-				<option value="writer">글쓴이</option>
-			</select> <input type="text" name="searchInfo" /> <input type="submit"
-				value="검색" />
-		</form>
-	</div>
 
-	<!-- 페이지네이션 -->
-	<c:if test="${boardViewList.boardList.size() > 0 }">
-		<!-- 글 개수가 1개이상일 때 -->
-		<div class="page">
-			<ul class="pagenation">
-				<c:if test="${p>5}">
-					<li><a href="main?p=${pageArray.get(0)-5 }">&lt;&lt;</a></li>
-				</c:if>
-				<c:forEach var="pageNum" items="${pageArray }">
-					<c:choose>
-						<c:when test="${pageNum == boardViewList.currentPageNumber }">
-							<li><a href="main?p=${pageNum }"><b>${pageNum }</b></a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="main?p=${pageNum }">${pageNum }</a></li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				<c:if test="${pageArray.size()==5}">
-					<li><a href="main?p=${nextNum }">&gt;&gt;</a></li>
-				</c:if>
-			</ul>
-		</div>
-	</c:if>
+
+    <div class="text-center" id="qnaTitle">
+  		<h3 id="board_title">QnA</h3>
+  	</div>
+
+
+    <div class="container">
+
+      <c:if test="${boardViewList.boardList.size() == 0 }">
+      			<!-- 글 개수가 0개일 때 -->
+  			<div class="content">글이 존재하지 않습니다.</div>
+    	</c:if>
+      <c:if test="${boardViewList.boardList.size() > 0 }">
+      <!-- 글 개수가 1개이상일 때 -->
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">번 호</th>
+              <th scope="col">제 목</th>
+              <th scope="col">작성자</th>
+              <th scope="col">작성일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <c:forEach var="board" items="${boardViewList.boardList }">
+            <tr onclick="board">
+              <td>${board.id }</td>
+              <td>${board.title }</td>
+              <td>${board.writer }</td>
+              <td>${board.wtDate }</td>
+            </tr>
+            </c:forEach>
+          </tbody>
+        </table>
+        </c:if>
+    <hr>
+    </div>
+    	<!-- 검색 창 -->
+    <div class="container">
+      <form>
+      <div class="form-group col-xs-2">
+          <select class="form-control">
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+            <option value="writer">글쓴이</option>
+          </select>
+        </div>
+        <div class="form-group col-xs-3">
+           <input class="form-control" type="text" name="searchInfo" />
+        </div>
+        <div class="form-group col-xs-2">
+          <input class="btn btn-dark" type="submit" value="검색" />
+        </div>
+        </form>
+    </div>
+
+    <!-- 페이지네이션 -->
+  	<c:if test="${boardViewList.boardList.size() > 0 }">
+  		<!-- 글 개수가 1개이상일 때 -->
+  		<div class="page">
+  			<ul class="pagenation">
+  				<c:if test="${p>5}">
+  					<li><a href="main?p=${pageArray.get(0)-5 }">&lt;&lt;</a></li>
+  				</c:if>
+  				<c:forEach var="pageNum" items="${pageArray }">
+  					<c:choose>
+  						<c:when test="${pageNum == boardViewList.currentPageNumber }">
+  							<li><a href="main?p=${pageNum }"><b>${pageNum }</b></a></li>
+  						</c:when>
+  						<c:otherwise>
+  							<li><a href="main?p=${pageNum }">${pageNum }</a></li>
+  						</c:otherwise>
+  					</c:choose>
+  				</c:forEach>
+  				<c:if test="${pageArray.size()==5}">
+  					<li><a href="main?p=${nextNum }">&gt;&gt;</a></li>
+  				</c:if>
+  			</ul>
+  		</div>
+  	</c:if>
+
+
+
 
 	<footer id="footerBg">
 		<div class="container">
