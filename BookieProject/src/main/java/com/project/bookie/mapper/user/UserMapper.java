@@ -12,10 +12,10 @@ public interface UserMapper {
 	public List<User> getAllUser(); // admin용
 
 	// 유저 id로 회원 조회
-	public User getUserById();
+	public User getUserById(int id);
 
 	// 이메일로 회원 조회(비밀번호 찾기)
-	public User getUserByEmail(String Email);
+	public User getUserByEmail(String uEmail);
 
 	// 연락처로 회원 조회(아이디 찾기, 비밀번호 찾기)
 	public User getUserByPhone(String phone);
@@ -46,5 +46,8 @@ public interface UserMapper {
 	
 	// 회원 정보 삭제(탈퇴)
 	public void deleteUser(int id);
+	
+	//비밀번호 변경
+	public void updatePwdById(@Param("id")int id, @Param("pwd")String pwd);
 
 }

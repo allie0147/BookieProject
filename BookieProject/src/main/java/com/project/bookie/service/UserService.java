@@ -4,19 +4,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.bookie.dto.user.User;
+import com.project.bookie.mapper.user.UserAuthMapper;
 import com.project.bookie.mapper.user.UserMapper;
 
 @Service
 public class UserService {
 	@Autowired
 	UserMapper userMapper;
+	
+	@Autowired
+	UserAuthMapper userAuthMapper;
+	@Autowired
+	TempKey tempKey;
 
 	public void setUser(User user) {
 		userMapper.insertUser(user);
 	}
 
-	public User getUserInfo() {
-		User user = new User();
+	public User getUserInfo(String uEmail) {
+		User user = userMapper.getUserByEmail(uEmail);
+		return user;
+	}
+	
+	public void updateUserPwd(int uId, String uPwd) {
+		System.out.println("Service에서 updateUserPwd의 uId : "+uId+", uPwd : "+uPwd);
+		userMapper.updatePwdById(uId, uPwd);
+
+		String authKey = tempKey.getKey(10, false);
+		userAuthMapper.updateUserWithKey(uId, authKey);
+		
+	}
+	
+	public User getUserById(int id) {
+		User user = userMapper.getUserById(id);
 		return user;
 	}
 

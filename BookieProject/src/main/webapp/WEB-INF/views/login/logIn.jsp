@@ -49,7 +49,12 @@ p{
 }
 </style>
 <script>
-	
+	function popup(){                 // 전송 파라미터 값
+	    let url = "/login/find-password"; // 전송 URL
+	    let name ="find password";
+	    window.open(url, name, "scrollbars=no,width=500,height=300,menubar=false");
+	    // window.open(URL,"팝업 구분값(팝업 1개일 경우 상관없음)","팝업 창 옵션")
+	}
 </script>
 </head>
 <body>
@@ -111,11 +116,16 @@ p{
 					<button id="signup" type="button" class="btn btn-block btn-default">회원가입</button>
 					<div class="text-center">
 						<p>
-							<span><a href="#">이메일</a></span> <span class="vertical"></span>&nbsp;
-							<span><a href="#">비밀번호 찾기</a></span>
+							<span><a href="#">이메일찾기</a></span> <span class="vertical"></span>&nbsp;
+							<span><a href="javascript:popup()">비밀번호 찾기</a></span>
 						</p>
 					</div>
 					<hr>
+					
+					<!-- 
+					
+					
+					 -->
 					<a class="btn btn-success btn-block" href="https://www.naver.com/">네이버
 						로그인</a> <a class="btn btn-block btn-warning"
 						href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/kakaologin&response_type=code">카카오
