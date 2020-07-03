@@ -6,56 +6,13 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/login/main.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="/resources/js/login/main.js"></script>
-<style type="text/css">
-/* 수정 */
-.vertical {
-	border-left: 1px solid black;
-	height: 10px;
-	left: 50%;
-}
-
-.d-inline {
-	display: inline;
-	width: 30px;
-}
-
-.form-group {
-	margin-bottom: 0;
-}
-p{
-	margin: 10px
-}
-.btn-default{
-	background: #d2e4e2;
-	border-color: #d2e4e2;
-}
-.btn-default:hover{
-	background: #d5e1e0;
-	border-color: #d5e1e0;
-}
-.btn-default:focus{
-	background: #d5e1e0;
-	border-color: #d5e1e0;
-}
-</style>
-<script>
-	function popup(){                 // 전송 파라미터 값
-	    let url = "/login/find-password"; // 전송 URL
-	    let name ="find password";
-	    window.open(url, name, "scrollbars=no,width=500,height=300,menubar=false");
-	    // window.open(URL,"팝업 구분값(팝업 1개일 경우 상관없음)","팝업 창 옵션")
-	}
-</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">

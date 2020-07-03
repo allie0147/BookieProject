@@ -5,59 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
-<link rel="stylesheet" href="/resources/css/mainview/main.css">
+<link rel="stylesheet" href="/resources/css/login/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-	.findPassword{
-		margin-top:100px;
-		text-align: center;
-	}
-	
-	.findPasswordResult{
-		border-radius: 6px;
-		padding:10px auto 10px auto;
-		background: white;
-	}
-</style>
-<script type="text/javascript">
-	$(function(){
-		$("button").on("click", function(){
-			console.log("button click!");
-			
-			let email = document.getElementById("email").value; //document.getElementById("email");
-			//var formData = new FormData();
-			//formData.append("email", emailValue);
-			
-			console.log("email", email);
-			
-			$.ajax({
-				url:"/checkEmail",
-				type:"post",
-				data:{"email":email},
-				success:function(data){
-					console.dir(data); //user의 id(long)를 String타입으로 받아오기
-					if(data != null){
-						//location.href="/EmailCkForPwd?uId="+data.getId();
-						//opener.location.reload(true);
-						//호출 페이지에서 파라미터 값을 가지고 페이지 전환
-						//EmailCkForPwd로 갔다가 컨트롤러에 의해 처리되고 return값으로 login페이지
-						window.alert("해당 메일로 인증 메일이 전송됩니다.");
-						opener.location.href="/EmailCkForPwd?uId="+data;
-						close();
-					}else{
-						alert("존재하지 않는 이메일입니다.");
-					}
-					return false;
-				}
-			});
-		});
-	});
-</script>
-
+<script src="/resources/js/login/main.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
