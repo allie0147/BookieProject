@@ -16,41 +16,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="/resources/js/login/main.js"></script>
-<style type="text/css">
-/* 수정 */
-.vertical {
-	border-left: 1px solid black;
-	height: 10px;
-	left: 50%;
-}
-
-.d-inline {
-	display: inline;
-	width: 30px;
-}
-
-.form-group {
-	margin-bottom: 0;
-}
-p{
-	margin: 10px
-}
-.btn-default{
-	background: #d2e4e2;
-	border-color: #d2e4e2;
-}
-.btn-default:hover{
-	background: #d5e1e0;
-	border-color: #d5e1e0;
-}
-.btn-default:focus{
-	background: #d5e1e0;
-	border-color: #d5e1e0;
-}
-</style>
-<script>
-	
-</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">

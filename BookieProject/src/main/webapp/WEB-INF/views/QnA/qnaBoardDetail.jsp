@@ -88,7 +88,7 @@
 			<tbody>
 				<tr>
 					<th scope="row">1</th>
-					<td colspan="3">내용 ${board.content }</td>
+					<td colspan="3">${board.content }</td>
 				</tr>
 			</tbody>
 		</table>
