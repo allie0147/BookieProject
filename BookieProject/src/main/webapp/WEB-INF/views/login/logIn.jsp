@@ -39,8 +39,6 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/mypage"><span
 						class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
-				<li><a href="/login"><span
-						class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
 			</ul>
 		</div>
 	</nav>
