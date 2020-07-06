@@ -13,6 +13,12 @@
 		select * from user where
 		id=#{id}
 	</select>
+	
+	<select id="getUserIdByEmail" parameterType="String" resultType="long">
+		select user.id from user where
+		u_email=#{uEmail}
+	</select>
+
 
 	<!-- 이메일로 비밀번호 찾기(일치하는 이메일 존재시 이메일 인증 필요 - 이메일로 비밀번호 전송 or 이메일 인증 성공시 페이지에서 
 		비밀번호 재설정 - 차후에 비밀번호 재설정 -->

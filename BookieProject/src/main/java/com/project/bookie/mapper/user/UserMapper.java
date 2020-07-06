@@ -16,6 +16,9 @@ public interface UserMapper {
 
 	// 이메일로 회원 조회(비밀번호 찾기)
 	public User getUserByEmail(String uEmail);
+	
+	// user id만 가져오기~~
+	public long getUserIdByEmail(String uEmail);
 
 	// 연락처로 회원 조회(아이디 찾기, 비밀번호 찾기)
 	public User getUserByPhone(String phone);
