@@ -26,6 +26,8 @@ public class BookCardBoardController {
 	@GetMapping("main")
 	public String goBookCardBoardMain(Model m, @RequestParam(value="p", defaultValue = "1", required = false)int pageNum) {
 		BookCardBoardViewList boardViewList = viewListService.getViewListService(pageNum);
+		List<BookCardBoard> boardViewListBest = service.getBoardListToMainBest3();
+		m.addAttribute("boardViewListBest", boardViewListBest);
 		m.addAttribute("boardViewList", boardViewList);
 		
 		List<Integer> pageArray = new ArrayList<>();
@@ -74,6 +76,5 @@ public class BookCardBoardController {
 		m.addAttribute("board", board);
 		return "bookCard/bookCardBoardDetail.jsp?b="+boardId;
 	}
-		
-	
+
 }

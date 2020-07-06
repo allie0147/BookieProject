@@ -66,30 +66,16 @@
 		<div class="container">
 			<h2>Best3</h2>
 			<div class="row">
+				<c:forEach var="board" items="${boardViewListBest }">
 				<div class="col-md-4">
 					<div class="thumbnail">
 						<a href="" target="_blank"> <img src="" alt="Lights"
 							style="width: 100%; height: 400px">
-							<div class="caption">..</div>
+							<div class="caption">${board.content }</div>
 						</a>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a href="" target="_blank"> <img src="" alt="Nature"
-							style="width: 100%; height: 400px">
-							<div class="caption">..</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a href="" target="_blank"> <img src="" alt="Fjords"
-							style="width: 100%; height: 400px">
-							<div class="caption">..</div>
-						</a>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div id="searchButton" class="input-group col-xs-4 ">
 				<input type="text" class="form-control" placeholder="검색"

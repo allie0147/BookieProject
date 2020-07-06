@@ -28,6 +28,11 @@
 		order by id desc limit 3
 	</select>
 	
+	<!-- 메인화면에 표시할 좋아요 높은 글 3개 -->
+	<select id="getBoardListToMainBest" resultMap="bcb">
+		select * from bookcard_board order by bookmark_cnt desc limit 3;
+	</select>
+	
 	<!-- 제목으로 글 검색 -->
 	<select id="getListByTitle" resultMap="bcb">
 		select bookcard_board.id, title, user.nickname as writer, w_date, u_date like_cnt, bookmark_cnt 
