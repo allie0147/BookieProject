@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.board.BookCardBoard;
+import com.project.bookie.dto.user.User;
 import com.project.bookie.service.BookCardBoardService;
 import com.project.bookie.service.ClubBoardService;
 import com.project.bookie.service.QnaBoardService;
@@ -59,7 +60,9 @@ public class NavigateController {
 	}
 
 	@GetMapping("/mypage")
-	public String showMypage() {
+	public String showMypage(Model m) {
+		User mypageInfo = userService.getUserById(1);
+		m.addAttribute("mypageInfo", mypageInfo);
 //		mypage 보여주기
 //		user 정보 받아오기
 		return "myPage/myPage";

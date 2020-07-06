@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,32 +52,33 @@
 			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
 		<!-- <img src="images/mypage2.png" class="img-rounded" alt="Cinque Terre" width="95%" height="250px">-->
 	</div>
-	
 	<div class="container">
 		<div class="container-fluid bg">
 			<div class="div-container">
+				
 				<div class="container">
 					<b>Email</b>
-					<div>asd@email.com</div>
+					<div>$</div>
 				</div>
 				<div class="container">
 					<b>NICKNAME</b>
-					<div>nickname123</div>
+					<div>${mypageInfo.nickname }</div>
 				</div>
 				<div class="container">
 					<b>PHONE</b>
-					<div>010-1541-1633</div>
+					<div>${mypageInfo.phone }</div>
 				</div>
 				<div class="container">
-					<b>GENRE</b><br> 장르 들어갈 위치
+					<b>GENRE</b><br>
 				</div>
 				<div class="container">
 					<b>가입일</b>
-					<div class="">2020-06-30</div>
+					<div class="">${mypageInfo.regDate }</div>
 				</div>
 				<div class="text-center">
 					<a href="/mypageUpdate" class="btn btn-md btn-default">수정하기</a>
 				</div>
+				
 			</div>
 		</div>
 	</div>
