@@ -67,6 +67,7 @@ public class ClubBoardController {
 		m.addAttribute("prevNum", prevNum);
 		m.addAttribute("nextNum", nextNum);
 		m.addAttribute("pageArray", pageArray);
+		System.out.println("p : "+p);
 		return "bookClub/bookclubMain?p="+p;
 	}
 	

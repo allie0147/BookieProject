@@ -61,7 +61,7 @@ public class NavigateController {
 
 	@GetMapping("/mypage")
 	public String showMypage(Model m) {
-		User mypageInfo = userService.getUserById(1);
+		User mypageInfo = userService.getUserById(1); //세션에 있는 유저 아이디 들어갈 곳
 		m.addAttribute("mypageInfo", mypageInfo);
 //		mypage 보여주기
 //		user 정보 받아오기

@@ -58,7 +58,7 @@
 				
 				<div class="container">
 					<b>Email</b>
-					<div>$</div>
+					<div>${mypageInfo.getUEmail() }</div>
 				</div>
 				<div class="container">
 					<b>NICKNAME</b>
