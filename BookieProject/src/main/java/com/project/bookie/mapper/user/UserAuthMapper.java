@@ -2,7 +2,12 @@ package com.project.bookie.mapper.user;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.project.bookie.security.UserVO;
+
 public interface UserAuthMapper {
+	
+	// 권한 확인~~~
+	public UserVO read(@Param("uEmail")String uEmail);
 	
 	//회원 인증 정보에 인증키 추가
 	public void insertUserWithKey(@Param("uId")long uId, @Param("authKey")String authKey);

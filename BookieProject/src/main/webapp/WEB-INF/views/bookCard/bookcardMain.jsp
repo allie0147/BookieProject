@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,8 +53,18 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/mypage"><span
 						class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
-				<li><a href="/login"><span
-						class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+					<!-- 로그인 안했을 시, Login 버튼이 보임 -->
+					<sec:authorize access="isAnonymous()">
+						<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</sec:authorize>
+					<!-- 로그인 했을 시, Logout 버튼 보임  -->
+					<sec:authorize access="isAuthenticated()">
+						<li><a href='#' onclick="document.getElementById('logout').submit();" >
+						<span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+					<form id= 'logout' action="/logout" method="post" style="diplay:none">
+						<input type="hidden" name='${_csrf.parameterName}' value='${_csrf.token}'/>
+					</form>
+				 	</sec:authorize>
 			</ul>
 		</div>
 	</nav>
@@ -66,30 +77,16 @@
 		<div class="container">
 			<h2>Best3</h2>
 			<div class="row">
+				<c:forEach var="board" items="${boardViewListBest }">
 				<div class="col-md-4">
 					<div class="thumbnail">
 						<a href="" target="_blank"> <img src="" alt="Lights"
 							style="width: 100%; height: 400px">
-							<div class="caption">..</div>
+							<div class="caption">${board.content }</div>
 						</a>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a href="" target="_blank"> <img src="" alt="Nature"
-							style="width: 100%; height: 400px">
-							<div class="caption">..</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a href="" target="_blank"> <img src="" alt="Fjords"
-							style="width: 100%; height: 400px">
-							<div class="caption">..</div>
-						</a>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div id="searchButton" class="input-group col-xs-4 ">
 				<input type="text" class="form-control" placeholder="검색"

@@ -23,4 +23,9 @@ public class BookCardBoardService {
 		return bookCardBoardList;
 	}
 	
+	public List<BookCardBoard> getBoardListToMainBest3(){
+		List<BookCardBoard> bookCardBoradListBest = mapper.getBoardListToMainBest();
+		return bookCardBoradListBest;
+		
+	}
 }

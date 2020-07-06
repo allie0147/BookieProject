@@ -9,6 +9,8 @@
 	</settings>
 	<typeAliases>
 		<typeAlias alias="user" type="com.project.bookie.dto.user.User" />
+		<typeAlias alias="userAuth" type="com.project.bookie.security.UserAuth" />
+		<typeAlias alias="userVO" type="com.project.bookie.security.UserVO" />
 		<typeAlias alias="board" type="com.project.bookie.dto.board.Board"/>
 		<typeAlias alias="bookCardBoard" type="com.project.bookie.dto.board.BookCardBoard"/>
 		<typeAlias alias="comment" type="com.project.bookie.dto.comment.Comment"/>
