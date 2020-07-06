@@ -24,7 +24,7 @@
 		 -->
 		<security:form-login 
 		username-parameter="uEmail" password-parameter="uPwd"
-		login-page="/login" default-target-url="/"  always-use-default-target="false"
+		login-page="/login" default-target-url="/"  always-use-default-target="false" 
 		 authentication-failure-url="/loginFailure" />
 		<!-- logout 시, customLogout으로 보냄. session 및 쿠키 모두 삭제. logout완료되면 main화면으로 -->	
 		<security:logout logout-url="/logout" success-handler-ref="logoutSuccessHandler"
@@ -38,7 +38,7 @@
 		<!-- session 고정 공격 시 : migrateSession, 세션 끊겼을 때 : 로그인 페이지  -->
 		<security:session-management session-fixation-protection="migrateSession" invalid-session-url="/login">
 		<!-- error-if-maximum-exceeded: 중복로그인 방지, expired url: 중복로그인 시 보낼 화면 -->
-			<security:concurrency-control error-if-maximum-exceeded="true" expired-url="/login" max-sessions="1"/>
+		<security:concurrency-control error-if-maximum-exceeded="true" expired-url="/login" max-sessions="1"/>
 		</security:session-management>
 	</security:http>
 

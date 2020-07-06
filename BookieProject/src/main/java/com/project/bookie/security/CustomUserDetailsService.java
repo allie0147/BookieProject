@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.project.bookie.mapper.user.UserAuthMapper;
-import com.project.bookie.mapper.user.UserMapper;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

@@ -52,7 +52,7 @@
 						<div class="form-group text-white">
 							<label for="inputEmail1">Email</label> <input type="email"
 								class="form-control" id="inputEmail1" name="uEmail"
-								aria-describedby="emailHelp">
+								aria-describedby="emailHelp" required="required">
 						</div>
 						<div class="errorBox">
 							<span class='error' id='error01'>에러 01</span>
@@ -60,12 +60,13 @@
 						<div class="form-group">
 							<label for="inputPassword1">Password</label> <input
 								type="password" class="form-control" id="inputPassword1"
-								name="pwd">
+								name="uPwd" required="required">
 						</div>
 						<div class="errorBox">
 							<span class='error' id='error02'>에러 02</span>
 						</div>
 						<input type="submit" class="btn btn-block btn-info" value="LogIn">
+						<input type="hidden" id="hidden" name='${_csrf.parameterName}' value='${_csrf.token}'>
 					</form>
 
 					<button id="signup" type="button" class="btn btn-block btn-default">회원가입</button>
