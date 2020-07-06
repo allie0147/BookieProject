@@ -68,14 +68,14 @@ public class ClubBoardController {
 		m.addAttribute("nextNum", nextNum);
 		m.addAttribute("pageArray", pageArray);
 		System.out.println("p : "+p);
-		return "bookClub/bookclubMain?p="+p;
+		return "bookClub/bookclubMain.jsp?p="+p;
 	}
 	
 	@GetMapping("/detail")
 	public String goDetailPage(Model m, @RequestParam(value="b", defaultValue = "1", required = false)int boardId) {
 		Board board = service.getBoardByBoardById(boardId);
 		m.addAttribute("board", board);
-		return "bookClub/bookClubBoardDetail?b="+boardId;
+		return "bookClub/bookClubBoardDetail.jsp?b="+boardId;
 	}
 	
 }
