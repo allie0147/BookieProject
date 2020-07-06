@@ -1,6 +1,7 @@
 package com.project.bookie.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.project.bookie.dto.user.User;
@@ -14,9 +15,13 @@ public class UserService {
 	
 	@Autowired
 	UserAuthMapper userAuthMapper;
+	
 	@Autowired
 	TempKey tempKey;
-
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+	
 	public void setUser(User user) {
 		userMapper.insertUser(user);
 	}
@@ -27,8 +32,8 @@ public class UserService {
 	}
 	
 	public void updateUserPwd(int uId, String uPwd) {
-		System.out.println("Service에서 updateUserPwd의 uId : "+uId+", uPwd : "+uPwd);
-		userMapper.updatePwdById(uId, uPwd);
+		String pwdEncoding = passwordEncoder.encode(uPwd);
+		userMapper.updatePwdById(uId, pwdEncoding);
 
 		String authKey = tempKey.getKey(10, false);
 		userAuthMapper.updateUserWithKey(uId, authKey);

@@ -32,7 +32,7 @@ $(function(){
 });
 
 $(function resetPwd(){
-	$("form").on("submit", function(){
+	$("#submit").on("click", function(){
 		let pwd = $("input[name=uPwd]").eq(0).val();
 		let ckPwd = $("input[name=uPwdCheck]").eq(0).val();
 		
@@ -71,10 +71,3 @@ $(function resetPwd(){
 		return false;
 	});
 });
-
-function popup(){                 // 전송 파라미터 값
-	    let url = "/login/find-password"; // 전송 URL
-	    let name ="find password";
-	    window.open(url, name, "scrollbars=no,width=500,height=300,menubar=false");
-	    // window.open(URL,"팝업 구분값(팝업 1개일 경우 상관없음)","팝업 창 옵션")
-}

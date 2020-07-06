@@ -1,10 +1,12 @@
 package com.project.bookie.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.bookie.dto.user.User;
@@ -67,8 +69,11 @@ public class LogInController {
 	
 	//인증키 비교
 	@GetMapping("/resetpwd")
-	public String ModifyPwd(Model m, int uId, String authkey) {
+	public String ModifyPwd(Model m, @RequestParam("uId")int uId, @RequestParam("authkey")String authkey) {
 		User user = authService.ckAuthKey(uId, authkey);
+		System.out.println("LogInCtr의 ModifyPwd에서의 userId : "+uId+", authKey : "+authkey);
+		System.out.println("LogInCtr의 ModifyPwd에서의 user email : "+user.getUEmail());
+		System.out.println("LogInCtr의 ModifyPwd에서의 user : "+user.toString());
 		if(user != null) {
 			m.addAttribute("user", user);
 		}else {
