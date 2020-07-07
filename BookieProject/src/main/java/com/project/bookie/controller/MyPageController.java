@@ -16,7 +16,6 @@ public class MyPageController {
 	@Autowired
 	UserService userService;
 
-	@PreAuthorize("hasRole('ROLE_MEMBER') and hasRole('ROLE_MANAGER') and hasRole('ROLE_ADMIN')")
 	@GetMapping("/mypage")
 	public String showMypage(Model m) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -26,7 +25,6 @@ public class MyPageController {
 		return "myPage/myPage";
 	}
 
-	@PreAuthorize("hasRole('ROLE_MEMBER') and hasRole('ROLE_MANAGER') and hasRole('ROLE_ADMIN')")
 	@GetMapping("/mypageUpdate")
 	public String showMypageUpdate(Model m) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

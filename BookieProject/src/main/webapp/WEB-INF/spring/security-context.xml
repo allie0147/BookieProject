@@ -2,58 +2,75 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:security="http://www.springframework.org/schema/security"
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
-	<bean id="customAccessDeniedHandler" class="com.project.bookie.security.CustomAccessDeniedHandler"></bean>
-	<bean id="customAccessSuccessHandler" class="com.project.bookie.security.CustomAccessSuccessHandler"></bean>
-	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
-	<bean id="customUserDetailsService"	class="com.project.bookie.security.CustomUserDetailsService"></bean>
-	<bean id="logoutSuccessHandler" class="com.project.bookie.security.CustomLogOutSuccessHandler"></bean>
-	<bean id="loginFailureHandler" class="com.project.bookie.security.LoginFailureHandler">
-		<property name="loginEmail" value="uEmail"/>
-    	<property name="loginPwd" value="uPwd"/>
-    	<property name="errorMsg" value="ERRORMSG"/>
-    	<property name="defaultFailureUrl" value="/login"></property>
-	</bean>
 	
+	<bean id="customAccessDeniedHandler"
+		class="com.project.bookie.security.CustomAccessDeniedHandler"></bean>
+	<bean id="customAccessSuccessHandler"
+		class="com.project.bookie.security.CustomAccessSuccessHandler"></bean>
+	<bean id="bcryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	<bean id="customUserDetailsService"
+		class="com.project.bookie.security.CustomUserDetailsService"></bean>
+	<bean id="logoutSuccessHandler"
+		class="com.project.bookie.security.CustomLogOutSuccessHandler"></bean>
+
+	<bean id="loginFailureHandler"
+		class="com.project.bookie.security.LoginFailureHandler">
+		<property name="loginEmail" value="uEmail" />
+		<property name="loginPwd" value="uPwd" />
+		<property name="errorMsg" value="ERRORMSG" />
+		<property name="defaultFailureUrl" value="/login"></property>
+	</bean>
+
 	<security:http auto-config="true" use-expressions="true">
 		<!-- 접근허가 관리 -->
-		<security:intercept-url pattern="/,/bookcard,/qna/main,/qna/detail,/cs,/userForm,/login,/club/main,/club/detail" access="permitAll"/>
-		<security:intercept-url method="GET" pattern="/logout" access="hasAnyRole('ROLE_MEMBER', 'ROLE_MANAGER', 'ROLE_ADMIN')"/>
-		<security:intercept-url method="GET" pattern="/mypage**" access="hasAnyRole('ROLE_MEMBER', 'ROLE_MANAGER', 'ROLE_ADMIN')" />
+		<security:intercept-url
+			pattern="/,/bookcard,/qna/main,/qna/detail,/cs,/userForm,/login,/club/main,/club/detail" method="GET"
+			access="permitAll" />
+		<security:intercept-url	pattern="/mypage**,/club/write.jsp,/qna/write.jsp,/logout.jsp" method="GET"
+			access="hasAnyRole('ROLE_MEMBER','ROLE_MANAGER','ROLE_ADMIN')" />
 		<!-- access denied시 처리하는 controller -->
-		<security:access-denied-handler	ref="customAccessDeniedHandler" />
-		
-		<!-- login 시, username(default)=>uEmail, password(default)=>uPwd로 변경.
-		 성공 시,  
-		 실패 시 , custom 
-		 -->
-		<security:form-login 
-		username-parameter="uEmail" password-parameter="uPwd" 
-		authentication-success-handler-ref="customAccessSuccessHandler"
-		authentication-failure-handler-ref="loginFailureHandler" login-processing-url="/loginProc"
-		login-page="/login"/>
-		<!-- logout 시, customLogout으로 보냄. session 및 쿠키 모두 삭제. logout완료되면 main화면으로 -->	
-		<security:logout logout-url="/logout" success-handler-ref="logoutSuccessHandler"
-		invalidate-session="false" delete-cookies="remember-me,JSESSIONID" />
-		<!-- remember-me시, 토큰 30일짜리 부여 : 아직 구현안함-->
-		<!-- <security:remember-me data-source-ref="dataSource" 
-		remember-me-parameter="remember-me"
-		token-validity-seconds="604800"/> -->
+		<security:access-denied-handler
+			ref="customAccessDeniedHandler" />
+
+		<!-- login 시, username(default)=>uEmail, password(default)=>uPwd로 변경. 
+		성공시, 세션부여 및 메인화면 리다이렉트
+		실패 시 , loginFailureHandler에서 errormsg로 login view에 보여줌(jstl) -->
+		<security:form-login username-parameter="uEmail"
+			password-parameter="uPwd"
+			authentication-success-handler-ref="customAccessSuccessHandler"
+			authentication-failure-handler-ref="loginFailureHandler"
+			login-processing-url="/loginProc" login-page="/login" />
+			
+		<!-- logout 시, customLogout으로 보냄. session 및 쿠키 모두 삭제. logout완료되면 main화면으로 -->
+		<security:logout logout-url="/logout"
+			success-handler-ref="logoutSuccessHandler" invalidate-session="false"
+			delete-cookies="remember-me,JSESSIONID" />
+		<!-- remember-me시, 토큰 30일짜리 부여 : 아직 구현안함 -->
+		<!-- <security:remember-me data-source-ref="dataSource" remember-me-parameter="remember-me" 
+			token-validity-seconds="604800"/> -->
 		<!-- csrf 토큰은 세션을 통해 보관, 브라우저가 전송한 csrf 토큰값을 검사하는 방식 -->
 		<security:csrf disabled="true" />
-		<!-- session 고정 공격 시 : migrateSession, 세션 끊겼을 때 : 로그인 페이지  -->
-		<security:session-management session-fixation-protection="migrateSession" invalid-session-url="/login">
-		<!-- error-if-maximum-exceeded: 중복로그인 방지, expired url: 중복로그인 시 보낼 화면 -->
-		<security:concurrency-control error-if-maximum-exceeded="true" expired-url="/login" max-sessions="1"/>
+		<!-- session 고정 공격 시 : migrateSession, 세션 끊겼을 때 : 로그인 페이지 -->
+		<security:session-management
+			session-fixation-protection="migrateSession"
+			invalid-session-url="/login">
+			<!-- error-if-maximum-exceeded: 중복로그인 방지, expired url: 중복로그인 시 보낼 화면 -->
+			<security:concurrency-control
+				error-if-maximum-exceeded="true" expired-url="/login"
+				max-sessions="1" />
 		</security:session-management>
 	</security:http>
 
-	<security:authentication-manager>	
+	<security:authentication-manager>
 		<!-- 서비스에서 유저 권한 부여 구현 -->
-		<security:authentication-provider user-service-ref="customUserDetailsService"> 
+		<security:authentication-provider
+			user-service-ref="customUserDetailsService">
 			<!-- 패스워드 암호화? -->
-			<security:password-encoder ref="bcryptPasswordEncoder"/>
+			<security:password-encoder
+				ref="bcryptPasswordEncoder" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>
