@@ -28,8 +28,6 @@ public class TempKey {
             }else {
                 continue;
             }
-            System.out.println("num : "+num);
-            System.out.println("sb : "+sb);
         } while (sb.length() < size);
         
         if(lowerCheck) {

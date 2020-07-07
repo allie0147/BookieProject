@@ -16,6 +16,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="/resources/js/login/main.js"></script>
+<script src="/resources/js/login/findPassword.js"></script>
 </head>
 <body>
 	<!-- nav bar -->
@@ -74,7 +75,7 @@
 				<input type="password" name="uPwdCheck"/><br>
 				<!-- 비밀번호와 비밀번호 확인란의 값이 같은지 유효성 검사 필요 -->
 				
-				<input type="submit" value="변경" />	
+				<input type="submit" id="submit" value="변경" />	
 			</form>
 		</c:if>
 		<c:if test="${user == null }">
@@ -83,7 +84,7 @@
 		</c:if>
 	</div>
 	
-		<footer id="footerBg">
+	<footer id="footerBg">
 		<div class="container">
 			<br>
 			<div class="row" id="footerFont">

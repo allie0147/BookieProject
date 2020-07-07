@@ -56,7 +56,7 @@ public class UserAuthService {
 		String content = "<h2></h2><p>비밀번호를 재설정 하시려면 다음 링크를 눌러주세요.</p>"
 				+ "인증하기 링크 : <a href='http://localhost:8080/resetpwd?uId="+user.getId()+"&authkey="+authKey+"'>"
 				+ "인증하기</a>";
-		
+		System.out.println("UserAuthService에서의 userId : "+uId+", authKey : "+authKey);
 		MimeMessage message = mailSender.createMimeMessage();
 		
 		try {
@@ -77,6 +77,7 @@ public class UserAuthService {
 	//링크에서 제공한 인증키가 현재 DB의 인증키와 일치하는지
 	public User ckAuthKey(int uId, String authKey) {
 		String authKeyRs = authMapper.selectKeyWithId(uId);
+		System.out.println("UserAuthService에서의 authKey : "+authKey);
 		User user;
 
 		if(authKeyRs.equals(authKey)) {
