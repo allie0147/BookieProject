@@ -16,6 +16,7 @@ public class CustomAccessSuccessHandler implements AuthenticationSuccessHandler 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
 			throws IOException, ServletException {
+		System.out.println("!!!!!!!!!success 들어옴");
 		List<String> roleNames = new ArrayList<>();
 		auth.getAuthorities().forEach(authority -> {
 			roleNames.add(authority.getAuthority());

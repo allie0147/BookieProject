@@ -1,18 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/login/main.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/resources/js/login/main.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <script src="/resources/js/login/main.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -48,25 +52,43 @@
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="form-container">
-					<form action="/loginChk" method="post">
+					<form action="/loginProc" method="post">
 						<div class="form-group text-white">
-							<label for="inputEmail1">Email</label> <input type="email"
-								class="form-control" id="inputEmail1" name="uEmail"
-								aria-describedby="emailHelp" required="required">
-						</div>
-						<div class="errorBox">
-							<span class='error' id='error01'>에러 01</span>
+							<label for="inputEmail1">Email</label>
+							<c:choose>
+								<c:when test="${not empty loginEmail}">
+									<input type="email" class="form-control" id="inputEmail1"
+										name="uEmail" aria-describedby="emailHelp" required="required"
+										value="${loginEmail}">
+								</c:when>
+								<c:otherwise>
+									<input type="email" class="form-control" id="inputEmail1"
+										name="uEmail" aria-describedby="emailHelp" required="required">
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<div class="form-group">
-							<label for="inputPassword1">Password</label> <input
-								type="password" class="form-control" id="inputPassword1"
-								name="uPwd" required="required">
+							<c:choose>
+								<c:when test="${not empty loginPwd}">
+									<label for="inputPassword1">Password</label>
+									<input type="password" class="form-control" id="inputPassword1"
+										name="uPwd" required="required" value="${loginPwd}">
+								</c:when>
+								<c:otherwise>
+									<label for="inputPassword1">Password</label>
+									<input type="password" class="form-control" id="inputPassword1"
+										name="uPwd" required="required">
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<div class="errorBox">
-							<span class='error' id='error02'>에러 02</span>
-						</div>
+						<c:if test="${not empty ERRORMSG }">
+							<div class="errorBox">
+								<span class='error'>${ERRORMSG }</span>
+							</div>
+						</c:if>
 						<input type="submit" class="btn btn-block btn-info" value="LogIn">
-						<input type="hidden" id="hidden" name='${_csrf.parameterName}' value='${_csrf.token}'>
+						<input type="hidden" id="hidden" name='${_csrf.parameterName}'
+							value='${_csrf.token}'>
 					</form>
 
 					<button id="signup" type="button" class="btn btn-block btn-default">회원가입</button>
@@ -77,7 +99,7 @@
 						</p>
 					</div>
 					<hr>
-					
+
 					<!-- 
 					
 					

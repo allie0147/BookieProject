@@ -5,17 +5,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.bookie.dto.user.User;
 import com.project.bookie.security.CustomUser;
+import com.project.bookie.security.CustomUserDetailsService;
 import com.project.bookie.service.MailService;
 import com.project.bookie.service.UserAuthService;
 import com.project.bookie.service.UserService;
@@ -31,17 +34,16 @@ public class LogInController {
 	@Autowired
 	UserAuthService authService;
 
-	@GetMapping("/login")
+	@Autowired
+	CustomUserDetailsService userDetailsService;
+
+	@Autowired
+	BCryptPasswordEncoder encoder;
+
+	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
 	public String showLogIn() {
 //		로그인화면 보여주기
 		return "login/logIn";
-	}
-
-	@PostMapping("/login")
-	public String getInfo(Model m, String uEmail) {
-//	로그인 성공시 user 정보 session에 담기
-//	시큐리티적용
-		return "redirect:/";
 	}
 
 	// 비밀번호 찾기 팝업창
@@ -75,15 +77,15 @@ public class LogInController {
 
 	// 인증키 비교
 	@GetMapping("/resetpwd")
-	public String modifyPwd(Model m, @RequestParam("uId")int uId, @RequestParam("authkey")String authkey) {
+	public String modifyPwd(Model m, @RequestParam("uId") int uId, @RequestParam("authkey") String authkey) {
 		User user = authService.ckAuthKey(uId, authkey);
-		System.out.println("LogInCtr의 ModifyPwd에서의 userId : "+uId+", authKey : "+authkey);
-		System.out.println("LogInCtr의 ModifyPwd에서의 user email : "+user.getUEmail());
-		System.out.println("LogInCtr의 ModifyPwd에서의 user : "+user.toString());
-		if(user != null) {
+		System.out.println("LogInCtr의 ModifyPwd에서의 userId : " + uId + ", authKey : " + authkey);
+		System.out.println("LogInCtr의 ModifyPwd에서의 user email : " + user.getUEmail());
+		System.out.println("LogInCtr의 ModifyPwd에서의 user : " + user.toString());
+		if (user != null) {
 			m.addAttribute("user", user);
-		}else {
-			m.addAttribute("user", user); //null을 보내는 것
+		} else {
+			m.addAttribute("user", user); // null을 보내는 것
 		}
 		return "login/modifyPassword";
 	}
@@ -96,50 +98,13 @@ public class LogInController {
 		return "login/resetPwdSuccess";
 	}
 
-//	@PostMapping("/login")
-//	public String getInfo(@Param("uEmail") String uEmail, @Param("uPwd") String uPwd) {
-////	로그인 성공시 user 정보 session에 담기
-////	시큐리티적용
-//		System.out.println("login컨트롤러");
-//		System.out.println("uEmail : " + uEmail);
-//		System.out.println("uPwd : " + uPwd); // 입력값 그대로
-//
-//		CustomUser u = (CustomUser) userDetailsService.loadUserByUsername(uEmail);
-//		if (u == null) {
-//			System.out.println("없는 유저");
-//			return "redirect:/login";
-//		}
-//		System.out.println("customuser email : " + u.getUsername()); // db email
-//		System.out.println("customuser pwd : " + u.getPassword()); // db pwd
-//		System.out.println("login 컨트롤러 2");
-//		try {
-//			UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(u.getUsername(),
-//					u.getPassword(), u.getAuthorities());
-//			System.out.println("credentials : " + token.getCredentials()); // 비번
-//			System.out.println("auth : " + token.getAuthorities()); // auth
-//			System.out.println("principal : " + token.getPrincipal()); // 이메일
-//			System.out.println("name : " + token.getName()); // 이메일
-//			if (!token.isAuthenticated()) {
-//				System.out.println("auth아님");
-//				throw new BadCredentialsException(u.getUsername());
-//			}
-//			if (encoder.matches(uPwd, u.getPassword()) == false) {
-//				System.out.println("패스워드 다름");
-//				throw new BadCredentialsException(u.getUsername());
-//			}
-//			if (!token.getPrincipal().equals(uEmail)) {
-//				System.out.println("이메일 다름");
-//				throw new BadCredentialsException(u.getUsername());
-//			}
-//			System.out.println("token principal: " + token.getPrincipal());
-//			System.out.println("token credentials: " + token.getCredentials());
-//			System.out.println("token authroities: " + token.getAuthorities());
-//			SecurityContextHolder.getContext().setAuthentication(token);
-//			System.out.println("완료!");
-//		} catch (BadCredentialsException e) {
-//			e.getLocalizedMessage();
-//			System.out.println("BADCREDENTIAL: " + e.getLocalizedMessage()); // username 이 나와야 함
-//		}
-//		return "redirect:/";
-//	}
+	@PostMapping("/loginProc")
+	public void getInfo(@Param("uEmail") String uEmail, @Param("uPwd") String uPwd) {
+//	로그인 성공시 user 정보 session에 담기
+//	시큐리티적용
+		System.out.println("login컨트롤러");
+		System.out.println("uEmail : " + uEmail);
+		System.out.println("uPwd : " + uPwd); // 입력값 그대로
+		CustomUser u = (CustomUser) userDetailsService.loadUserByUsername(uEmail);
+	}
 }
