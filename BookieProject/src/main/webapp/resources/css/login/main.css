@@ -1,3 +1,36 @@
+/*ckPhone.jsp*/
+#ckPhoneFormBox{
+	padding-top:50px;
+	width:200px;
+	height:100px;
+	margin:auto;
+	text-align: center;
+}
+#ckPhoneFormBox #ckPhoneFormSubmit{
+	margin-top:10px;
+}
+/*certifForm.jsp*/
+#certifFormBox{
+	padding-top:50px;
+	width:100%;
+	height:100%;
+	text-align: center;
+}
+#certifFormBox > button{
+	margin-top:10px;
+	margin-bottom:70px;
+}
+/*getEmail.jsp*/
+#getEmailBox{
+	width:400px;
+	height:100px;
+	margin:200px auto 200px auto; 
+	padding:30px;
+	border-radius: 7px;
+	background: white;
+	text-align: center;
+}
+/**/
 .vertical {
 	border-left: 1px solid black;
 	height: 10px;

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,7 +46,7 @@ public class ClubBoardController {
 				i++;
 			}
 			
-			System.out.println("현재 페이지네이션 범위 : "+(i-1)*5+"~"+i*5); //p가 5*i보다 작아지게 된 i의 값
+//			System.out.println("현재 페이지네이션 범위 : "+(i-1)*5+"~"+i*5); //p가 5*i보다 작아지게 된 i의 값
 			
 			startNum = 5*(i - 1) + 1;
 			endNum = 5*i;
@@ -68,7 +67,6 @@ public class ClubBoardController {
 		m.addAttribute("prevNum", prevNum);
 		m.addAttribute("nextNum", nextNum);
 		m.addAttribute("pageArray", pageArray);
-		System.out.println("p : "+p);
 		return "bookClub/bookclubMain.jsp?p="+p;
 	}
 	

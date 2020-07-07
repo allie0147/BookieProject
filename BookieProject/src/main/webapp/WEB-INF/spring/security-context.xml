@@ -25,12 +25,32 @@
 	</bean>
 
 	<security:http auto-config="true" use-expressions="true">
-		<!-- 접근허가 관리 -->
-		<security:intercept-url
-			pattern="/,/bookcard,/qna/main,/qna/detail,/cs,/userForm,/login,/club/main,/club/detail" method="GET"
-			access="permitAll" />
-		<security:intercept-url	pattern="/mypage**,/club/write.jsp,/qna/write.jsp,/logout.jsp" method="GET"
+		<!-- 모두 접근 허가 -->
+		<security:intercept-url pattern="/" method="GET" access="permitAll" />
+		<security:intercept-url pattern="/bookcard" method="GET" access="permitAll" />
+		<security:intercept-url pattern="/qna/main" method="GET" access="permitAll" />
+		<security:intercept-url pattern="/qna/detail" method="GET" access="permitAll" />
+		<security:intercept-url pattern="/cs" method="GET" access="permitAll" />
+		<security:intercept-url pattern="/userForm" method="GET" access="permitAll" />
+		<security:intercept-url pattern="/login" method="GET" access="permitAll" />
+		<security:intercept-url pattern="/club/main" method="GET" access="permitAll" />
+		<security:intercept-url pattern="/club/detail" method="GET" access="permitAll" />
+		<!-- 권한에 따른 접근 제한 -->
+		<security:intercept-url	pattern="/mypage/**" method="GET" 
 			access="hasAnyRole('ROLE_MEMBER','ROLE_MANAGER','ROLE_ADMIN')" />
+		<security:intercept-url	pattern="/club/write" method="GET" 
+			access="hasAnyRole('ROLE_MEMBER','ROLE_MANAGER','ROLE_ADMIN')" />
+		<security:intercept-url	pattern="/qna/write" method="GET" 
+			access="hasAnyRole('ROLE_MEMBER','ROLE_MANAGER','ROLE_ADMIN')" />
+		<security:intercept-url	pattern="/logout" method="GET" 
+			access="hasAnyRole('ROLE_MEMBER','ROLE_MANAGER','ROLE_ADMIN')" />
+			
+			
+			<!-- 
+			/club/write /qna/write /logout
+			<security:intercept-url	pattern="/mypage**,/club/write.jsp,/qna/write.jsp,/logout.jsp" method="GET"
+			access="hasAnyRole('ROLE_MEMBER','ROLE_MANAGER','ROLE_ADMIN')" />
+			 -->
 		<!-- access denied시 처리하는 controller -->
 		<security:access-denied-handler
 			ref="customAccessDeniedHandler" />

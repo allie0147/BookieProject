@@ -40,7 +40,7 @@
 	      <li><a href="/cs">고객센터</a></li>
 	    </ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="/mypage"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
+			<li><a href="/mypage/info"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
 			<!-- 로그인 했을 시, Logout 버튼 보임  -->
 			<sec:authorize access="isAuthenticated()">
 				<li><a href='#' onclick="document.getElementById('logout').submit();" >

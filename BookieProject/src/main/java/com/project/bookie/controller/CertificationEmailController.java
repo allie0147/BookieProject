@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.bookie.security.CustomUserDetailsService;
 import com.project.bookie.service.UserAuthService;
 
 @Controller

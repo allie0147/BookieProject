@@ -1,22 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이 페이지</title>
+<title>Find Email(Get Email)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
-<link rel="stylesheet" href="/resources/css/mypage/main.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/resources/css/login/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/resources/js/login/main.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,53 +38,25 @@
 				<li><a href="/cs">고객센터</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/mypage/info"><span
-						class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
-			<!-- 로그인 했을 시, Logout 버튼 보임  -->
-			<sec:authorize access="isAuthenticated()">
-				<li><a href='#' onclick="document.getElementById('logout').submit();" >
-				<span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-			<form id= 'logout' action="/logout" method="post" style="diplay:none">
-				<input type="hidden" name='${_csrf.parameterName}' value='${_csrf.token}'/>
-			</form>
-		 	</sec:authorize>
+				<li><a href="/mypage/info"><span class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
+				<sec:authorize access="isAnonymous()">
+					<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				</sec:authorize>
+				<!-- 로그인 했을 시, Logout 버튼 보임  -->
+				<sec:authorize access="isAuthenticated()">
+					<li><a href='#' onclick="document.getElementById('logout').submit();" >
+					<span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				<form id= 'logout' action="/logout" method="post" style="diplay:none">
+					<input type="hidden" name='${_csrf.parameterName}' value='${_csrf.token}'/>
+				</form>
+			 	</sec:authorize>
 			</ul>
 		</div>
 	</nav>
-	<div class="container">
-		<div
-			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
-		<!-- <img src="images/mypage2.png" class="img-rounded" alt="Cinque Terre" width="95%" height="250px">-->
-	</div>
-	<div class="container">
-		<div class="container-fluid bg">
-			<div class="div-container">
-				
-				<div class="container">
-					<b>Email</b>
-					<div>${mypageInfo.getUEmail() }</div>
-				</div>
-				<div class="container">
-					<b>NICKNAME</b>
-					<div>${mypageInfo.nickname }</div>
-				</div>
-				<div class="container">
-					<b>PHONE</b>
-					<div>${mypageInfo.phone }</div>
-				</div>
-				<div class="container">
-					<b>GENRE</b><br>
-				</div>
-				<div class="container">
-					<b>가입일</b>
-					<div class="">${mypageInfo.regDate }</div>
-				</div>
-				<div class="text-center">
-					<a href="/mypage/update" class="btn btn-md btn-default">수정하기</a>
-				</div>
-				
-			</div>
-		</div>
+
+	<div id="getEmailBox">
+		<p style="margin:0px;">회원님의 이메일은 ${uEmail }입니다.</p>
+		<a href="/login">로그인 페이지로 이동하기</a>
 	</div>
 	
 	<footer id="footerBg">
@@ -117,14 +86,13 @@
 				<div class="col-sm-4">
 					<h4>store</h4>
 					<h5>
-						<a href="https://www.aladin.co.kr/" target="_blank">aladin</a>
-					</h5>
-					<!-- target 설정: 새창으로 변경 -->
-					<h5>
-						<a href="http://www.bandinlunis.com/" target="_blank">bandinluis</a>
+						<a href="https://www.aladin.co.kr/">aladin</a>
 					</h5>
 					<h5>
-						<a href="http://www.yes24.com/" target="_blank">yes24</a>
+						<a href="http://www.bandinlunis.com/">bandinluis</a>
+					</h5>
+					<h5>
+						<a href="http://www.yes24.com/">yes24</a>
 					</h5>
 				</div>
 				<br>

@@ -1,8 +1,5 @@
 package com.project.bookie.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +10,6 @@ import org.springframework.stereotype.Service;
 import com.project.bookie.dto.user.User;
 import com.project.bookie.mapper.user.UserAuthMapper;
 import com.project.bookie.mapper.user.UserMapper;
-import com.project.bookie.security.CustomUserDetailsService;
-import com.project.bookie.security.UserAuth;
-import com.project.bookie.security.UserVO;
 
 @Service
 public class UserAuthService {

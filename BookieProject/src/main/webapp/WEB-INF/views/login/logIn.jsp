@@ -12,11 +12,9 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/login/main.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- <script src="/resources/js/login/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/resources/js/login/main.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,7 +39,7 @@
 				<li><a href="/cs">고객센터</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/mypage"><span
+				<li><a href="/mypage/info"><span
 						class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
 			</ul>
 		</div>
@@ -94,16 +92,11 @@
 					<button id="signup" type="button" class="btn btn-block btn-default">회원가입</button>
 					<div class="text-center">
 						<p>
-							<span><a href="j">이메일찾기</a></span> <span class="vertical"></span>&nbsp;
+							<span><a href="javascript:popupEmail()">이메일찾기</a></span> <span class="vertical"></span>&nbsp;
 							<span><a href="javascript:popup()">비밀번호 찾기</a></span>
 						</p>
 					</div>
 					<hr>
-
-					<!-- 
-					
-					
-					 -->
 					<a class="btn btn-success btn-block" href="https://www.naver.com/">네이버
 						로그인</a> <a class="btn btn-block btn-warning"
 						href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/kakaologin&response_type=code">카카오

@@ -6,7 +6,7 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-public class TwilloExample {
+public class MessageService {
 	// Find your Account Sid and Token at twilio.com/user/account
 	public static final String ACCOUNT_SID = "AC386670919b29b9085024047e24813d2a";
 	public static final String AUTH_TOKEN = "1635d54ab2f08dfec4aa12dcd9cc82de";
@@ -26,6 +26,5 @@ public class TwilloExample {
 				"This message is sended from Bookie. Your Verification PIN is "+numStr).create();
 		
 		System.out.println(message.getSid());
-
 	}
 }
