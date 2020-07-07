@@ -13,7 +13,6 @@ import org.springframework.security.authentication.InternalAuthenticationService
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
-
 import lombok.Data;
 
 @Data
@@ -22,7 +21,8 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 	private String loginEmail;
 	private String loginPwd;
 	private String errorMsg;
-	private String defaultFailureUrl;
+	private String defaultFailureUrl; // "/login"으로 post -> controller에서 실행
+
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
@@ -46,8 +46,6 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		request.setAttribute(loginEmail, username);
 		request.setAttribute(loginPwd, password);
 		request.setAttribute(errorMsg, errormsg);
-//		response.sendRedirect(defaultFailureUrl);
-		
 		request.getRequestDispatcher(defaultFailureUrl).forward(request, response);
 	}
 }

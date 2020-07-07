@@ -65,5 +65,4 @@ public class UserService {
 	public long getUserIdByEmail(String uEmail) {
 		return userMapper.getUserIdByEmail(uEmail);
 	}
-
 }

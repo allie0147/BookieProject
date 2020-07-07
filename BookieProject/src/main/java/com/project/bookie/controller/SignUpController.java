@@ -1,5 +1,6 @@
 package com.project.bookie.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.bookie.dto.user.User;
+import com.project.bookie.security.UserAuth;
+import com.project.bookie.security.UserVO;
 import com.project.bookie.service.MailService;
 import com.project.bookie.service.UserService;
 
@@ -28,10 +31,10 @@ public class SignUpController {
 
 	@Autowired
 	MailService mailService;
-	
+
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
-	
+
 	@GetMapping("/userForm")
 	public String getForm() {
 //		회원가입페이지 이동
@@ -54,17 +57,17 @@ public class SignUpController {
 			return "signUp/signupForm";
 		} else {
 			System.out.println("인증 메일이 발송되었습니다. 확인 후 다시 로그인 해주세요.");
-			//패스워드 인코딩
+			// 패스워드 인코딩
 			String uPwd = user.getUPwd();
 			String encodePwd = pwdEncoder.encode(uPwd);
 			user.setUPwd(encodePwd);
-			//회원 정보 DB에 등록
+			// 회원 정보 DB에 등록
 			userService.setUser(user);
-			//회원 정보를 DB에서 불러와(auto_increment인 id까지 가져오기 위함) 세션에 등록
-			User u = userService.getUserInfo(user.getUEmail());
+			// 회원 정보를 DB에서 불러와(auto_increment인 id까지 가져오기 위함)
+			User u = userService.getUserInfo(user.getUEmail()); // id 뽑기
 			userService.setInterest(u.getId(), user.getInterest());
-			m.addAttribute("user", user);
-			//계정 인증 메일 전송
+//			m.addAttribute("user", user);
+			// 계정 인증 메일 전송
 			String message = mailService.sendMail(u);
 			System.out.println(message);
 			return "mainView/logInAgain";

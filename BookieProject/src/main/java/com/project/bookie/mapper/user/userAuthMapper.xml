@@ -25,13 +25,17 @@
 		on user.u_email = au.user_email
 		where au.user_email= #{uEmail, jdbcType=VARCHAR}
 	</select>
+	
+	<insert id="insertUserAuthWithuEmail" parameterType="String">
+		insert into auth_user(user_email, auth) values(#{uEmail, jdbcType=VARCHAR},#{auth})
+	</insert>
 
 	<!-- 회원 인증 테이블에 회원 아이디와 회원 인증키 추가 -->
 	<insert id="insertUserWithKey">
-		insert into userauth(user_id, authkey) values(#{uId},#{authKey})
+		insert into auth_email(user_id, authkey) values(#{uId},#{authKey})
 	</insert>
 	<update id="updateUserWithKey">
-		update userauth set user_id = #{uId}, authkey = #{authKey} where user_id=#{uId}
+		update auth_email set user_id = #{uId}, authkey = #{authKey} where user_id=#{uId}
 	</update>
 	<!-- 이미 인증한 회원인지 확인하기 위해 키를 가져옴 -->
 	<select id="checkCertification" resultType="int">
@@ -39,7 +43,7 @@
 	</select>
 	<!-- 이메일 인증시 회원의 아이디에 따른 인증 키 확인 -->
 	<select id="selectKeyWithId" resultType="String">
-		select authkey from userauth where user_id=#{uId}
+		select authkey from auth_email where user_id=#{uId}
 	</select>
 	<!-- 회원의 이메일 인증 여부 상태 변경 -->
 	<update id="updateUserCertification">

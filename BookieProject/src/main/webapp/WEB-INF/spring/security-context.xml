@@ -18,10 +18,9 @@
 	
 	<security:http auto-config="true" use-expressions="true">
 		<!-- 접근허가 관리 -->
-		<security:intercept-url pattern="/,/bookcard,/qna**,/cs,/userForm,/login" access="permitAll"/>
+		<security:intercept-url pattern="/,/bookcard,/qna**,/cs,/userForm,/login,/club**" access="permitAll"/>
 		<security:intercept-url method="GET" pattern="/logout" access="hasAnyRole('ROLE_MEMBER', 'ROLE_MANAGER', 'ROLE_ADMIN')"/>
 		<security:intercept-url method="GET" pattern="/mypage**" access="hasAnyRole('ROLE_MEMBER', 'ROLE_MANAGER', 'ROLE_ADMIN')" />
-		
 		<!-- access denied시 처리하는 controller -->
 		<security:access-denied-handler	ref="customAccessDeniedHandler" />
 		
