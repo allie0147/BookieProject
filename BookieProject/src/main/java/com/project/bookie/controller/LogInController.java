@@ -1,7 +1,6 @@
 package com.project.bookie.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,11 +73,7 @@ public class LogInController {
 		System.out.println("LogInCtr의 ModifyPwd에서의 userId : "+uId+", authKey : "+authkey);
 		System.out.println("LogInCtr의 ModifyPwd에서의 user email : "+user.getUEmail());
 		System.out.println("LogInCtr의 ModifyPwd에서의 user : "+user.toString());
-		if(user != null) {
-			m.addAttribute("user", user);
-		}else {
-			m.addAttribute("user", user); //null을 보내는 것
-		}
+		m.addAttribute("user", user);
 		return "login/modifyPassword";
 	}
 	
