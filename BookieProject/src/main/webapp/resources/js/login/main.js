@@ -26,102 +26,56 @@ $(function() {
 		location.href = "/userForm";
 	})
 });
+
+// 이메일, 패스워드 체크 값
+let boolChk = false;
+
 $(function() {
-	$("form")
-			.submit(
-					function() {
-						let u_email = $('input[name=uEmail]').val();
-						console.log(u_email);
-						let emailCheck = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-						if (emailCheck.test(u_email) == true) {
-							console.log("확인");
-							$('#error01').hide();
-							u_email = encodeURIComponent(u_email);
-							$
-									.ajax({
-										url : "/loginEmail?email=" + u_email,
-										type : "get",
-										success : function(data) {
-											console.log(data);
-											if (data == 1) {
-												console.log(data);
-											} else {
-												alert("없는 이메일");
-												submitFuc(document
-														.getElementById('inputEmail1'));
-											}
-											return false;
-										}
-									}); // ajax end
-						} else if (u_email == "") {
-							console.log("빈값");
-							$('#error01').text('이메일을 입력해주세요').css("display",
-									"inline-block").css("color", "#ff070b")
-									.css("font-size", "small").css(
-											'font-weight', 'bold');
-							submitFuc(document.getElementById('inputEmail1'));
-							return false;
-						} else if (emailCheck.test(u_email) == false) {
-							console.log("false");
-							$('#error01').text('이메일양식이 아닙니다').css("display",
-									"inline-block").css("color", "#ff070b")
-									.css("font-size", "small").css(
-											'font-weight', 'bold');
-							submitFuc(document.getElementById('inputEmail1'));
-							return false;
+	$("form").submit(
+			function() {
+				let u_email = $('input[name=uEmail]').val();
+				let pwd = $('input[name=uPwd]').val();
+				console.log(u_email);
+				console.log(pwd);
+				$.ajax({
+					url : "/loginChk",
+					type : "post",
+					data : {
+						'uEmail' : u_email,
+						'uPwd' : pwd
+					},
+					success : function(data) {
+						if (data == 1) {
+							console.log(data);
+							$('#error02').hide();
+							boolChk = true;
+							alert(data + "  " + boolChk);
+							console.log("form submit : " + boolChk);
+							if (boolChk == false) {
+								console.log("if false: " + boolChk);
+								$('#error02').text('이메일 또는 비밀번호를 확인하세요.').css(
+										"display", "inline-block").css("color",
+										"#ff070b").css("font-size", "small").css(
+										'font-weight', 'bold');
+								return false;
+							} else {
+								console.log("else true: " + boolChk);
+								location.replace("/");
+							}
+						} else {
+							$('#error02').text('이메일 또는 비밀번호를 확인하세요.').css(
+									"display", "inline-block").css("color",
+									"#ff070b").css("font-size", "small").css(
+									'font-weight', 'bold');
 						}
-
-						let pwd = $('input[name=uPwd]').val();
-						let num = pwd.search(/[0-9]/g);
-						let eng = pwd.search(/[a-z]/ig);
-						let spe = pwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-						let pwdCheck = RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/);
-						if (num.test(pwd) == true && eng.test(pwd) == true
-								&& spe.test(pwd) == true && pwd.length < 17
-								&& pwd.length > 7) {
-							console.log("확인");
-							pwd = encodeURIComponent(pwd);
-							$
-									.ajax({
-										url : "/loginPwd?pwd=" + pwd,
-										type : "get",
-										success : function(data) {
-											console.log(data);
-											if (data == 1) {
-												console.log(data);
-											} else {
-												submitFuc(document
-														.getElementById('inputPassword1'));
-											}
-											return false;
-										}
-									}); // ajax end
-						} else if (pwd == "") {
-							console.log("빈값");
-							$('#error02').text('비밀번호를 입력해주세요').css(
-			                        "display", "inline-block").css("color",
-			                        "#ff070b").css("font-size",
-			                        "small").css('font-weight', 'bold');
-							submitFuc(document.getElementById('inputPassword1'));
-							return false;
-						} else if ((num < 0 && eng < 0) || (eng < 0 && spe < 0)
-								|| (spe < 0 && num < 0)) {
-							console.log("비밀번호 양식 오류");
-							$('#error02').text('비밀번호 양식을 확인해주세요').css(
-			                        "display", "inline-block").css("color",
-			                        "#ff070b").css("font-size",
-			                        "small").css('font-weight', 'bold');
-							submitFuc(document.getElementById('inputPassword1'));
-							return false;
-						} else if (pwd.length > 17 || pwd.length < 8) {
-							console.log("짧은 비밀번호");
-							$('#error02').text('비밀번호가 너무 길거나 짧습니다').css(
-			                        "display", "inline-block").css("color",
-			                        "#ff070b").css("font-size",
-			                        "small").css('font-weight', 'bold');
-							submitFuc(document.getElementById('inputPassword1'));
-							return false;
-						}
-
-					});
+					},
+					error : function() {
+						$('#error02').text('이메일 또는 비밀번호를 확인하세요.').css(
+								"display", "inline-block").css("color",
+								"#ff070b").css("font-size", "small").css(
+								'font-weight', 'bold');
+						return false;
+					}
+				}); // ajax end
+			});
 });

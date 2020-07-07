@@ -12,8 +12,9 @@
 	
 	<security:http auto-config="true" use-expressions="true">
 		<!-- 접근허가 관리 -->
-		<security:intercept-url method="GET" pattern="/,/bookcard,/qna**,/cs,/userForm" access="permitAll"/>
-		<security:intercept-url pattern="/mypage**"	access="hasAnyRole('ROLE_MEMBER', 'ROLE_MANAGER', 'ROLE_ADMIN')" />
+		<security:intercept-url method="GET" pattern="/,/bookcard,/qna**,/cs,/userForm,/login" access="permitAll"/>
+		<security:intercept-url method="GET" pattern="/logout" access="hasAnyRole('ROLE_MEMBER', 'ROLE_MANAGER', 'ROLE_ADMIN')"/>
+		<security:intercept-url method="GET" pattern="/mypage**" access="hasAnyRole('ROLE_MEMBER', 'ROLE_MANAGER', 'ROLE_ADMIN')" />
 		
 		<!-- access denied시 처리하는 controller -->
 		<security:access-denied-handler	ref="customAccessDeniedHandler" />
@@ -23,12 +24,11 @@
 		 실패 시 , custom 
 		 -->
 		<security:form-login 
-		username-parameter="uEmail" password-parameter="uPwd"
-		login-page="/login" default-target-url="/"  always-use-default-target="false" 
-		 authentication-failure-url="/loginFailure" />
+		username-parameter="uEmail" password-parameter="uPwd" authentication-success-handler-ref="customAccessSuccessHandler"
+		login-page="/login" default-target-url="/"  always-use-default-target="false" authentication-failure-url="/loginFailure" />
 		<!-- logout 시, customLogout으로 보냄. session 및 쿠키 모두 삭제. logout완료되면 main화면으로 -->	
 		<security:logout logout-url="/logout" success-handler-ref="logoutSuccessHandler"
-		invalidate-session="false" delete-cookies="remeber-me,JSESSIONID" />
+		invalidate-session="false" delete-cookies="remember-me,JSESSIONID" />
 		<!-- remember-me시, 토큰 30일짜리 부여 : 아직 구현안함-->
 		<!-- <security:remember-me data-source-ref="dataSource" 
 		remember-me-parameter="remember-me"

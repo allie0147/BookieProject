@@ -48,7 +48,7 @@
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="form-container">
-					<form action="/login" method="post">
+					<form action="/loginChk" method="post">
 						<div class="form-group text-white">
 							<label for="inputEmail1">Email</label> <input type="email"
 								class="form-control" id="inputEmail1" name="uEmail"

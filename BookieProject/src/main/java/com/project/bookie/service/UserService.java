@@ -56,15 +56,6 @@ public class UserService {
 	public int nickCheck(String nickname) {
 		return userMapper.countUserByNickname(nickname);
 	}
-
-//	 중복 체크 : 1->있음, 0->없음
-	public int pwdCheck(String pwd) {
-		return userMapper.countUserByPwd(pwd);
-	}
-
-	public User getUserId(String uEmail) {
-		return userMapper.getUserByEmail(uEmail);
-	}
 	
 	public long getUserIdByEmail(String uEmail) {
 		return userMapper.getUserIdByEmail(uEmail);

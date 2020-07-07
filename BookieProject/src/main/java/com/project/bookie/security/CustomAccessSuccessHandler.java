@@ -21,10 +21,11 @@ public class CustomAccessSuccessHandler implements AuthenticationSuccessHandler 
 			roleNames.add(authority.getAuthority());
 		});
 		if (roleNames.contains("ROLE_ADMIN")) {
+			request.getSession().setMaxInactiveInterval(60 * 60); // 1시간
 			response.sendRedirect("/admin");
-			return;
+		} else if (roleNames.contains("ROLE_MEMBER")) {
+			request.getSession().setMaxInactiveInterval(60 * 60); // 1시간
+			response.sendRedirect("/");
 		}
-		response.sendRedirect("/");
 	}
-
 }
