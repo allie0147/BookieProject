@@ -63,7 +63,7 @@ public class LogInController {
 	}
 
 	@GetMapping(value = "/EmailCkForPwd", produces = "application/html; charset=utf-8")
-	public String EmailCkForPwd(int uId) {
+	public String emailCkForPwd(int uId) {
 		// 일치하는 이메일이 있을 때 그 이메일의 유저 아이디를 가져와 그 아이디로 다시 유저 정보 가져옴(url에 파라미터로 줄 때 보안을 위해)
 		// 해당 유저의 이메일로 메일을 보냄(인증 링크에는 유저의 아이디와 인증키 - 인증키는 갱신됨)
 		// authKey 업데이트
@@ -75,7 +75,7 @@ public class LogInController {
 
 	// 인증키 비교
 	@GetMapping("/resetpwd")
-	public String ModifyPwd(Model m, @RequestParam("uId")int uId, @RequestParam("authkey")String authkey) {
+	public String modifyPwd(Model m, @RequestParam("uId")int uId, @RequestParam("authkey")String authkey) {
 		User user = authService.ckAuthKey(uId, authkey);
 		System.out.println("LogInCtr의 ModifyPwd에서의 userId : "+uId+", authKey : "+authkey);
 		System.out.println("LogInCtr의 ModifyPwd에서의 user email : "+user.getUEmail());
