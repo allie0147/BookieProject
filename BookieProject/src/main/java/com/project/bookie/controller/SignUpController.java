@@ -61,7 +61,7 @@ public class SignUpController {
 			//회원 정보 DB에 등록
 			userService.setUser(user);
 			//회원 정보를 DB에서 불러와(auto_increment인 id까지 가져오기 위함) 세션에 등록
-			User u = userService.getUserId(user.getUEmail());
+			User u = userService.getUserInfo(user.getUEmail());
 			userService.setInterest(u.getId(), user.getInterest());
 			m.addAttribute("user", user);
 			//계정 인증 메일 전송

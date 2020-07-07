@@ -3,25 +3,31 @@
 	height: 10px;
 	left: 50%;
 }
+
 .d-inline {
 	display: inline;
 	width: 30px;
 }
+
 .form-group {
 	margin-bottom: 0;
 }
-p{
+
+p {
 	margin: 10px
 }
-.btn-default{
+
+.btn-default {
 	background: #d2e4e2;
 	border-color: #d2e4e2;
 }
-.btn-default:hover{
+
+.btn-default:hover {
 	background: #d5e1e0;
 	border-color: #d5e1e0;
 }
-.btn-default:focus{
+
+.btn-default:focus {
 	background: #d5e1e0;
 	border-color: #d5e1e0;
 }
@@ -44,18 +50,22 @@ p{
 	box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
 	border-radius: 10px;
 }
+
 a {
 	text-decoration: none;
 }
+
 .boxSize {
 	width: 300px;
 	height: 35px;
 }
+
 .logInButton {
 	width: 200px;
 	height: 32px;
 	margin-left: 55px;
 }
+
 .naver {
 	background: #00e673;
 	color: white;
@@ -64,6 +74,7 @@ a {
 	height: 50px;
 	font-size: 18pt;
 }
+
 .kakao {
 	background: #ffff00;
 	border: none;
@@ -71,52 +82,65 @@ a {
 	height: 50px;
 	font-size: 18pt;
 }
+
 .vertical {
 	border-left: 1px solid black;
 	height: 10px;
 	left: 50%;
 }
+
 .d-inline {
 	display: inline;
 	width: 30px;
 }
+
 .form-group {
 	margin-bottom: 0;
 }
-p{
+
+p {
 	margin: 10px
 }
-.btn-default{
+
+.btn-default {
 	background: #d2e4e2;
 	border-color: #d2e4e2;
 }
-.btn-default:hover{
+
+.btn-default:hover {
 	background: #d5e1e0;
 	border-color: #d5e1e0;
 }
-.btn-default:focus{
+
+.btn-default:focus {
 	background: #d5e1e0;
 	border-color: #d5e1e0;
+}
+/*로그인 에러*/
+.error {
+	color: #ff070b;
+	font-size: small;
+	font-weight: bold;
 }
 /*패스워드 수정*/
 /*resetPwdSuccess.jsp*/
-.resetPwdSuccess{
-		text-align: center;
-		margin:100px auto 100px auto;
+.resetPwdSuccess {
+	text-align: center;
+	margin: 100px auto 100px auto;
 }
 /*modifyPassword.jsp*/
-.resetPwdForm{
-		text-align: center;
-		margin:100px auto 100px auto;
+.resetPwdForm {
+	text-align: center;
+	margin: 100px auto 100px auto;
 }
 /*findPassword.jsp*/
-.findPassword{
-		margin-top:100px;
-		text-align: center;
+.findPassword {
+	margin-top: 100px;
+	text-align: center;
 }
 
-.findPasswordResult{
+.findPasswordResult {
 	border-radius: 6px;
-	padding:10px auto 10px auto;
+	padding: 10px auto 10px auto;
 	background: white;
 }

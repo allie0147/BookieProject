@@ -35,10 +35,6 @@
 		select count(*) from
 		user where nickname=#{nickname}
 	</select>
-	<!-- 닉네임 중복 검사!!! -->
-	<select id="countUserByPwd" resultType="int">
-		select count(*) from user where u_pwd = #{pwd}
-	</select>
 	<!-- 휴대폰번호로 이메일 혹은 비밀번호 찾기(비밀번호 재설정 기능 필요) -->
 	<select id="getUserByPhone" resultType="user"> <!-- result type으로 변경 -->
 		select * from user where

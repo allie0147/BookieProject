@@ -29,9 +29,6 @@ public interface UserMapper {
 	// 닉네임 검사!!! (signup)
 	public int countUserByNickname(String nickname);
 
-	// 비밀번호 검사 !!! (login, signup)
-	public int countUserByPwd(@Param("pwd")String pwd);
-
 	// 회원 정보 등록
 	public void insertUser(User user);
 
