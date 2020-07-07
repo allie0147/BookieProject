@@ -8,45 +8,13 @@
 <meta charset="UTF-8">
 <title>QnA게시판</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/QnA/main.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="resources/css/bootstrap.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/QnA/main.js"></script>
-<style>
-.ml{
-	margin-left:30%;
-}
-.form-group{
-margin-bottom: 0;
-}
-.col-xs-2{
-padding-right:0;
-
-}
-.col-xs-3{
-padding-right:0;
-}
-.table-bordered{
-width:800px;
-margin: auto;
-}
-.pagination > li > a{
-color: #000000;
-}
-.pagination > li > a:focus,
-.pagination > li > a:hover{
-color: #000000;
-}
-
-
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -56,17 +24,17 @@ color: #000000;
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="/bookcard/main">글귀</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
 						<li><a href="/qna/main?g=2">에세이</a></li>
 						<li><a href="/qna/main?g=3">인문학</a></li>
 						<li><a href="/qna/main?g=4">경제경영</a></li>
 						<li><a href="/qna/main?g=5">사회과학</a></li>
 						<li><a href="/qna/main?g=6">종교</a></li>
 						<li><a href="/qna/main?g=7">예술</a></li>
-					</ul></li>
+				</ul>
+	    	  </li>
 				<li><a href="/club/main">독서 클럽</a></li>
 				<li><a href="/cs">고객센터</a></li>
 			</ul>

@@ -8,14 +8,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>실제 글 페이지</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/QnA/detail.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="resources/css/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function name(){
 		function ComUpdateForm(id){
@@ -45,7 +43,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/bookcard/main">글귀</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
+					data-toggle="dropdown">Q&A<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
 						<li><a href="/qna/main?g=2">에세이</a></li>
@@ -78,8 +76,8 @@
 	</nav>
 
 	<div class="container">
-		<img src="images/bg2.jpg" class="img-rounded" alt="Cinque Terre"
-			width="100%" height="300px">
+		<div style="margin-top:50px; background:lightgray; width:95%; height:250px; margin:50px auto 50px auto"></div>
+		<!-- <img src="images/bg2.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="300px"> -->
 	</div>
 
 	<div class="container text-center">

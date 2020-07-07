@@ -6,9 +6,11 @@ hr {
 	display: inline-block;
 	margin: auto;
 }
-#qnaTitle{
+
+#qnaTitle {
 	margin-bottom: 20px;
 }
+
 #boardList {
 	width: 600px;
 	margin: auto;
@@ -130,4 +132,33 @@ thead>tr {
 	margin: auto;
 	width: 600px;
 	text-align: right;
+}
+
+.ml {
+	margin-left: 30%;
+}
+
+.form-group {
+	margin-bottom: 0;
+}
+
+.col-xs-2 {
+	padding-right: 0;
+}
+
+.col-xs-3 {
+	padding-right: 0;
+}
+
+.table-bordered {
+	width: 800px;
+	margin: auto;
+}
+
+.pagination>li>a {
+	color: #000000;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover {
+	color: #000000;
 }
