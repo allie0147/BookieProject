@@ -121,7 +121,7 @@ color: #000000;
 				</thead>
 				<tbody>
 					<c:forEach var="board" items="${boardViewList.boardList }">
-						<tr onclick="board">
+						<tr onclick="location.href='/qna/detail?b=${board.id }'">
 							<td>${board.id }</td>
 							<td>${board.title }</td>
 							<td>${board.writer }</td>
