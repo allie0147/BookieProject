@@ -100,7 +100,6 @@ public class LogInController {
 
 	@PostMapping("/loginProc")
 	public void getInfo(@Param("uEmail") String uEmail, @Param("uPwd") String uPwd) {
-//	로그인 성공시 user 정보 session에 담기
 //	시큐리티적용
 		System.out.println("login컨트롤러");
 		System.out.println("uEmail : " + uEmail);
