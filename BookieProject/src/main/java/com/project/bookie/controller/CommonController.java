@@ -22,7 +22,7 @@ import com.project.bookie.service.QnaBoardService;
 import com.project.bookie.service.UserService;
 
 @Controller
-public class NavigateController {
+public class CommonController {
 
 	@Autowired
 	UserService userService;
@@ -55,42 +55,10 @@ public class NavigateController {
 		return "mainView/main";
 	}
 
-	@GetMapping("/QnA")
-	public String showQnA() {
-//		QnA화면 보여주기
-		return "QnA/qnaMain";
-	}
-
-	@GetMapping("/mypage")
-	public String showMypage(Model m) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName();
-		User mypageInfo = userService.getUserInfo(username);
-		m.addAttribute("mypageInfo", mypageInfo);
-		return "myPage/myPage";
-	}
-
-	@GetMapping("/bookclub")
-	public String showBookclub() {
-//		bookclub화면 보여주기
-		return "bookClub/bookclubMain";
-	}
-
-	@GetMapping("/bookcard")
-	public String showBookCard() {
-//		bookcard화면 보여주기
-		return "bookCard/bookcardMain";
-	}
-
 	@GetMapping("/cs")
 	public String showInfo() {
 //		고객센터화면 보여주기
 		return "cs/cs";
-	}
-
-	@GetMapping("/mypageUpdate")
-	public String showMypageUpdate() {
-		return "myPage/myPageUpdate";
 	}
 
 }
