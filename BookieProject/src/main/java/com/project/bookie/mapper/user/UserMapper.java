@@ -51,9 +51,6 @@ public interface UserMapper {
 	//회원 정보 변경(관심 장르 제외)
 	public void updateMypage(@Param("uId")long uId, @Param("nickname")String nickname, @Param("phone")String phone);
 	
-//	//회원의 관심 장르 조회
-//	public List<Interest> getInterestOfUser(long uId);
-	
 	//회원의 관심 장르 삭제
 	public void deleteInterest(long uId);
 	
@@ -61,7 +58,7 @@ public interface UserMapper {
 	public void insertMypageInterest(Interest interest);
 	
 	// 회원 정보 삭제(탈퇴)
-	public void deleteUser(int uId);
+	public void deleteUser(long uId);
 	
 	//비밀번호 변경
 	public void updatePwdById(@Param("id")int id, @Param("pwd")String pwd);

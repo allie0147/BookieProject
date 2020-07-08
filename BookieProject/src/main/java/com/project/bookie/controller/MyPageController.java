@@ -2,6 +2,9 @@ package com.project.bookie.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -48,5 +51,12 @@ public class MyPageController {
 	public String mypageUpdate(long id, String nickname, String phone, @RequestParam("interestArray[]")int[] interestArray) {
 		userService.updateMypage(id, nickname, phone, interestArray);
 		return "/myPage/myPage";
+	}
+	
+	@PostMapping("/delete")
+	@ResponseBody
+	public String deleteUser(HttpServletRequest req , HttpServletResponse resp, @RequestParam("uId")Long uId) {
+		userService.deleteUserinSystem(uId);
+		return "true";
 	}
 }
