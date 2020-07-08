@@ -41,7 +41,7 @@
 	<!-- 글 하나에 달린 모든 댓글 조회(리플 제외) -->
 	<select id="getAllCommentListByBoardId" resultMap="brd">
 		select club_comment.id as id, club_board_id, user.nickname as writer, message, w_date 
-		from comment join user on club_comment.user_id = user.id 
+		from club_comment join user on club_comment.user_id = user.id 
 		where club_board_id=#{boardId}
 	</select>
 	
@@ -91,7 +91,7 @@
 	</select>
 	
 	<!-- 글 등록(id는 auto_incement, w_date는 기본값이 current_timestamp로 자동 생성 -->
-	<insert id="insertBoard" parameterType="board"><!--  @Param("board")Board board, @Param("userId")int userId -->
+	<insert id="insertBoard" parameterType="board" keyProperty="id" useGeneratedKeys="true"><!--  @Param("board")Board board, @Param("userId")long userId -->
 		insert into club_board(title, user_id, content) values(#{title}, #{userId}, #{content})
 	</insert>
 	

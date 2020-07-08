@@ -39,7 +39,7 @@ public interface ClubBoardMapper {
 	public List<Board> getListByUserId(int id); //select * from board.user_id = #{작성자 id}(로그인 되어있는 세션에서 정보를 받아옴)
 	
 	//글 등록
-	public void insertBoard(@Param("board")Board board, @Param("id")int id);
+	public void insertBoard(Board board); //, @Param("id")long id
 	
 	//글 수정
 	public void updateBoard(Board board);

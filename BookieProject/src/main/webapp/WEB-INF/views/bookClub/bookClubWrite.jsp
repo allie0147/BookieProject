@@ -15,17 +15,53 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/resources/css/bootstrap.min.js"></script>
 <!-- summernote -->
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
 	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+$(function(){
+	$("form").on("submit",function () {
+		console.dir($("form").eq(1));
+    let formData = $("form").eq(1).serialize();
+    console.log(formData);
+/*     console.log("장르 :" + formData.genre);
+    console.log("내용 :" + formData.content); */
+    return false;
+    if (formData.genre != 0 && formData.content != null) {
+    	console.log("fuck");
+        $.ajax({
+            url: "/club/write",
+            type: "post",
+            data: formData,
+            dataType: "json",
+            success: function (data) {
+                /* if (boardId != null) { */
+                    alert("글 작성 되었씁니다.");
+                    location.replace("/club/write?b=" + data + ".jsp");
+                /* } */
+            },
+            error: function () {
+                alert("글 작성에 실패 했습니다.");
+            }
+        }); //ajax end
+        return false;
+    } else {
+        alert("내용 또는 장르 선택하셈");
+    }
+});
+});
+/* $(document)
+    .ajaxStart(function () {
+        $('#my-spinner').show();
+    })
+    .ajaxStop(function () {
+        $('#my-spinner').hide();
+    }); */
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -80,12 +116,12 @@
 	</div>
 
 	<div class="container">
-		<form class="form-container text-center" action="index.html"
-			method="post">
+		<form class="form-container text-center">
 			<div class="form-inline text-left">
-				<div class="form-group">
-					<input type="text" class="form-control col-sm-8" placeholder="제목">
+				<div class="form-group" >
+					<input type="text" class="form-control col-sm-8" name="title" placeholder="제목">
 				</div>
+				<input type="hidden" id="hidden" name="uEmail" value="${user.getUEmail()}">
 				<div class="form-group">
 					<select class="form-control" name="genre" style="cursor: pointer;">
 						<option value="0" selected="selected">==장르 선택==</option>

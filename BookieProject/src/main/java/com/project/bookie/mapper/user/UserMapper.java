@@ -16,9 +16,12 @@ public interface UserMapper {
 
 	// 이메일로 회원 조회(비밀번호 찾기)
 	public User getUserByEmail(String uEmail);
-	
+
 	// user id만 가져오기~~
 	public long getUserIdByEmail(String uEmail);
+
+	// user nickname가져오기~
+	public String getUserNicknameByEmail(String uEmail);
 
 	// 연락처로 회원 조회(아이디 찾기, 비밀번호 찾기)
 	public User getUserByPhone(String phone);
@@ -40,14 +43,14 @@ public interface UserMapper {
 
 	// 회원 별명 변경
 	public void updateUserWithNickName(User user);
-	
-	//회원 이메일 인증 여부 변경
+
+	// 회원 이메일 인증 여부 변경
 	public void updateUserWithId(int uId);
-	
+
 	// 회원 정보 삭제(탈퇴)
 	public void deleteUser(int id);
-	
-	//비밀번호 변경
-	public void updatePwdById(@Param("id")int id, @Param("pwd")String pwd);
+
+	// 비밀번호 변경
+	public void updatePwdById(@Param("id") int id, @Param("pwd") String pwd);
 
 }
