@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
@@ -76,14 +76,24 @@
 					<div>${mypageInfo.phone }</div>
 				</div>
 				<div class="container">
-					<b>GENRE</b><br>
+					<b>INTEREST GENRE</b><br>
+					<div>
+					<c:forEach var="interest" items="${mypageInfo.interestList }" varStatus="status">
+						<c:if test="${status.index != mypageInfo.interestList.size() - 1 }">
+							${interest.genreName }, 
+						</c:if>
+						<c:if test="${status.index == mypageInfo.interestList.size() - 1 }">
+							${interest.genreName }
+						</c:if>
+					</c:forEach>
+					</div>
 				</div>
 				<div class="container">
 					<b>가입일</b>
 					<div class="">${mypageInfo.regDate }</div>
 				</div>
 				<div class="text-center">
-					<a href="/mypage/update" class="btn btn-md btn-default">수정하기</a>
+					<a href="/mypage/updateForm" class="btn btn-md btn-default">수정하기</a>
 				</div>
 				
 			</div>

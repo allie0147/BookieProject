@@ -1,11 +1,13 @@
 package com.project.bookie.service;
 
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.project.bookie.dto.interest.Interest;
 import com.project.bookie.dto.user.User;
 import com.project.bookie.mapper.user.UserAuthMapper;
 import com.project.bookie.mapper.user.UserMapper;
@@ -54,6 +56,11 @@ public class UserService {
 		return user;
 	}
 
+	public List<Interest> getAllInterestList(){
+		List<Interest> interestList = userMapper.getAllInterestList();
+		return interestList;
+	}
+	
 	public void setInterest(long userId, String[] interest) {
 		for (String i : interest) {
 			System.out.println(Integer.parseInt(i));
@@ -104,5 +111,27 @@ public class UserService {
 		
 		System.out.println(message.getSid());
 		return authNum;
+	}
+	
+	public void updateMypage(long uId, String nickname, String phone, int[] interestArr) {
+		System.out.println("userService에 들어온 정보(id : "+uId+", nickname : "+nickname+", phone : "+phone+")");
+		System.out.println("userService에 들어온 interestArr : "+interestArr);
+		userMapper.updateMypage(uId, nickname, phone);
+		System.out.println("updateMypage 완료");
+//		List<Interest> userInterestList = userMapper.getInterestOfUser(uId);
+		userMapper.deleteInterest(uId);
+		System.out.println("deleteInterest 완료");
+		for(int i : interestArr) {
+			Interest interest = new Interest(0, uId, i, "");
+			userMapper.insertMypageInterest(interest);
+			System.out.println("genre_id가 "+i+"인 interest 삽입 : "+interest);
+		}
+		System.out.println("insertMypageInterest 완료");
+
+		//해당 uId에 등록된 interest genre들 제거
+		//새로운 interest genre 추가
+//		for(Interest interest : interestArr) {
+//			userMapper.updateMypageInterest(interest);	
+//		}
 	}
 }

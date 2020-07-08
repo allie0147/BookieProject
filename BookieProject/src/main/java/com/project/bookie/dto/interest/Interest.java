@@ -11,4 +11,5 @@ public class Interest {
 	private long id;
 	private long userId;
 	private int genreId;
+	private String genreName;
 }
