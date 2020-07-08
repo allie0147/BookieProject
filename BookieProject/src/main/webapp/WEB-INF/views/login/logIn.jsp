@@ -25,7 +25,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/bookcard/main">글귀</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
+					data-toggle="dropdown">Q&A<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
 						<li><a href="/qna/main?g=2">에세이</a></li>
@@ -84,6 +84,7 @@
 								<span class='error'>${ERRORMSG }</span>
 							</div>
 						</c:if>
+						<div><input type="checkbox" name='remember-me'/> 자동 로그인 </div>
 						<input type="submit" class="btn btn-block btn-info" value="LogIn">
 						<input type="hidden" id="hidden" name='${_csrf.parameterName}'
 							value='${_csrf.token}'>

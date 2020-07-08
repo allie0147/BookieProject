@@ -45,15 +45,9 @@
 		<security:intercept-url	pattern="/logout" method="GET" 
 			access="hasAnyRole('ROLE_MEMBER','ROLE_MANAGER','ROLE_ADMIN')" />
 			
-			
-			<!-- 
-			/club/write /qna/write /logout
-			<security:intercept-url	pattern="/mypage**,/club/write.jsp,/qna/write.jsp,/logout.jsp" method="GET"
-			access="hasAnyRole('ROLE_MEMBER','ROLE_MANAGER','ROLE_ADMIN')" />
-			 -->
 		<!-- access denied시 처리하는 controller -->
 		<security:access-denied-handler	ref="customAccessDeniedHandler" />
-
+		
 		<!-- login 시, username(default)=>uEmail, password(default)=>uPwd로 변경. 
 		성공시, 세션부여 및 메인화면 리다이렉트
 		실패 시 , loginFailureHandler에서 errormsg로 login view에 보여줌(jstl) -->
@@ -67,9 +61,11 @@
 		<security:logout logout-url="/logout"
 			success-handler-ref="logoutSuccessHandler" invalidate-session="false"
 			delete-cookies="remember-me,JSESSIONID" />
-		<!-- remember-me시, 토큰 30일짜리 부여 : 아직 구현안함 -->
-		<!-- <security:remember-me data-source-ref="dataSource" remember-me-parameter="remember-me" 
-			token-validity-seconds="604800"/> -->
+			
+		<!-- remember-me시, 토큰 30일짜리 부여 -->
+		<security:remember-me data-source-ref="dataSource" remember-me-parameter="remember-me" 
+			token-validity-seconds="604800"/>
+			
 		<!-- csrf 토큰은 세션을 통해 보관, 브라우저가 전송한 csrf 토큰값을 검사하는 방식 -->
 		<security:csrf disabled="true" />
 		<!-- session 고정 공격 시 : migrateSession, 세션 끊겼을 때 : 로그인 페이지 -->
