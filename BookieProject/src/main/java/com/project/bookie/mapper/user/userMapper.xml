@@ -3,8 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.bookie.mapper.user.UserMapper">
+	<resultMap type="user" id="u">
+		<id property="id" column="id"/>
+		<result property="uEmail" column="u_email"/>
+		<result property="uPwd" column="u_pwd"/>
+		<result property="phone" column="phone"/>
+		<result property="nickname" column="nickname"/>
+		<result property="regDate" column="reg_date"/>
+		<collection property="interestList" column="id" select="getInterestByUserId"></collection>
+	</resultMap>
 	
-
 	<select id="getAllUser" resultType="user">
 		select * from user
 	</select>
@@ -22,9 +30,12 @@
 	<select id="getUserNicknameByEmail" parameterType="String" resultType="String">
 		select user.nickname from user where u_email=#{uEmail}
 	</select>
+	<select id="getInterestByUserId" resultType="interest">
+		select i.genre_id as genreId, g.name as genreName from genre g join interest i on g.id = i.genre_id where i.user_id = #{id}
+	</select>
 	<!-- 이메일로 비밀번호 찾기(일치하는 이메일 존재시 이메일 인증 필요 - 이메일로 비밀번호 전송 or 이메일 인증 성공시 페이지에서 
 		비밀번호 재설정 - 차후에 비밀번호 재설정 -->
-	<select id="getUserByEmail" resultType="user">  <!-- result type으로 변경 -->
+	<select id="getUserByEmail" resultMap="u">  <!-- result type으로 변경 -->
 		select * from user where u_email=#{uEmail}
 	</select>
 	<!-- 이메일 중복 검사!!! -->
@@ -42,6 +53,10 @@
 		select * from user where
 		phone=#{phone}
 	</select>
+	<!-- 전체 관심 장르 가져오기 -->
+	<select id="getAllInterestList" resultType="interest">
+		select id as genreId, name as genreName from genre;
+	</select>
 	<!-- 회원 정보 등록 -->
 	<insert id="insertUser" parameterType="user">
 		insert into user (u_email,
@@ -50,7 +65,7 @@
 		(#{uEmail}, #{uPwd}, #{nickname},
 		#{phone})
 	</insert>
-	<insert id="insertInterest">
+	<insert id="insertInterest" parameterType="interest">
 		insert into interest (user_id, genre_id) values
 		(#{userId},#{genreId})
 	</insert>
@@ -68,10 +83,25 @@
 		update user
 		set nickname=#{nickname} where id=#{id}
 	</update>
+	<!-- 마이페이지 정보 수정 -->
+	<update id="updateMypage">
+		update user set nickname=#{nickname}, phone=#{phone} where id=#{uId}
+	</update>
+	<!-- 회원 id에 따른 interest의 id가져오기 -->
+	<select id="getInterestIdByUserId">
+		select id from interest where user_id = #{id}
+	</select>
+	<!-- 마이페이지 정보 수정 - 관심 장르 체크박스 수정(where문의 id는 interest 테이블의 id -->
+	<delete id="deleteInterest">
+		delete from interest where user_id=#{userId}
+	</delete>
+	<insert id="insertMypageInterest" parameterType="interest">
+		insert interest(user_id, genre_id) values(#{userId}, #{genreId})
+	</insert>
 	<!-- 이메일 인증 확인 -->
 	<update id="updateUserWithId" parameterType="int">
 		update user
-		set certification=1 where id=${uId}
+		set certification=1 where id=#{uId}
 	</update>
 	<!-- 비밀번호 재설정 -->
 	<update id="updatePwdById">
@@ -80,6 +110,6 @@
 	</update>
 	<!-- 회원 정보 삭제 -->
 	<delete id="deleteUser">
-		delete from user where id=#{id}
+		delete from user where id=#{uId}
 	</delete>
 </mapper>

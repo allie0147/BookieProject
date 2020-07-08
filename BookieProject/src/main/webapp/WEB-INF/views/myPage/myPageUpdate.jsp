@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
@@ -16,6 +17,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/resources/js/mypage/main.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -58,98 +60,97 @@
 		<!-- <img src="images/mypage2.png" class="img-rounded" alt="Cinque Terre" width="95%" height="250px">-->
 	</div>
 
-<div class="container">
-  <div class="container-fluid bg">
-		<div class="div-container">
-
-				<form class="form-container" action="#" method="post">
+	<div class="container">
+  		<div class="container-fluid bg">
+			<div class="div-container">
+				<form class="form-container">
+					<div>
+						<input type="hidden" name="id" value="${mypageInfo.id}" />
+					</div>
 					<div class="form-group text-white">
-						<b>Email</b> <input type="email" class="form-control" name="name"
-							value="my@email.com" readonly="readonly">
+						<b>Email</b> <input type="email" class="form-control" name="email"
+							value="${mypageInfo.getUEmail() }" readonly="readonly">
 					</div>
 					<div class="form-group">
 						<label for="inputNickName">NICKNAME</label> <input type="text"
-							class="form-control" id="inputNickName" name="nicname"
-							value="userNicName">
+							class="form-control" id="inputNickName" name="nickname"
+							value="${mypageInfo.nickname }">
 					</div>
 					<div class="form-group">
 						<label for="phone">PHONE</label> <input type="text"
 							class="form-control" id="phone" name="phone"
-							value="000-0000-0000">
+							value="${mypageInfo.phone }">
 					</div>
 					<div class="form-group">
-						<label for="inputPassword1">GENRE</label><br> <input
-							type="checkbox" id="gen1" name="gen1" value="sosihe"> <label
-							for="gen1"> 소설, 시, 희곡</label>&nbsp; <input type="checkbox"
-							id="gen2" name="gen2" value="esse"> <label for="gen2">
-							에세이</label>&nbsp; <input type="checkbox" id="gen3" name="gen3"
-							value="inmoon"> <label for="gen3"> 인문학</label>&nbsp; <input
-							type="checkbox" id="gen4" name="gen4" value="inmoon"> <label
-							for="gen4"> 경제 경영</label>&nbsp; <input type="checkbox" id="gen5"
-							name="gen5" value="inmoon"> <label for="gen5"> 사회
-							과학</label>&nbsp; <input type="checkbox" id="gen6" name="gen6"
-							value="inmoon"> <label for="gen6"> 종교</label>&nbsp; <input
-							type="checkbox" id="gen7" name="gen7" value="inmoon"> <label
-							for="gen7"> 예술</label>&nbsp;
+						<label for="inputPassword1">INTEREST GENRE</label><br>
+						<c:forEach var="interest" items="${allInterestList }" varStatus="status">
+							<c:if test="${mypageInfo.interestList.contains(interest) == false}">
+								<input type="checkbox" id="gen${interest.genreId }" name="interest" value="${interest.genreId }">
+								<label for="gen${interest.genreId }">${interest.genreName }</label>&nbsp;
+							</c:if>
+							<c:if test="${mypageInfo.interestList.contains(interest) == true}">
+								<input checked="checked" type="checkbox" id="gen${interest.genreId }" name="interest" value="${interest.genreId }">
+								<label for="gen${interest.genreId }">${interest.genreName }</label>&nbsp;
+							</c:if>
+						</c:forEach>
 					</div>
 					<div class="form-group">
 						<b>가입일</b> <input type="text" class="form-control"
-							name="inputRegDate" value="2020-06-30" readonly="readonly">
+							name="inputRegDate" value="${mypageInfo.regDate }" readonly="readonly">
 					</div>
 					<p>* Email과 가입일은 수정 할 수 없습니다</p>
-          <hr>
+					<hr>
 					<div class="col text-center">
-						<button type="submit" class="btn btn-danger">수 정</button>
+						<input type="submit" value="수 정" class="btn btn-danger">
 					</div>
 				</form>
+			</div>
 		</div>
 	</div>
-</div>
-		<footer id="footerBg">
-			<div class="container">
+	<footer id="footerBg">
+		<div class="container">
+			<br>
+			<div class="row" id="footerFont">
+				<div class="col-sm-4">
+					<h4>Introduce</h4>
+					<p>I have studied Java, HTML, Python, Jquari, etc. and I want
+						to make a space where I can exchange questions and answers
+						related to books.</p>
+				</div>
+				<div class="col-sm-4">
+					<h4>Contact</h4>
+					<p>
+						<span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul
+					</p>
+					<p>
+						<span class="glyphicon glyphicon-phone"></span>Phone: +82
+						1082747414
+					</p>
+					<p>
+						<span class="glyphicon glyphicon-envelope"></span>Email:
+						hth0411@naver.com
+					</p>
+				</div>
+				<div class="col-sm-4">
+					<h4>store</h4>
+					<h5>
+						<a href="https://www.aladin.co.kr/" target="_blank">aladin</a>
+					</h5>
+					<h5>
+						<a href="http://www.bandinlunis.com/" target="_blank">bandinluis</a>
+					</h5>
+					<h5>
+						<a href="http://www.yes24.com/" target="_blank">yes24</a>
+					</h5>
+				</div>
 				<br>
-				<div class="row" id="footerFont">
-					<div class="col-sm-4">
-						<h4>Introduce</h4>
-						<p>I have studied Java, HTML, Python, Jquari, etc. and I want
-							to make a space where I can exchange questions and answers
-							related to books.</p>
-					</div>
-					<div class="col-sm-4">
-						<h4>Contact</h4>
-						<p>
-							<span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul
-						</p>
-						<p>
-							<span class="glyphicon glyphicon-phone"></span>Phone: +82
-							1082747414
-						</p>
-						<p>
-							<span class="glyphicon glyphicon-envelope"></span>Email:
-							hth0411@naver.com
-						</p>
-					</div>
-					<div class="col-sm-4">
-						<h4>store</h4>
-						<h5>
-							<a href="https://www.aladin.co.kr/" target="_blank">aladin</a>
-						</h5>
-						<!-- target 설정: 새창으로 변경 -->
-						<h5>
-							<a href="http://www.bandinlunis.com/" target="_blank">bandinluis</a>
-						</h5>
-						<h5>
-							<a href="http://www.yes24.com/" target="_blank">yes24</a>
-						</h5>
-					</div>
-					<br>
-					<div class="col-sm-12 text-center">
-						<h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5>
-						<h5>Allie Dohee Kim</h5>
-					</div>
+				<div class="col-sm-12 text-center">
+					<h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5>
+					<h5>Allie Dohee Kim</h5>
 				</div>
 			</div>
-		</footer>
+		</div>
+	</footer>
 	
 </body>
 </html>

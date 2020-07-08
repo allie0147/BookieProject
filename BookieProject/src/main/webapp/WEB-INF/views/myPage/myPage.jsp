@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
@@ -17,6 +17,29 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+function deleteUser(){
+	let conf = confirm("정말 탈퇴하시겠습니까?");
+	let uId = ${mypageInfo.id};
+	console.log(uId);
+	if(conf){
+		$.ajax({
+			url:"/mypage/delete",
+			type:"post",
+			data:{
+				"uId":uId,
+			},
+			success:function(data){
+				if(data == "true"){
+					alert("탈퇴되었습니다.");
+					location.href="/logout";					
+				}
+			}
+		});
+	}
+}
+
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -76,14 +99,25 @@
 					<div>${mypageInfo.phone }</div>
 				</div>
 				<div class="container">
-					<b>GENRE</b><br>
+					<b>INTEREST GENRE</b><br>
+					<div>
+					<c:forEach var="interest" items="${mypageInfo.interestList }" varStatus="status">
+						<c:if test="${status.index != mypageInfo.interestList.size() - 1 }">
+							${interest.genreName }, 
+						</c:if>
+						<c:if test="${status.index == mypageInfo.interestList.size() - 1 }">
+							${interest.genreName }
+						</c:if>
+					</c:forEach>
+					</div>
 				</div>
 				<div class="container">
 					<b>가입일</b>
 					<div class="">${mypageInfo.regDate }</div>
 				</div>
 				<div class="text-center">
-					<a href="/mypage/update" class="btn btn-md btn-default">수정하기</a>
+					<a href="/mypage/updateForm" class="btn btn-md btn-default">수정하기</a>
+					<a href="javascript:deleteUser()" class="btn btn-md btn-default">탈퇴하기</a>
 				</div>
 				
 			</div>

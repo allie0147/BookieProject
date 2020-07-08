@@ -55,6 +55,7 @@ $(function(){
 
 /*인증 문자메세지가 발송된 상태에서 새로고침시 경고(certifForm.jsp) */
 function showNoticeRefresh(){
+	
 	console.log("돌아가시겠습니까? 새로운 인증이 요구됩니다.");
 	let conf = confirm("돌아가시겠습니까? 새로운 인증이 요구됩니다.");
 	if(conf){
@@ -62,6 +63,8 @@ function showNoticeRefresh(){
 	}else{
 		return false;
 	}
+	
+	return "돌아가시겠습니까?";
 }
 
 /* 문자로 보낸 인증메세지 일치 여부 확인 기능(certifForm.jsp) */

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.project.bookie.dto.interest.Interest;
 import com.project.bookie.dto.user.User;
 
 public interface UserMapper {
@@ -32,12 +33,15 @@ public interface UserMapper {
 	// 닉네임 검사!!! (signup)
 	public int countUserByNickname(String nickname);
 
+	//모든 관심 장르 가져오기
+	public List<Interest> getAllInterestList();
+	
 	// 회원 정보 등록
 	public void insertUser(User user);
 
 	// 회원 정보 등록2: interest
 	public void insertInterest(@Param("userId") long userId, @Param("genreId") int genreId);
-
+	
 	// 회원 연락처 변경
 	public void updateUserWithPhone(User user);
 
@@ -46,11 +50,22 @@ public interface UserMapper {
 
 	// 회원 이메일 인증 여부 변경
 	public void updateUserWithId(int uId);
+	
+	//회원 정보 변경(관심 장르 제외)
+	public void updateMypage(@Param("uId")long uId, @Param("nickname")String nickname, @Param("phone")String phone);
+	
+	//회원의 관심 장르 삭제
+	public void deleteInterest(long uId);
+	
+	//회원 정보 변경(관심 장르)
+	public void insertMypageInterest(Interest interest);
 
 	// 회원 정보 삭제(탈퇴)
 	public void deleteUser(int id);
 
 	// 비밀번호 변경
 	public void updatePwdById(@Param("id") int id, @Param("pwd") String pwd);
+
+	public void deleteUser(long uId);
 
 }

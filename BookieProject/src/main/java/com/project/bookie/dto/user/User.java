@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.project.bookie.dto.board.Board;
+import com.project.bookie.dto.interest.Interest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,6 +45,8 @@ public class User {
 	@NotEmpty
 	@Size(min = 1, max = 2)
 	private String[] interest;
+	
+	private List<Interest> interestList;
 	@DateTimeFormat
 	private LocalDateTime regDate;
 
