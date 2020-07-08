@@ -76,11 +76,11 @@
 	<div class="container">
 		<form class="form-container text-center" action="index.html"
 			method="post">
-			<div class="form-inline text-left">
-				<div class="form-group">
-					<input type="text" class="form-control col-sm-8" placeholder="제목">
+			<div class="form-group text-left row">
+				<div class="col-xs-10">
+					<input type="text" class="form-control" placeholder="제목">
 				</div>
-				<div class="form-group">
+				<div class="col-xs-2">
 					<select class="form-control" name="genre" style="cursor: pointer;">
 						<option value="0" selected="selected">==장르 선택==</option>
 						<option value="1">소설/시/희곡</option>

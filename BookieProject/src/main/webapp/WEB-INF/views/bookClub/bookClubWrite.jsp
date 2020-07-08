@@ -32,7 +32,6 @@ $(function(){
     console.log("내용 :" + formData.content); */
     return false;
     if (formData.genre != 0 && formData.content != null) {
-    	console.log("fuck");
         $.ajax({
             url: "/club/write",
             type: "post",
@@ -117,12 +116,12 @@ $(function(){
 
 	<div class="container">
 		<form class="form-container text-center">
-			<div class="form-inline text-left">
-				<div class="form-group" >
-					<input type="text" class="form-control col-sm-8" name="title" placeholder="제목">
+			<div class="form-group text-left row">
+				<div class="col-xs-10" >
+					<input type="text" class="form-control" name="title" placeholder="제목">
 				</div>
 				<input type="hidden" id="hidden" name="uEmail" value="${user.getUEmail()}">
-				<div class="form-group">
+				<div class="col-xs-2">
 					<select class="form-control" name="genre" style="cursor: pointer;">
 						<option value="0" selected="selected">==장르 선택==</option>
 						<option value="1">소설/시/희곡</option>
