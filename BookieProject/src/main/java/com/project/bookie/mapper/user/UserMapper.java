@@ -13,7 +13,7 @@ public interface UserMapper {
 	public List<User> getAllUser(); // admin용
 
 	// 유저 id로 회원 조회
-	public User getUserById(int id);
+	public User getUserById(long id);
 
 	// 이메일로 회원 조회(비밀번호 찾기)
 	public User getUserByEmail(String uEmail);

@@ -1,8 +1,5 @@
 package com.project.bookie.security;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

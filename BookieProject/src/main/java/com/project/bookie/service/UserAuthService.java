@@ -29,7 +29,7 @@ public class UserAuthService {
 	@Autowired
 	JavaMailSender mailSender;
 
-	public Boolean updateCertification(int uId, String authkey) {
+	public Boolean updateCertification(long uId, String authkey) {
 		Boolean result;
 		int certif = authMapper.checkCertification(uId); // 이 회원 아이디가 최초 인증인지 검증
 		if (certif == 1) { // 이미 인증한 이메일일 경우(인증 메일의 링크를 두번 이상 누른 경우)
@@ -39,7 +39,7 @@ public class UserAuthService {
 			if (key.equals(authkey)) {
 				authMapper.updateUserCertification(uId); // user테이블에서의 회원 인증 여부를 변경(0 -> 1)
 				User u = userMapper.getUserById(uId); // user정보 가져오기 : userAuthMapper.read(u.getUEmail()) 사용하려고
-				System.out.println("user : " + u);
+				System.out.println("email 인증 확인 후 , user : " + u);
 				authMapper.insertUserAuthWithuEmail(u.getUEmail(), "ROLE_MEMBER"); // 메일 승인 후, 권한 부여
 				result = true;
 			} else {

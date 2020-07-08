@@ -14,7 +14,7 @@ public class CertificationEmailController {
 	UserAuthService service;
 
 	@RequestMapping("/certificationEmail")
-	public String emailConfirm(Model m, int uId, String authkey) {
+	public String emailConfirm(Model m, long uId, String authkey) {
 		Boolean result = service.updateCertification(uId, authkey);
 		if (result) { // 인증성공
 			m.addAttribute("result", true);
