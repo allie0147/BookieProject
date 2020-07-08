@@ -7,20 +7,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA 작성</title>
+<title>club 작성</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="resources/css/bootstrap.min.js"></script>
-<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/js/QnA/main.js"></script>
-<style>
-</style>
+<script src="/resources/css/bootstrap.min.js"></script>
+<!-- summernote -->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -75,36 +80,28 @@
 	</div>
 
 	<div class="container">
-		<h2>글 작성 폼</h2>
 		<form class="form-container text-center" action="index.html"
 			method="post">
 			<div class="form-inline text-left">
 				<div class="form-group">
 					<input type="text" class="form-control col-sm-8" placeholder="제목">
 				</div>
-				<div class="form-group dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						data-toggle="dropdown">
-						카테고리 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">Q&A게시판</li>
-						<li class="divider"></li>
-						<li><a href="#">소설,시,희곡</a></li>
-						<li><a href="#">에세이</a></li>
-						<li><a href="#">인문학</a></li>
-						<li><a href="#">경제경영</a></li>
-						<li><a href="#">사회과학</a></li>
-						<li><a href="#">종교</a></li>
-						<li><a href="#">예술</a></li>
-					</ul>
+				<div class="form-group">
+					<select class="form-control" name="genre" style="cursor: pointer;">
+						<option value="0" selected="selected">==장르 선택==</option>
+						<option value="1">소설/시/희곡</option>
+						<option value="2">에세이</option>
+						<option value="3">인문학</option>
+						<option value="4">경제경영</option>
+						<option value="5">사회과학</option>
+						<option value="6">종교</option>
+						<option value="7">예술</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<textarea class="form-control" name="contents" cols="80" rows="15"
-					placeholder="내용"></textarea>
-				<button type="submit" name="submitButton"
-					class="btn btn-default btn-block">작성하기</button>
+				<textarea class="form-control " id="summernote" name="content"></textarea>
+				<button type="submit" name="submitButton" class="btn btn-default btn-block">작성하기</button>
 			</div>
 		</form>
 	</div>
@@ -153,5 +150,17 @@
 			</div>
 		</div>
 	</footer>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#summernote').summernote({
+				placeholder: '이곳에 글을 작성하세요',
+				height : 400,
+				maxheight : 2000,
+				focus: true,
+				codeviewFilter: false,
+				codeviewIframeFilter: true
+			});
+		});
+	</script>
 </body>
 </html>
