@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:security="http://www.springframework.org/schema/security"
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.2.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 	
 	<bean id="customAccessDeniedHandler"
@@ -52,8 +52,7 @@
 			access="hasAnyRole('ROLE_MEMBER','ROLE_MANAGER','ROLE_ADMIN')" />
 			 -->
 		<!-- access denied시 처리하는 controller -->
-		<security:access-denied-handler
-			ref="customAccessDeniedHandler" />
+		<security:access-denied-handler	ref="customAccessDeniedHandler" />
 
 		<!-- login 시, username(default)=>uEmail, password(default)=>uPwd로 변경. 
 		성공시, 세션부여 및 메인화면 리다이렉트
