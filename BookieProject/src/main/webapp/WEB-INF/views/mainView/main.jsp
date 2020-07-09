@@ -14,8 +14,9 @@
 <link rel="stylesheet" href="/resources/css/mainview/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/resources/js/randomImage.js"></script>
 </head>
-<body>
+<body onload="showImage()">
 	<!-- 주소 이걸로 쓰면됨 -->
 	<!-- <a href="/bookie/main">메인</a><br /> 
 <a href="/bookie/bookcard">북카드</a><br />
@@ -108,36 +109,30 @@
 			<c:forEach var="board" items="${bookCardBoardList }" varStatus="status">
 				<div class="col-md-4">
 					<div class="thumbnail">
-						<a href="/bookcard/detail?b=${board.id }" target="_blank">
-							<c:if test="${randomImageNumIter.hasNext() }">
-								<div class="img" style="background-image:url('../resources/images/bookcard-images-${randomImageNumIter.next()}.jpg')" >
-									<p class="caption">안녕하세요 반갑습니다 헬로</p><!-- ${board.content } -->
-								</div>
-							</c:if>
-						</a>
+						<div class="img" >
+						<!-- background-image:url('../resources/images/bookcard-images-${randomImageNumIter.next()}.jpg')" -->
+							<p class="caption">${board.content }</p>
+						</div>
 					</div>
 				</div>
-			</c:forEach>	
-			
+			</c:forEach>
 		</div>
 	</div>
-		<!-- 글이 없어도 어느 정도 공간을 유지하도록 박스 크기 지정 -->
 	<div class="container">
 		<div class="row col-md-6">
 			<h2><a href="/qna/main">Q&A</a></h2>
 			<ul class="qnaUl">
 				<c:forEach var="board" items="${MainQnaBoardList }" varStatus="status">
-					<li><a href="qna/detail?b=${status.index+1 }"><em>${status.index +1}</em>${board.title }</a></li>
+					<li><a href="qna/detail?b=${board.id }"><em>${status.index +1}</em>${board.title }</a></li>
 				</c:forEach>
 			</ul>
         </div>
-        <!-- 글이 없어도 어느 정도 공간을 유지하도록 박스 크기 지정 -->
 		<div class="row col-md-6">
 			<h2><a href="/club/main">BookClub</a></h2>
 			<ul class="qnaUl">
 				<c:forEach var="board" items="${MainClubBoardList }" varStatus="status">
 					<!-- <a href="qna/detail?b=${status.index }"> a 태그 클릭시 이동 페이지 status.index 수정 -->
-					<li><a href="qna/detail?b=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+					<li><a href="qna/detail?b=${board.id }"><em>${status.index +1}</em>${board.title }</a></li>
 				</c:forEach>
 			</ul>
 		</div>

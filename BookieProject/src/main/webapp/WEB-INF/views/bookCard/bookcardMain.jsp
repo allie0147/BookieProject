@@ -13,10 +13,9 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/bookcard/main.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/resources/js/randomImage.js"></script>
 <style type="text/css">
 .pagination>li>a {
 	color: #000000;
@@ -27,7 +26,7 @@
 }
 </style>
 </head>
-<body>
+<body onload="showImage()">
 	<!--로고 글귀 q&a 독서클럽 고객센터 마이페이지 로그인-->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
@@ -74,128 +73,50 @@
 		<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
 	</div>
 	<div class="container">
-		<div class="container">
-			<h2>Best3</h2>
-			<div class="row">
-				<c:forEach var="board" items="${boardViewListBest }">
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a href="" target="_blank"> <img src="" alt="Lights"
-							style="width: 100%; height: 400px">
-							<div class="caption">${board.content }</div>
-						</a>
+		<!-- 좋아요 수가 가장 많은 글 3개 -->
+		<h2>Best3</h2>
+		<div class="row">
+			<c:forEach var="board" items="${boardViewListBest }">
+			<div class="col-md-4">
+				<div class="thumbnail">
+					<div class="img">
+						<p class="caption">${board.content }</p>						
 					</div>
 				</div>
-				</c:forEach>
 			</div>
-			<div id="searchButton" class="input-group col-xs-4 ">
-				<input type="text" class="form-control" placeholder="검색"
-					name="search">
-				<div class="input-group-btn">
-					<button class="btn btn-default" type="submit">
-						<i class="glyphicon glyphicon-search"></i>
-					</button>
-				</div>
-			</div>
-			<hr>
+			</c:forEach>
 		</div>
-
+	</div>
+	<div class="container">
+		<div id="searchButton" class="input-group col-xs-4 ">
+			<input type="text" class="form-control" placeholder="검색"
+				name="search">
+			<div class="input-group-btn">
+				<button class="btn btn-default" type="submit">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<!-- 
+	<c:forEach var="board" items="${boardViewListIter }">
+		${board }
+	</c:forEach>
+	 -->
+<!-- 보다 왼쪽으로(화면상 row의 양 옆 마진이 위의 Best3와 같게 -->
+	<div class="container">
 		<h2>Recommend</h2>
 		<div class="row">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="" target="_blank"> <img src="" alt="Lights"
-						style="width: 100%; height: 350px">
-						<div class="caption">
-							<p>랜덤으로 추천하는 책1</p>
+			<c:forEach var="board" items="${boardViewListIter }" varStatus="status">
+				<div class="col-md-4">
+					<div class="thumbnail">
+						<div class="img">
+							<p class="caption">${board.content }</p>
 						</div>
-					</a>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="" target="_blank"> <img src="" alt="Nature"
-						style="width: 100%; height: 350px">
-						<div class="caption">
-							<p>랜덤으로 추천하는 책2</p>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="" target="_blank"> <img src="" alt="Fjords"
-						style="width: 100%; height: 350px">
-						<div class="caption">
-							<p>랜덤으로 추천하는 책3</p>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="" target="_blank"> <img src="" alt="Lights"
-						style="width: 100%; height: 350px">
-						<div class="caption">
-							<p>랜덤으로 추천하는 책2-1</p>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="" target="_blank"> <img src="" alt="Nature"
-						style="width: 100%; height: 350px">
-						<div class="caption">
-							<p>랜덤으로 추천하는 책2-2</p>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="" target="_blank"> <img src="" alt="Fjords"
-						style="width: 100%; height: 350px">
-						<div class="caption">
-							<p>랜덤으로 추천하는 책2-3</p>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="" target="_blank"> <img src="" alt="Lights"
-						style="width: 100%; height: 350px">
-						<div class="caption">
-							<p>랜덤으로 추천하는 책3-1</p>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="" target="_blank"> <img src="" alt="Nature"
-						style="width: 100%; height: 350px">
-						<div class="caption">
-							<p>랜덤으로 추천하는 책3-2</p>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="" target="_blank"> <img src="" alt="Fjords"
-						style="width: 100%; height: 350px">
-						<div class="caption">
-							<p>랜덤으로 추천하는 책3-3</p>
-						</div>
-					</a>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 	</div>
 
