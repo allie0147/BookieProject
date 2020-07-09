@@ -15,132 +15,146 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/resources/css/bootstrap.min.js"></script>
 <!-- summernote -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
 	rel="stylesheet">
-<script	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script>
-$(function(){
-	$("form").on("submit",function () {
-		console.dir($("form").eq(1));
-    let formData = $("form").eq(1).serialize();
-    let title = document.getElementsByName("title")[0].value;
-    let	genre = document.getElementsByName("genre")[0].value;
-    console.log(formData);
-    console.log(title);
-    console.log(genre);
-    if (title != "" && genre != 0) {
-        $.ajax({
-            url: "/club/write",
-            type: "post",
-            data: formData,
-            dataType: "json",
-            success: function (data) {
-                    alert("작성 되었습니다.");				              
-                    window.location.replace("/club/detail?b="+data);
-            },
-            error: function () {
-                alert("글 작성에 실패 했습니다.");
-            }
-        }); //ajax end
-        return false;
-    } else {
-        alert("내용 또는 장르를 선택하세요");
-    }
-});
-});
-/* $(document)
-    .ajaxStart(function () {
-        $('#my-spinner').show();
-    })
-    .ajaxStop(function () {
-        $('#my-spinner').hide();
-    }); */
+	$(function() {
+		$("form").on("submit", function() {
+			console.dir($("form").eq(1));
+			let formData = $("form").eq(1).serialize();
+			let title = document.getElementsByName("title")[0].value;
+			let genre = document.getElementsByName("genre")[0].value;
+			console.log(formData);
+			console.log(title);
+			console.log(genre);
+			if (title != "" && genre != 0) {
+				$.ajax({
+					url : "/club/write",
+					type : "post",
+					data : formData,
+					dataType : "json",
+					success : function(data) {
+						alert("작성 되었습니다.");
+						window.location.replace("/club/detail?b=" + data);
+					},
+					error : function() {
+						alert("글 작성에 실패 했습니다.");
+					}
+				}); //ajax end
+				return false;
+			} else {
+				alert("내용 또는 장르를 선택하세요");
+			}
+		});
+	});
+	/* $(document)
+	 .ajaxStart(function () {
+	 $('#my-spinner').show();
+	 })
+	 .ajaxStop(function () {
+	 $('#my-spinner').hide();
+	 }); */
 </script>
 </head>
 <body>
-<div class="main-body">
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/">BooKie</a>
+	<div class="main-body">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#myNavbar">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">BooKie</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li><a href="/bookcard/main">글귀</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown">Q&A<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
+								<li><a href="/qna/main?g=2">에세이</a></li>
+								<li><a href="/qna/main?g=3">인문학</a></li>
+								<li><a href="/qna/main?g=4">경제경영</a></li>
+								<li><a href="/qna/main?g=5">사회과학</a></li>
+								<li><a href="/qna/main?g=6">종교</a></li>
+								<li><a href="/qna/main?g=7">예술</a></li>
+							</ul></li>
+						<li><a href="/club/main">독서 클럽</a></li>
+						<li><a href="/cs">고객센터</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/mypage/info"><span
+								class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
+						<!-- 로그인 안했을 시, Login 버튼이 보임 -->
+						<sec:authorize access="isAnonymous()">
+							<li><a href="/login"><span
+									class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						</sec:authorize>
+						<!-- 로그인 했을 시, Logout 버튼 보임  -->
+						<sec:authorize access="isAuthenticated()">
+							<li><a href='#'
+								onclick="document.getElementById('logout').submit();"> <span
+									class="glyphicon glyphicon-log-out"></span> Logout
+							</a></li>
+							<form id='logout' action="/logout" method="post"
+								style="diplay: none">
+								<input type="hidden" name='${_csrf.parameterName}'
+									value='${_csrf.token}' />
+							</form>
+						</sec:authorize>
+					</ul>
+				</div>
 			</div>
-			<ul class="nav navbar-nav">
-				<li><a href="/bookcard/main">글귀</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown">Q&A<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
-						<li><a href="/qna/main?g=2">에세이</a></li>
-						<li><a href="/qna/main?g=3">인문학</a></li>
-						<li><a href="/qna/main?g=4">경제경영</a></li>
-						<li><a href="/qna/main?g=5">사회과학</a></li>
-						<li><a href="/qna/main?g=6">종교</a></li>
-						<li><a href="/qna/main?g=7">예술</a></li>
-					</ul></li>
-				<li><a href="/club/main">독서 클럽</a></li>
-				<li><a href="/cs">고객센터</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/mypage/info"><span
-						class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
-				<!-- 로그인 안했을 시, Login 버튼이 보임 -->
-				<sec:authorize access="isAnonymous()">
-					<li><a href="/login"><span
-							class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				</sec:authorize>
-				<!-- 로그인 했을 시, Logout 버튼 보임  -->
-				<sec:authorize access="isAuthenticated()">
-					<li><a href='#'
-						onclick="document.getElementById('logout').submit();"> <span
-							class="glyphicon glyphicon-log-out"></span> Logout
-					</a></li>
-					<form id='logout' action="/logout" method="post"
-						style="diplay: none">
-						<input type="hidden" name='${_csrf.parameterName}'
-							value='${_csrf.token}' />
-					</form>
-				</sec:authorize>
-			</ul>
+		</nav>
+
+		<div class="container">
+			<div
+				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
+			<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
 		</div>
-	</nav>
 
-	<div class="container">
-		<div
-			style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
-		<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
-	</div>
-
-	<div class="container">
-		<form class="form-container text-center">
-			<div class="form-group text-left row">
-				<div class="col-xs-10" >
-					<input type="text" class="form-control" name="title" placeholder="제목">
+		<div class="container">
+			<form class="form-container text-center">
+				<div class="form-group text-left row">
+					<div class="col-xs-10">
+						<input type="text" class="form-control" name="title"
+							placeholder="제목">
+					</div>
+					<input type="hidden" id="hidden" name="uEmail"
+						value="${user.getUEmail()}">
+					<div class="col-xs-2">
+						<select class="form-control" name="genre" style="cursor: pointer;">
+							<option value="0" selected="selected">==장르 선택==</option>
+							<option value="1">소설/시/희곡</option>
+							<option value="2">에세이</option>
+							<option value="3">인문학</option>
+							<option value="4">경제경영</option>
+							<option value="5">사회과학</option>
+							<option value="6">종교</option>
+							<option value="7">예술</option>
+						</select>
+					</div>
 				</div>
-				<input type="hidden" id="hidden" name="uEmail" value="${user.getUEmail()}">
-				<div class="col-xs-2">
-					<select class="form-control" name="genre" style="cursor: pointer;">
-						<option value="0" selected="selected">==장르 선택==</option>
-						<option value="1">소설/시/희곡</option>
-						<option value="2">에세이</option>
-						<option value="3">인문학</option>
-						<option value="4">경제경영</option>
-						<option value="5">사회과학</option>
-						<option value="6">종교</option>
-						<option value="7">예술</option>
-					</select>
+				<div class="form-group">
+					<textarea class="form-control " id="summernote" name="content"></textarea>
+					<button type="submit" name="submitButton"
+						class="btn btn-default btn-block">작성하기</button>
 				</div>
-			</div>
-			<div class="form-group">
-				<textarea class="form-control " id="summernote" name="content"></textarea>
-				<button type="submit" name="submitButton" class="btn btn-default btn-block">작성하기</button>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
-</div>
 	<footer id="footerBg">
 		<div class="container">
 			<br>
@@ -189,12 +203,12 @@ $(function(){
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#summernote').summernote({
-				placeholder: '이곳에 글을 작성하세요',
+				placeholder : '이곳에 글을 작성하세요',
 				height : 400,
 				maxheight : 2000,
-				focus: true,
-				codeviewFilter: false,
-				codeviewIframeFilter: true
+				focus : true,
+				codeviewFilter : false,
+				codeviewIframeFilter : true
 			});
 		});
 	</script>

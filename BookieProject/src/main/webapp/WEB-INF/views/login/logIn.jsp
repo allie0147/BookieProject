@@ -12,103 +12,118 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/login/main.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="/resources/js/login/main.js"></script>
 </head>
 <body>
-<div class="main-body">
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/">BooKie</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li><a href="/bookcard/main">글귀</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown">Q&A<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
-						<li><a href="/qna/main?g=2">에세이</a></li>
-						<li><a href="/qna/main?g=3">인문학</a></li>
-						<li><a href="/qna/main?g=4">경제경영</a></li>
-						<li><a href="/qna/main?g=5">사회과학</a></li>
-						<li><a href="/qna/main?g=6">종교</a></li>
-						<li><a href="/qna/main?g=7">예술</a></li>
-					</ul></li>
-				<li><a href="/club/main">독서 클럽</a></li>
-				<li><a href="/cs">고객센터</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/mypage/info"><span
-						class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
-			</ul>
-		</div>
-	</nav>
-
-	<div class="container-fluid bg">
-		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<div class="form-container">
-					<form action="/loginProc" method="post">
-						<div class="form-group text-white">
-							<label for="inputEmail1">Email</label>
-							<c:choose>
-								<c:when test="${not empty loginEmail}">
-									<input type="email" class="form-control" id="inputEmail1"
-										name="uEmail" aria-describedby="emailHelp" required="required"
-										value="${loginEmail}">
-								</c:when>
-								<c:otherwise>
-									<input type="email" class="form-control" id="inputEmail1"
-										name="uEmail" aria-describedby="emailHelp" required="required">
-								</c:otherwise>
-							</c:choose>
-						</div>
-						<div class="form-group">
-							<c:choose>
-								<c:when test="${not empty loginPwd}">
-									<label for="inputPassword1">Password</label>
-									<input type="password" class="form-control" id="inputPassword1"
-										name="uPwd" required="required" value="${loginPwd}">
-								</c:when>
-								<c:otherwise>
-									<label for="inputPassword1">Password</label>
-									<input type="password" class="form-control" id="inputPassword1"
-										name="uPwd" required="required">
-								</c:otherwise>
-							</c:choose>
-						</div>
-						<c:if test="${not empty ERRORMSG }">
-							<div class="errorBox">
-								<span class='error'>${ERRORMSG }</span>
-							</div>
-						</c:if>
-						<div><input type="checkbox" name='remember-me'/> 자동 로그인 </div>
-						<input type="submit" class="btn btn-block btn-info" value="LogIn">
-						<input type="hidden" id="hidden" name='${_csrf.parameterName}'
-							value='${_csrf.token}'>
-					</form>
-
-					<button id="signup" type="button" class="btn btn-block btn-default">회원가입</button>
-					<div class="text-center">
-						<p>
-							<span><a href="javascript:popupEmail()">이메일찾기</a></span> <span class="vertical"></span>&nbsp;
-							<span><a href="javascript:popup()">비밀번호 찾기</a></span>
-						</p>
-					</div>
-					<hr>
-					<a class="btn btn-success btn-block" href="https://www.naver.com/">네이버
-						로그인</a> <a class="btn btn-block btn-warning"
-						href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/kakaologin&response_type=code">카카오
-						로그인</a>
+	<div class="main-body">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#myNavbar">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">BooKie</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li><a href="/bookcard/main">글귀</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown">Q&A<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
+								<li><a href="/qna/main?g=2">에세이</a></li>
+								<li><a href="/qna/main?g=3">인문학</a></li>
+								<li><a href="/qna/main?g=4">경제경영</a></li>
+								<li><a href="/qna/main?g=5">사회과학</a></li>
+								<li><a href="/qna/main?g=6">종교</a></li>
+								<li><a href="/qna/main?g=7">예술</a></li>
+							</ul></li>
+						<li><a href="/club/main">독서 클럽</a></li>
+						<li><a href="/cs">고객센터</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/mypage/info"><span
+								class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
+					</ul>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
+		</nav>
+
+		<div class="container-fluid bg">
+			<div class="row">
+				<div class="col-md-4 col-sm-4 col-xs-12"></div>
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="form-container">
+						<form action="/loginProc" method="post">
+							<div class="form-group text-white">
+								<label for="inputEmail1">Email</label>
+								<c:choose>
+									<c:when test="${not empty loginEmail}">
+										<input type="email" class="form-control" id="inputEmail1"
+											name="uEmail" aria-describedby="emailHelp"
+											required="required" value="${loginEmail}">
+									</c:when>
+									<c:otherwise>
+										<input type="email" class="form-control" id="inputEmail1"
+											name="uEmail" aria-describedby="emailHelp"
+											required="required">
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<div class="form-group">
+								<c:choose>
+									<c:when test="${not empty loginPwd}">
+										<label for="inputPassword1">Password</label>
+										<input type="password" class="form-control"
+											id="inputPassword1" name="uPwd" required="required"
+											value="${loginPwd}">
+									</c:when>
+									<c:otherwise>
+										<label for="inputPassword1">Password</label>
+										<input type="password" class="form-control"
+											id="inputPassword1" name="uPwd" required="required">
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<c:if test="${not empty ERRORMSG }">
+								<div class="errorBox">
+									<span class='error'>${ERRORMSG }</span>
+								</div>
+							</c:if>
+							<div>
+								<input type="checkbox" name='remember-me' /> 자동 로그인
+							</div>
+							<input type="submit" class="btn btn-block btn-info" value="LogIn">
+							<input type="hidden" id="hidden" name='${_csrf.parameterName}'
+								value='${_csrf.token}'>
+						</form>
+
+						<button id="signup" type="button"
+							class="btn btn-block btn-default">회원가입</button>
+						<div class="text-center">
+							<p>
+								<span><a href="javascript:popupEmail()">이메일찾기</a></span> <span
+									class="vertical"></span>&nbsp; <span><a
+									href="javascript:popup()">비밀번호 찾기</a></span>
+							</p>
+						</div>
+						<hr>
+						<a class="btn btn-success btn-block" href="https://www.naver.com/">네이버
+							로그인</a> <a class="btn btn-block btn-warning"
+							href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/kakaologin&response_type=code">카카오
+							로그인</a>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4 col-xs-12"></div>
+			</div>
 		</div>
 	</div>
-</div>
 	<footer id="footerBg">
 		<div class="container">
 			<br>
