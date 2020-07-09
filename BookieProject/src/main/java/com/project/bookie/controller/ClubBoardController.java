@@ -80,7 +80,7 @@ public class ClubBoardController {
 	}
 
 	@GetMapping("/detail")
-	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) int boardId) {
+	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) long boardId) {
 		Board board = service.getBoardByBoardById(boardId);
 		m.addAttribute("board", board);
 		return "bookClub/bookClubBoardDetail.jsp?b=" + boardId;

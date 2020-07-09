@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.boardViewList.BoardViewList;
+import com.project.bookie.dto.user.User;
 import com.project.bookie.service.QnaBoardService;
 import com.project.bookie.service.QnaBoardViewListService;
+import com.project.bookie.service.UserService;
 
 @Controller
 @RequestMapping("/qna")
@@ -25,6 +29,8 @@ public class QnaBoardController {
 	QnaBoardViewListService viewListService;
 	@Autowired
 	QnaBoardService service;
+	@Autowired
+	UserService userService;
 
 	@GetMapping("/main")
 	public String goQnaMain(Model m, @RequestParam(value = "p", defaultValue = "1", required = false) int p) {
@@ -88,8 +94,25 @@ public class QnaBoardController {
 	}
 
 	@GetMapping("/write")
-	public String getWriteOnQnABoard() {
+	public String getWriteOnQnABoard(Model m) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName(); // 세션에 있는 유저이메일
+		User user = userService.getUserInfo(uEmail);
+		m.addAttribute("user", user);
 		return "QnA/qnaWrite";
 	}
+	
+	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
+	@ResponseBody
+	public String insertWriteOnQnABoard(Board board) {
+		long userId = userService.getUserIdByEmail(board.getUEmail());
+		// user id , user nickname board에 추가
+		board.setUserId(userId);
+		board.setWriter(userService.getUserNickname(board.getUEmail()));
+		System.out.println("board 정보 완성 : " + board);
+		long boardId = service.writeOnBoard(board);
+		return String.valueOf(boardId);
+	}
+	
 	
 }

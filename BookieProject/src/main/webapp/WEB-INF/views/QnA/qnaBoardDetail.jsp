@@ -85,19 +85,19 @@
 	</div>
 
 	<div class="container">
-		<table class="table table-hover table-bordered">
+	<table class="table table-hover table-bordered">
 			<thead id="myHead">
 				<tr>
 					<th scope="col">#</th>
 					<th class="wtDate" scope="col">작성일시 ${board.wtDate }</th>
-					<th class="upDate" scope="col">마지막 수정 일시 ${board.upDate }</th>
+					<c:if test="${not empty board.upDate}" >
+					<th class="upDate" scope="col">마지막 수정 일시 ${board.upDate }</th></c:if>
 					<th scope="col">작성자 ${board.writer }</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row">1</th>
-					<td colspan="3">${board.content }</td>
+					<td colspan="4"> ${board.content }</td>
 				</tr>
 			</tbody>
 		</table>

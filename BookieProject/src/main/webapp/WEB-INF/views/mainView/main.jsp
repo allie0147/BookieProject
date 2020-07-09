@@ -127,7 +127,7 @@
 			<h2><a href="/qna/main">Q&A</a></h2>
 			<ul class="qnaUl">
 				<c:forEach var="board" items="${MainQnaBoardList }" varStatus="status">
-					<li><a href="qna/detail?b=${status.index+1 }"><em>${status.index +1}</em>${board.title }</a></li>
+					<li><a href="qna/detail?b=${board.id }"><em>${status.index +1}</em>${board.title }</a></li>
 				</c:forEach>
 			</ul>
         </div>
@@ -136,8 +136,7 @@
 			<h2><a href="/club/main">BookClub</a></h2>
 			<ul class="qnaUl">
 				<c:forEach var="board" items="${MainClubBoardList }" varStatus="status">
-					<!-- <a href="qna/detail?b=${status.index }"> a 태그 클릭시 이동 페이지 status.index 수정 -->
-					<li><a href="qna/detail?b=${status.index }"><em>${status.index +1}</em>${board.title }</a></li>
+					<li><a href="club/detail?b=${board.id}"><em>${status.index +1}</em>${board.title }</a></li>
 				</c:forEach>
 			</ul>
 		</div>

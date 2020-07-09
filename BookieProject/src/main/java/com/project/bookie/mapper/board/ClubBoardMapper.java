@@ -12,10 +12,10 @@ import com.project.bookie.dto.reply.Reply;
 public interface ClubBoardMapper {
 	
 	//하나의 게시글(댓글까지)
-	public Board getBoardByBoardIdWithComment(int boardId);
+	public Board getBoardByBoardIdWithComment(long boardId);
 	
 	//하나의 게시글에 달린 댓글 목록 불러오기
-	public List<Comment> getAllCommentListByBoardId(int boardId);
+	public List<Comment> getAllCommentListByBoardId(long boardId);
 	
 	//하나의 댓글에 달린 리플 불러오기
 	public List<Reply> getReplyByCommentId(int commentId);
@@ -36,7 +36,7 @@ public interface ClubBoardMapper {
 	public List<Board> getListByWriter(@Param("searchInfo")String searchInfo);
 	
 	//작성자에 따른 검색(사용자의 자신이 쓴 글 조회 기능)
-	public List<Board> getListByUserId(int id); //select * from board.user_id = #{작성자 id}(로그인 되어있는 세션에서 정보를 받아옴)
+	public List<Board> getListByUserId(long id); //select * from board.user_id = #{작성자 id}(로그인 되어있는 세션에서 정보를 받아옴)
 	
 	//글 등록
 	public void insertBoard(Board board); //, @Param("id")long id
@@ -45,7 +45,7 @@ public interface ClubBoardMapper {
 	public void updateBoard(Board board);
 	
 	//글 삭제
-	public void deleteBoard(int id);
+	public void deleteBoard(long id);
 	
 	//페이지네이션
 	//한 페이지에 보여질 게시글 리스트

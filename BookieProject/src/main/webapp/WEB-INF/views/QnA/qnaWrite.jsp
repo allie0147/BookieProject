@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,15 +10,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/resources/css/bootstrap.min.js"></script>
 <!-- summernote -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"	rel="stylesheet">
-<script	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+	$(function() {
+		$("form").on("submit", function() {
+			console.dir($("form").eq(1));
+			let formData = $("form").eq(1).serialize();
+			let title = document.getElementsByName("title")[0].value;
+			let genre = document.getElementsByName("genre")[0].value;
+			console.log(formData);
+			console.log(title);
+			console.log(genre);
+			if (title != "" && genre != 0) {
+				$.ajax({
+					url : "/qna/write",
+					type : "post",
+					data : formData,
+					dataType : "json",
+					success : function(data) {
+						alert("작성 되었습니다.");
+						window.location.replace("/qna/detail?b=" + data);
+					},
+					error : function() {
+						alert("글 작성에 실패 했습니다.");
+					}
+				}); //ajax end
+				return false;
+			} else {
+				alert("내용 또는 장르를 선택하세요");
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -74,12 +110,12 @@
 	</div>
 
 	<div class="container">
-		<form class="form-container text-center" action="index.html"
-			method="post">
+		<form class="form-container text-center">
 			<div class="form-group text-left row">
 				<div class="col-xs-10">
-					<input type="text" class="form-control" placeholder="제목">
+					<input type="text" class="form-control" name="title" placeholder="제목">
 				</div>
+				<input type="hidden" id="hidden" name="uEmail" value="${user.getUEmail()}">
 				<div class="col-xs-2">
 					<select class="form-control" name="genre" style="cursor: pointer;">
 						<option value="0" selected="selected">==장르 선택==</option>
@@ -94,7 +130,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<textarea class="form-control " id="summernote" name="content"></textarea>
+				<textarea class="form-control" id="summernote" name="content"></textarea>
 				<button type="submit" name="submitButton"
 					class="btn btn-default btn-block">작성하기</button>
 			</div>

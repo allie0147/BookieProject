@@ -8,7 +8,7 @@
 		<result property="title" column="title"/>
 		<result property="userId" column="user_id"/>
 		<result property="writer" column="writer"/>
-		<result property="content" column="content"/>
+		<result property="content" column="content" jdbcType="LONGVARCHAR" javaType="String" />
 		<result property="wtDate" column="w_date"/>
 		<result property="upDate" column="u_date"/>
 		<collection property="commentList" column="id" select="getAllCommentListByBoardId"/>
@@ -34,7 +34,7 @@
 	
 	<!--  글 하나 조회 -->
 	<select id="getBoardByBoardIdWithComment" resultMap="brd">
-		select qna_board.id as id, user_id, title, content, user.nickname as writer, w_date, u_date 
+		select qna_board.id as id, qna_board.user_id, title, content, user.nickname as writer, w_date, u_date 
 		from qna_board join user on qna_board.user_id = user.id where qna_board.id = #{boardId}
 	</select>
 	
@@ -93,7 +93,7 @@
 	</select>
 	
 	<!-- 글 등록(id는 auto_incement, w_date는 기본값이 current_timestamp로 자동 생성 -->
-	<insert id="insertBoard" parameterType="board"><!--  @Param("board")Board board, @Param("userId")int userId -->
+	<insert id="insertBoard" parameterType="board" keyProperty="id" useGeneratedKeys="true">
 		insert into qna_board(title, user_id, content) values(#{title}, #{userId}, #{content})
 	</insert>
 	
