@@ -16,6 +16,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="main-body">
 	<!-- 주소 이걸로 쓰면됨 -->
 	<!-- <a href="/bookie/main">메인</a><br /> 
 <a href="/bookie/bookcard">북카드</a><br />
@@ -141,7 +142,7 @@
 			</ul>
 		</div>
 	</div>
-
+</div>
 	<!-- store의 글자들 클릭한 뒤 다시 뒤로가기 해도 글자색 변경되지 않게 -->
 	 <footer id="footerBg">
       <div class="container">
