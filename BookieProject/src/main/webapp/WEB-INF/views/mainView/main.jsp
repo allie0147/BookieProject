@@ -112,7 +112,7 @@
 					<div class="thumbnail">
 						<div class="img" >
 						<!-- background-image:url('../resources/images/bookcard-images-${randomImageNumIter.next()}.jpg')" -->
-							<p class="caption">${board.content }</p>
+							<p class="cap">${board.content }</p>
 						</div>
 					</div>
 				</div>
