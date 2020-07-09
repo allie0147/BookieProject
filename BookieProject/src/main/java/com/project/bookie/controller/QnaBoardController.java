@@ -122,7 +122,7 @@ public class QnaBoardController {
 
 	@PostMapping(value = "/comment", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public Comment insertReplyOnQnABoard(@Param("boardId") String boardId, @Param("comment") String comment) {
+	public Comment insertCommentOnQnABoard(@Param("boardId") String boardId, @Param("comment") String comment) {
 		System.out.println(boardId);
 		System.out.println(comment);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

@@ -98,14 +98,15 @@
 			<h2>댓글</h2>
 		</div>
 		<sec:authorize access="isAnonymous()">
-			<input type="text" readonly="readonly" placeholder="댓글작성은 로그인 후 이용하세요"/>
+			<input type="text" readonly="readonly" placeholder="로그인 후 이용하세요"/>
 			<input type="button" value="작성" />
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
 			<form name="replyForm">
-				<input type="text" name="comment" id="comment" placeholder="댓글을 입력하세요..." /> <input
-					type="hidden" name="board_id" value="${board.id }" /> <input
-					type="submit" value="작성" name="submit">
+			<input type="text" name="comment" id="comment"
+					placeholder="댓글을 입력하세요..." /> <input type="hidden" name="board_id"
+					value="${board.id }" /><label for="comment"><input
+					type="submit" value="작성" name="submit"></label>
 			</form>
 		</sec:authorize>
 		<div class="container">

@@ -21,7 +21,7 @@ $(function() {
 		} else if (title == "") {
 			alert("제목을 입력하세요");
 			return false;
-		} else if (genre==0){
+		} else if (genre == 0) {
 			alert("장르를 선택하세요");
 			return false;
 		}

@@ -50,7 +50,7 @@
 						<li><a href="/cs">고객센터</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/mypage/info"><span
+						<li><a href="/mypage"><span
 								class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
 						<!-- 로그인 안했을 시, Login 버튼이 보임 -->
 						<sec:authorize access="isAnonymous()">
@@ -79,25 +79,64 @@
 			<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
 		</div>
 		<div class="container">
-			<a href="club/main?g=1"></a>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>번 호</th>
-						<th>제 목</th>
-						<th>닉네임</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="board" items="${boardViewList.boardList }">
-
-
-
-					</c:forEach>
-				</tbody>
-			</table>
+			<c:if test="${boardViewList.boardList.size() == 0 }">
+				<!-- 글 개수가 0개일 때 -->
+				<div class="content">글이 존재하지 않습니다.</div>
+			</c:if>
+			<c:if test="${boardViewList.boardList.size() > 0 }">
+				<!-- 글 개수가 1개이상일 때 -->
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="col-sm-1" scope="col">번 호</th>
+							<th class="col-sm-4" scope="col">제 목</th>
+							<th class="col-sm-2" scope="col">작성자</th>
+							<th class="col-sm-3" scope="col">작성일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="board" items="${boardViewList.boardList }">
+							<tr onclick="location.href='/club/detail?b=${board.id }'">
+								<td>${board.id }</td>
+								<td>${board.title }</td>
+								<td>${board.writer }</td>
+								<td>${board.wtDate }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
+			<hr>
 		</div>
-		<!-- pageNation 구현 -->
+		<!-- 페이지네이션 -->
+		<div class="container text-center">
+			<c:if test="${boardViewList.boardList.size() > 0 }">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<c:if test="${p>5}">
+							<li class="page-item"><a class="page-link"
+								href="main?p=${pageArray.get(0)-5 }">&lt;&lt;</a></li>
+						</c:if>
+						<c:forEach var="pageNum" items="${pageArray }">
+							<c:choose>
+								<c:when test="${pageNum == boardViewList.currentPageNumber }">
+									<li class="page-item"><a class="page-link"
+										href="main?p=${pageNum }"><b>${pageNum }</b></a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item"><a class="page-link"
+										href="main?p=${pageNum }">${pageNum }</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${pageArray.size()==5}">
+							<li class="page-item"><a class="page-link"
+								href="main?p=${nextNum }">&gt;&gt;</a></li>
+						</c:if>
+					</ul>
+				</nav>
+			</c:if>
+		</div>
 	</div>
 	<footer id="footerBg">
 		<div class="container">

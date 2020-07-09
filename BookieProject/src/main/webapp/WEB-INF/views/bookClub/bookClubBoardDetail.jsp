@@ -14,8 +14,10 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/bookclub/detail.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="/resources/js/bookclub/detail.js"></script>
 </head>
 <body>
@@ -106,15 +108,15 @@
 		</div>
 		<sec:authorize access="isAnonymous()">
 			<input type="text" readonly="readonly"
-				placeholder="댓글작성은 로그인 후 이용하세요" />
+				placeholder="로그인 후 이용하세요" />
 			<input type="button" readonly="readonly" value="작성" />
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
 			<form name="replyForm">
 				<input type="text" name="comment" id="comment"
 					placeholder="댓글을 입력하세요..." /> <input type="hidden" name="board_id"
-					value="${board.id }" /> <input type="submit" value="작성"
-					name="submit">
+					value="${board.id }" /><label for="comment"><input
+					type="submit" value="작성" name="submit"></label>
 			</form>
 		</sec:authorize>
 		<div class="container">
