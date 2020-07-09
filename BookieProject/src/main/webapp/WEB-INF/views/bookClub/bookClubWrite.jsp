@@ -27,21 +27,20 @@ $(function(){
 	$("form").on("submit",function () {
 		console.dir($("form").eq(1));
     let formData = $("form").eq(1).serialize();
+    let title = document.getElementsByName("title")[0].value;
+    let	genre = document.getElementsByName("genre")[0].value;
     console.log(formData);
-/*     console.log("장르 :" + formData.genre);
-    console.log("내용 :" + formData.content); */
-    return false;
-    if (formData.genre != 0 && formData.content != null) {
+    console.log(title);
+    console.log(genre);
+    if (title != "" && genre != 0) {
         $.ajax({
             url: "/club/write",
             type: "post",
             data: formData,
             dataType: "json",
             success: function (data) {
-                /* if (boardId != null) { */
-                    alert("글 작성 되었씁니다.");
-                    location.replace("/club/write?b=" + data + ".jsp");
-                /* } */
+                    alert("작성 되었습니다.");				              
+                    window.location.replace("/club/detail?b="+data);
             },
             error: function () {
                 alert("글 작성에 실패 했습니다.");
@@ -49,7 +48,7 @@ $(function(){
         }); //ajax end
         return false;
     } else {
-        alert("내용 또는 장르 선택하셈");
+        alert("내용 또는 장르를 선택하세요");
     }
 });
 });
@@ -63,6 +62,7 @@ $(function(){
 </script>
 </head>
 <body>
+<div class="main-body">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -140,7 +140,7 @@ $(function(){
 			</div>
 		</form>
 	</div>
-
+</div>
 	<footer id="footerBg">
 		<div class="container">
 			<br>
@@ -184,6 +184,7 @@ $(function(){
 				</div>
 			</div>
 		</div>
+
 	</footer>
 	<script type="text/javascript">
 		$(document).ready(function() {

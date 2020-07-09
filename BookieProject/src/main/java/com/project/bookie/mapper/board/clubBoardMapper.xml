@@ -8,7 +8,7 @@
 		<result property="title" column="title"/>
 		<result property="userId" column="user_id"/>
 		<result property="writer" column="writer"/>
-		<result property="content" column="content"/>
+		<result property="content" column="content" jdbcType="LONGVARCHAR" javaType="String"/>
 		<result property="wtDate" column="w_date"/>
 		<result property="upDate" column="u_date"/>
 		<collection property="commentList" column="id" select="getAllCommentListByBoardId"/>
@@ -34,7 +34,7 @@
 	
 	<!--  글 하나 조회 -->
 	<select id="getBoardByBoardIdWithComment" resultMap="brd">
-		select club_board.id as id, title, user.nickname as writer, w_date, u_date 
+		select club_board.id as id, user_id, title, content, user.nickname as writer, w_date, u_date 
 		from club_board join user on club_board.user_id = user.id where club_board.id = #{boardId}
 	</select>
 	

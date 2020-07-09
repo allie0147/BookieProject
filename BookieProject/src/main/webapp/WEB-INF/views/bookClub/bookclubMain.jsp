@@ -19,6 +19,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="main-body">
 	<!--로고 글귀 q&a 독서클럽 고객센터 마이페이지 로그인-->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
@@ -82,7 +83,7 @@
 		</table>
 	</div>
 	<!-- pageNation 구현 -->
-
+</div>
  <footer id="footerBg">
     <div class="container">
       <br>

@@ -17,6 +17,10 @@ body {
 	background-color: #f0f0f0;
 }
 
+.main-body{
+	min-height: 1382px;
+}
+
 a, a:visited {
 	color: #000000;
 	text-decoration: none;

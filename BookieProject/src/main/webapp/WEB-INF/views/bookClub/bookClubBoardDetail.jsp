@@ -38,6 +38,7 @@
 </script>
 </head>
 <body>
+<div class="main-body">
 	<!--로고 글귀 q&a 독서클럽 고객센터 마이페이지 로그인-->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
@@ -91,14 +92,14 @@
 				<tr>
 					<th scope="col">#</th>
 					<th class="wtDate" scope="col">작성일시 ${board.wtDate }</th>
-					<th class="upDate" scope="col">마지막 수정 일시 ${board.upDate }</th>
+					<c:if test="${not empty board.upDate}" >
+					<th class="upDate" scope="col">마지막 수정 일시 ${board.upDate }</th></c:if>
 					<th scope="col">작성자 ${board.writer }</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row">1</th>
-					<td colspan="3">내용들어갈곳 ${board.content }</td>
+					<td colspan="4"> ${board.content }</td>
 				</tr>
 			</tbody>
 		</table>
@@ -174,7 +175,7 @@
 
 	</div>
 
-	
+	</div>
   <footer id="footerBg">
     <div class="container">
       <br>

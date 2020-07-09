@@ -87,12 +87,6 @@ public class BookCardBoardController {
 		m.addAttribute("pageArray", pageArray);
 		return "bookCard/bookcardMain.jsp?p="+pageNum;
 	}
-	
-	@GetMapping("/detail")
-	public String goDetailPage(Model m, @RequestParam(value="b", defaultValue = "1", required = false)int boardId) {
-		BookCardBoard board = service.getBoardByBoardById(boardId);
-		m.addAttribute("board", board);
-		return "bookCard/bookCardBoardDetail.jsp?b="+boardId;
-	}
+
 
 }

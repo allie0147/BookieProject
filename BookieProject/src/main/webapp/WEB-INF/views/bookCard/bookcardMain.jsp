@@ -27,6 +27,8 @@
 </style>
 </head>
 <body onload="showImage()">
+
+<div class="main-body">
 	<!--로고 글귀 q&a 독서클럽 고객센터 마이페이지 로그인-->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
@@ -80,7 +82,7 @@
 			<div class="col-md-4">
 				<div class="thumbnail">
 					<div class="img">
-						<p class="caption">${board.content }</p>						
+						<p class="cap">${board.content }</p>						
 					</div>
 				</div>
 			</div>
@@ -112,7 +114,7 @@
 				<div class="col-md-4">
 					<div class="thumbnail">
 						<div class="img">
-							<p class="caption">${board.content }</p>
+							<p class="cap">${board.content }</p>
 						</div>
 					</div>
 				</div>
@@ -141,7 +143,7 @@
 				href="main?p=${nextNum }">&gt;&gt;</a></li>
 		</ul>
 	</div>
-
+</div>
 	<footer id="footerBg">
 		<div class="container">
 			<br>

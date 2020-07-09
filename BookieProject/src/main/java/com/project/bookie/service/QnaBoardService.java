@@ -39,4 +39,11 @@ public class QnaBoardService {
 		List<Board> boardList = mapper.getBoardListToMain();
 		return boardList;
 	}
+	
+	public long writeOnBoard(Board board) {
+		mapper.insertBoard(board);
+		System.out.println(board.getId());
+		return board.getId(); // board id
+	}
+	
 }

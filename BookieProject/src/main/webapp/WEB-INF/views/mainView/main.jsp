@@ -17,6 +17,7 @@
 <script src="/resources/js/randomImage.js"></script>
 </head>
 <body onload="showImage()">
+<div class="main-body">
 	<!-- 주소 이걸로 쓰면됨 -->
 	<!-- <a href="/bookie/main">메인</a><br /> 
 <a href="/bookie/bookcard">북카드</a><br />
@@ -131,13 +132,17 @@
 			<h2><a href="/club/main">BookClub</a></h2>
 			<ul class="qnaUl">
 				<c:forEach var="board" items="${MainClubBoardList }" varStatus="status">
+<<<<<<< HEAD
 					<!-- <a href="qna/detail?b=${status.index }"> a 태그 클릭시 이동 페이지 status.index 수정 -->
 					<li><a href="qna/detail?b=${board.id }"><em>${status.index +1}</em>${board.title }</a></li>
+=======
+					<li><a href="club/detail?b=${board.id}"><em>${status.index +1}</em>${board.title }</a></li>
+>>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 				</c:forEach>
 			</ul>
 		</div>
 	</div>
-
+</div>
 	<!-- store의 글자들 클릭한 뒤 다시 뒤로가기 해도 글자색 변경되지 않게 -->
 	 <footer id="footerBg">
       <div class="container">

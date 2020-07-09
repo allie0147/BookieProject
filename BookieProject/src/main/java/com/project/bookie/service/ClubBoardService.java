@@ -15,7 +15,7 @@ public class ClubBoardService {
 	ClubBoardMapper mapper;
 
 
-	public Board getBoardByBoardById(int boardId) {
+	public Board getBoardByBoardById(long boardId) {
 		Board board = mapper.getBoardByBoardIdWithComment(boardId);
 		return board;
 	}
