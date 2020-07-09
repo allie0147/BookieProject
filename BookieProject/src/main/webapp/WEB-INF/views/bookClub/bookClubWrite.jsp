@@ -19,51 +19,11 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
 	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<script>
-	$(function() {
-		$("form").on("submit", function() {
-			console.dir($("form").eq(1));
-			let formData = $("form").eq(1).serialize();
-			let title = document.getElementsByName("title")[0].value;
-			let genre = document.getElementsByName("genre")[0].value;
-			console.log(formData);
-			console.log(title);
-			console.log(genre);
-			if (title != "" && genre != 0) {
-				$.ajax({
-					url : "/club/write",
-					type : "post",
-					data : formData,
-					dataType : "json",
-					success : function(data) {
-						alert("작성 되었습니다.");
-						window.location.replace("/club/detail?b=" + data);
-					},
-					error : function() {
-						alert("글 작성에 실패 했습니다.");
-					}
-				}); //ajax end
-				return false;
-			} else {
-				alert("내용 또는 장르를 선택하세요");
-			}
-		});
-	});
-	/* $(document)
-	 .ajaxStart(function () {
-	 $('#my-spinner').show();
-	 })
-	 .ajaxStop(function () {
-	 $('#my-spinner').hide();
-	 }); */
-</script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="/resources/js/bookclub/write.js"></script>
 </head>
 <body>
 	<div class="main-body">
@@ -134,18 +94,6 @@
 					</div>
 					<input type="hidden" id="hidden" name="uEmail"
 						value="${user.getUEmail()}">
-					<div class="col-xs-2">
-						<select class="form-control" name="genre" style="cursor: pointer;">
-							<option value="0" selected="selected">==장르 선택==</option>
-							<option value="1">소설/시/희곡</option>
-							<option value="2">에세이</option>
-							<option value="3">인문학</option>
-							<option value="4">경제경영</option>
-							<option value="5">사회과학</option>
-							<option value="6">종교</option>
-							<option value="7">예술</option>
-						</select>
-					</div>
 				</div>
 				<div class="form-group">
 					<textarea class="form-control " id="summernote" name="content"></textarea>

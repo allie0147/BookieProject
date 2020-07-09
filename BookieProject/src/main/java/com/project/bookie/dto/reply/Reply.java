@@ -16,7 +16,7 @@ public class Reply {
 	private long boardId;
 	private long commentId;
 	private long userId;
-	private String Writer;
+	private String writer;
 	private String message;
 	@DateTimeFormat
 	private LocalDateTime wtDate;

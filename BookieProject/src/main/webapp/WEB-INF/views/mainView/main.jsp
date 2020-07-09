@@ -163,7 +163,6 @@
 					<c:forEach var="board" items="${MainClubBoardList }"
 						varStatus="status">
 						<!-- <a href="qna/detail?b=${status.index }"> a 태그 클릭시 이동 페이지 status.index 수정 -->
-						<li><a href="qna/detail?b=${board.id }"><em>${status.index +1}</em>${board.title }</a></li>
 						<li><a href="club/detail?b=${board.id}"><em>${status.index +1}</em>${board.title }</a></li>
 					</c:forEach>
 				</ul>

@@ -1,7 +1,5 @@
 package com.project.bookie.controller;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +29,10 @@ public class QnaBoardController {
 
 	@Autowired
 	QnaBoardViewListService viewListService;
+	
 	@Autowired
 	QnaBoardService service;
+	
 	@Autowired
 	UserService userService;
 
@@ -65,7 +65,7 @@ public class QnaBoardController {
 			for (int j = startNum; j <= endNum; j++) {
 				pageArray.add(j);
 			}
-			System.out.println(pageArray);
+//			System.out.println(pageArray);
 		}
 
 		int nextNum = boardViewList.getPageTotalCount(); // viewList.getPageTotalCount()
@@ -96,7 +96,6 @@ public class QnaBoardController {
 			@RequestParam(value = "p", defaultValue = "1", required = false) int pageNum) {
 		List<Board> boardList = service.getBoardListBySearchInfo(option, searchInfo);
 		BoardViewList boardViewList = viewListService.getViewListSearch(pageNum, boardList);
-
 		return boardViewList;
 	}
 

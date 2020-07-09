@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.bookie.mapper.comment.ClubCommentMapper">
+	<resultMap type="comment" id="cmt">
+		<id property="id" column="id"/>
+		<result property="boardId" column="club_board_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="writer" column="writer"/>
+		<result property="message" column="message"/>
+		<result property="wtDate" column="w_date"/>
+		<collection property="replyList" column="id" select="getReplyByCommentId"/>
+	</resultMap>
+	<resultMap type="reply" id="rpl">
+		<id property="id" column="id"/>
+		<result property="boardId" column="club_board_id"/>
+		<result property="commentId" column="club_comment_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="writer" column="writer"/>
+		<result property="message" column="message"/>
+		<result property="wtDate" column="w_date"/>
+	</resultMap>
+	<!-- 댓글 하나당 달린 리플 -->
+	<select id="getReplyListByCommentId" resultMap="rpl">
+		select club_reply.id as id, club_board_id, club_comment_id, user_id, user.nickname as writer,  message 
+		from club_reply join user on club_reply.user_id = user.id where club_comment_id=#{commentId}
+	</select>
+
+	<insert id="addComment" parameterType="comment" useGeneratedKeys="true" keyProperty="id"> 
+		insert into club_comment (club_board_id, user_id, message) values(#{boardId}, #{userId}, #{message})
+	</insert>
+	
+	<select id="getCommentWdate" parameterType="long" resultType="String">
+		select w_date from club_comment where id = #{id}
+	</select>
+
+</mapper>

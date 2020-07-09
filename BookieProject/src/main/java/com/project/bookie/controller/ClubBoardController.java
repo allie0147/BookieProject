@@ -3,6 +3,7 @@ package com.project.bookie.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.boardViewList.BoardViewList;
+import com.project.bookie.dto.comment.Comment;
 import com.project.bookie.dto.user.User;
 import com.project.bookie.service.ClubBoardService;
 import com.project.bookie.service.ClubBoardViewListService;
@@ -51,38 +53,38 @@ public class ClubBoardController {
 			endNum = pageArray.get(pageArray.size() - 1);
 		} else { // 총 페이지 수가 5이상일 때
 			int i = 1;
+			endNum = (boardViewList.getPageTotalCount()
+					- boardViewList.getCurrentPageNumber() >= boardViewList.getPageTotalCount() - 5) ? 5 * i
+							: boardViewList.getPageTotalCount();
 			while (p > 5 * i) {
 				i++;
 			}
-
-//			System.out.println("현재 페이지네이션 범위 : "+(i-1)*5+"~"+i*5); //p가 5*i보다 작아지게 된 i의 값
-
+			System.out.println("현재 페이지네이션 범위 : " + (i - 1) * 5 + "~" + i * 5); // p가 5*i보다 작아지게 된 i의 값
 			startNum = 5 * (i - 1) + 1;
-			endNum = 5 * i;
+
 			for (int j = startNum; j <= endNum; j++) {
 				pageArray.add(j);
 			}
-		}
-
-		int prevNum = 1;
-		if (p - 5 > 0) {
-			prevNum = p - 5;
+//			System.out.println(pageArray);
 		}
 		int nextNum = boardViewList.getPageTotalCount(); // viewList.getPageTotalCount()
 		if (p + 5 < boardViewList.getPageTotalCount()) {
 			nextNum = p + 5;
 		}
 
-		m.addAttribute("prevNum", prevNum);
 		m.addAttribute("nextNum", nextNum);
 		m.addAttribute("pageArray", pageArray);
+		m.addAttribute("p", p);
 		return "bookClub/bookclubMain.jsp?p=" + p;
 	}
 
 	@GetMapping("/detail")
 	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) long boardId) {
-		Board board = service.getBoardByBoardById(boardId);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName(); // 세션에 있는 유저이메일
+		Board board = service.getBoardByBoardById(boardId);	
 		m.addAttribute("board", board);
+		m.addAttribute("uEmail", uEmail);
 		return "bookClub/bookClubBoardDetail.jsp?b=" + boardId;
 	}
 
@@ -106,5 +108,29 @@ public class ClubBoardController {
 		long boardId = service.writeOnBoard(board);
 		return String.valueOf(boardId);
 	}
+	
+	@PostMapping(value = "/comment", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public Comment insertReplyOnQnABoard(@Param("boardId") String boardId, @Param("comment") String comment) {
+		System.out.println(boardId);
+		System.out.println(comment);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName(); // 세션에 있는 유저이메일
+		System.out.println(uEmail);
+		Comment c = new Comment();
+		c.setUserId(userService.getUserIdByEmail(uEmail));
+		c.setWriter(userService.getUserNickname(uEmail));
+		c.setBoardId(Integer.parseInt(boardId));
+		c.setMessage(comment);
+		System.out.println(c);
+		String date = service.writeReply(c);
+		String head = date.substring(0, 10);
+		String tail = date.substring(11, 16);
+		date = head + " " + tail;
+		c.setWtDate_str(date);
+		return c;
+	}
+	
+	
 
 }

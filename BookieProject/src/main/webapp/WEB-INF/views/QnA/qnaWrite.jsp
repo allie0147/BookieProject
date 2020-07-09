@@ -91,15 +91,9 @@
 		<div class="container">
 			<form class="form-container text-center">
 				<div class="form-group text-left row">
-					<div class="col-xs-10">
-						<input type="text" class="form-control" name="title"
-							placeholder="제목">
-					</div>
-					<input type="hidden" id="hidden" name="uEmail"
-						value="${user.getUEmail()}">
 					<div class="col-xs-2">
 						<select class="form-control" name="genre" style="cursor: pointer;">
-							<option value="0" selected="selected">==장르 선택==</option>
+							<option value="0" selected="selected">장르 선택</option>
 							<option value="1">소설/시/희곡</option>
 							<option value="2">에세이</option>
 							<option value="3">인문학</option>
@@ -109,6 +103,12 @@
 							<option value="7">예술</option>
 						</select>
 					</div>
+					<div class="col-xs-10">
+						<input type="text" class="form-control" name="title"
+							placeholder="제목">
+					</div>
+					<input type="hidden" id="hidden" name="uEmail"
+						value="${user.getUEmail()}">
 				</div>
 				<div class="form-group">
 					<textarea class="form-control" id="summernote" name="content"></textarea>

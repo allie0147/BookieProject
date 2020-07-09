@@ -5,18 +5,18 @@ $(function() {
 		let genre = document.getElementsByName("genre")[0].value;
 		if (title != "" && genre != 0) {
 			$.ajax({
-				url : "/qna/write",
+				url : "/club/write",
 				type : "post",
 				data : formData,
 				dataType : "json",
 				success : function(data) {
 					alert("작성 되었습니다.");
-					window.location.replace("/qna/detail?b=" + data);
+					window.location.replace("/club/detail?b=" + data);
 				},
 				error : function() {
 					alert("글 작성에 실패 했습니다.");
 				}
-			}); //ajax end
+			}); // ajax end
 			return false;
 		} else if (title == "") {
 			alert("제목을 입력하세요");

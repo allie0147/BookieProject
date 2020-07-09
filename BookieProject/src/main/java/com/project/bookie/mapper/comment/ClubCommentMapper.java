@@ -5,7 +5,7 @@ import java.util.List;
 import com.project.bookie.dto.comment.Comment;
 import com.project.bookie.dto.reply.Reply;
 
-public interface QnaCommentMapper {
+public interface ClubCommentMapper {
 
 	// 한 댓글에 대한 리플 리스트를 가져오기
 	public List<Reply> getReplyListByCommentId(long commentId);
@@ -21,4 +21,5 @@ public interface QnaCommentMapper {
 
 	// 댓글 작성시간 가져오기
 	public String getCommentWdate(long commentId);
+
 }

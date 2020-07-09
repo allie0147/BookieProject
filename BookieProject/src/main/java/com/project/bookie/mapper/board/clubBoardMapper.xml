@@ -39,15 +39,15 @@
 	</select>
 	
 	<!-- 글 하나에 달린 모든 댓글 조회(리플 제외) -->
-	<select id="getAllCommentListByBoardId" resultMap="brd">
-		select club_comment.id as id, club_board_id, user.nickname as writer, message, w_date 
+	<select id="getAllCommentListByBoardId" resultMap="cmt">
+		select club_comment.id as id, club_board_id, user_id, user.nickname as writer, message, w_date 
 		from club_comment join user on club_comment.user_id = user.id 
 		where club_board_id=#{boardId}
 	</select>
 	
 	<!-- 댓글 하나에 달린 모든 리플 조회(댓글 수 만큼 반복 필요) -->
 	<select id="getReplyByCommentId" resultMap="rpl">
-		select club_reply.id as id, club_board_id as, club_comment_id, user_id, writer, message, w_date 
+		select club_reply.id as id, club_board_id, club_comment_id, user_id, user.nickname as writer, message, w_date 
 		from club_reply join user on club_reply.user_id = user.id 
 		where club_board_id=#{commentId}
 	</select>

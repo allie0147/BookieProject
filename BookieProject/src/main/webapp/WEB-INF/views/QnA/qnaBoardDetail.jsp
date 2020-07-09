@@ -75,7 +75,7 @@
 		</div>
 
 		<div class="container">
-			<table class="table table-hover table-bordered">
+			<table class="table table-bordered">
 				<thead id="myHead">
 					<tr>
 						<th scope="col"># ${board.id}</th>
@@ -97,15 +97,19 @@
 		<div class="container text-center">
 			<h2>댓글</h2>
 		</div>
+		<sec:authorize access="isAnonymous()">
+			<input type="text" readonly="readonly" placeholder="댓글작성은 로그인 후 이용하세요"/>
+			<input type="button" value="작성" />
+		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
 			<form name="replyForm">
-				<input type="text" name="comment" id="comment" placeholder="댓글을 작성하세요" /> <input
+				<input type="text" name="comment" id="comment" placeholder="댓글을 입력하세요..." /> <input
 					type="hidden" name="board_id" value="${board.id }" /> <input
 					type="submit" value="작성" name="submit">
 			</form>
 		</sec:authorize>
 		<div class="container">
-			<table class="table table-hover table-bordered" id="commentTable">
+			<table class="table table-bordered" id="commentTable">
 				<tbody id="commentTbody">
 					<c:forEach var="comment" items="${board.commentList }"
 						varStatus="status">
@@ -135,12 +139,7 @@
 				</tbody>
 			</table>
 		</div>
-
-
-
-
 		<div class="container text-center">
-
 			<c:if test="${boardViewList.boardList.size() > 0 }">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">

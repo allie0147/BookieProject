@@ -6,17 +6,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.bookie.dto.board.Board;
+import com.project.bookie.dto.comment.Comment;
 import com.project.bookie.mapper.board.ClubBoardMapper;
-import com.project.bookie.mapper.user.UserMapper;
+import com.project.bookie.mapper.comment.ClubCommentMapper;
 
 @Service
 public class ClubBoardService {
 	@Autowired
 	ClubBoardMapper mapper;
-
+	
+	@Autowired
+	ClubCommentMapper commentMapper;
 
 	public Board getBoardByBoardById(long boardId) {
 		Board board = mapper.getBoardByBoardIdWithComment(boardId);
+		List<Comment> commentList = board.getCommentList();
+		for (Comment comment : commentList) {
+			String commentStr = comment.getWtDate().toString();
+			String head = commentStr.substring(0, 10);
+			String tail = commentStr.substring(11, 16);
+			commentStr = head + " " + tail;
+			comment.setWtDate_str(commentStr);
+		}
+		board.setCommentList(commentList);
+		String boardDate = board.getWtDate().toString();
+		String head = boardDate.substring(0, 10);
+		String tail = boardDate.substring(11, 16);
+		boardDate = head + " " + tail;
+		board.setWtDate_str(boardDate);
 		return board;
 	}
 
@@ -30,4 +47,13 @@ public class ClubBoardService {
 		System.out.println(board.getId());
 		return board.getId(); // board id
 	}
+	
+	public String writeReply(Comment comment) {
+		commentMapper.addComment(comment);
+		System.out.println(comment.getId());
+		String date = commentMapper.getCommentWdate(comment.getId());
+		System.out.println(date);
+		return date;
+	}
+	
 }

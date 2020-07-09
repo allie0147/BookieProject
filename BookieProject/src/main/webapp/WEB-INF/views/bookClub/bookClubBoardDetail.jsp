@@ -14,29 +14,9 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/bookclub/detail.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	$(function name(){
-		function ComUpdateForm(id){
-			
-		}
-		
-		function ComEelete(id){
-			
-		}
-		
-		function RepUpdateForm(id){
-			
-		}
-		
-		function RepDelete(id){
-			
-		}
-	});
-</script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/resources/js/bookclub/detail.js"></script>
 </head>
 <body>
 	<div class="main-body">
@@ -102,11 +82,11 @@
 		</div>
 
 		<div class="container">
-			<table class="table table-hover table-bordered">
+			<table class="table table-bordered">
 				<thead id="myHead">
 					<tr>
-						<th scope="col">#</th>
-						<th class="wtDate" scope="col">작성일시 ${board.wtDate }</th>
+						<th scope="col"># ${board.id}</th>
+						<th class="wtDate" scope="col">작성일시 ${board.wtDate_str }</th>
 						<c:if test="${not empty board.upDate}">
 							<th class="upDate" scope="col">마지막 수정 일시 ${board.upDate }</th>
 						</c:if>
@@ -124,44 +104,51 @@
 		<div class="container text-center">
 			<h2>댓글</h2>
 		</div>
+		<sec:authorize access="isAnonymous()">
+			<input type="text" readonly="readonly"
+				placeholder="댓글작성은 로그인 후 이용하세요" />
+			<input type="button" readonly="readonly" value="작성" />
+		</sec:authorize>
+		<sec:authorize access="isAuthenticated()">
+			<form name="replyForm">
+				<input type="text" name="comment" id="comment"
+					placeholder="댓글을 입력하세요..." /> <input type="hidden" name="board_id"
+					value="${board.id }" /> <input type="submit" value="작성"
+					name="submit">
+			</form>
+		</sec:authorize>
 		<div class="container">
-			<table class="table table-hover table-bordered">
-				<thead id="myHead">
+			<table class="table table-bordered" id="commentTable">
+				<thead id="commentTbody">
 					<c:forEach var="comment" items="${board.commentList }"
 						varStatus="status">
 						<tr>
-							<th scope="col" class="comment_index">${status.index + 1 }</th>
-							<th scope="col" class="comment_message">${comment.message }</th>
-							<th scope="col" class="comment_writer">${comment.writer }</th>
-							<th scope="col" class="comment_button">
-								<button onclick="ComUpdateForm(${comment.id})">수정</button>
-								<button onclick="ComEelete(${comment.id})">삭제</button>
-							</th>
+							<td scope="col" class="comment_message">${comment.message }</td>
+							<td scope="col" class="comment_writer">${comment.writer}</td>
+							<td scope="col" class="comment_index">${comment.wtDate_str}</td>
+							<td scope="col" class="comment_button">
+								<button class="commentUp" id='${comment.id}'>수정</button>
+								<button class="commentDel" id="${comment.id}">삭제</button>
+							</td>
 						</tr>
 						<c:forEach var="reply" items="${comment.replyList }">
-				</thead>
-				<tbody>
-					<tr>
-						<td scope="row" class="reply_rep"><span
-							class="glyphicon glyphicon-hand-right"></span></td>
-						<td scope="row" class="reply_message">&nbsp; ${reply.message }</td>
-						<td class="reply_writer">${reply.writer }</td>
-						<td scope="row" class="comment_button">
-							<button onclick="RepUpdateForm(${reply.id})">수정</button>
-							<button onclick="RepDelete(${reply.id})">삭제</button>
-						</td>
-					</tr>
-					</c:forEach>
+							<tr>
+								<td scope="row" class="reply_rep"><span
+									class="glyphicon glyphicon-hand-right"></span></td>
+								<td scope="row" class="reply_message">&nbsp;
+									${reply.message }</td>
+								<td class="reply_writer">${reply.writer }</td>
+								<td scope="row" class="comment_button">
+									<button name="replyUp" id="${reply.id}">수정</button>
+									<button name="replyDel" id="${reply.id}">삭제</button>
+								</td>
+							</tr>
+						</c:forEach>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-
-
-
-
 		<div class="container text-center">
-
 			<c:if test="${boardViewList.boardList.size() > 0 }">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
@@ -188,9 +175,7 @@
 					</ul>
 				</nav>
 			</c:if>
-
 		</div>
-
 	</div>
 	<footer id="footerBg">
 		<div class="container">
