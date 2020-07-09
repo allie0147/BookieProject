@@ -63,6 +63,7 @@ $(function(){
 </script>
 </head>
 <body>
+<div class="main-body">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -140,7 +141,7 @@ $(function(){
 			</div>
 		</form>
 	</div>
-
+</div>
 	<footer id="footerBg">
 		<div class="container">
 			<br>
@@ -184,6 +185,7 @@ $(function(){
 				</div>
 			</div>
 		</div>
+
 	</footer>
 	<script type="text/javascript">
 		$(document).ready(function() {

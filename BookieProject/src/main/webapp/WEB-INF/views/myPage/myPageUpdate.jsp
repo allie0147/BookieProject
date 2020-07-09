@@ -20,6 +20,7 @@
 <script src="/resources/js/mypage/main.js"></script>
 </head>
 <body>
+<div class="main-body">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -107,6 +108,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 	<footer id="footerBg">
 		<div class="container">
 			<br>

@@ -16,6 +16,7 @@
 <script src="/resources/js/login/main.js"></script>
 </head>
 <body>
+<div class="main-body">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -58,7 +59,7 @@
 		<p style="margin:0px;">회원님의 이메일은 ${uEmail }입니다.</p>
 		<a href="/login">로그인 페이지로 이동하기</a>
 	</div>
-	
+</div>	
 	<footer id="footerBg">
 		<div class="container">
 			<br>

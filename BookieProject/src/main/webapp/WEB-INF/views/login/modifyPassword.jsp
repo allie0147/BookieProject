@@ -19,6 +19,7 @@
 <script src="/resources/js/login/findPassword.js"></script>
 </head>
 <body>
+<div class="main-body">
 	<!-- nav bar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
@@ -83,7 +84,7 @@
 			<a href="/">메인 화면으로 이동</a>
 		</c:if>
 	</div>
-	
+</div>	
 	<footer id="footerBg">
 		<div class="container">
 			<br>
