@@ -1,8 +1,11 @@
 package com.project.bookie.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.boardViewList.BoardViewList;
+import com.project.bookie.dto.comment.Comment;
 import com.project.bookie.dto.user.User;
 import com.project.bookie.service.QnaBoardService;
 import com.project.bookie.service.QnaBoardViewListService;
@@ -77,8 +81,11 @@ public class QnaBoardController {
 
 	@GetMapping("/detail")
 	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) int boardId) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName(); // 세션에 있는 유저이메일
 		Board board = service.getBoardByBoardById(boardId);
 		m.addAttribute("board", board);
+		m.addAttribute("uEmail", uEmail);
 		return "QnA/qnaBoardDetail.jsp?b=" + boardId;
 	}
 
@@ -101,7 +108,7 @@ public class QnaBoardController {
 		m.addAttribute("user", user);
 		return "QnA/qnaWrite";
 	}
-	
+
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String insertWriteOnQnABoard(Board board) {
@@ -113,6 +120,27 @@ public class QnaBoardController {
 		long boardId = service.writeOnBoard(board);
 		return String.valueOf(boardId);
 	}
-	
-	
+
+	@PostMapping(value = "/comment", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public Comment insertReplyOnQnABoard(@Param("boardId") String boardId, @Param("comment") String comment) {
+		System.out.println(boardId);
+		System.out.println(comment);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName(); // 세션에 있는 유저이메일
+		System.out.println(uEmail);
+		Comment c = new Comment();
+		c.setUserId(userService.getUserIdByEmail(uEmail));
+		c.setWriter(userService.getUserNickname(uEmail));
+		c.setBoardId(Integer.parseInt(boardId));
+		c.setMessage(comment);
+		System.out.println(c);
+		String date = service.writeReply(c);
+		String head = date.substring(0, 10);
+		String tail = date.substring(11, 16);
+		date = head + " " + tail;
+		c.setWtDate_str(date);
+		return c;
+	}
+
 }

@@ -27,4 +27,5 @@ public class Board {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime upDate;
 	private List<Comment> commentList;
+	private String wtDate_str;
 }

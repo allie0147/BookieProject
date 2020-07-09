@@ -18,10 +18,11 @@ public class Comment {
 	private long id;
 	private long boardId;
 	private long userId;
-	private String Writer;
+	private String writer; //대문자 W -> 소문자 w 변경
 	private String message;
 	@DateTimeFormat
 	private LocalDateTime wtDate;
+	private String wtDate_str;
 	private List<Reply> replyList;
 	
 }

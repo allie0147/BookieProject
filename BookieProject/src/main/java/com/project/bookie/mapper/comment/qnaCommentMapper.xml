@@ -27,4 +27,12 @@
 		from qna_reply join user on qna_reply.user_id = user.id where qna_comment_id=#{commentId}
 	</select>
 
+	<insert id="addComment" parameterType="comment" useGeneratedKeys="true" keyProperty="id"> 
+		insert into qna_comment (qna_board_id, user_id, message) values(#{boardId}, #{userId}, #{message})
+	</insert>
+	
+	<select id="getCommentWdate" parameterType="long" resultType="String">
+		select w_date from qna_comment where id = #{id}
+	</select>
+
 </mapper>
