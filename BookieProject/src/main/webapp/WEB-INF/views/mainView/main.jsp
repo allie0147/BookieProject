@@ -132,12 +132,9 @@
 			<h2><a href="/club/main">BookClub</a></h2>
 			<ul class="qnaUl">
 				<c:forEach var="board" items="${MainClubBoardList }" varStatus="status">
-<<<<<<< HEAD
 					<!-- <a href="qna/detail?b=${status.index }"> a 태그 클릭시 이동 페이지 status.index 수정 -->
 					<li><a href="qna/detail?b=${board.id }"><em>${status.index +1}</em>${board.title }</a></li>
-=======
 					<li><a href="club/detail?b=${board.id}"><em>${status.index +1}</em>${board.title }</a></li>
->>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 				</c:forEach>
 			</ul>
 		</div>
