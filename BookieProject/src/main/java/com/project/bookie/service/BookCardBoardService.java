@@ -12,11 +12,6 @@ import com.project.bookie.mapper.board.BookCardBoardMapper;
 public class BookCardBoardService {
 	@Autowired
 	BookCardBoardMapper mapper;
-
-	public BookCardBoard getBoardByBoardById(int boardId) {
-		BookCardBoard board = mapper.getBoardByBoardId(boardId);
-		return board;
-	}
 	
 	public List<BookCardBoard> getBoardListLatest(){
 		List<BookCardBoard> bookCardBoardList = mapper.getBoardListToMain();

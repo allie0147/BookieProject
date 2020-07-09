@@ -1,7 +1,11 @@
 package com.project.bookie.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,17 +29,31 @@ public class BookCardBoardController {
 	
 	@GetMapping("main")
 	public String goBookCardBoardMain(Model m, @RequestParam(value="p", defaultValue = "1", required = false)int pageNum) {
-		BookCardBoardViewList boardViewList = viewListService.getViewListService(pageNum);
+		
+		BookCardBoardViewList boardVL = viewListService.getViewListService(pageNum);
 		List<BookCardBoard> boardViewListBest = service.getBoardListToMainBest3();
 		m.addAttribute("boardViewListBest", boardViewListBest);
-		m.addAttribute("boardViewList", boardViewList);
 		
+		Set<BookCardBoard> boardViewList = new HashSet<>(boardVL.getBookCardBoardList());
+		Iterator<BookCardBoard> boardViewListIter = boardViewList.iterator();
+		m.addAttribute("boardViewListIter", boardViewListIter);
+
+		//랜덤으로 이미지 불러오기
+		Set<Integer> randomImageNum = new HashSet<>();
+		for(int i = 0; i < 50; i++) { //순서 보장 X
+			randomImageNum.add(i);
+		}
+		Iterator<Integer> randomImageNumIter = randomImageNum.iterator();
+		m.addAttribute("randomImageNumIter", randomImageNumIter);
+		
+		
+		//페이지네이션
 		List<Integer> pageArray = new ArrayList<>();
 		int startNum;
 		int endNum;
 		
-		if(boardViewList.getPageTotalCount() <= 5) {
-			for(int i=1; i <= boardViewList.getPageTotalCount(); i++) {
+		if(boardVL.getPageTotalCount() <= 5) {
+			for(int i=1; i <= boardVL.getPageTotalCount(); i++) {
 				pageArray.add(i);
 			}
 			startNum = pageArray.get(0);
@@ -59,8 +77,8 @@ public class BookCardBoardController {
 		if(pageNum - 5 > 0) {
 			prevNum = pageNum - 5;
 		}
-		int nextNum = boardViewList.getPageTotalCount(); //viewList.getPageTotalCount()
-		if(pageNum + 5 < boardViewList.getPageTotalCount()) {
+		int nextNum = boardVL.getPageTotalCount(); //viewList.getPageTotalCount()
+		if(pageNum + 5 < boardVL.getPageTotalCount()) {
 			nextNum = pageNum + 5;
 		}
 		
@@ -69,12 +87,6 @@ public class BookCardBoardController {
 		m.addAttribute("pageArray", pageArray);
 		return "bookCard/bookcardMain.jsp?p="+pageNum;
 	}
-	
-	@GetMapping("/detail")
-	public String goDetailPage(Model m, @RequestParam(value="b", defaultValue = "1", required = false)int boardId) {
-		BookCardBoard board = service.getBoardByBoardById(boardId);
-		m.addAttribute("board", board);
-		return "bookCard/bookCardBoardDetail.jsp?b="+boardId;
-	}
+
 
 }

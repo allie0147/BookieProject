@@ -8,9 +8,6 @@ import com.project.bookie.dto.board.BookCardBoard;
 
 public interface BookCardBoardMapper {
 	
-	//게시글 하나 가져오기
-	public BookCardBoard getBoardByBoardId(int boardId);
-	
 	//게시판 글 전체를 불러오는 기능
 	public List<BookCardBoard> getAllBoards();
 	
