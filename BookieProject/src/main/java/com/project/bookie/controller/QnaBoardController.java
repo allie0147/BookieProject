@@ -89,7 +89,10 @@ public class QnaBoardController {
 			m.addAttribute("board", board);
 		} else {
 			long userId = userService.getUserIdByEmail(uEmail);
+			String nickname = userService.getUserNickname(uEmail);
+			m.addAttribute("board", board);
 			m.addAttribute("userId", userId);
+			m.addAttribute("nickname", nickname);
 		}
 		return "QnA/qnaBoardDetail.jsp?b=" + boardId;
 	}

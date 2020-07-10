@@ -1,10 +1,35 @@
 #footerFont {
-	color: #9D9D9D;
+	color: #dadada;
+}
+
+#footerFont>div>h5>a {
+	color: #b2b2b2;
+}
+
+#footerFont>div>h5>a:hover {
+	color: #ffffff;
 }
 
 #footerBg {
-	background: #333333;
+	background: #1b262c;
 	color: #ffffff;
+}
+
+.navbar-header {
+	color: #dadada;
+}
+
+#myNavbar>ul>li>a {
+	color: #dadada;
+}
+
+#myNavbar>ul>li>a:hover {
+	color: #ffffff;
+}
+
+.navbar-inverse {
+	background-color: #1b262c;
+	color: #dadada;
 }
 
 .navbar-header>a {
@@ -14,20 +39,34 @@
 
 body {
 	padding-top: 51px;
-	background-color: #f0f0f0;
+	background-color: #f9f7f7;
+	font-family: Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, 돋움, dotum,
+		sans-serif;
 }
 
-.main-body{
+.main-body {
 	min-height: 1382px;
 }
 
-a, a:visited {
-	color: #000000;
+.dropdown-menu {
+	background-color: #1b262c;
+}
+
+.dropdown-menu>li>a {
+	color: #dadada;
+}
+
+a {
+	color: #343434;
+	text-decoration: none;
+}
+
+a:visited {
 	text-decoration: none;
 }
 
 a:hover {
-	color: #bbbbbb;
+	color: #0f4c75;
 	text-decoration: none;
 	cursor: pointer;
 }

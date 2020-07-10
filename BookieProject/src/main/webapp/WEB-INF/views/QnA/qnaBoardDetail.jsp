@@ -9,12 +9,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>실제 글 페이지</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
 <link rel="stylesheet" href="/resources/css/QnA/detail.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/QnA/detail.js"></script>
 </head>
 <body>
@@ -70,105 +73,103 @@
 			<!-- <img src="images/bg2.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="300px"> -->
 		</div>
 
-		<div class="container text-center">
-			<h2>${board.title }</h2>
-		</div>
-
-		<div class="container">
-			<table class="table table-bordered">
-				<thead id="myHead">
-					<tr>
-						<th scope="col"># ${board.id}</th>
-						<th class="wtDate" scope="col">작성일시 ${board.wtDate_str}</th>
-						<c:if test="${not empty board.upDate}">
-							<th class="upDate" scope="col">마지막 수정 일시 ${board.upDate }</th>
-						</c:if>
-						<th scope="col">작성자 ${board.writer }</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td colspan="4">${board.content }</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-		<div class="container text-center">
-			<h2>댓글</h2>
-		</div>
-		<sec:authorize access="isAnonymous()">
-			<input type="text" readonly="readonly" placeholder="로그인 후 이용하세요"/>
-			<input type="button" value="작성" />
-		</sec:authorize>
-		<sec:authorize access="isAuthenticated()">
-			<form name="replyForm">
-			<input type="text" name="comment" id="comment"
-					placeholder="댓글을 입력하세요..." /> <input type="hidden" name="board_id"
-					value="${board.id }" /><label for="comment"><input
-					type="submit" value="작성" name="submit"></label>
-			</form>
-		</sec:authorize>
-		<div class="container">
-			<table class="table table-bordered" id="commentTable">
-				<tbody id="commentTbody">
-					<c:forEach var="comment" items="${board.commentList }"
-						varStatus="status">
+		<div class="container article_container">
+			<div class="container text-center">
+				<h2>${board.title }</h2>
+			</div>
+			<div class="container boardContainer">
+				<table class="table table-bordered">
+					<thead id="myHead">
 						<tr>
-							<td scope="col" id="${comment.id}" class="comment_message">${comment.message }</td>
-							<td scope="col" class="comment_writer">${comment.writer}</td>
-							<td scope="col" class="comment_index">${comment.wtDate_str}</td>
-							<c:if test="${comment.userId == userId}">
-							<td scope="col" class="comment_button">
-								<button class="commentUp" id='${comment.id}'>수정</button>
-								<button class="commentDel" id="${comment.id}">삭제</button>
-							</td>
+							<th scope="col"># ${board.id}</th>
+							<th class="wtDate" scope="col">작성일시 ${board.wtDate_str}</th>
+							<c:if test="${not empty board.upDate}">
+								<th class="upDate" scope="col">마지막 수정 일시 ${board.upDate }</th>
 							</c:if>
+							<th scope="col">작성자 ${board.writer }</th>
 						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="4">${board.content }</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="container text-center">
+				<h2>댓글</h2>
+			</div>
+			<div class="container">
+				<ul class="container" id="com_ul">
+					<c:forEach var="comment" items="${board.commentList}"
+						varStatus="status">
+						<li class="comment_list" id="com_li">
+							<div class="boardContainer commentContainer">
+								<div class="commentContainer">
+									<div class="comment_writer writer">
+										<span>${comment.writer}</span>
+									</div>
+									<div class="comment_message" id="${comment.id}">
+										<span>${comment.message}</span>
+									</div>
+									<div class="comment_index">
+										<span class="wdate">${comment.wtDate_str }</span><a
+											class="writeReply">답글쓰기</a>
+									</div>
+									<c:if test="${comment.userId == userId}">
+										<div class="comment_aTag">
+											<a class="commentUp" id='${comment.id}'>수정</a> <a
+												class="commentDel" id="${comment.id}">삭제</a>
+										</div>
+									</c:if>
+								</div>
+							</div>
+						</li>
 						<c:forEach var="reply" items="${comment.replyList }">
-							<tr>
-								<td scope="row" class="reply_rep"><span
-									class="glyphicon glyphicon-hand-right"></span></td>
-								<td scope="row" class="reply_message">&nbsp;
-									${reply.message }</td>
-								<td class="reply_writer">${reply.writer }</td>
-								<td scope="row" class="comment_button">
-									<button name="replyUp" id="${reply.id}">수정</button>
-									<button name="replyDel" id="${reply.id}">삭제</button>
-								</td>
-							</tr>
+							<li class="comment_list">
+								<div class="container boardContainer commentContainer">
+									<div class="commentContainer">
+										<div class="reply_rep">
+											<span class="glyphicon glyphicon-hand-right"></span>
+										</div>
+										<div class="reply_writer writer">
+											<span>${reply.writer} </span>
+										</div>
+										<div class="reply_message" id=${reply.id }>
+											<span>${reply.message }</span>
+										</div>
+										<div class="reply_index">
+											<span>${reply.wtDate_str }</span><a class="writeReply">답글쓰기</a>
+										</div>
+										<div class="comment_aTag">
+											<a class="replyUp" id="${reply.id}">수정</a> <a
+												class="replyDel" id="${reply.id}">삭제</a>
+										</div>
+									</div>
+								</div>
+							</li>
 						</c:forEach>
 					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-		<div class="container text-center">
-			<c:if test="${boardViewList.boardList.size() > 0 }">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<c:if test="${p>5}">
-							<li class="page-item"><a class="page-link"
-								href="main?p=${pageArray.get(0)-5 }">&lt;&lt;</a></li>
-						</c:if>
-						<c:forEach var="pageNum" items="${pageArray }">
-							<c:choose>
-								<c:when test="${pageNum == boardViewList.currentPageNumber }">
-									<li class="page-item"><a class="page-link"
-										href="main?p=${pageNum }"><b>${pageNum }</b></a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item"><a class="page-link"
-										href="main?p=${pageNum }">${pageNum }</a></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${pageArray.size()==5}">
-							<li class="page-item"><a class="page-link"
-								href="main?p=${nextNum }">&gt;&gt;</a></li>
-						</c:if>
-					</ul>
-				</nav>
-			</c:if>
+				</ul>
+				<div class="comment_box">
+					<sec:authorize access="isAnonymous()">
+						<textarea class="comment_input" type="text" readonly="readonly"
+							placeholder="로그인 후 이용하세요" ></textarea>
+						<input class="comment_submit" type="button" value="등록" />
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<div class='writer comment_nickname'>${nickname}</div>
+						<form name="replyForm">
+							<textarea rows='1' name="comment" id="comment" class="comment_input"
+								placeholder="댓글을 남겨보세요"></textarea>
+							<input type="hidden" name="board_id" value="${board.id }" /><label
+								for="comment" class="label_summit"><input type="submit"
+								class="comment_submit" value="등록" name="submit"></label>
+						</form>
+					</sec:authorize>
+				</div>
+			</div>
 		</div>
 	</div>
 	<footer id="footerBg">

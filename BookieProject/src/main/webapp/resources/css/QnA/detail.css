@@ -1,77 +1,100 @@
-/* board */
-.board_table {
-	border-collapse: collapse;
-	border: 1px solid black;
-	width: 900px;
+/* article*/
+.article_container {
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.board_table tr {
-	border: 1px solid black;
+/*comment*/
+
+.replyForm {
+    width: 100%;
 }
 
-.board_table .title {
-	text-align: center;
+.label_summit {
+    width: 100%;
 }
 
-board_table .wtDate {
-	width: 150px;
+.comment_list {
+    list-style: none;
+    border-top: 1px solid #ddd;
+    width: 1100px;
 }
 
-board_table .upDate {
-	width: 150px;
+.boardContainer {
+    font-size: 13px;
+    padding: 0 100px;
 }
 
-board_table .writer {
-	width: 600px;
-	text-align: right;
-	padding-right: 5px;
+.writer {
+    font-weight: 900;
+    margin-bottom: 2px;
 }
 
-/* comment */
-.comment_table {
-	border-collapse: collapse;
-	border: 1px solid black;
-	width: 900px;
+.comment_index {
+    font-size: 12px;
 }
 
-.comment_table .comment_title {
-	text-align: center;
+.comment_aTag {
+    font-size: 12px;
 }
 
-.comment_table tr {
-	border: 1px solid black;
+.wdate {
+    margin-right: 20px;
 }
 
-.comment_table .comment_index {
-	width: 5%;
+.comment_index {
+    margin-top: 7px;
 }
 
-.comment_table .comment_message {
-	width: 69%;
+.commentContainer {
+    margin: 12px 0 10px 0;
 }
 
-.comment_table .comment_writer {
-	width: 15%;
+.comment_box {
+    margin: 15px 80px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    width: 1000px;
+    background-color: #fefefe;
+    padding: 16px 10px 10px 18px;
 }
 
-.comment_table .comment_button {
-	width: 11%;
+.comment_nickname {
+    margin-bottom: 10px;
 }
 
-/* reply */
-.reply_rep {
-	width: 5%;
-	text-align: right;
+.comment_input {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    height: 18px;
+    max-height: 500px;
+    font-size: 13px;
+    resize: none;
+    display: block;
+    border: none;
 }
 
-.reply_message {
-	width: 69%;
+.comment_input:focus {
+    outline: none;
+    border: none;
 }
 
-.reply_writer {
-	width: 15%;
-}
-
-.reply_button {
-	width: 11%;
+.comment_submit {
+    display: block;
+    min-width: 43px;
+    height: 32px;
+    font-size: 13px;
+    color: #ffffff;
+    background-color: #0f4c75;
+    border-radius: 6px;
+    box-sizing: border-box;
+    /* vertical-align: top; */
+    border: 0;
+    outline: 0;
+    position: relative;
+    top: 5px;
+    left: 95%;
 }

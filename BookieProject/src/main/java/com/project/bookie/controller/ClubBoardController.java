@@ -87,6 +87,7 @@ public class ClubBoardController {
 			m.addAttribute("board", board);
 		}else {
 			long userId = userService.getUserIdByEmail(uEmail);
+			m.addAttribute("board", board);
 			m.addAttribute("userId", userId);
 		}
 		return "bookClub/bookClubBoardDetail.jsp?b=" + boardId;
