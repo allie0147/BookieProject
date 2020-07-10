@@ -97,13 +97,13 @@
 								</div>
 							</c:if>
 							<div>
-								<input type="checkbox" name='remember-me' /> 자동 로그인
+								<label><input type="checkbox"
+									name='remember-me' /> 자동 로그인 </label>
 							</div>
 							<input type="submit" class="btn btn-block btn-info" value="LogIn">
 							<input type="hidden" id="hidden" name='${_csrf.parameterName}'
 								value='${_csrf.token}'>
 						</form>
-
 						<button id="signup" type="button"
 							class="btn btn-block btn-default">회원가입</button>
 						<div class="text-center">

@@ -31,6 +31,10 @@
 		insert into qna_comment (qna_board_id, user_id, message) values(#{boardId}, #{userId}, #{message})
 	</insert>
 	
+	<update id="updateComment" parameterType="String">
+		update qna_comment set message=#{message}
+	</update>
+	
 	<select id="getCommentWdate" parameterType="long" resultType="String">
 		select w_date from qna_comment where id = #{id}
 	</select>

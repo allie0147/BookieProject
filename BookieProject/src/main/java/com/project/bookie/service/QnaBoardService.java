@@ -29,7 +29,6 @@ public class QnaBoardService {
 			commentStr = head + " " + tail;
 			comment.setWtDate_str(commentStr);
 		}
-		board.setCommentList(commentList);
 		String boardDate = board.getWtDate().toString();
 		String head = boardDate.substring(0, 10);
 		String tail = boardDate.substring(11, 16);
@@ -64,11 +63,15 @@ public class QnaBoardService {
 		return board.getId(); // board id
 	}
 
-	public String writeReply(Comment comment) {
+	public String writeComment(Comment comment) {
 		commentMapper.addComment(comment);
 		System.out.println(comment.getId());
 		String date = commentMapper.getCommentWdate(comment.getId());
 		System.out.println(date);
 		return date;
+	}
+
+	public void updateComment(String comment) {
+		commentMapper.updateComment(comment);
 	}
 }

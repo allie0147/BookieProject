@@ -125,13 +125,15 @@
 					<c:forEach var="comment" items="${board.commentList }"
 						varStatus="status">
 						<tr>
-							<td scope="col" class="comment_message">${comment.message }</td>
+							<td scope="col" id="${comment.id}" class="comment_message">${comment.message }</td>
 							<td scope="col" class="comment_writer">${comment.writer}</td>
 							<td scope="col" class="comment_index">${comment.wtDate_str}</td>
+							<c:if test="${comment.userId == userId}">
 							<td scope="col" class="comment_button">
 								<button class="commentUp" id='${comment.id}'>수정</button>
 								<button class="commentDel" id="${comment.id}">삭제</button>
 							</td>
+							</c:if>
 						</tr>
 						<c:forEach var="reply" items="${comment.replyList }">
 							<tr>

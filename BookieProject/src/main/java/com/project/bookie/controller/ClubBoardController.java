@@ -83,8 +83,12 @@ public class ClubBoardController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
 		Board board = service.getBoardByBoardById(boardId);	
-		m.addAttribute("board", board);
-		m.addAttribute("uEmail", uEmail);
+		if (uEmail.equals("anonymousUser")) {
+			m.addAttribute("board", board);
+		}else {
+			long userId = userService.getUserIdByEmail(uEmail);
+			m.addAttribute("userId", userId);
+		}
 		return "bookClub/bookClubBoardDetail.jsp?b=" + boardId;
 	}
 
@@ -123,7 +127,7 @@ public class ClubBoardController {
 		c.setBoardId(Integer.parseInt(boardId));
 		c.setMessage(comment);
 		System.out.println(c);
-		String date = service.writeReply(c);
+		String date = service.writeComment(c);
 		String head = date.substring(0, 10);
 		String tail = date.substring(11, 16);
 		date = head + " " + tail;

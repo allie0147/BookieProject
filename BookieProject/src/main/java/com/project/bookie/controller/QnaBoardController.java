@@ -29,10 +29,10 @@ public class QnaBoardController {
 
 	@Autowired
 	QnaBoardViewListService viewListService;
-	
+
 	@Autowired
 	QnaBoardService service;
-	
+
 	@Autowired
 	UserService userService;
 
@@ -83,9 +83,14 @@ public class QnaBoardController {
 	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) int boardId) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
+		System.out.println(uEmail);
 		Board board = service.getBoardByBoardById(boardId);
-		m.addAttribute("board", board);
-		m.addAttribute("uEmail", uEmail);
+		if (uEmail.equals("anonymousUser")) {
+			m.addAttribute("board", board);
+		} else {
+			long userId = userService.getUserIdByEmail(uEmail);
+			m.addAttribute("userId", userId);
+		}
 		return "QnA/qnaBoardDetail.jsp?b=" + boardId;
 	}
 
@@ -123,23 +128,27 @@ public class QnaBoardController {
 	@PostMapping(value = "/comment", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Comment insertCommentOnQnABoard(@Param("boardId") String boardId, @Param("comment") String comment) {
-		System.out.println(boardId);
-		System.out.println(comment);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
-		System.out.println(uEmail);
 		Comment c = new Comment();
 		c.setUserId(userService.getUserIdByEmail(uEmail));
 		c.setWriter(userService.getUserNickname(uEmail));
 		c.setBoardId(Integer.parseInt(boardId));
 		c.setMessage(comment);
-		System.out.println(c);
-		String date = service.writeReply(c);
+		String date = service.writeComment(c);
 		String head = date.substring(0, 10);
 		String tail = date.substring(11, 16);
 		date = head + " " + tail;
 		c.setWtDate_str(date);
 		return c;
+	}
+
+	@PostMapping(value = "/comment/update", produces = "text/plain; charset=utf-8 ")
+	@ResponseBody
+	public String updateCommentOnQnABoard(String comment) {
+		System.out.println(comment);
+		service.updateComment(comment);
+		return comment;
 	}
 
 }

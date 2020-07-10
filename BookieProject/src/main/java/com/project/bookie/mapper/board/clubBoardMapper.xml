@@ -42,7 +42,7 @@
 	<select id="getAllCommentListByBoardId" resultMap="cmt">
 		select club_comment.id as id, club_board_id, user_id, user.nickname as writer, message, w_date 
 		from club_comment join user on club_comment.user_id = user.id 
-		where club_board_id=#{boardId}
+		where club_board_id=#{boardId} order by club_comment.id
 	</select>
 	
 	<!-- 댓글 하나에 달린 모든 리플 조회(댓글 수 만큼 반복 필요) -->
