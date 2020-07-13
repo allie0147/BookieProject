@@ -139,23 +139,20 @@
 						<c:forEach var="reply" items="${comment.replyList }">
 							<li class="comment_list">
 								<div class="container boardContainer replyContainer">
-									<div class="commentContainer">
+									<div class="commentContainer" id='div_R${reply.id}'>
 										<div class="reply_rep">
 											<span class="glyphicon glyphicon-hand-right"></span>
 										</div>
 										<div class="reply_writer writer">
 											<span>${reply.writer} </span>
 										</div>
-										<div class="reply_message" id=${reply.id }>
+										<div class="reply_message" id='R${reply.id }'>
 											<span>${reply.message }</span>
 										</div>
 										<div class="comment_index">
 											<span class='wdate'>${reply.wtDate}</span>
-											<sec:authorize access="isAuthenticated()">
-												<a class="reReply" id='re_${reply.id }'>댓글쓰기</a>
-											</sec:authorize>
 										</div>
-										<c:if test="${comment.userId == userId}">
+										<c:if test="${reply.userId == userId}">
 											<div class="comment_aTag">
 												<a class="replyUp" id="${reply.id}">수정</a> <a
 													class="replyDel" id="${reply.id}">삭제</a>

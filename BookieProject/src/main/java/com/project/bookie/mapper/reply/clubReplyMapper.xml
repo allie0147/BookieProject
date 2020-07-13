@@ -8,7 +8,7 @@
 		insert into club_reply (club_board_id, club_comment_id, user_id, message) values(#{boardId}, #{commentId}, #{userId}, #{message})
 	</insert>
 	
-	<update id="updateComment" parameterType="String">
+	<update id="updateReply" parameterType="String">
 		update club_reply set message=#{message} where id=#{id}
 	</update>
 	

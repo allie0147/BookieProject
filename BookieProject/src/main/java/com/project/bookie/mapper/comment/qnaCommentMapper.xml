@@ -24,7 +24,7 @@
 	<!-- 댓글 하나당 달린 리플 -->
 	<select id="getReplyListByCommentId" resultMap="rpl">
 		select qna_reply.id as id, qna_board_id, qna_comment_id, user_id, user.nickname as writer,  message 
-		from qna_reply join user on qna_reply.user_id = user.id where qna_comment_id=#{commentId}
+		from qna_reply join user on qna_reply.user_id = user.id where qna_comment_id=#{commentId} order by qna_reply.id 
 	</select>
 
 	<insert id="addComment" parameterType="comment" useGeneratedKeys="true" keyProperty="id"> 

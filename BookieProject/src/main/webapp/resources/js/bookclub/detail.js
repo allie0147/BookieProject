@@ -1,4 +1,5 @@
 $(function () {
+	// comment작성시,
     $("form[name=commentForm]").on("submit", function () {
         const boardId = document.getElementsByName('board_id')[0].value;
         const commentInput = document.getElementById('comment');
@@ -87,6 +88,7 @@ $(function () {
             return false;
         }
     });
+// comment 수정 클릭시 ,
     let toggle_bool = true;
     $(document).on('click', '.commentUp', function () {
         const commentId = this.id;
@@ -96,7 +98,7 @@ $(function () {
         if (toggle_bool) {
             $('#div_' + commentId).eq(0).after(inner);
             toggle_bool = false;
-        } else { //toggle event
+        } else { // toggle event
             $('.temp').detach();
             toggle_bool = true;
         }
@@ -124,14 +126,14 @@ $(function () {
                     error: function () {
                         alert('댓글 수정에 실패 했습니다.');
                     }
-                }); //ajax end
+                }); // ajax end
                 return false;
             } else {
                 alert('내용을 입력하세요');
             }
         });
     });
-    
+// comment 삭제 click시,
     $(document).on('click', '.commentDel', function () {
         const commentId = this.id;
         if (confirm("정말 삭제하시겠습니까?")) {
@@ -158,7 +160,7 @@ $(function () {
             return false;
         }
     });
-    
+// 댓글달기(reply) click시,
     $(document).on('click', '.writeReply', function () {
         const commentId = this.id;
         const boardId = document.getElementsByName('board_id')[0].value;
@@ -168,7 +170,7 @@ $(function () {
         if (toggle_bool) {
             $('#div_' + commentId).eq(0).after(inner);
             toggle_bool = false;
-        } else { //toggle event
+        } else { // toggle event
             $('.temp').detach();
             toggle_bool = true;
         }
@@ -188,19 +190,92 @@ $(function () {
                         toggle_bool = true;
 
                         const div = "<li class='comment_list'><div class = 'container boardContainer replyContainer'><div class = 'commentContainer'><div class = 'reply_rep'><span class = 'glyphicon glyphicon-hand-right'></span></div>" +
-                            "<div class = 'reply_writer writer'><span>" + reply.writer + "</span></div><div class = 'reply_message' id ='" + reply.id + "'><span>" + reply.message + "</span></div><div class = 'comment_index'><span class='wdate'>" + reply.wtDate_str + "</span><a class = 'reReply' id = 're_" + reply.id + "'> 댓글쓰기 </a></div><div class = 'reply_aTag'><a class = 'replyUp' id='" + reply.id + "'> 수정 </a><a class = 'replyDel' id = '" + reply.id + "'> 삭제 </a></div></div> </div> </li>";
+                        "<div class = 'reply_writer writer'><span>" + reply.writer + "</span></div><div class = 'reply_message' id ='" + reply.id + "'><span>" + reply.message + "</span></div><div class = 'comment_index'><span class='wdate'>" + reply.wtDate_str + "</span></div><div class = 'reply_aTag'><a class = 'replyUp' id='" + reply.id + "'> 수정 </a><a class = 'replyDel' id = '" + reply.id + "'> 삭제 </a></div></div> </div> </li>";
                         $('#li_' + commentId).eq(0).after(div);
                         alert('댓글이 작성되었습니다.');
                     },
                     error: function () {
                         alert('댓글 작성에 실패 했습니다.');
                     }
-                }); //ajax end
+                }); // ajax end
                 return false;
             } else {
                 alert('내용을 입력하세요');
                 return false;
             }
         });
+    }); 
+// 대댓글 수정
+    $(document).on('click', '.replyUp', function () {
+        const replyId = this.id;
+        const nickname = document.getElementsByClassName('comment_nickname')[0].innerHTML;
+        const inner =
+            "<div class='temp'><div class='writer comment_nickname'>" + nickname + "</div><form name='editReplyForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='update_reply' class='comment_input_temp' placeholder='댓글을 수정하세요'></textarea>" + " <input type='submit' class='comment_submit'value='등록' name='submit'></label></form></div>";
+        if (toggle_bool) {
+            $('#div_R' + replyId).eq(0).after(inner);
+            toggle_bool = false;
+        } else { // toggle event
+            $('.temp').detach();
+            toggle_bool = true;
+        }
+        $('form[name=editReplyForm]').on('submit', function () {
+            const comment = document.getElementById('update_reply').value;
+            if (comment != "") {
+                $.ajax({
+                    url: "/club/reply/update",
+                    type: "post",
+                    data: {
+                        "replyId": replyId,
+                        "reply": comment
+                    },
+                    success: function (comment) {
+                        if (comment != "false") {
+                            $('.temp').detach();
+                            toggle_bool = true;
+                            const div = document.getElementById('R' + replyId);
+                            div.innerText = comment;
+                            alert('댓글이 수정되었습니다.');
+                        } else {
+                            alert("댓글 수정에 실패 했습니다.");
+                        }
+                    },
+                    error: function () {
+                        alert('댓글 수정에 실패 했습니다.');
+                    }
+                }); // ajax end
+                return false;
+            } else {
+                alert('내용을 입력하세요');
+                return false;
+            }
+        });
+    });
+    // 대댓글 삭제
+    $(document).on('click', '.replyDel', function () {
+        const replyId = this.id;
+        if (confirm("정말 삭제하시겠습니까?")) {
+            $.ajax({
+                url: "/club/reply/del",
+                type: "post",
+                data: {
+                    "replyId": replyId
+                },
+                success: function (e) {
+                    if (e == "true") {
+                        const del = $('#div_R' + replyId).parent().parent();
+                        console.log(del);
+                        del.remove();
+                        alert("댓글이 삭제되었습니다.");
+                    } else {
+                        alert("삭제 실패했습니다.");
+                    }
+                },
+                error: function () {
+                    alert("삭제 실패했습니다.");
+                }
+            });
+        } else {
+            return false;
+        }
     });
 });

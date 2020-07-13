@@ -46,12 +46,14 @@ public class ClubBoardService {
 		return boardList;
 	}
 
+//	insert board
 	public long writeOnBoard(Board board) {
 		mapper.insertBoard(board);
 		System.out.println(board.getId());
 		return board.getId(); // board id
 	}
 
+//	insert comment
 	public String writeComment(Comment comment) {
 		commentMapper.addComment(comment);
 		System.out.println(comment.getId());
@@ -60,18 +62,30 @@ public class ClubBoardService {
 		return date;
 	}
 
+//	update comment
 	public void updateComment(String commentId, String comment) {
 		commentMapper.updateComment(commentId, comment);
 	}
 
+//	delete comment
 	public void deleteComment(String commentId) {
 		commentMapper.deleteComment(commentId);
 	}
 
+//	insert reply
 	public String writeReply(Reply reply) {
 		replyMapper.addReply(reply);
 		String date = replyMapper.getReplyWdate(reply.getId());
 		return date;
 	}
 
+//	update reply
+	public void updateReply(String replyId, String reply) {
+		replyMapper.updateReply(replyId, reply);
+	}
+
+//	delete reply
+	public void deleteReply(String replyId) {
+		replyMapper.deleteReply(replyId);
+	}
 }

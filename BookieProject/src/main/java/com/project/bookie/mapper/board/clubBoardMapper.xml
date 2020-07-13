@@ -49,7 +49,7 @@
 	<select id="getReplyByCommentId" resultMap="rpl">
 		select club_reply.id as id, club_board_id, club_comment_id, user_id, user.nickname as writer, message, w_date 
 		from club_reply join user on club_reply.user_id = user.id 
-		where club_comment_id=#{commentId}
+		where club_comment_id=#{commentId} order by club_reply.id
 	</select>
 	
 	<!-- 글 전체 -->

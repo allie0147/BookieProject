@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.comment.Comment;
+import com.project.bookie.dto.reply.Reply;
 import com.project.bookie.mapper.board.QnaBoardMapper;
 import com.project.bookie.mapper.comment.QnaCommentMapper;
+import com.project.bookie.mapper.reply.QnaReplayMapper;
 
 @Service
 public class QnaBoardService {
@@ -18,6 +20,9 @@ public class QnaBoardService {
 
 	@Autowired
 	QnaCommentMapper commentMapper;
+	
+	@Autowired
+	QnaReplayMapper replyMapper;
 
 	public Board getBoardByBoardById(int boardId) {
 		Board board = mapper.getBoardByBoardIdWithComment(boardId);
@@ -57,12 +62,14 @@ public class QnaBoardService {
 		return boardList;
 	}
 
+//	insert board
 	public long writeOnBoard(Board board) {
 		mapper.insertBoard(board);
 		System.out.println(board.getId());
 		return board.getId(); // board id
 	}
 
+//	insert comment
 	public String writeComment(Comment comment) {
 		commentMapper.addComment(comment);
 		System.out.println(comment.getId());
@@ -71,11 +78,31 @@ public class QnaBoardService {
 		return date;
 	}
 
+//	update comment
 	public void updateComment(String commentId, String comment) {
 		commentMapper.updateComment(commentId, comment);
 	}
 
+//	delete comment
 	public void deleteComment(String commentId) {
 		commentMapper.deleteComment(commentId);
+	}
+
+//	insert reply
+	public String writeReply(Reply reply) {
+		replyMapper.addReply(reply);
+		String date = replyMapper.getReplyWdate(reply.getId());
+		return date;
+	}
+	
+
+//	update reply
+	public void updateReply(String replyId, String reply) {
+		replyMapper.updateReply(replyId, reply);
+	}
+
+//	delte reply
+	public void deleteReply(String replyId) {
+		replyMapper.deleteReply(replyId);
 	}
 }

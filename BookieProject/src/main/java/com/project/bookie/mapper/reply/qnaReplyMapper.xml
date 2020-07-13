@@ -3,4 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.bookie.mapper.reply.QnaReplyMapper">
+
+	<insert id="addReply" parameterType="reply" useGeneratedKeys="true" keyProperty="id"> 
+		insert into qna_reply (qna_board_id, qna_comment_id, user_id, message) values(#{boardId}, #{commentId}, #{userId}, #{message})
+	</insert>
+	
+	<update id="updateReply" parameterType="String">
+		update qna_reply set message=#{message} where id=#{id}
+	</update>
+	
+	<delete id="deleteReply" parameterType="String">
+		delete from qna_reply where id =#{id}
+	</delete>
+	
+	<select id="getReplyWdate" parameterType="long" resultType="String">
+		select w_date from qna_reply where id = #{id}
+	</select>
+	
 </mapper>

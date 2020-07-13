@@ -155,7 +155,7 @@ public class ClubBoardController {
 
 	@PostMapping(value = "/comment/del", produces = "text/plain; charset=utf-8")
 	@ResponseBody
-	public String deleteCommentOnQnABoard(@Param("commentId") String commentId) {
+	public String deleteCommentOnClubBoard(@Param("commentId") String commentId) {
 		System.out.println(commentId);
 		try {
 			service.deleteComment(commentId);
@@ -181,4 +181,32 @@ public class ClubBoardController {
 		reply.setWtDate_str(date);
 		return reply;
 	}
+
+	@PostMapping(value = "/reply/update", produces = "text/plain; charset=utf-8 ")
+	@ResponseBody
+	public String updateReplyOnClubBoard(@Param("replyId") String replyId, @Param("reply") String reply) {
+		System.out.println(replyId);
+		System.out.println(reply);
+		try {
+			service.updateReply(replyId, reply);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "false";
+		}
+		return reply;
+	}
+
+	@PostMapping(value = "/reply/del", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String deleteReplyOnClubBoard(@Param("replyId") String replyId) {
+		System.out.println(replyId);
+		try {
+			service.deleteReply(replyId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "false";
+		}
+		return "true";
+	}
+
 }
