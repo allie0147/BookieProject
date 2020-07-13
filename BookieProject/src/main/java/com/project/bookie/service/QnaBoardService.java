@@ -71,7 +71,7 @@ public class QnaBoardService {
 		return date;
 	}
 
-	public void updateComment(String comment) {
+	public void updateComment(Comment comment) {
 		commentMapper.updateComment(comment);
 	}
 }

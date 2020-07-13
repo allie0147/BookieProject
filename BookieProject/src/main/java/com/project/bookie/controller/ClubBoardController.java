@@ -82,13 +82,15 @@ public class ClubBoardController {
 	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) long boardId) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
-		Board board = service.getBoardByBoardById(boardId);	
+		Board board = service.getBoardByBoardById(boardId);
 		if (uEmail.equals("anonymousUser")) {
 			m.addAttribute("board", board);
-		}else {
+		} else {
 			long userId = userService.getUserIdByEmail(uEmail);
+			String nickname = userService.getUserNickname(uEmail);
 			m.addAttribute("board", board);
 			m.addAttribute("userId", userId);
+			m.addAttribute("nickname", nickname);
 		}
 		return "bookClub/bookClubBoardDetail.jsp?b=" + boardId;
 	}
@@ -113,7 +115,7 @@ public class ClubBoardController {
 		long boardId = service.writeOnBoard(board);
 		return String.valueOf(boardId);
 	}
-	
+
 	@PostMapping(value = "/comment", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Comment insertReplyOnQnABoard(@Param("boardId") String boardId, @Param("comment") String comment) {
@@ -135,7 +137,12 @@ public class ClubBoardController {
 		c.setWtDate_str(date);
 		return c;
 	}
-	
-	
+	@PostMapping(value = "/comment/update", produces = "text/plain; charset=utf-8 ")
+	@ResponseBody
+	public String updateCommentOnClubBoard(Comment comment) {
+		System.out.println(comment);
+		service.updateComment(comment);
+		return "";
+	}
 
 }

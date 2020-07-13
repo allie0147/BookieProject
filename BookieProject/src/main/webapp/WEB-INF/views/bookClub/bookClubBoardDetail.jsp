@@ -111,8 +111,8 @@
 					<c:forEach var="comment" items="${board.commentList }"
 						varStatus="status">
 						<li class="comment_list">
-							<div class="boardContainer commentContainer">
-								<div class="commentContainer">
+							<div class="boardContainer commentContainer" >
+								<div class="commentContainer" id='div_${comment.id}'>
 									<div class="comment_writer writer">
 										<span>${comment.writer}</span>
 									</div>
@@ -167,10 +167,10 @@
 					<sec:authorize access="isAuthenticated()">
 						<div class='writer comment_nickname'>${nickname}</div>
 						<form name="replyForm">
+						<label for="submit" class="label_summit">
 							<textarea rows='1' name="comment" id="comment"
 								class="comment_input" placeholder="댓글을 남겨보세요"></textarea>
-							<input type="hidden" name="board_id" value="${board.id }" /><label
-								for="comment" class="label_summit"><input type="submit"
+							<input type="hidden" name="board_id" value="${board.id }" /><input type="submit"
 								class="comment_submit" value="등록" name="submit"></label>
 						</form>
 					</sec:authorize>

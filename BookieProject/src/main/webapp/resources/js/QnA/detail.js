@@ -1,4 +1,3 @@
-
 $(function () {
     $("form[name=replyForm]").on("submit", function () {
         const boardId = document.getElementsByName('board_id')[0].value;
@@ -15,21 +14,26 @@ $(function () {
                 success: function (comment) {
                     // comment== comment object
                     commentInput.value = "";
-
-                    const ul = document.getElementById('com_ul').lastElementChild;
+                    let ul = document.getElementById('com_ul').lastElementChild;
+                    if (ul == null) {
+                        ul = document.getElementById('com_ul');
+                    }
                     const li = document.createElement('li');
                     li.setAttribute("class", "comment_list");
-                    li.setAttribute("id", "com_li");
+                    li.setAttribute("id", "li_" + comment.id);
 
                     const div_top = document.createElement('div');
-                    div_top.setAttribute("class", "boardContainer commentContainer");
+                    div_top.setAttribute("class", "boardContainer");
+                    div_top.style.cssText = "margin: 12px 0 10px 0;";
+
                     const div_bottom = document.createElement('div');
                     div_bottom.setAttribute("class", "commentContainer");
 
                     const span1 = document.createElement('span');
                     span1.innerText = comment.writer;
                     const div1 = document.createElement('div');
-                    div1.setAttribute("class", "comment_writer writer");
+                    div1.setAttribute("class", "comment_writer");
+                    div1.style.cssText = "font-weight: 900; margin-bottom: 2px;";
                     div1.append(span1);
 
                     const span2 = document.createElement('span');
@@ -50,13 +54,15 @@ $(function () {
                     const updateAtag = document.createElement('a');
                     updateAtag.setAttribute("class", "commentUp");
                     updateAtag.setAttribute("id", comment.id);
+                    updateAtag.style.cssText = "font-size: 12px;";
                     updateAtag.innerText = "수정";
                     div4.append(updateAtag);
 
                     const deleteAtag = document.createElement('a');
                     deleteAtag.setAttribute("class", "commentDel");
                     deleteAtag.setAttribute("id", comment.id);
-                    deleteAtag.innerText = "삭제";
+                    deleteAtag.style.cssText = "font-size: 12px;";
+                    deleteAtag.innerText = " 삭제";
                     div4.append(deleteAtag);
 
                     div_bottom.append(div1);
@@ -80,5 +86,11 @@ $(function () {
             alert("내용을 입력하세요");
             return false;
         }
+    });
+    $(document).on('click', '.commentUp', function () {
+        const comment_box = $('.comment_box').eq(0);
+        comment_box.css("width", "800px");
+        comment_box.after("<form name='editForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='comment' class='comment_input' placeholder='댓글을 수정하세요' width='700px'></textarea>" + " <input type='submit' class='comment_submit'value='등록' name='submit'></label></form>");
+        $('#div_' + this.id).eq(0).after(comment_box);
     });
 });

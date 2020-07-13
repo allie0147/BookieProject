@@ -31,8 +31,12 @@
 		insert into club_comment (club_board_id, user_id, message) values(#{boardId}, #{userId}, #{message})
 	</insert>
 	
+	<update id="updateComment" parameterType="comment">
+		update club_comment set message=#{message} where id={id}
+	</update>
+	
 	<select id="getCommentWdate" parameterType="long" resultType="String">
 		select w_date from club_comment where id = #{id}
 	</select>
-
+	
 </mapper>

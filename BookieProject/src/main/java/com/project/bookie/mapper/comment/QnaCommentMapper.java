@@ -14,7 +14,7 @@ public interface QnaCommentMapper {
 	public void addComment(Comment comment);
 
 	// 댓글 수정
-	public void updateComment(String comment);
+	public void updateComment(Comment comment);
 
 	// 댓글 삭제
 	public void deleteComment(long commentId);

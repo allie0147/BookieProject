@@ -148,10 +148,10 @@ public class QnaBoardController {
 
 	@PostMapping(value = "/comment/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
-	public String updateCommentOnQnABoard(String comment) {
+	public String updateCommentOnQnABoard(Comment comment) {
 		System.out.println(comment);
 		service.updateComment(comment);
-		return comment;
+		return "";
 	}
 
 }

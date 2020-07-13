@@ -69,12 +69,13 @@
 .comment_input {
     overflow: hidden;
     overflow-wrap: break-word;
-    height: 18px;
+    height: 32px;
     max-height: 500px;
     font-size: 13px;
     resize: none;
     display: block;
     border: none;
+    width: 800px;
 }
 
 .comment_input:focus {
