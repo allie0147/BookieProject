@@ -1,8 +1,77 @@
-#more {
-	float: right;
-	margin-right: 30px;
-}
-
 hr {
 	margin-bottom: 0;
+}
+
+#board_title {
+	display: inline-block;
+	margin: auto;
+}
+
+#qnaTitle {
+	margin-bottom: 20px;
+}
+
+thead>tr {
+	color: black;
+}
+
+.page {
+	text-align: center;
+}
+
+thead>tr {
+	color: black;
+}
+
+.page {
+	text-align: center;
+}
+
+.ml {
+	margin-left: 30%;
+}
+
+.form-group {
+	margin-bottom: 0;
+}
+
+.col-xs-2 {
+	padding-right: 0;
+}
+
+.col-xs-3 {
+	padding-right: 0;
+}
+
+.table-bordered {
+	width: 800px;
+	margin: auto;
+}
+
+.pagination>li>a {
+	color: #000000;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover {
+	color: #000000;
+}
+.write-div{
+	width: 815px;
+}
+.write-button{
+	margin-top:5px;
+	background: #0f4c75;
+	color: #ffffff;
+}
+.write-button:hover{
+	background: #0f4c75;
+	color: #ffffff;
+}
+.write-button:active{
+	background: #0f4c75;
+	color: #ffffff;
+}
+.write-button:focus{
+	background: #0f4c75;
+	color: #ffffff;
 }

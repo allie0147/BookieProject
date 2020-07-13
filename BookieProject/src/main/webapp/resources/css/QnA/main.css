@@ -11,24 +11,6 @@ hr {
 	margin-bottom: 20px;
 }
 
-#boardList {
-	width: 600px;
-	margin: auto;
-	height: 500px;
-}
-
-.board_qna {
-	border: 1px solid black;
-	border-radius: 7px;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-}
-
-.board_qna tr {
-	border: 1px solid black;
-}
-
 thead>tr {
 	color: black;
 }
@@ -37,101 +19,12 @@ thead>tr {
 	text-align: center;
 }
 
-.pagenation {
-	list-style: none;
-	display: inline-block;
-	margin: auto;
-	width: 60%;
-	height: 10px;
-	text-align: center;
-	text-decoration: none;
-}
-
-.pagenation li {
-	display: inline;
-	text-align: center;
-}
-
-.pagenation a {
-	display: inline-block;
-	text-decoration: none;
-	color: black;
-	padding: 5px 12px;
-}
-
-.pagenation a:hover {
-	border-radius: 4px;
-}
-
-.pageNumber {
-	margin: auto 5px auto 5px;
-	text-decoration: none;
-	color: black;
-}
-
-.searchBar {
-	margin: auto;
-	width: 600px;
-	text-align: right;
-}
-
-.board_qna {
-	border: 1px solid black;
-	border-radius: 7px;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-}
-
-.board_qna tr {
-	border: 1px solid black;
-}
-
 thead>tr {
 	color: black;
 }
 
 .page {
 	text-align: center;
-}
-
-.pagenation {
-	list-style: none;
-	display: inline-block;
-	margin: auto;
-	width: 60%;
-	height: 10px;
-	text-align: center;
-	text-decoration: none;
-}
-
-.pagenation li {
-	display: inline-block;
-	text-align: center;
-}
-
-.pagenation a {
-	display: inline-block;
-	text-decoration: none;
-	color: black;
-	padding: 5px 12px;
-}
-
-.pagenation a:hover {
-	background-color: lightgray;
-	border-radius: 4px;
-}
-
-.pageNumber {
-	margin: auto 5px auto 5px;
-	text-decoration: none;
-	color: black;
-}
-
-.searchBar {
-	margin: auto;
-	width: 600px;
-	text-align: right;
 }
 
 .ml {

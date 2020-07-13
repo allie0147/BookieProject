@@ -118,7 +118,6 @@
 			<div class="container write-div">
 				<a class="btn pull-right write-button" href="/qna/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
 			</div>
-			<hr>
 		</div>
 
 

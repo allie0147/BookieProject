@@ -74,9 +74,17 @@
 			</div>
 		</nav>
 		<div class="container">
-			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-			<img src="../resources/images/banner-club.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
+			<div
+				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+				<img src="../resources/images/banner-club.jpg" class="img-rounded"
+					alt="Cinque Terre" width="100%" height="100%">
+			</div>
 		</div>
+
+		<div class="text-center" id="qnaTitle">
+			<h3 id="board_title">BookClub</h3>
+		</div>
+
 		<div class="container">
 			<c:if test="${boardViewList.boardList.size() == 0 }">
 				<!-- 글 개수가 0개일 때 -->
@@ -84,7 +92,7 @@
 			</c:if>
 			<c:if test="${boardViewList.boardList.size() > 0 }">
 				<!-- 글 개수가 1개이상일 때 -->
-				<table class="table table-bordered">
+				<table class="table table-hover table-bordered">
 					<thead>
 						<tr>
 							<th class="col-sm-1" scope="col">번 호</th>
@@ -105,8 +113,29 @@
 					</tbody>
 				</table>
 			</c:if>
-			<hr>
+			<div class="container write-div">
+				<a class="btn pull-right write-button" href="/club/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
+			</div>
 		</div>
+				<!-- 검색 창 -->
+		<div class="container">
+			<form class="ml">
+				<div class="form-group col-xs-2">
+					<select class="form-control">
+						<option value="title">제목</option>
+						<option value="content">내용</option>
+						<option value="writer">글쓴이</option>
+					</select>
+				</div>
+				<div class="form-group col-xs-3">
+					<input class="form-control" type="text" name="searchInfo" />
+				</div>
+				<div class="form-group col-xs-2">
+					<input class="btn btn-default" type="submit" value="검색" />
+				</div>
+			</form>
+		</div>
+		
 		<!-- 페이지네이션 -->
 		<div class="container text-center">
 			<c:if test="${boardViewList.boardList.size() > 0 }">
