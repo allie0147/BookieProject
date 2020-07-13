@@ -162,3 +162,23 @@ thead>tr {
 .pagination>li>a:focus, .pagination>li>a:hover {
 	color: #000000;
 }
+.write-div{
+	width: 815px;
+}
+.write-button{
+	margin-top:5px;
+	background: #0f4c75;
+	color: #ffffff;
+}
+.write-button:hover{
+	background: #0f4c75;
+	color: #ffffff;
+}
+.write-button:active{
+	background: #0f4c75;
+	color: #ffffff;
+}
+.write-button:focus{
+	background: #0f4c75;
+	color: #ffffff;
+}
