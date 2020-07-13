@@ -117,7 +117,7 @@ $(function () {
                             const div = document.getElementById(commentId);
                             div.innerText = comment;
                             alert('댓글이 수정되었습니다.');
-                        }else{
+                        } else {
                             alert("댓글 수정에 실패 했습니다.");
                         }
                     },
@@ -132,7 +132,34 @@ $(function () {
         });
     });
 
-    
+    $(document).on('click', '.commentDel', function () {
+        const commentId = this.id;
+        if (confirm("정말 삭제하시겠습니까?")) {
+            $.ajax({
+                url: "/qna/comment/del",
+                type: "post",
+                data: {
+                    "commentId": commentId
+                },
+                success: function (e) {
+                    if (e == "true") {
+                        const del = document.getElementById('li_' + commentId);
+                        del.remove();
+                        alert("댓글이 삭제되었습니다.");
+                    } else {
+                        alert("삭제 실패했습니다.");
+                    }
+                },
+                error: function () {
+                    alert("삭제 실패했습니다.");
+                }
+            });
+        } else {
+            return false;
+        }
+    });
+  
+
     let toggle_reply = true;
     $(document).on('click', '.writeReply', function () {
         const nickname = document.getElementsByClassName('comment_nickname')[0].innerHTML;

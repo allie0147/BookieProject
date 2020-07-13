@@ -131,7 +131,33 @@ $(function () {
             }
         });
     });
-    
+
+    $(document).on('click', '.commentDel', function () {
+        const commentId = this.id;
+        if (confirm("정말 삭제하시겠습니까?")) {
+            $.ajax({
+                url: "/club/comment/del",
+                type: "post",
+                data: {
+                    "commentId": commentId
+                },
+                success: function (e) {
+                    if (e == "true") {
+                        const del = document.getElementById('li_' + commentId);
+                        del.remove();
+                        alert("댓글이 삭제되었습니다.");
+                    } else {
+                        alert("삭제 실패했습니다.");
+                    }
+                },
+                error: function () {
+                    alert("삭제 실패했습니다.");
+                }
+            });
+        } else {
+            return false;
+        }
+    });
     
     let toggle_reply = true;
     $(document).on('click', '.writeReply', function () {

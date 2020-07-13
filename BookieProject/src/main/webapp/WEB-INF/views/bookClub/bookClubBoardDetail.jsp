@@ -109,7 +109,7 @@
 				<ul class="container" id="com_ul">
 					<c:forEach var="comment" items="${board.commentList }"
 						varStatus="status">
-						<li class="comment_list">
+						<li class="comment_list" id="li_${comment.id }">
 							<div class="boardContainer commentContainer">
 								<div class="commentContainer" id='div_${comment.id}'>
 									<div class="comment_writer writer">

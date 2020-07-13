@@ -38,6 +38,8 @@
 	<select id="getCommentWdate" parameterType="long" resultType="String">
 		select w_date from qna_comment where id = #{id}
 	</select>
-	
+	<delete id="deleteComment" parameterType="String">
+		delete from qna_comment where id =#{id}
+	</delete>
 
 </mapper>

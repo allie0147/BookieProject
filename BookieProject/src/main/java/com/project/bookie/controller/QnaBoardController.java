@@ -158,8 +158,20 @@ public class QnaBoardController {
 			e.printStackTrace();
 			return "false";
 		}
-		System.out.println(comment);
 		return comment;
+	}
+
+	@PostMapping(value = "/comment/del", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String deleteCommentOnQnABoard(@Param("commentId") String commentId) {
+		System.out.println(commentId);
+		try {
+			service.deleteComment(commentId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "false";
+		}
+		return "true";
 	}
 
 }

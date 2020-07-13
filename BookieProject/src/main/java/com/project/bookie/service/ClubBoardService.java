@@ -14,7 +14,7 @@ import com.project.bookie.mapper.comment.ClubCommentMapper;
 public class ClubBoardService {
 	@Autowired
 	ClubBoardMapper mapper;
-	
+
 	@Autowired
 	ClubCommentMapper commentMapper;
 
@@ -46,7 +46,7 @@ public class ClubBoardService {
 		System.out.println(board.getId());
 		return board.getId(); // board id
 	}
-	
+
 	public String writeComment(Comment comment) {
 		commentMapper.addComment(comment);
 		System.out.println(comment.getId());
@@ -54,8 +54,13 @@ public class ClubBoardService {
 		System.out.println(date);
 		return date;
 	}
+
 	public void updateComment(String commentId, String comment) {
 		commentMapper.updateComment(commentId, comment);
 	}
-	
+
+	public void deleteComment(String commentId) {
+		commentMapper.deleteComment(commentId);
+	}
+
 }

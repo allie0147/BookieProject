@@ -19,7 +19,7 @@ public interface QnaCommentMapper {
 	public void updateComment(@Param("id") String commentId, @Param("message") String comment);
 
 	// 댓글 삭제
-	public void deleteComment(long commentId);
+	public void deleteComment(@Param("id") String commentId);
 
 	// 댓글 작성시간 가져오기
 	public String getCommentWdate(long commentId);

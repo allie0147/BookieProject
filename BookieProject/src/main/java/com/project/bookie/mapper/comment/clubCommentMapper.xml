@@ -39,4 +39,8 @@
 		select w_date from club_comment where id = #{id}
 	</select>
 	
+	<delete id="deleteComment" parameterType="String">
+		delete from club_comment where id =#{id}
+	</delete>
+	
 </mapper>

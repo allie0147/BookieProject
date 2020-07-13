@@ -92,20 +92,21 @@
 								</c:choose>
 							</div>
 							<c:if test="${not empty ERRORMSG }">
-								<div class="errorBox">
-									<span class='error'>${ERRORMSG }</span>
+								<div class="alert alert-danger" role="alert"
+									style='margin-top: 10px; font-size: small; word-spacing: 1px;'>
+									<span>${ERRORMSG}</span>
 								</div>
 							</c:if>
 							<div>
-								<label><input type="checkbox"
-									name='remember-me' /> 자동 로그인 </label>
+								<label><input type="checkbox" name='remember-me' /> 자동
+									로그인 </label>
 							</div>
 							<input type="submit" class="btn btn-block btn-info" value="LogIn">
 							<input type="hidden" id="hidden" name='${_csrf.parameterName}'
 								value='${_csrf.token}'>
 						</form>
 						<button id="signup" type="button"
-							class="btn btn-block btn-default">회원가입</button>
+							class="btn btn-block btn-default" style="margin-top: 5px;">회원가입</button>
 						<div class="text-center">
 							<p>
 								<span><a href="javascript:popupEmail()">이메일찾기</a></span> <span

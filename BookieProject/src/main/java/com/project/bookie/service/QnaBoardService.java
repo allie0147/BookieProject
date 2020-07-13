@@ -74,4 +74,8 @@ public class QnaBoardService {
 	public void updateComment(String commentId, String comment) {
 		commentMapper.updateComment(commentId, comment);
 	}
+
+	public void deleteComment(String commentId) {
+		commentMapper.deleteComment(commentId);
+	}
 }
