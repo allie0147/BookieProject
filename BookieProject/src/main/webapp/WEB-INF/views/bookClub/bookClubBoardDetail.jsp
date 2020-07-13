@@ -75,9 +75,8 @@
 			</div>
 		</nav>
 		<div class="container">
-			<div
-				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
-			<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
+			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+			<img src="../resources/images/banner-detail.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
 		</div>
 		<div class="container article_container">
 			<div class="container text-center">

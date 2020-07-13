@@ -75,9 +75,8 @@
 		</nav>
 
 		<div class="container">
-			<div
-				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto"></div>
-			<!-- <img src="images/books.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="350px"> -->
+			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+			<img src="../resources/images/banner-cs.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
 		</div>
 
 		<!-- 고객센터 페이지의 문의 제목, 내용 입력칸 너비 줄이기, send 버튼 위치 이동(위 사진의 오른편 여백과 맞춰서) -->
