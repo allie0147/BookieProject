@@ -87,10 +87,17 @@ $(function () {
             return false;
         }
     });
+    let toggle_bool = true;
     $(document).on('click', '.commentUp', function () {
-        const comment_box = $('.comment_box').eq(0);
-        comment_box.css("width", "800px");
-        comment_box.after("<form name='editForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='comment' class='comment_input' placeholder='댓글을 수정하세요' width='700px'></textarea>" + " <input type='submit' class='comment_submit'value='등록' name='submit'></label></form>");
-        $('#div_' + this.id).eq(0).after(comment_box);
+        const nickname = document.getElementsByClassName('comment_nickname')[0].innerHTML;
+        const inner =
+            "<div class='comment_box temp' ><div class='writer comment_nickname'>" + nickname + "</div><form name='editForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='comment' class='comment_input' placeholder='댓글을 수정하세요' width='700px'></textarea>" + " <input type='submit' class='comment_submit'value='등록' name='submit'></label></form></div>";
+        if (toggle_bool) {
+            $('#div_' + this.id).eq(0).after(inner);
+            toggle_bool = false;
+        } else {
+            $('.temp').detach();
+            toggle_bool = true;
+        }
     });
 });
