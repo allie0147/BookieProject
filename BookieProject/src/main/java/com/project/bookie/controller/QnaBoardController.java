@@ -143,15 +143,23 @@ public class QnaBoardController {
 		String tail = date.substring(11, 16);
 		date = head + " " + tail;
 		c.setWtDate_str(date);
+		System.out.println(c);
 		return c;
 	}
 
 	@PostMapping(value = "/comment/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
-	public String updateCommentOnQnABoard(Comment comment) {
+	public String updateCommentOnQnABoard(@Param("commentId") String commentId, @Param("comment") String comment) {
 		System.out.println(comment);
-		service.updateComment(comment);
-		return "";
+		System.out.println(commentId);
+		try {
+			service.updateComment(commentId, comment);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "false";
+		}
+		System.out.println(comment);
+		return comment;
 	}
 
 }

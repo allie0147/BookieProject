@@ -1,5 +1,5 @@
 $(function () {
-    $("form[name=replyForm]").on("submit", function () {
+    $("form[name=commentForm]").on("submit", function () {
         const boardId = document.getElementsByName('board_id')[0].value;
         const commentInput = document.getElementById('comment');
         const comment = commentInput.value;
@@ -85,6 +85,65 @@ $(function () {
         } else {
             alert("내용을 입력하세요");
             return false;
+        }
+    });
+    let toggle_bool = true;
+    $(document).on('click', '.commentUp', function () {
+        const commentId = this.id;
+        const nickname = document.getElementsByClassName('comment_nickname')[0].innerHTML;
+        const inner =
+            "<div class='comment_box temp' ><div class='writer comment_nickname'>" + nickname + "</div><form name='editForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='update_comment' class='comment_input' placeholder='댓글을 수정하세요' width='700px'></textarea>" + " <input type='submit' class='comment_submit'value='등록' name='submit'></label></form></div>";
+        if (toggle_bool) {
+            $('#div_' + commentId).eq(0).after(inner);
+            toggle_bool = false;
+        } else { //toggle event
+            $('.temp').detach();
+            toggle_bool = true;
+        }
+        $('form[name=editForm]').on('submit', function () {
+            const comment = document.getElementById('update_comment').value;
+            if (comment != "") {
+                $.ajax({
+                    url: "/club/comment/update",
+                    type: "post",
+                    data: {
+                        "commentId": commentId,
+                        "comment": comment
+                    },
+                    success: function (comment) {
+                        if (comment != "false") {
+                            $('.temp').detach();
+                            toggle_bool = true;
+                            const div = document.getElementById(commentId);
+                            div.innerText = comment;
+                            alert('댓글이 수정되었습니다.');
+                        }else{
+                            alert("댓글 수정에 실패 했습니다.");
+                        }
+                    },
+                    error: function () {
+                        alert('댓글 수정에 실패 했습니다.');
+                    }
+                }); //ajax end
+                return false;
+            } else {
+                alert('내용을 입력하세요');
+            }
+        });
+    });
+    
+    
+    let toggle_reply = true;
+    $(document).on('click', '.writeReply', function () {
+        const nickname = document.getElementsByClassName('comment_nickname')[0].innerHTML;
+        const inner =
+            "<div class='comment_box temp'><div class='writer comment_nickname'>" + nickname + "</div><form name='editForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='comment' class='comment_input' placeholder='댓글을 작성하세요' width='700px'></textarea>" + " <input type='submit' class='comment_submit'value='등록' name='submit'></label></form></div>";
+        if (toggle_reply) {
+            $('#div_' + this.id).eq(0).after(inner);
+            toggle_reply = false;
+        } else {
+            $('.temp').detach();
+            toggle_reply = true;
         }
     });
 });

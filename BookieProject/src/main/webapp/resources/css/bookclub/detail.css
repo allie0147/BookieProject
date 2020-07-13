@@ -1,100 +1,101 @@
 /* article*/
 .article_container {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 /*comment*/
-
-.replyForm {
-    width: 100%;
+.commentForm {
+	width: 100%;
 }
 
 .label_summit {
-    width: 100%;
+	width: 100%;
 }
 
 .comment_list {
-    list-style: none;
-    border-top: 1px solid #ddd;
-    width: 1100px;
+	list-style: none;
+	border-top: 1px solid #ddd;
+	width: 1100px;
 }
 
 .boardContainer {
-    font-size: 13px;
-    padding: 0 100px;
+	font-size: 13px;
+	padding: 0 100px;
 }
 
 .writer {
-    font-weight: 900;
-    margin-bottom: 2px;
+	font-weight: 900;
+	margin-bottom: 2px;
 }
 
 .comment_index {
-    font-size: 12px;
+	font-size: 12px;
 }
 
 .comment_aTag {
-    font-size: 12px;
+	font-size: 12px;
 }
 
 .wdate {
-    margin-right: 20px;
+	margin-right: 20px;
 }
 
 .comment_index {
-    margin-top: 7px;
+	margin-top: 7px;
 }
 
 .commentContainer {
-    margin: 12px 0 10px 0;
+	margin: 12px 0 10px 0;
 }
 
 .comment_box {
-    margin: 15px 80px;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
-    width: 1000px;
-    background-color: #fefefe;
-    padding: 16px 10px 10px 18px;
+	margin: 15px 80px;
+	border: 2px solid rgba(0, 0, 0, 0.2);
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	width: 900px;
+	background-color: #fefefe;
+	padding: 16px 10px 10px 18px;
 }
 
 .comment_nickname {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .comment_input {
-    overflow: hidden;
-    overflow-wrap: break-word;
-    height: 18px;
-    max-height: 500px;
-    font-size: 13px;
-    resize: none;
-    display: block;
-    border: none;
+	overflow: hidden;
+	overflow-wrap: break-word;
+	height: 32px;
+	max-height: 500px;
+	font-size: 13px;
+	resize: none;
+	display: block;
+	border: none;
+	width: 800px;
+	font-weight: lighter;
 }
 
 .comment_input:focus {
-    outline: none;
-    border: none;
+	outline: none;
+	border: none;
 }
 
 .comment_submit {
-    display: block;
-    min-width: 43px;
-    height: 32px;
-    font-size: 13px;
-    color: #ffffff;
-    background-color: #0f4c75;
-    border-radius: 6px;
-    box-sizing: border-box;
-    /* vertical-align: top; */
-    border: 0;
-    outline: 0;
-    position: relative;
-    top: 5px;
-    left: 95%;
+	display: block;
+	min-width: 43px;
+	height: 32px;
+	font-size: 13px;
+	color: #ffffff;
+	background-color: #0f4c75;
+	border-radius: 6px;
+	box-sizing: border-box;
+	/* vertical-align: top; */
+	border: 0;
+	outline: 0;
+	position: relative;
+	top: 5px;
+	left: 95%;
 }

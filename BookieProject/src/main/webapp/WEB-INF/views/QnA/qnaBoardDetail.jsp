@@ -104,8 +104,8 @@
 				<ul class="container" id="com_ul">
 					<c:forEach var="comment" items="${board.commentList}"
 						varStatus="status">
-						<li class="comment_list" >
-							<div class="boardContainer commentContainer" >
+						<li class="comment_list">
+							<div class="boardContainer commentContainer">
 								<div class="commentContainer" id='div_${comment.id}'>
 									<div class="comment_writer writer">
 										<span>${comment.writer}</span>
@@ -114,8 +114,10 @@
 										<span>${comment.message}</span>
 									</div>
 									<div class="comment_index">
-										<span class="wdate">${comment.wtDate_str }</span><a
-											class="writeReply">답글쓰기</a>
+										<span class="wdate">${comment.wtDate_str }</span>
+										<sec:authorize access="isAuthenticated()">
+											<a class="writeReply" id="${comment.id }">답글쓰기</a>
+										</sec:authorize>
 									</div>
 									<c:if test="${comment.userId == userId}">
 										<div class="comment_aTag">
@@ -155,16 +157,16 @@
 				<div class="comment_box">
 					<sec:authorize access="isAnonymous()">
 						<textarea class="comment_input" type="text" readonly="readonly"
-							placeholder="로그인 후 이용하세요" ></textarea>
+							placeholder="로그인 후 이용하세요"></textarea>
 						<input class="comment_submit" type="button" value="등록" />
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
 						<div class='writer comment_nickname'>${nickname}</div>
-						<form name="replyForm">
-						<label for="submit" class="label_summit">
-							<textarea rows='1' name="comment" id="comment" class="comment_input"
-								placeholder="댓글을 남겨보세요"></textarea>
-							<input type="hidden" name="board_id" value="${board.id }" /><input type="submit"
+						<form name="commentForm">
+							<label for="submit" class="label_summit"> <textarea
+									rows='1' name="comment" id="comment" class="comment_input"
+									placeholder="댓글을 남겨보세요"></textarea> <input type="hidden"
+								name="board_id" value="${board.id }" /><input type="submit"
 								class="comment_submit" value="등록" name="submit"></label>
 						</form>
 					</sec:authorize>

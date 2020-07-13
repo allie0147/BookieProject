@@ -54,8 +54,8 @@ public class ClubBoardService {
 		System.out.println(date);
 		return date;
 	}
-	public void updateComment(Comment comment) {
-		commentMapper.updateComment(comment);
+	public void updateComment(String commentId, String comment) {
+		commentMapper.updateComment(commentId, comment);
 	}
 	
 }

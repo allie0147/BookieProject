@@ -50,7 +50,7 @@
 						<li><a href="/cs">고객센터</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/mypage"><span
+						<li><a href="/mypage/info"><span
 								class="glyphicon glyphicon-user"></span> 마이페이지</a></li>
 						<!-- 로그인 안했을 시, Login 버튼이 보임 -->
 						<sec:authorize access="isAnonymous()">

@@ -137,12 +137,20 @@ public class ClubBoardController {
 		c.setWtDate_str(date);
 		return c;
 	}
+
 	@PostMapping(value = "/comment/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
-	public String updateCommentOnClubBoard(Comment comment) {
+	public String updateCommentOnClubBoard(@Param("commentId") String commentId, @Param("comment") String comment) {
 		System.out.println(comment);
-		service.updateComment(comment);
-		return "";
+		System.out.println(commentId);
+		try {
+			service.updateComment(commentId, comment);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "false";
+		}
+		System.out.println(comment);
+		return comment;
 	}
 
 }

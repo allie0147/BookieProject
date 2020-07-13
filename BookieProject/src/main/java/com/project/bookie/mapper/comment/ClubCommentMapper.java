@@ -2,6 +2,8 @@ package com.project.bookie.mapper.comment;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.project.bookie.dto.comment.Comment;
 import com.project.bookie.dto.reply.Reply;
 
@@ -14,7 +16,7 @@ public interface ClubCommentMapper {
 	public void addComment(Comment comment);
 
 	// 댓글 수정
-	public void updateComment(Comment comment);
+	public void updateComment(@Param("id") String commentId, @Param("message") String comment);
 
 	// 댓글 삭제
 	public void deleteComment(long commentId);
