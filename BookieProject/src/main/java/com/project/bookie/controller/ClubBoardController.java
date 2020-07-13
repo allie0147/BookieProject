@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.boardViewList.BoardViewList;
 import com.project.bookie.dto.comment.Comment;
+import com.project.bookie.dto.reply.Reply;
 import com.project.bookie.dto.user.User;
 import com.project.bookie.service.ClubBoardService;
 import com.project.bookie.service.ClubBoardViewListService;
@@ -118,7 +119,7 @@ public class ClubBoardController {
 
 	@PostMapping(value = "/comment", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public Comment insertReplyOnQnABoard(@Param("boardId") String boardId, @Param("comment") String comment) {
+	public Comment insertCommentOnClubBoard(@Param("boardId") String boardId, @Param("comment") String comment) {
 		System.out.println(boardId);
 		System.out.println(comment);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -163,5 +164,21 @@ public class ClubBoardController {
 			return "false";
 		}
 		return "true";
+	}
+
+	@PostMapping(value = "/reply", produces = "application/json; charset=utf-8 ")
+	@ResponseBody
+	public Reply setReplyOnClubBoard(Reply reply) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName(); // 세션에 있는 유저이메일
+		System.out.println(uEmail);
+		reply.setUserId(userService.getUserIdByEmail(uEmail));
+		reply.setWriter(userService.getUserNickname(uEmail));
+		String date = service.writeReply(reply);
+		String head = date.substring(0, 10);
+		String tail = date.substring(11, 16);
+		date = head + " " + tail;
+		reply.setWtDate_str(date);
+		return reply;
 	}
 }

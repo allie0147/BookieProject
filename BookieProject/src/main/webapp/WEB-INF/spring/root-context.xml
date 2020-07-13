@@ -44,8 +44,9 @@
 				<!-- 댓글 관련 매퍼 -->
 				<value>classpath:com/project/bookie/mapper/comment/qnaCommentMapper.xml</value>
 				<value>classpath:com/project/bookie/mapper/comment/clubCommentMapper.xml</value>
-				
-				
+				<!-- 대댓글 관련 매퍼 -->
+				<value>classpath:com/project/bookie/mapper/reply/qnaReplyMapper.xml</value>
+				<value>classpath:com/project/bookie/mapper/reply/clubReplyMapper.xml</value>				
 			</list>
 		</property>
 	</bean>

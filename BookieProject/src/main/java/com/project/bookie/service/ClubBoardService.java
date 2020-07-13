@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.comment.Comment;
+import com.project.bookie.dto.reply.Reply;
 import com.project.bookie.mapper.board.ClubBoardMapper;
 import com.project.bookie.mapper.comment.ClubCommentMapper;
+import com.project.bookie.mapper.reply.ClubReplyMapper;
 
 @Service
 public class ClubBoardService {
@@ -17,6 +19,9 @@ public class ClubBoardService {
 
 	@Autowired
 	ClubCommentMapper commentMapper;
+
+	@Autowired
+	ClubReplyMapper replyMapper;
 
 	public Board getBoardByBoardById(long boardId) {
 		Board board = mapper.getBoardByBoardIdWithComment(boardId);
@@ -61,6 +66,12 @@ public class ClubBoardService {
 
 	public void deleteComment(String commentId) {
 		commentMapper.deleteComment(commentId);
+	}
+
+	public String writeReply(Reply reply) {
+		replyMapper.addReply(reply);
+		String date = replyMapper.getReplyWdate(reply.getId());
+		return date;
 	}
 
 }

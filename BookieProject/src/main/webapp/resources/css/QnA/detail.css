@@ -15,12 +15,12 @@
 .comment_list {
 	list-style: none;
 	border-top: 1px solid #ddd;
-	width: 1100px;
+	width: 96%;
 }
 
 .boardContainer {
 	font-size: 13px;
-	padding: 0 100px;
+	padding: 0 70px;
 }
 
 .writer {
@@ -96,5 +96,41 @@
 	border: 0;
 	outline: 0;
 	position: relative;
-	margin: 0 10% 0 90%;
+	margin: 0 15% 0 90%;
+}
+
+.temp {
+	margin: 15px 80px;
+	border: 2px solid rgba(0, 0, 0, 0.2);
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	width: 80%;
+	background-color: #fefefe;
+	padding: 16px 10px 10px 18px;
+}
+
+.comment_input_temp {
+	overflow: hidden;
+	overflow-wrap: break-word;
+	height: 32px;
+	max-height: 500px;
+	font-size: 13px;
+	resize: none;
+	display: block;
+	border: none;
+	width: 75%;
+	font-weight: lighter;
+}
+
+/*reply*/
+.replyContainer {
+	margin-left: 1.5%;
+}
+
+.reply_rep {
+	float: left;
+	margin-right: 1%;
 }

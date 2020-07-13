@@ -20,4 +20,5 @@ public class Reply {
 	private String message;
 	@DateTimeFormat
 	private LocalDateTime wtDate;
+	private String wtDate_str;
 }

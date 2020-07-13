@@ -92,7 +92,7 @@ $(function () {
         const commentId = this.id;
         const nickname = document.getElementsByClassName('comment_nickname')[0].innerHTML;
         const inner =
-            "<div class='comment_box temp' ><div class='writer comment_nickname'>" + nickname + "</div><form name='editForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='update_comment' class='comment_input' placeholder='댓글을 수정하세요' width='700px'></textarea>" + " <input type='submit' class='comment_submit'value='등록' name='submit'></label></form></div>";
+            "<div class='temp'><div class='writer comment_nickname'>" + nickname + "</div><form name='editForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='update_comment' class='comment_input_temp' placeholder='댓글을 수정하세요'></textarea>" + " <input type='submit' class='comment_submit'value='등록' name='submit'></label></form></div>";
         if (toggle_bool) {
             $('#div_' + commentId).eq(0).after(inner);
             toggle_bool = false;
@@ -131,7 +131,7 @@ $(function () {
             }
         });
     });
-
+    
     $(document).on('click', '.commentDel', function () {
         const commentId = this.id;
         if (confirm("정말 삭제하시겠습니까?")) {
@@ -159,17 +159,48 @@ $(function () {
         }
     });
     
-    let toggle_reply = true;
     $(document).on('click', '.writeReply', function () {
+        const commentId = this.id;
+        const boardId = document.getElementsByName('board_id')[0].value;
         const nickname = document.getElementsByClassName('comment_nickname')[0].innerHTML;
         const inner =
-            "<div class='comment_box temp'><div class='writer comment_nickname'>" + nickname + "</div><form name='editForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='comment' class='comment_input' placeholder='댓글을 작성하세요' width='700px'></textarea>" + " <input type='submit' class='comment_submit'value='등록' name='submit'></label></form></div>";
-        if (toggle_reply) {
-            $('#div_' + this.id).eq(0).after(inner);
-            toggle_reply = false;
-        } else {
+            "<div class='temp'><div class='writer comment_nickname'>" + nickname + "</div><form name='replyForm'><label for='submit' class='label_summit'>" + "<textarea rows='1' name='comment' id='reply_comment' class='comment_input_temp' placeholder='댓글을 작성하세요'></textarea>" + "<input type='submit' class='reply_submit' value='등록' name='submit'></label></form></div>";
+        if (toggle_bool) {
+            $('#div_' + commentId).eq(0).after(inner);
+            toggle_bool = false;
+        } else { //toggle event
             $('.temp').detach();
-            toggle_reply = true;
+            toggle_bool = true;
         }
+        $('form[name=replyForm]').on('submit', function () {
+            const reply = document.getElementById('reply_comment').value;
+            if (reply != "") {
+                $.ajax({
+                    url: "/club/reply",
+                    type: "post",
+                    data: {
+                        "boardId": boardId,
+                        "commentId": commentId,
+                        "message": reply,
+                    },
+                    success: function (reply) {
+                        $('.temp').detach();
+                        toggle_bool = true;
+
+                        const div = "<li class='comment_list'><div class = 'container boardContainer replyContainer'><div class = 'commentContainer'><div class = 'reply_rep'><span class = 'glyphicon glyphicon-hand-right'></span></div>" +
+                            "<div class = 'reply_writer writer'><span>" + reply.writer + "</span></div><div class = 'reply_message' id ='" + reply.id + "'><span>" + reply.message + "</span></div><div class = 'comment_index'><span class='wdate'>" + reply.wtDate_str + "</span><a class = 'reReply' id = 're_" + reply.id + "'> 댓글쓰기 </a></div><div class = 'reply_aTag'><a class = 'replyUp' id='" + reply.id + "'> 수정 </a><a class = 'replyDel' id = '" + reply.id + "'> 삭제 </a></div></div> </div> </li>";
+                        $('#li_' + commentId).eq(0).after(div);
+                        alert('댓글이 작성되었습니다.');
+                    },
+                    error: function () {
+                        alert('댓글 작성에 실패 했습니다.');
+                    }
+                }); //ajax end
+                return false;
+            } else {
+                alert('내용을 입력하세요');
+                return false;
+            }
+        });
     });
 });

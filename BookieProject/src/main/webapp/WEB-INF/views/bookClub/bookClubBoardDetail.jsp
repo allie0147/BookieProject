@@ -75,8 +75,11 @@
 			</div>
 		</nav>
 		<div class="container">
-			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-			<img src="../resources/images/banner-detail.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
+			<div
+				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+				<img src="../resources/images/banner-detail.jpg" class="img-rounded"
+					alt="Cinque Terre" width="100%" height="100%">
+			</div>
 		</div>
 		<div class="container article_container">
 			<div class="container text-center">
@@ -121,7 +124,7 @@
 									<div class="comment_index">
 										<span class="wdate">${comment.wtDate_str }</span>
 										<sec:authorize access="isAuthenticated()">
-											<a class="writeReply" id="${comment.id }">답글쓰기</a>
+											<a class="writeReply" id="${comment.id }">댓글쓰기</a>
 										</sec:authorize>
 									</div>
 									<c:if test="${comment.userId == userId}">
@@ -135,7 +138,7 @@
 						</li>
 						<c:forEach var="reply" items="${comment.replyList }">
 							<li class="comment_list">
-								<div class="container boardContainer commentContainer">
+								<div class="container boardContainer replyContainer">
 									<div class="commentContainer">
 										<div class="reply_rep">
 											<span class="glyphicon glyphicon-hand-right"></span>
@@ -146,13 +149,18 @@
 										<div class="reply_message" id=${reply.id }>
 											<span>${reply.message }</span>
 										</div>
-										<div class="reply_index">
-											<span>${reply.wtDate_str }</span><a class="writeReply">답글쓰기</a>
+										<div class="comment_index">
+											<span class='wdate'>${reply.wtDate}</span>
+											<sec:authorize access="isAuthenticated()">
+												<a class="reReply" id='re_${reply.id }'>댓글쓰기</a>
+											</sec:authorize>
 										</div>
-										<div class="comment_aTag">
-											<a class="replyUp" id="${reply.id}">수정</a> <a
-												class="replyDel" id="${reply.id}">삭제</a>
-										</div>
+										<c:if test="${comment.userId == userId}">
+											<div class="comment_aTag">
+												<a class="replyUp" id="${reply.id}">수정</a> <a
+													class="replyDel" id="${reply.id}">삭제</a>
+											</div>
+										</c:if>
 									</div>
 								</div>
 							</li>

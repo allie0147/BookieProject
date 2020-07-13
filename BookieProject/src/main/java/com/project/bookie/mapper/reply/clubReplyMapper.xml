@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.bookie.mapper.reply.ClubReplyMapper">
+	
+	<insert id="addReply" parameterType="reply" useGeneratedKeys="true" keyProperty="id"> 
+		insert into club_reply (club_board_id, club_comment_id, user_id, message) values(#{boardId}, #{commentId}, #{userId}, #{message})
+	</insert>
+	
+	<update id="updateComment" parameterType="String">
+		update club_reply set message=#{message} where id=#{id}
+	</update>
+	
+	<delete id="deleteReply" parameterType="String">
+		delete from club_reply where id =#{id}
+	</delete>
+	
+	<select id="getReplyWdate" parameterType="long" resultType="String">
+		select w_date from club_reply where id = #{id}
+	</select>
+	
+</mapper>
