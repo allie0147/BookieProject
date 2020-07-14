@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.project.bookie.dto.reply.Reply;
 
-public interface QnaReplayMapper {
+public interface QnaReplyMapper {
 
 	// 리플 삽입
 	public void addReply(Reply reply);

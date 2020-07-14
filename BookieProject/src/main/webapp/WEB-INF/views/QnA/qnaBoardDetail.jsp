@@ -137,35 +137,39 @@
 								</div>
 							</div>
 						</li>
+						<ul class='ul_${comment.id }'>
 						<c:forEach var="reply" items="${comment.replyList }">
 							<li class="comment_list">
-								<div class="container boardContainer commentContainer">
-									<div class="commentContainer">
+								<div class="container boardContainer replyContainer">
+									<div class="commentContainer" id='div_R${reply.id}'>
 										<div class="reply_rep">
 											<span class="glyphicon glyphicon-hand-right"></span>
 										</div>
 										<div class="reply_writer writer">
 											<span>${reply.writer} </span>
 										</div>
-										<div class="reply_message" id=${reply.id }>
+										<div class="reply_message" id='R${reply.id }'>
 											<span>${reply.message }</span>
 										</div>
-										<div class="reply_index">
-											<span>${reply.wtDate_str }</span><a class="writeReply">댓글쓰기</a>
+										<div class="comment_index">
+											<span class='wdate'>${reply.wtDate}</span>
 										</div>
-										<div class="comment_aTag">
-											<a class="replyUp" id="${reply.id}">수정</a> <a
-												class="replyDel" id="${reply.id}">삭제</a>
-										</div>
+										<c:if test="${reply.userId == userId}">
+											<div class="comment_aTag">
+												<a class="replyUp" id="${reply.id}">수정</a> <a
+													class="replyDel" id="${reply.id}">삭제</a>
+											</div>
+										</c:if>
 									</div>
 								</div>
 							</li>
 						</c:forEach>
+						</ul>
 					</c:forEach>
 				</ul>
 				<div class="comment_box">
 					<sec:authorize access="isAnonymous()">
-						<textarea class="comment_input" type="text" readonly="readonly"
+						<textarea class="comment_input" readonly="readonly"
 							placeholder="로그인 후 이용하세요"></textarea>
 						<input class="comment_submit" type="button" value="등록" />
 					</sec:authorize>

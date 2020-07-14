@@ -10,7 +10,7 @@ import com.project.bookie.dto.comment.Comment;
 import com.project.bookie.dto.reply.Reply;
 import com.project.bookie.mapper.board.QnaBoardMapper;
 import com.project.bookie.mapper.comment.QnaCommentMapper;
-import com.project.bookie.mapper.reply.QnaReplayMapper;
+import com.project.bookie.mapper.reply.QnaReplyMapper;
 
 @Service
 public class QnaBoardService {
@@ -22,7 +22,7 @@ public class QnaBoardService {
 	QnaCommentMapper commentMapper;
 	
 	@Autowired
-	QnaReplayMapper replyMapper;
+	QnaReplyMapper replyMapper;
 
 	public Board getBoardByBoardById(int boardId) {
 		Board board = mapper.getBoardByBoardIdWithComment(boardId);
@@ -101,7 +101,7 @@ public class QnaBoardService {
 		replyMapper.updateReply(replyId, reply);
 	}
 
-//	delte reply
+//	delete reply
 	public void deleteReply(String replyId) {
 		replyMapper.deleteReply(replyId);
 	}

@@ -136,6 +136,7 @@
 								</div>
 							</div>
 						</li>
+						<ul id='ul_${comment.id }'>
 						<c:forEach var="reply" items="${comment.replyList }">
 							<li class="comment_list">
 								<div class="container boardContainer replyContainer">
@@ -162,11 +163,12 @@
 								</div>
 							</li>
 						</c:forEach>
+						</ul>
 					</c:forEach>
 				</ul>
 				<div class="comment_box">
 					<sec:authorize access="isAnonymous()">
-						<textarea class="comment_input" type="text" readonly="readonly"
+						<textarea class="comment_input" readonly="readonly"
 							placeholder="로그인 후 이용하세요"></textarea>
 						<input class="comment_submit" type="button" value="등록" />
 					</sec:authorize>

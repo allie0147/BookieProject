@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.boardViewList.BoardViewList;
 import com.project.bookie.dto.comment.Comment;
+import com.project.bookie.dto.reply.Reply;
 import com.project.bookie.dto.user.User;
 import com.project.bookie.service.QnaBoardService;
 import com.project.bookie.service.QnaBoardViewListService;
@@ -173,5 +174,48 @@ public class QnaBoardController {
 		}
 		return "true";
 	}
+	@PostMapping(value = "/reply", produces = "application/json; charset=utf-8 ")
+	@ResponseBody
+	public Reply setReplyOnQnABoard(Reply reply) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName(); // 세션에 있는 유저이메일
+		System.out.println(uEmail);
+		reply.setUserId(userService.getUserIdByEmail(uEmail));
+		reply.setWriter(userService.getUserNickname(uEmail));
+		String date = service.writeReply(reply);
+		String head = date.substring(0, 10);
+		String tail = date.substring(11, 16);
+		date = head + " " + tail;
+		reply.setWtDate_str(date);
+		return reply;
+	}
+
+	@PostMapping(value = "/reply/update", produces = "text/plain; charset=utf-8 ")
+	@ResponseBody
+	public String updateReplyOnQnABoard(@Param("replyId") String replyId, @Param("reply") String reply) {
+		System.out.println(replyId);
+		System.out.println(reply);
+		try {
+			service.updateReply(replyId, reply);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "false";
+		}
+		return reply;
+	}
+
+	@PostMapping(value = "/reply/del", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String deleteReplyOnQnABoard(@Param("replyId") String replyId) {
+		System.out.println(replyId);
+		try {
+			service.deleteReply(replyId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "false";
+		}
+		return "true";
+	}
+
 
 }
