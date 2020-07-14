@@ -92,14 +92,19 @@
 		from qna_board where user_id = #{id}
 	</select>
 	
+	<!-- 글 조회 -->
+	<select id="selectBoard" parameterType="String" resultType="board">
+		select * from qna_board where id =#{id}
+	</select>
+	
 	<!-- 글 등록(id는 auto_incement, w_date는 기본값이 current_timestamp로 자동 생성 -->
 	<insert id="insertBoard" parameterType="board" keyProperty="id" useGeneratedKeys="true">
 		insert into qna_board(title, user_id, content) values(#{title}, #{userId}, #{content})
 	</insert>
-	
+		
 	<!-- 글 수정 -->
-	<update id="updateBoard" parameterType="board">
-		update qna_board set title=#{title}, content=#{content} where id=#{id}
+	<update id="updateBoard" parameterType="String">
+		update qna_board set title=#{title}, content=#{content, jdbcType=LONGVARCHAR} where id=#{id, jdbcType=BIGINT}
 	</update>
 	
 	<!-- 글 삭제(글의 id 필요) -->

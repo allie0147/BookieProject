@@ -20,7 +20,7 @@ public class QnaBoardService {
 
 	@Autowired
 	QnaCommentMapper commentMapper;
-	
+
 	@Autowired
 	QnaReplyMapper replyMapper;
 
@@ -42,6 +42,7 @@ public class QnaBoardService {
 		return board;
 	}
 
+// 	검색기능
 	public List<Board> getBoardListBySearchInfo(String option, String searchInfo) {
 		List<Board> boardList = null;
 		if (option.equals("title")) {
@@ -57,18 +58,35 @@ public class QnaBoardService {
 		return boardList;
 	}
 
+//	메인에 보여질 최신글 5개
 	public List<Board> getBoardListLatest() {
 		List<Board> boardList = mapper.getBoardListToMain();
 		return boardList;
 	}
 
+//	board CRUD
+//	select board
+	public Board getBoard(String id) {
+		return mapper.selectBoard(id);
+	}
+	
 //	insert board
 	public long writeOnBoard(Board board) {
 		mapper.insertBoard(board);
 		System.out.println(board.getId());
 		return board.getId(); // board id
 	}
+//	update board
+	public void updateOnBoard(String id, String title, String content) {
+		mapper.updateBoard(id, title, content);
+	}
+	
+//	delete board
+	public void deleteOnBoard(String id) {
+		mapper.deleteBoard(Long.parseLong(id));
+	}
 
+//	comment CRUD
 //	insert comment
 	public String writeComment(Comment comment) {
 		commentMapper.addComment(comment);
@@ -88,13 +106,13 @@ public class QnaBoardService {
 		commentMapper.deleteComment(commentId);
 	}
 
+//	reply CRUD
 //	insert reply
 	public String writeReply(Reply reply) {
 		replyMapper.addReply(reply);
 		String date = replyMapper.getReplyWdate(reply.getId());
 		return date;
 	}
-	
 
 //	update reply
 	public void updateReply(String replyId, String reply) {

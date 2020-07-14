@@ -113,6 +113,7 @@
 					</tbody>
 				</table>
 			</c:if>
+			<!-- 글쓰기 버튼 -->
 			<div class="container write-div">
 				<a class="btn pull-right write-button" href="/club/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
 			</div>

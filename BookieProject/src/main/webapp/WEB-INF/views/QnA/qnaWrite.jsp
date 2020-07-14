@@ -95,16 +95,33 @@
 						</select>
 					</div>
 					<div class="col-xs-10">
-						<input type="text" class="form-control" name="title"
-							placeholder="제목">
+						<c:choose>
+							<c:when test="${not empty board.title}">
+								<input type="text" class="form-control" name="title"
+									value='${board.title }'>
+							</c:when>
+							<c:otherwise>
+								<input type="text" class="form-control" name="title"
+									placeholder="제목">
+							</c:otherwise>
+						</c:choose>
 					</div>
-					<input type="hidden" id="hidden" name="uEmail"
-						value="${user.getUEmail()}">
+					<input type="hidden" id="hidden" name="uEmail" value="${user.getUEmail()}">
+					<input type="hidden" id="board_id" value="${board.id }">
 				</div>
 				<div class="form-group">
-					<textarea class="form-control" id="summernote" name="content"></textarea>
-					<button type="submit" name="submitButton"
+					<c:choose>
+						<c:when test="${not empty board.content }">
+							<textarea class="form-control" id="summernote" name="content" >${board.content}</textarea>
+							<button type="button" name="editButton"
+						class="btn btn-default btn-block">수정하기</button>
+						</c:when>
+						<c:otherwise>
+							<textarea class="form-control " id="summernote" name="content"></textarea>
+							<button type="submit" name="submitButton"
 						class="btn btn-default btn-block">작성하기</button>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</form>
 		</div>

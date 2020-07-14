@@ -1,4 +1,13 @@
 $(function() {
+//	board 삭제 시 , 
+	$("button[name=delBtn]").on("click", function () {
+        const boardId = document.getElementsByName('board_id')[0].value;
+        if (confirm("정말 삭제하시겠습니까?")) {
+            window.location.replace('/club/del?b=' + boardId);
+        } else {
+            return false;
+        }
+    })
 	// comment작성시,
 	$("form[name=commentForm]")
 			.on(

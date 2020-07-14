@@ -81,26 +81,34 @@
 					alt="Cinque Terre" width="100%" height="100%">
 			</div>
 		</div>
-
 		<div class="container article_container">
 			<div class="container text-center">
-				<h2>${board.title }</h2>
+				<h2 id='title'>${board.title }</h2>
+			</div>
+			<div class='container boardContainer' style='margin-bottom: 5px;'>
+				<button class='Btn btn btn-default' style='margin-left:2%' onclick='location.href="/qna/main"'>목록</button>
+				<c:if test="${board.userId==userId}">
+					<div class='BtnDiv'>
+						<button class='Btn btn btn-warning' onclick='location.href="/qna/edit?b=${board.id}"'>수정</button>
+						<button class='Btn btn btn-danger' name='delBtn'>삭제</button>
+					</div>
+				</c:if>
 			</div>
 			<div class="container boardContainer">
 				<table class="table table-bordered">
 					<thead id="myHead">
 						<tr>
 							<th scope="col"># ${board.id}</th>
-							<th class="wtDate" scope="col">작성일시 ${board.wtDate_str}</th>
-							<c:if test="${not empty board.upDate}">
-								<th class="upDate" scope="col">마지막 수정 일시 ${board.upDate }</th>
-							</c:if>
 							<th scope="col">작성자 ${board.writer }</th>
+							<th class="wtDate" scope="col">작성 ${board.wtDate_str}</th>
+							<c:if test="${not empty board.upDate}">
+								<th class="upDate" scope="col">수정 ${board.upDate}</th>
+							</c:if>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="4">${board.content }</td>
+							<td colspan="4" id='content'>${board.content }</td>
 						</tr>
 					</tbody>
 				</table>

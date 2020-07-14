@@ -1,7 +1,11 @@
 package com.project.bookie.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +70,6 @@ public class QnaBoardController {
 			for (int j = startNum; j <= endNum; j++) {
 				pageArray.add(j);
 			}
-//			System.out.println(pageArray);
 		}
 
 		int nextNum = boardViewList.getPageTotalCount(); // viewList.getPageTotalCount()
@@ -80,6 +83,7 @@ public class QnaBoardController {
 		return "QnA/qnaMain.jsp?p=" + p;
 	}
 
+//	한 페이지
 	@GetMapping("/detail")
 	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) int boardId) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -98,6 +102,7 @@ public class QnaBoardController {
 		return "QnA/qnaBoardDetail.jsp?b=" + boardId;
 	}
 
+//	검색기능
 	@PostMapping("/main")
 	@ResponseBody
 	public BoardViewList getBoardListBySearchInfo(@RequestParam(value = "option") String option,
@@ -108,6 +113,7 @@ public class QnaBoardController {
 		return boardViewList;
 	}
 
+//	게시글 작성 페이지 전환 GET
 	@GetMapping("/write")
 	public String getWriteOnQnABoard(Model m) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -117,6 +123,7 @@ public class QnaBoardController {
 		return "QnA/qnaWrite";
 	}
 
+//	게시글 작성 후 POST
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String insertWriteOnQnABoard(Board board) {
@@ -129,6 +136,46 @@ public class QnaBoardController {
 		return String.valueOf(boardId);
 	}
 
+//	게시글 수정 페이지 전환 get
+	@GetMapping("/edit")
+	public String getEditOnQnABoard(Model m, @RequestParam(value = "b", required = false) String b) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName(); // 세션에 있는 유저이메일
+		User user = userService.getUserInfo(uEmail);
+		Board board = service.getBoard(b);
+		m.addAttribute("user", user);
+		m.addAttribute("board", board);
+		return "QnA/qnaWrite";
+	}
+
+//	게시글 수정후, POST
+	@PostMapping(value = "/write/edit", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String editOnQnABoard(@RequestParam(value = "b") String boardId, @Param("content") String content,
+			@Param("title") String title) {
+		System.out.println(boardId);
+		service.updateOnBoard(boardId, title, content);
+		return boardId;
+	}
+
+//	게시글 삭제
+	@GetMapping("/del")
+	public void delOnQnABoard(@RequestParam(value = "b") String boardId, HttpServletResponse response) {
+		service.deleteOnBoard(boardId);
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			out.println(
+					"<script>window.addEventListener('DOMContentLoaded', function() {alert('글이 삭제 되었습니다.'); location.replace('/club/main');});</script>");
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+//	댓글CRUD
+//	댓글 작성
 	@PostMapping(value = "/comment", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Comment insertCommentOnQnABoard(@Param("boardId") String boardId, @Param("comment") String comment) {
@@ -148,6 +195,7 @@ public class QnaBoardController {
 		return c;
 	}
 
+//	댓글 수정
 	@PostMapping(value = "/comment/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
 	public String updateCommentOnQnABoard(@Param("commentId") String commentId, @Param("comment") String comment) {
@@ -162,6 +210,7 @@ public class QnaBoardController {
 		return comment;
 	}
 
+//	댓글 삭제
 	@PostMapping(value = "/comment/del", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String deleteCommentOnQnABoard(@Param("commentId") String commentId) {
@@ -174,6 +223,9 @@ public class QnaBoardController {
 		}
 		return "true";
 	}
+
+//	대댓글CRUD
+//	대댓글 작성
 	@PostMapping(value = "/reply", produces = "application/json; charset=utf-8 ")
 	@ResponseBody
 	public Reply setReplyOnQnABoard(Reply reply) {
@@ -190,6 +242,7 @@ public class QnaBoardController {
 		return reply;
 	}
 
+//	대댓글 수정
 	@PostMapping(value = "/reply/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
 	public String updateReplyOnQnABoard(@Param("replyId") String replyId, @Param("reply") String reply) {
@@ -204,6 +257,7 @@ public class QnaBoardController {
 		return reply;
 	}
 
+//	대댓글 삭제
 	@PostMapping(value = "/reply/del", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String deleteReplyOnQnABoard(@Param("replyId") String replyId) {
@@ -216,6 +270,5 @@ public class QnaBoardController {
 		}
 		return "true";
 	}
-
 
 }

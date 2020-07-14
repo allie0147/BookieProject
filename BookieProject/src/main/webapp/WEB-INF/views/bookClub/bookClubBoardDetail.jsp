@@ -83,23 +83,32 @@
 		</div>
 		<div class="container article_container">
 			<div class="container text-center">
-				<h2>${board.title }</h2>
+				<h2 id='title'>${board.title }</h2>
+			</div>
+			<div class='container boardContainer' style='margin-bottom: 5px;'>
+				<button class='Btn btn btn-default' style='margin-left:2%' onclick='location.href="/club/main"'>목록</button>
+				<c:if test="${board.userId==userId}">
+					<div class='BtnDiv'>
+						<button class='Btn btn btn-warning' onclick='location.href="/club/edit?b=${board.id}"'>수정</button>
+						<button class='Btn btn btn-danger' name='delBtn' >삭제</button>
+					</div>
+				</c:if>
 			</div>
 			<div class="container boardContainer">
 				<table class="table table-bordered">
 					<thead id="myHead">
 						<tr>
-							<th scope="col"># ${board.id}</th>
-							<th class="wtDate" scope="col">작성일시 ${board.wtDate_str }</th>
-							<c:if test="${not empty board.upDate}">
-								<th class="upDate" scope="col">마지막 수정 일시 ${board.upDate }</th>
-							</c:if>
+							<th scope="col" id='boardId'># ${board.id}</th>
 							<th scope="col">작성자 ${board.writer }</th>
+							<th class="wtDate" scope="col">작성 ${board.wtDate_str }</th>
+							<c:if test="${not empty board.upDate}">
+								<th class="upDate" scope="col">수정 ${board.upDate}</th>
+							</c:if>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="4">${board.content }</td>
+							<td colspan="4" id='content'>${board.content }</td>
 						</tr>
 					</tbody>
 				</table>
@@ -137,32 +146,32 @@
 							</div>
 						</li>
 						<ul id='ul_${comment.id }'>
-						<c:forEach var="reply" items="${comment.replyList }">
-							<li class="comment_list">
-								<div class="container boardContainer replyContainer">
-									<div class="commentContainer" id='div_R${reply.id}'>
-										<div class="reply_rep">
-											<span class="glyphicon glyphicon-hand-right"></span>
-										</div>
-										<div class="reply_writer writer">
-											<span>${reply.writer} </span>
-										</div>
-										<div class="reply_message" id='R${reply.id }'>
-											<span>${reply.message }</span>
-										</div>
-										<div class="comment_index">
-											<span class='wdate'>${reply.wtDate}</span>
-										</div>
-										<c:if test="${reply.userId == userId}">
-											<div class="comment_aTag">
-												<a class="replyUp" id="${reply.id}">수정</a> <a
-													class="replyDel" id="${reply.id}">삭제</a>
+							<c:forEach var="reply" items="${comment.replyList }">
+								<li class="comment_list">
+									<div class="container boardContainer replyContainer">
+										<div class="commentContainer" id='div_R${reply.id}'>
+											<div class="reply_rep">
+												<span class="glyphicon glyphicon-hand-right"></span>
 											</div>
-										</c:if>
+											<div class="reply_writer writer">
+												<span>${reply.writer} </span>
+											</div>
+											<div class="reply_message" id='R${reply.id }'>
+												<span>${reply.message }</span>
+											</div>
+											<div class="comment_index">
+												<span class='wdate'>${reply.wtDate}</span>
+											</div>
+											<c:if test="${reply.userId == userId}">
+												<div class="comment_aTag">
+													<a class="replyUp" id="${reply.id}">수정</a> <a
+														class="replyDel" id="${reply.id}">삭제</a>
+												</div>
+											</c:if>
+										</div>
 									</div>
-								</div>
-							</li>
-						</c:forEach>
+								</li>
+							</c:forEach>
 						</ul>
 					</c:forEach>
 				</ul>

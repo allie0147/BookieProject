@@ -46,6 +46,12 @@ public class ClubBoardService {
 		return boardList;
 	}
 
+//	board CRUD
+//	select board
+	public Board getBoard(String id) {
+		return mapper.selectBoard(id);
+	}
+
 //	insert board
 	public long writeOnBoard(Board board) {
 		mapper.insertBoard(board);
@@ -53,6 +59,17 @@ public class ClubBoardService {
 		return board.getId(); // board id
 	}
 
+//	update board
+	public void updateOnBoard(String id, String title, String content) {
+		mapper.updateBoard(id, title, content);
+	}
+
+//	delete board
+	public void deleteOnBoard(String id) {
+		mapper.deleteBoard(Long.parseLong(id));
+	}
+
+//	comment CRUD
 //	insert comment
 	public String writeComment(Comment comment) {
 		commentMapper.addComment(comment);
@@ -72,6 +89,7 @@ public class ClubBoardService {
 		commentMapper.deleteComment(commentId);
 	}
 
+//	reply CRUD
 //	insert reply
 	public String writeReply(Reply reply) {
 		replyMapper.addReply(reply);

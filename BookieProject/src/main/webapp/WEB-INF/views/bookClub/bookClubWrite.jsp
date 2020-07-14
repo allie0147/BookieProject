@@ -10,7 +10,7 @@
 <title>club 작성</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- summernote -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -75,8 +75,11 @@
 		</nav>
 
 		<div class="container">
-			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-			<img src="../resources/images/banner-write.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
+			<div
+				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+				<img src="../resources/images/banner-write.jpg" class="img-rounded"
+					alt="Cinque Terre" width="100%" height="100%">
+			</div>
 		</div>
 
 		<div class="container">
@@ -95,16 +98,34 @@
 						</select>
 					</div>
 					<div class="col-xs-10">
-						<input type="text" class="form-control" name="title"
-							placeholder="제목">
+						<c:choose>
+							<c:when test="${not empty board.title}">
+								<input type="text" class="form-control" name="title"
+									value='${board.title }'>
+							</c:when>
+							<c:otherwise>
+								<input type="text" class="form-control" name="title"
+									placeholder="제목">
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<input type="hidden" id="hidden" name="uEmail"
 						value="${user.getUEmail()}">
+						<input type="hidden" id="board_id" value="${board.id }">
 				</div>
 				<div class="form-group">
-					<textarea class="form-control " id="summernote" name="content"></textarea>
-					<button type="submit" name="submitButton"
+					<c:choose>
+						<c:when test="${not empty board.content }">
+							<textarea class="form-control" id="summernote" name="content" >${board.content}</textarea>
+							<button type="button" name="editButton"
+						class="btn btn-default btn-block">수정하기</button>
+						</c:when>
+						<c:otherwise>
+							<textarea class="form-control " id="summernote" name="content"></textarea>
+							<button type="submit" name="submitButton"
 						class="btn btn-default btn-block">작성하기</button>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</form>
 		</div>
@@ -157,7 +178,8 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#summernote').summernote({
-				placeholder : '이곳에 글을 작성하세요',
+				placeholder : '글을 작성하세요...',
+				lang: 'ko-KR',
 				height : 400,
 				maxheight : 2000,
 				focus : true,

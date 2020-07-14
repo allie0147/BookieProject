@@ -92,11 +92,10 @@
 	background-color: #0f4c75;
 	border-radius: 6px;
 	box-sizing: border-box;
-	/* vertical-align: top; */
 	border: 0;
 	outline: 0;
 	position: relative;
-	margin: 0 15% 0 90%;
+	margin: 0 10% 0 90%;
 }
 
 .temp {
@@ -134,3 +133,34 @@
 	float: left;
 	margin-right: 1%;
 }
+
+/*수정, 삭제 버튼*/
+.BtnDiv {
+	display: inline;
+	position: relative;
+	left: 80%;
+	position: relative;
+}
+
+.Btn {
+	display: inline-block;
+	min-width: 38px;
+	height: 29px;
+	font-size: 13px;
+	border-radius: 6px;
+	font-size: 13px;
+	padding: 4px 5px;
+}
+
+.Btn:focus {
+	outline: none;
+}
+
+.Btn:active {
+	outline: none;
+}
+
+
+
+
+

@@ -1,7 +1,11 @@
 package com.project.bookie.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,7 +43,7 @@ public class ClubBoardController {
 	UserService userService;
 
 	@GetMapping("/main")
-	public String goQnaMain(Model m, @RequestParam(value = "p", defaultValue = "1", required = false) int p) {
+	public String goClubMain(Model m, @RequestParam(value = "p", defaultValue = "1", required = false) int p) {
 		BoardViewList boardViewList = viewListService.getViewListService(p);
 		m.addAttribute("boardViewList", boardViewList);
 
@@ -66,7 +71,6 @@ public class ClubBoardController {
 			for (int j = startNum; j <= endNum; j++) {
 				pageArray.add(j);
 			}
-//			System.out.println(pageArray);
 		}
 		int nextNum = boardViewList.getPageTotalCount(); // viewList.getPageTotalCount()
 		if (p + 5 < boardViewList.getPageTotalCount()) {
@@ -79,6 +83,7 @@ public class ClubBoardController {
 		return "bookClub/bookclubMain.jsp?p=" + p;
 	}
 
+//한 페이지 
 	@GetMapping("/detail")
 	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) long boardId) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -96,6 +101,7 @@ public class ClubBoardController {
 		return "bookClub/bookClubBoardDetail.jsp?b=" + boardId;
 	}
 
+//	게시글 작성 페이지 get
 	@GetMapping("/write")
 	public String getWriteOnClubBoard(Model m) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -105,6 +111,7 @@ public class ClubBoardController {
 		return "bookClub/bookClubWrite";
 	}
 
+//	게시글 작성 후 post
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String insertWriteOnClubBoard(Board board) {
@@ -117,6 +124,46 @@ public class ClubBoardController {
 		return String.valueOf(boardId);
 	}
 
+//	게시글 수정 페이지 get
+	@GetMapping("/edit")
+	public String getEditOnClubBoard(Model m, @RequestParam(value = "b", required = false) String b) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName(); // 세션에 있는 유저이메일
+		User user = userService.getUserInfo(uEmail);
+		Board board = service.getBoard(b);
+		m.addAttribute("user", user);
+		m.addAttribute("board", board);
+		return "bookClub/bookClubWrite";
+	}
+
+//	게시글 수정후, POST
+	@PostMapping(value = "/write/edit", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String editOnClubBoard(@RequestParam(value = "b") String boardId, @Param("content") String content,
+			@Param("title") String title) {
+		System.out.println(boardId);
+		service.updateOnBoard(boardId, title, content);
+		return boardId;
+	}
+
+//	게시글 삭제
+	@GetMapping("/del")
+	public void delOnClubBoard(@RequestParam(value = "b") String boardId, HttpServletResponse response) {
+		service.deleteOnBoard(boardId);
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			out.println(
+					"<script>window.addEventListener('DOMContentLoaded', function() {alert('글이 삭제 되었습니다.'); location.replace('/club/main');});</script>");
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+//	댓글CRUD
+//	댓글 작성
 	@PostMapping(value = "/comment", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Comment insertCommentOnClubBoard(@Param("boardId") String boardId, @Param("comment") String comment) {
@@ -139,6 +186,7 @@ public class ClubBoardController {
 		return c;
 	}
 
+//	댓글 수정
 	@PostMapping(value = "/comment/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
 	public String updateCommentOnClubBoard(@Param("commentId") String commentId, @Param("comment") String comment) {
@@ -153,6 +201,7 @@ public class ClubBoardController {
 		return comment;
 	}
 
+//	댓글 삭제
 	@PostMapping(value = "/comment/del", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String deleteCommentOnClubBoard(@Param("commentId") String commentId) {
@@ -166,6 +215,8 @@ public class ClubBoardController {
 		return "true";
 	}
 
+//	대댓글CRUD
+//	대댓글 작성
 	@PostMapping(value = "/reply", produces = "application/json; charset=utf-8 ")
 	@ResponseBody
 	public Reply setReplyOnClubBoard(Reply reply) {
@@ -182,6 +233,7 @@ public class ClubBoardController {
 		return reply;
 	}
 
+//	대댓글 수정
 	@PostMapping(value = "/reply/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
 	public String updateReplyOnClubBoard(@Param("replyId") String replyId, @Param("reply") String reply) {
@@ -196,6 +248,7 @@ public class ClubBoardController {
 		return reply;
 	}
 
+//	대댓글 삭제
 	@PostMapping(value = "/reply/del", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String deleteReplyOnClubBoard(@Param("replyId") String replyId) {
