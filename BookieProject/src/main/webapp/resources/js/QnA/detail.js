@@ -3,6 +3,7 @@ $(function () {
 	$("button[name=delBtn]").on("click", function () {
         const boardId = document.getElementsByName('board_id')[0].value;
         if (confirm("정말 삭제하시겠습니까?")) {
+        	$("button[name=delBtn]").css({'opacity':'0.3','cursor':'pointer'});
             window.location.replace('/club/del?b=' + boardId);
         } else {
             return false;
@@ -10,6 +11,7 @@ $(function () {
     })
 	// comment 작성시, 
     $("form[name=commentForm]").on("submit", function () {
+    	$("input[name=submit]").css({'opacity':'0.3','cursor':'default'});
         const boardId = document.getElementsByName('board_id')[0].value;
         const commentInput = document.getElementById('comment');
         const comment = commentInput.value;
@@ -85,14 +87,17 @@ $(function () {
                     div_top.append(div_bottom);
                     li.append(div_top);
                     ul.append(li);
+                    $("input[name=submit]").css({'opacity':'','cursor':'pointer'});
                     alert("댓글이 작성 되었습니다.");
                 },
                 error: function () {
+                	$("input[name=submit]").css({'opacity':'','cursor':'pointer'});
                     alert("댓글 작성에 실패 했습니다.");
                 }
             }); // ajax end
             return false;
         } else {
+        	$("input[name=submit]").css({'opacity':'','cursor':'pointer'});
             alert("내용을 입력하세요");
             return false;
         }
@@ -173,7 +178,7 @@ $(function () {
         }
     });
   
-
+	// 댓글달기(reply) click시,
     $(document).on('click', '.writeReply', function () {
         const commentId = this.id;
         const boardId = document.getElementsByName('board_id')[0].value;

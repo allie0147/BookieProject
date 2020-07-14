@@ -5,6 +5,7 @@ $(function() {
 		let title = document.getElementsByName("title")[0].value;
 		let genre = document.getElementsByName("genre")[0].value;
 		if (title != "" && genre != 0) {
+			$('button[name=submitButton]').css({'opacity':'0.3','pointer-events':'none'});
 			$.ajax({
 				url : "/club/write",
 				type : "post",
@@ -37,6 +38,7 @@ $(function() {
 		const content = $('#summernote').summernote('code');
 		console.log(content);
 		if (title != "" && content != "" && genre != 0) {
+			$(this).css({'opacity':'0.3','pointer-events':'none'});
 			$.ajax({
 				url : "/club/write/edit?b=" + boardId,
 				type : "post",
