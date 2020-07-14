@@ -3,7 +3,7 @@ $(function () {
 	$("button[name=delBtn]").on("click", function () {
         const boardId = document.getElementsByName('board_id')[0].value;
         if (confirm("정말 삭제하시겠습니까?")) {
-        	$("button[name=delBtn]").css({'opacity':'0.3','cursor':'pointer'});
+        	$("button[name=delBtn]").css({'opacity':'0.3','cursor':'default'});
             window.location.replace('/club/del?b=' + boardId);
         } else {
             return false;
@@ -11,7 +11,6 @@ $(function () {
     })
 	// comment 작성시, 
     $("form[name=commentForm]").on("submit", function () {
-    	$("input[name=submit]").css({'opacity':'0.3','cursor':'default'});
         const boardId = document.getElementsByName('board_id')[0].value;
         const commentInput = document.getElementById('comment');
         const comment = commentInput.value;
@@ -87,17 +86,14 @@ $(function () {
                     div_top.append(div_bottom);
                     li.append(div_top);
                     ul.append(li);
-                    $("input[name=submit]").css({'opacity':'','cursor':'pointer'});
-                    alert("댓글이 작성 되었습니다.");
                 },
                 error: function () {
-                	$("input[name=submit]").css({'opacity':'','cursor':'pointer'});
-                    alert("댓글 작성에 실패 했습니다.");
+                    alert("댓글 작성을 실패 했습니다.");
+                    return false;
                 }
             }); // ajax end
             return false;
         } else {
-        	$("input[name=submit]").css({'opacity':'','cursor':'pointer'});
             alert("내용을 입력하세요");
             return false;
         }
@@ -132,18 +128,20 @@ $(function () {
                             toggle_bool = true;
                             const div = document.getElementById(commentId);
                             div.innerText = comment;
-                            alert('댓글이 수정되었습니다.');
                         } else {
-                            alert("댓글 수정에 실패 했습니다.");
+                            alert("댓글 수정을 실패 했습니다.");
+                            return false;
                         }
                     },
                     error: function () {
-                        alert('댓글 수정에 실패 했습니다.');
+                        alert('댓글 수정을 실패 했습니다.');
+                        return false;
                     }
                 }); //ajax end
                 return false;
             } else {
                 alert('내용을 입력하세요');
+                return false;
             }
         });
     });
@@ -164,13 +162,14 @@ $(function () {
 						const rep = $('#ul_' + commentId);
 						rep.remove();
 						del.remove();
-                        alert("댓글이 삭제되었습니다.");
                     } else {
                         alert("삭제 실패했습니다.");
+                        return false;
                     }
                 },
                 error: function () {
                     alert("삭제 실패했습니다.");
+                    return false;
                 }
             });
         } else {
@@ -212,10 +211,10 @@ $(function () {
                             div = '<ul id="ul_"' + commentId + '>' + div + '</ul>';
                         }
                         $('#ul_' + commentId).eq(0).last().append(div);
-                        alert('댓글이 작성되었습니다.');
                     },
                     error: function () {
-                        alert('댓글 작성에 실패 했습니다.');
+                        alert('댓글 작성을 실패 했습니다.');
+                        return false;
                     }
                 }); //ajax end
                 return false;
@@ -254,13 +253,14 @@ $(function () {
                             toggle_bool = true;
                             const div = document.getElementById('R' + replyId);
                             div.innerText = comment;
-                            alert('댓글이 수정되었습니다.');
                         } else {
-                            alert("댓글 수정에 실패 했습니다.");
+                            alert("댓글 수정을 실패 했습니다.");
+                            return false;
                         }
                     },
                     error: function () {
-                        alert('댓글 수정에 실패 했습니다.');
+                        alert('댓글 수정을 실패 했습니다.');
+                        return false;
                     }
                 }); // ajax end
                 return false;
@@ -285,13 +285,14 @@ $(function () {
                         const del = $('#div_R' + replyId).parent().parent();
                         console.log(del);
                         del.remove();
-                        alert("댓글이 삭제되었습니다.");
                     } else {
                         alert("삭제 실패했습니다.");
+                        return false;
                     }
                 },
                 error: function () {
                     alert("삭제 실패했습니다.");
+                    return false;
                 }
             });
         } else {

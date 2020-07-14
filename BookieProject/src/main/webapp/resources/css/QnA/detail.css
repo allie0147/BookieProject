@@ -124,6 +124,11 @@
 	font-weight: lighter;
 }
 
+.comment_input_temp:focus {
+	outline: none;
+	border: none;
+}
+
 /*reply*/
 .replyContainer {
 	margin-left: 1.5%;
@@ -132,6 +137,21 @@
 .reply_rep {
 	float: left;
 	margin-right: 1%;
+}
+
+.reply_submit {
+	display: block;
+	min-width: 43px;
+	height: 32px;
+	font-size: 13px;
+	color: #ffffff;
+	background-color: #0f4c75;
+	border-radius: 6px;
+	box-sizing: border-box;
+	border: 0;
+	outline: 0;
+	position: relative;
+	margin: 0 10% 0 90%;
 }
 
 /*수정, 삭제 버튼*/
@@ -159,8 +179,3 @@
 .Btn:active {
 	outline: none;
 }
-
-
-
-
-
