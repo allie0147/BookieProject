@@ -41,22 +41,27 @@ public class MyPageController {
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
 		User mypageInfo = userService.getUserInfo(uEmail);
 		m.addAttribute("mypageInfo", mypageInfo);
-		
+
 		List<Interest> allInterestList = userService.getAllInterestList();
 		m.addAttribute("allInterestList", allInterestList);
 		return "myPage/myPageUpdate";
 	}
-	
+
 	@PostMapping("/update")
-	public String mypageUpdate(long id, String nickname, String phone, @RequestParam("interestArray[]")int[] interestArray) {
+	public String mypageUpdate(long id, String nickname, String phone,
+			@RequestParam("interestArray[]") int[] interestArray) {
 		userService.updateMypage(id, nickname, phone, interestArray);
 		return "/myPage/myPage";
 	}
-	
-	@PostMapping("/delete")
+
+	@PostMapping(value = "/delete", produces = "text/plain; charset=utf8")
 	@ResponseBody
-	public String deleteUser(HttpServletRequest req , HttpServletResponse resp, @RequestParam("uId")Long uId) {
-		userService.deleteUserinSystem(uId);
+	public String deleteUser(@RequestParam("uEmail") String uEmail) {
+		try {
+			userService.deleteUserinSystem(userService.getUserIdByEmail(uEmail));
+		} catch (Exception e) {
+			return "false";
+		}
 		return "true";
 	}
 }

@@ -110,6 +110,6 @@
 	</update>
 	<!-- 회원 정보 삭제 -->
 	<delete id="deleteUser">
-		delete from user where id=#{uId}
+		delete from user where id=#{id}
 	</delete>
 </mapper>

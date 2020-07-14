@@ -56,11 +56,11 @@ public class UserService {
 		return user;
 	}
 
-	public List<Interest> getAllInterestList(){
+	public List<Interest> getAllInterestList() {
 		List<Interest> interestList = userMapper.getAllInterestList();
 		return interestList;
 	}
-	
+
 	public void setInterest(long userId, String[] interest) {
 		for (String i : interest) {
 			userMapper.insertInterest(userId, Integer.parseInt(i));
@@ -116,16 +116,18 @@ public class UserService {
 		System.out.println(message.getSid());
 		return authNum;
 	}
-	
+
+//	mypage update
 	public void updateMypage(long uId, String nickname, String phone, int[] interestArr) {
 		userMapper.updateMypage(uId, nickname, phone);
 		userMapper.deleteInterest(uId);
-		for(int i : interestArr) {
+		for (int i : interestArr) {
 			Interest interest = new Interest(0, uId, i, "");
 			userMapper.insertMypageInterest(interest);
 		}
 	}
 
+//	회원 탈퇴
 	public void deleteUserinSystem(Long uId) {
 		userMapper.deleteUser(uId);
 	}

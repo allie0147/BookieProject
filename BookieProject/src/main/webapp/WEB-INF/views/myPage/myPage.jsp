@@ -18,32 +18,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	function deleteUser() {
-		let conf = confirm("정말 탈퇴하시겠습니까?");
-		let uId = $
-		{
-			mypageInfo.id
-		}
-		;
-		console.log(uId);
-		if (conf) {
-			$.ajax({
-				url : "/mypage/delete",
-				type : "post",
-				data : {
-					"uId" : uId,
-				},
-				success : function(data) {
-					if (data == "true") {
-						alert("탈퇴되었습니다.");
-						location.href = "/logout";
-					}
-				}
-			});
-		}
-	}
-</script>
+<script src="/resources/js/mypage/main.js"></script>
 </head>
 <body>
 	<div class="main-body">
@@ -103,7 +78,7 @@
 
 					<div class="container">
 						<b>Email</b>
-						<div>${mypageInfo.getUEmail() }</div>
+						<div id='user'>${mypageInfo.getUEmail()}</div>
 					</div>
 					<div class="container">
 						<b>NICKNAME</b>
@@ -134,8 +109,8 @@
 						<div class="">${mypageInfo.regDate }</div>
 					</div>
 					<div class="text-center">
-						<a href="/mypage/updateForm" class="btn btn-md btn-default">수정하기</a>
-						<a href="javascript:deleteUser()" class="btn btn-md btn-default">탈퇴하기</a>
+						<a href="/mypage/updateForm" class="btn btn-md btn-success">수정하기</a>
+						<a href="#" id="unsubscribe" class="btn btn-md btn-danger">탈퇴하기</a>
 					</div>
 
 				</div>
