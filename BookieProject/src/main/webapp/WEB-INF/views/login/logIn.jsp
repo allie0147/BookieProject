@@ -111,7 +111,7 @@
 							<p>
 								<span><a href="javascript:popupEmail()">이메일찾기</a></span> <span
 									class="vertical"></span>&nbsp; <span><a
-									href="javascript:popup()">비밀번호 찾기</a></span>
+									href="javascript:popupPassword()">비밀번호 찾기</a></span>
 							</p>
 						</div>
 						<hr>
