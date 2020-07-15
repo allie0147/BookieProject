@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.bookie.mapper.books.BooksMapper">
+	<resultMap type="books" id="u">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="genreId" column="genre_id"/>
+		<result property="writer" column="writer"/>
+		<result property="publisher" column="publisher"/>
+		<result property="pubdate" column="pubdate"/>
+	</resultMap>
+	
+	<select id="getAllBooks" resultType="books">
+		select * from books
+	</select>
+	
+	<select id="getBooksById" resultType="books">
+		select * from books where id=#{id}
+	</select>
+</mapper>

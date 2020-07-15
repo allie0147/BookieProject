@@ -81,7 +81,8 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container">
+		
+		<div class="container slide-head">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
@@ -92,20 +93,86 @@
 
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
-					<div class="item active">
-						<img src="images/famous1.jpg" alt="famous"
-							style="width: 100%; height: 350px;">
+				
+					<div class="item active group-form">
+					<a href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4346197" target="blank">
+					<div class="col-xs-6 slide-div">
+						<img src="../resources/images/books-${slideBooksWithId8.img}.jpg" alt="test"
+							style="width: 65%; height: 310px;">
+					</div>
+					<div class="col-xs-6" style="color:black">
+							 <div>
+							 <br><br>
+								    <span>★★★★★</span><em style="color:red">10 score</em>
+							  </div><br>
+								<div>
+								    <span><i>${slideBooksWithId8.writer}</i></span>
+							   </div><br>    
+						    <div>
+								    <span>인문/교양 1위</span>
+							   </div><br>
+								    
+						    <div>
+						    <br>
+								    <h4 class="h4">《인생의 태도》는 불행한 어제, 불안한 내일과 작별하고 오직 지금을 살아가는 지혜를 말하는 책이다. 
+								    타인의 기준에 얽매이지 않고 자신의 가능성을 믿고 충실한 오늘을 사는 인생의 태도만이 자신의 삶을 구원한다는 것이다.
+								    당신은 스스로에게 만족스러운 사람인가?아니면 타인에게 만족스러운 사람인가?</h4>
+							  </div>
+					 </div>
+						 </a>
 					</div>
 
-					<div class="item">
-						<img src="images/famous2.png" alt="famous"
-							style="width: 100%; height: 350px;">
+					<div class="item group-form">
+					<a href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4015026" target="blank">
+					<div class="col-xs-6 slide-div">
+						<img src="../resources/images/books-${slideBooksWithId7.img}.jpg" alt="test"
+							style="width: 65%; height: 310px;">
+					</div>
+					<div class="col-xs-6" style="color:black">
+							 <div><br><br>
+								    <span>★★★★☆</span><em style="color:red">9 score</em>
+							  </div><br>
+								    <div>
+								    <span><i>${slideBooksWithId7.writer}</i></span>
+							   </div><br> 
+						    <div>
+								    <span>에세이 최고 순위 2위</span>
+							   </div><br>
+								    
+						    <div>
+						    <br>
+								    <h4 class="h4">우리는 자기 자신 외에 그 무엇도 될 수 없고, 될 필요도 없다. 진짜 나로 살기 위한 조언, 어른이 처음인 당신을 위한 단단한 위로를 들어본다.</h4>
+							  </div>
+					 </div>
+						 </a>
+					</div>
+					
+					<div class="item group-form">
+					<a href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4320524" target="blank">
+					<div class="col-xs-6 slide-div">
+						<img src="../resources/images/books-${slideBooksWithId6.img}.jpg" alt="test"
+							style="width: 65%; height: 310px;">
+					</div>
+					<div class="col-xs-6" style="color:black">
+							 <div><br><br>
+								    <span>★★★★☆</span><em style="color:red">9.9 score</em>
+							  </div><br>
+								   <div>
+								    <span><i>${slideBooksWithId6.writer}</i></span>
+							   </div><br>  
+						    <div>
+								    <span>소설 주간 7위</span>
+							   </div><br>
+								    
+						    <div>
+						    <br>
+								    <h4 class="h4">일한지 한 달 정도 지났을 무렵, 레이토는 순찰을 돌다 여대생 유미와 마주친다. 
+								    유미는 자신의 아버지가 여기서 도대체 무슨 기도를 하는지 파헤치려 뒤쫓아 온 것. 레이토는 반은 호기심에, 반은 어쩌다보니 유미에게 협력하게 된다..</h4>
+							  </div>
+					 </div>
+						 </a>
 					</div>
 
-					<div class="item">
-						<img src="images/famous3.jpg" alt="famous"
-							style="width: 100%; height: 350px;">
-					</div>
 				</div>
 
 				<!-- Left and right controls -->
