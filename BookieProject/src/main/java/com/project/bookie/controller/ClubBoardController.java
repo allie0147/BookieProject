@@ -14,7 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -121,7 +120,7 @@ public class ClubBoardController {
 		board.setWriter(userService.getUserNickname(board.getUEmail()));
 		System.out.println("board 정보 완성 : " + board);
 		long boardId = service.writeOnBoard(board);
-		return String.valueOf(boardId);
+		return String.valueOf(boardId); // front에서 '/club/detail?b=boardId'로 redirect
 	}
 
 //	게시글 수정 페이지 get
@@ -139,10 +138,10 @@ public class ClubBoardController {
 //	게시글 수정후, POST
 	@PostMapping(value = "/write/edit", produces = "text/plain; charset=utf-8")
 	@ResponseBody
-	public String editOnClubBoard(@RequestParam(value = "b") String boardId, @Param("content") String content,
-			@Param("title") String title) {
+	public String editOnClubBoard(@RequestParam(value = "b") String boardId, @Param("genre") String genreId,
+			@Param("content") String content, @Param("title") String title) {
 		System.out.println(boardId);
-		service.updateOnBoard(boardId, title, content);
+		service.updateOnBoard(boardId, genreId, title, content);
 		return boardId;
 	}
 

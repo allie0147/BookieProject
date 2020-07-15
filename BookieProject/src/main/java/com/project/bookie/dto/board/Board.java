@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.project.bookie.dto.comment.Comment;
+import com.project.bookie.dto.interest.Interest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,4 +29,6 @@ public class Board {
 	private LocalDateTime upDate;
 	private List<Comment> commentList;
 	private String wtDate_str;
+	private int genreId;
+	private String genre;
 }

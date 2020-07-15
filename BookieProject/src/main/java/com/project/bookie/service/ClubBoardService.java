@@ -23,8 +23,10 @@ public class ClubBoardService {
 	@Autowired
 	ClubReplyMapper replyMapper;
 
+//	게시글 + 댓글 + 대댓글
 	public Board getBoardByBoardById(long boardId) {
 		Board board = mapper.getBoardByBoardIdWithComment(boardId);
+		System.out.println(board);
 		List<Comment> commentList = board.getCommentList();
 		for (Comment comment : commentList) {
 			String commentStr = comment.getWtDate().toString();
@@ -41,6 +43,7 @@ public class ClubBoardService {
 		return board;
 	}
 
+//  메인에 보여질 최신글 5개
 	public List<Board> getBoardListLatest() {
 		List<Board> boardList = mapper.getBoardListToMain();
 		return boardList;
@@ -60,8 +63,8 @@ public class ClubBoardService {
 	}
 
 //	update board
-	public void updateOnBoard(String id, String title, String content) {
-		mapper.updateBoard(id, title, content);
+	public void updateOnBoard(String id, String genreId, String title, String content) {
+		mapper.updateBoard(id, genreId, title, content);
 	}
 
 //	delete board

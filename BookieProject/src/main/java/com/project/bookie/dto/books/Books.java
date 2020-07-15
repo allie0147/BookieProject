@@ -3,10 +3,10 @@ package com.project.bookie.dto.books;
 import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,6 +17,6 @@ public class Books {
 	private String writer;
 	private String publisher;
 	@DateTimeFormat
-	private LocalDate pubdate;
+	private LocalDate pubDate;
 	private String img;
 }

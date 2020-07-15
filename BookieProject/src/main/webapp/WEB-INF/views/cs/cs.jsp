@@ -38,13 +38,13 @@
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
-								<li><a href="/qna/main?g=2">에세이</a></li>
-								<li><a href="/qna/main?g=3">인문학</a></li>
-								<li><a href="/qna/main?g=4">경제경영</a></li>
-								<li><a href="/qna/main?g=5">사회과학</a></li>
-								<li><a href="/qna/main?g=6">종교</a></li>
-								<li><a href="/qna/main?g=7">예술</a></li>
+								<li><a href="/qna/board?g=1&p=1">소설 시 희곡</a></li>
+								<li><a href="/qna/board?g=2&p=1">에세이</a></li>
+								<li><a href="/qna/board?g=3&p=1">인문학</a></li>
+								<li><a href="/qna/board?g=4&p=1">경제경영</a></li>
+								<li><a href="/qna/board?g=5&p=1">사회과학</a></li>
+								<li><a href="/qna/board?g=6&p=1">종교</a></li>
+								<li><a href="/qna/board?g=7&p=1">예술</a></li>
 							</ul></li>
 						<li><a href="/club/main">독서 클럽</a></li>
 						<li><a href="/cs">고객센터</a></li>
@@ -75,8 +75,11 @@
 		</nav>
 
 		<div class="container">
-			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-			<img src="../resources/images/banner-cs.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
+			<div
+				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+				<img src="../resources/images/banner-cs.jpg" class="img-rounded"
+					alt="Cinque Terre" width="100%" height="100%">
+			</div>
 		</div>
 
 		<!-- 고객센터 페이지의 문의 제목, 내용 입력칸 너비 줄이기, send 버튼 위치 이동(위 사진의 오른편 여백과 맞춰서) -->

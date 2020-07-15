@@ -39,13 +39,13 @@
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/qna/main?g=1">소설 시 희곡</a></li>
-								<li><a href="/qna/main?g=2">에세이</a></li>
-								<li><a href="/qna/main?g=3">인문학</a></li>
-								<li><a href="/qna/main?g=4">경제경영</a></li>
-								<li><a href="/qna/main?g=5">사회과학</a></li>
-								<li><a href="/qna/main?g=6">종교</a></li>
-								<li><a href="/qna/main?g=7">예술</a></li>
+								<li><a href="/qna/board?g=1&p=1">소설 시 희곡</a></li>
+								<li><a href="/qna/board?g=2&p=1">에세이</a></li>
+								<li><a href="/qna/board?g=3&p=1">인문학</a></li>
+								<li><a href="/qna/board?g=4&p=1">경제경영</a></li>
+								<li><a href="/qna/board?g=5&p=1">사회과학</a></li>
+								<li><a href="/qna/board?g=6&p=1">종교</a></li>
+								<li><a href="/qna/board?g=7&p=1">예술</a></li>
 							</ul></li>
 						<li><a href="/club/main">독서 클럽</a></li>
 						<li><a href="/cs">고객센터</a></li>
@@ -86,11 +86,13 @@
 				<h2 id='title'>${board.title }</h2>
 			</div>
 			<div class='container boardContainer' style='margin-bottom: 5px;'>
-				<button class='Btn btn btn-default' style='margin-left:2%' onclick='location.href="/club/main"'>목록</button>
+				<button class='Btn btn btn-default' style='margin-left: 2%'
+					onclick='location.href="/club/main"'>목록</button>
 				<c:if test="${board.userId==userId}">
 					<div class='BtnDiv'>
-						<button class='Btn btn btn-warning' onclick='location.href="/club/edit?b=${board.id}"'>수정</button>
-						<button class='Btn btn btn-danger' name='delBtn' >삭제</button>
+						<button class='Btn btn btn-warning'
+							onclick='location.href="/club/edit?b=${board.id}"'>수정</button>
+						<button class='Btn btn btn-danger' name='delBtn'>삭제</button>
 					</div>
 				</c:if>
 			</div>
@@ -99,16 +101,17 @@
 					<thead id="myHead">
 						<tr>
 							<th scope="col" id='boardId'># ${board.id}</th>
+							<th scope="col" id='${genre.id}'>장르 ${board.genre }</th>
 							<th scope="col">작성자 ${board.writer }</th>
-							<th class="wtDate" scope="col">작성 ${board.wtDate_str }</th>
+							<th class="wtDate" scope="col">작성일 ${board.wtDate_str }</th>
 							<c:if test="${not empty board.upDate}">
-								<th class="upDate" scope="col">수정 ${board.upDate}</th>
+								<th class="upDate" scope="col">수정일 ${board.upDate}</th>
 							</c:if>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="4" id='content'>${board.content }</td>
+							<td colspan="5" id='content'>${board.content }</td>
 						</tr>
 					</tbody>
 				</table>

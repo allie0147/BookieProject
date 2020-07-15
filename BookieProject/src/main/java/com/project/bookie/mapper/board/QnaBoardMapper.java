@@ -44,7 +44,8 @@ public interface QnaBoardMapper {
 	public void insertBoard(Board board);
 
 	// 글 수정
-	public void updateBoard(@Param("id") String id, @Param("title") String title, @Param("content") String content);
+	public void updateBoard(@Param("id") String id, @Param("genreId") String genreId, @Param("title") String title,
+			@Param("content") String content);
 
 	// 글 삭제
 	public void deleteBoard(long id);
@@ -55,4 +56,13 @@ public interface QnaBoardMapper {
 
 	// 총 게시글 수
 	public int getCountOfTotalBoard();
+
+	// 장르별 총 게시글 수
+	public int getCountOfTotalGenreBoard(@Param("genreId") int genreId);
+
+	// 페이지네이션
+	// 장르별 한 페이지에 보여질 게시글 리스트
+	public List<Board> getBoardByCurrentGenrePage(@Param("genreId") int genreId, @Param("firstRow") int firstRow,
+			@Param("endRow") int endRow);
+
 }

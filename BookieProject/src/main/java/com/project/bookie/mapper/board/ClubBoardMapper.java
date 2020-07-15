@@ -45,7 +45,7 @@ public interface ClubBoardMapper {
 	public void insertBoard(Board board);
 
 	// 글 수정
-	public void updateBoard(@Param("id") String id, @Param("title") String title, @Param("content") String content);
+	public void updateBoard(@Param("id") String id, @Param("genreId")String genreId, @Param("title") String title, @Param("content") String content);
 
 	// 글 삭제
 	public void deleteBoard(long id);
@@ -56,4 +56,5 @@ public interface ClubBoardMapper {
 
 	// 총 게시글 수
 	public int getCountOfTotalBoard();
+	
 }

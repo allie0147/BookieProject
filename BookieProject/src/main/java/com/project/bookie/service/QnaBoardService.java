@@ -24,6 +24,7 @@ public class QnaBoardService {
 	@Autowired
 	QnaReplyMapper replyMapper;
 
+//	게시글 + 댓글 + 대댓글
 	public Board getBoardByBoardById(int boardId) {
 		Board board = mapper.getBoardByBoardIdWithComment(boardId);
 		List<Comment> commentList = board.getCommentList();
@@ -77,8 +78,8 @@ public class QnaBoardService {
 		return board.getId(); // board id
 	}
 //	update board
-	public void updateOnBoard(String id, String title, String content) {
-		mapper.updateBoard(id, title, content);
+	public void updateOnBoard(String id,String genreId, String title, String content) {
+		mapper.updateBoard(id, genreId, title, content);
 	}
 	
 //	delete board

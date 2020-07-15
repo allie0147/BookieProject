@@ -108,7 +108,7 @@ a:focus {
     animation: spin 2s linear infinite;
     z-index: 2;
     left: 47%;
-    top: 50%;
+    top: 60%;
 }
 
 @keyframes spin {

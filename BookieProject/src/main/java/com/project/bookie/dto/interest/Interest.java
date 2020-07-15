@@ -12,4 +12,5 @@ public class Interest {
 	private long userId;
 	private int genreId;
 	private String genreName;
+
 }

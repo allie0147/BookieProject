@@ -1,6 +1,13 @@
 $(function() {
 	$('.black-box').hide();
 	$('.loader').hide();
+//	수정시, selectbox value 변경
+	const genreId_temp=$('#genre_id').val();
+	console.log(genreId_temp);
+	const id= parseInt(genreId_temp)+1;
+	if (genreId_temp!='0'){
+		$('#selectbox option:eq('+id+')').attr("selected","selected");
+	}
 	// 작성
 	$("form").on("submit", function() {
 		$('.black-box').show();
@@ -8,7 +15,7 @@ $(function() {
 		$('button[name=submitButton]').css({'opacity':'0.3','cursor':'default'});
 		let formData = $("form").eq(1).serialize();
 		let title = document.getElementsByName("title")[0].value;
-		let genre = document.getElementsByName("genre")[0].value;
+		let genre = document.getElementsByName("genreId")[0].value;
 		if (title != "" && genre != 0) {
 			$.ajax({
 				url : "/club/write",
@@ -16,8 +23,8 @@ $(function() {
 				data : formData,
 				dataType : "json",
 				success : function(data) {
-					$('.loader').hide();
 					$('.black-box').hide();
+					$('.loader').hide();
 					alert("작성 되었습니다.");
 					window.location.replace("/club/detail?b=" + data);
 				},
@@ -51,7 +58,7 @@ $(function() {
 		$("input[name=editButton]").css({'opacity':'','cursor':'default'});
 		const boardId = document.getElementById('board_id').value;
 		const title = document.getElementsByName('title')[0].value;
-		const genre = document.getElementsByName("genre")[0].value;
+		const genre = document.getElementsByName("genreId")[0].value;
 //		summernote content 가져 오는 방법 
 		const content = $('#summernote').summernote('code');
 		console.log(content);
@@ -61,7 +68,8 @@ $(function() {
 				type : "post",
 				data : {
 					"title" : title,
-					"content" : content
+					"content" : content,
+					"genreId": genre
 				},
 				success : function(board) {
 					$('.loader').hide();

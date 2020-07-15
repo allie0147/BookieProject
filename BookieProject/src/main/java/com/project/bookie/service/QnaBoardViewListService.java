@@ -16,32 +16,49 @@ import lombok.NoArgsConstructor;
 public class QnaBoardViewListService {
 	private static final int BOARD_COUNT_PER_PAGE = 15;
 	private BoardViewList boardViewList;
-	
+
 	@Autowired
 	QnaBoardMapper mapper;
 
+//	전체 페이지
 	public BoardViewList getViewListService(int pageNum) {
-		int firstRow = (pageNum - 1)*BOARD_COUNT_PER_PAGE;
+		int firstRow = (pageNum - 1) * BOARD_COUNT_PER_PAGE;
 		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
-		
-		System.out.println("pageNum : "+pageNum);
-		System.out.println("firstRow : "+firstRow);
-		System.out.println("endRow : "+endRow);
-		System.out.println("BOARD_COUNT_PER_PAGE : "+BOARD_COUNT_PER_PAGE);
-		
+
+		System.out.println("pageNum : " + pageNum);
+		System.out.println("firstRow : " + firstRow);
+		System.out.println("endRow : " + endRow);
+		System.out.println("BOARD_COUNT_PER_PAGE : " + BOARD_COUNT_PER_PAGE);
+
 		int boardTotalCount = mapper.getCountOfTotalBoard();
 		List<Board> boardList = mapper.getBoardListByCurrentPage(firstRow, BOARD_COUNT_PER_PAGE);
 		boardViewList = new BoardViewList(boardTotalCount, BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow, endRow);
-		
+
 		return boardViewList;
 	}
-	
+
 	public BoardViewList getViewListSearch(int pageNum, List<Board> boardList) {
-		int firstRow = (pageNum - 1)*BOARD_COUNT_PER_PAGE;
+		int firstRow = (pageNum - 1) * BOARD_COUNT_PER_PAGE;
 		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
-		
+
 		boardViewList = new BoardViewList(boardList.size(), BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow, endRow);
-		
+
+		return boardViewList;
+	}
+
+//	장르별 페이지
+	public BoardViewList getViewListByGenre(int genreId, int pageNum) {
+		int firstRow = (pageNum - 1) * BOARD_COUNT_PER_PAGE;
+		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
+
+		System.out.println("pageNum : " + pageNum);
+		System.out.println("firstRow : " + firstRow);
+		System.out.println("endRow : " + endRow);
+		System.out.println("BOARD_COUNT_PER_PAGE : " + BOARD_COUNT_PER_PAGE);
+		int boardTotalCount = mapper.getCountOfTotalGenreBoard(genreId);
+		List<Board> boardList = mapper.getBoardByCurrentGenrePage(genreId, firstRow, BOARD_COUNT_PER_PAGE);
+		boardViewList = new BoardViewList(boardTotalCount, BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow, endRow);
+
 		return boardViewList;
 	}
 }

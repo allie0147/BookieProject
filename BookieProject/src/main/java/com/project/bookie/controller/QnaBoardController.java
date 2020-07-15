@@ -83,12 +83,56 @@ public class QnaBoardController {
 		return "QnA/qnaMain.jsp?p=" + p;
 	}
 
+//	장르별 페이지
+//	파라미터 값으로 g=장르id, p=페이지수
+	@GetMapping("/board")
+	public String goQnAGenre(Model m, @RequestParam(value = "p", defaultValue = "1", required = false) int p,
+			@RequestParam(value = "g", defaultValue = "1", required = false) int g) {
+		BoardViewList boardViewList = viewListService.getViewListByGenre(g, p);
+		m.addAttribute("boardViewList", boardViewList);
+		List<Integer> pageArray = new ArrayList<>();
+		int startNum;
+		int endNum;
+
+		if (boardViewList.getPageTotalCount() <= 5) {
+			for (int i = 1; i <= boardViewList.getPageTotalCount(); i++) {
+				pageArray.add(i);
+			}
+			startNum = pageArray.get(0);
+			endNum = pageArray.get(pageArray.size() - 1);
+		} else { // 총 페이지 수가 5이상일 때
+			int i = 1;
+			endNum = (boardViewList.getPageTotalCount()
+					- boardViewList.getCurrentPageNumber() >= boardViewList.getPageTotalCount() - 5) ? 5 * i
+							: boardViewList.getPageTotalCount();
+			while (p > 5 * i) {
+				i++;
+			}
+			System.out.println("현재 페이지네이션 범위 : " + (i - 1) * 5 + "~" + i * 5); // p가 5*i보다 작아지게 된 i의 값
+			startNum = 5 * (i - 1) + 1;
+
+			for (int j = startNum; j <= endNum; j++) {
+				pageArray.add(j);
+			}
+		}
+
+		int nextNum = boardViewList.getPageTotalCount(); // viewList.getPageTotalCount()
+		if (p + 5 < boardViewList.getPageTotalCount()) {
+			nextNum = p + 5;
+		}
+
+		m.addAttribute("nextNum", nextNum);
+		m.addAttribute("pageArray", pageArray);
+		m.addAttribute("g", g);
+		m.addAttribute("p", p);
+		return "QnA/qnaGenre.jsp?g=" + g + "&p=" + p;
+	}
+
 //	한 페이지
 	@GetMapping("/detail")
 	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) int boardId) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
-		System.out.println(uEmail);
 		Board board = service.getBoardByBoardById(boardId);
 		if (uEmail.equals("anonymousUser")) {
 			m.addAttribute("board", board);
@@ -151,10 +195,10 @@ public class QnaBoardController {
 //	게시글 수정후, POST
 	@PostMapping(value = "/write/edit", produces = "text/plain; charset=utf-8")
 	@ResponseBody
-	public String editOnQnABoard(@RequestParam(value = "b") String boardId, @Param("content") String content,
-			@Param("title") String title) {
+	public String editOnQnABoard(@RequestParam(value = "b") String boardId, @Param("genreId") String genreId,
+			@Param("content") String content, @Param("title") String title) {
 		System.out.println(boardId);
-		service.updateOnBoard(boardId, title, content);
+		service.updateOnBoard(boardId, genreId, title, content);
 		return boardId;
 	}
 
