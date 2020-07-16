@@ -102,16 +102,19 @@
 	<delete id="deleteBoard">
 		delete from bookcard_board where id=#{id}
 	</delete>
-
+	
+	<select id="selectLikeCnt" resultType="int">
+		select like_cnt from bookcard_board where id=#{id}
+	</select>
+		
 	<!-- 좋아요 버튼 클릭시 like_cnt = like_cnt + 1 -->
-	<select id="likeCntUp">
+	<update id="likeCntUp" >
 		update bookcard_board set like_cnt= #{likeCnt} where id =#{id}
-	</select>
+	</update>
 	<!-- 좋아요 버튼 다시 클릭시 like_cnt = like_cnt - 1 -->
-	<select id="likeCntDown">
+	<update id="likeCntDown" >
 		update bookcard_board set like_cnt= #{likeCnt} where id =#{id}
-	</select>
-
+	</update>
 	<!-- 북마크 추가 -->
 	<select id="addBookmark">
 		update bookcard_board set bookmark_cnt=#{bookmarkCnt} where id =#{id}

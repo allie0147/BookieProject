@@ -105,9 +105,9 @@
 									<p class="content">${board.content }</p>
 									<div>
 										<p class="writer">${board.writer }</p>
-										<p class="like">
-											<a class="glyph"><span
-												class='glyphicon glyphicon-heart-empty'></span></a>${board.likeCnt }</p>
+										<div class="like">
+											<a class="heart glyph"><span
+												class='glyphicon glyphicon-heart-empty'></span></a><p class="count">${board.likeCnt }</p></div>
 										<!-- <span class='glyphicon glyphicon-heart'></span> -->
 									</div>
 								</div>
@@ -154,12 +154,13 @@
 													class="glyphicon glyphicon-trash"></span></a>
 											</c:if>
 										</div>
+										<p id="board_id" style="display: none">${board.id}</p>
 										<p class="content">${board.content }</p>
 										<div>
 											<p class="writer">${board.writer }</p>
-											<p class="like">
-												<a class="glyph"><span
-													class='glyphicon glyphicon-heart-empty'></span></a>${board.likeCnt }</p>
+											<div class="like">
+												<a class="heart glyph"><span
+													class='glyphicon glyphicon-heart-empty'></span></a><p class="count">${board.likeCnt}</p></div>
 											<!-- <span class='glyphicon glyphicon-heart'></span> -->
 										</div>
 									</div>

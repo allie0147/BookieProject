@@ -32,6 +32,22 @@ public class BookCardBoardService {
 	}
 
 	public void deleteOnBoard(String id) {
-		mapper.deleteBoard(Long.valueOf(id));
+		mapper.deleteBoard(Integer.parseInt(id));
+	}
+
+	public int likeCntUp(int id) {
+		int count = mapper.selectLikeCnt(id) + 1;
+		mapper.likeCntUp(count, id);
+		return count;
+	}
+
+	public int likeCntDown(int id) {
+		int count = mapper.selectLikeCnt(id) - 1;
+		mapper.likeCntDown(count, id);
+		return count;
+	}
+
+	public int getLikeCnt(int id) {
+		return mapper.selectLikeCnt(id);
 	}
 }

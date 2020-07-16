@@ -117,10 +117,11 @@ public class BookCardBoardController {
 		}
 		return "true";
 	}
+
 	@PostMapping(value = "/delete", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String editOnBookCardBoard(@Param("id") String id) {
-		System.out.println("boardId" + id );
+		System.out.println("boardId" + id);
 		try {
 			service.deleteOnBoard(id);
 		} catch (Exception e) {
@@ -128,5 +129,19 @@ public class BookCardBoardController {
 			return "false";
 		}
 		return "true";
+	}
+
+	@PostMapping(value = "/likes", produces = "text/plain; charset=utf8")
+	@ResponseBody
+	public String countLikes(@Param("id") int id, @Param("likeCnt") String likeCnt) {
+		System.out.println("board id: " + id + ", like count: " + likeCnt);
+		if (likeCnt.equals("like")) {
+			System.out.println("up: " + String.valueOf(service.likeCntUp(id)));
+			return String.valueOf(service.likeCntUp(id));
+		} else if (likeCnt.equals("dislike")) {
+			return String.valueOf("down: " + service.likeCntDown(id));
+		} else {
+			return "-1"; // false;
+		}
 	}
 }

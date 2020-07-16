@@ -40,13 +40,16 @@ public interface BookCardBoardMapper {
 	public void updateBoard(@Param("id") String id, @Param("content") String content);
 
 	// 글 삭제
-	public void deleteBoard(long id);
+	public void deleteBoard(int id);
 
+	// 좋아요 count
+	public int selectLikeCnt(int id);
+	
 	// 좋아요 버튼 클릭시 like_cnt = like_cnt + 1
-	public void likeCntUp(@Param("likeCnt") int likeCnt, @Param("id") long id);
+	public void likeCntUp(@Param("likeCnt") int likeCnt, @Param("id") int id);
 
 	// 좋아요 버튼 다시 클릭시 like_cnt = like_cnt - 1
-	public void likeCntDown(@Param("likeCnt") int likeCnt, @Param("id") long id);
+	public void likeCntDown(@Param("likeCnt") int likeCnt, @Param("id") int id);
 
 	// 북마크 버튼 클릭시 bookmark_cnt = bookmark_cnt + 1
 	public void addBookmark(@Param("bookmarkCnt") int bookmarkCnt, @Param("id") long id);

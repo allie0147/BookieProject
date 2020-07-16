@@ -63,7 +63,7 @@
 			delete-cookies="remember-me,JSESSIONID" />
 			
 		<!-- remember-me시, 토큰 30일짜리 부여 -->
-		<security:remember-me data-source-ref="dataSource" remember-me-parameter="remember-me" 
+		<security:remember-me data-source-ref="dataSource" remember-me-parameter="remember-me"  
 			token-validity-seconds="604800"/>
 			
 		<!-- csrf 토큰은 세션을 통해 보관, 브라우저가 전송한 csrf 토큰값을 검사하는 방식 -->

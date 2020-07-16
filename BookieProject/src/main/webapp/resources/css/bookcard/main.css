@@ -166,6 +166,11 @@ thead>tr {
 	height: 23.333px;
 	position: relative;
 }
+
+.count {
+	display: inline;
+	margin: 0;
+}
 /*동적 js요소*/
 #counter {
 	color: rgba(255, 0, 0, 0.65);
