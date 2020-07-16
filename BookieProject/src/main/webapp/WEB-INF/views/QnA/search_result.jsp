@@ -7,18 +7,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>독서 클럽</title>
+<title>QnA게시판 검색 결과</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
-<link rel="stylesheet" href="/resources/css/bookclub/main.css">
+<link rel="stylesheet" href="/resources/css/QnA/main.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/resources/js/bookclub/main.js"></script>
+<script src="/resources/js/QnA/main.js"></script>
 </head>
 <body>
 	<div class="main-body">
@@ -73,19 +73,27 @@
 				</div>
 			</div>
 		</nav>
+
 		<div class="container">
-			<div
-				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-				<img src="../resources/images/banner-club.jpg" class="img-rounded"
-					alt="Cinque Terre" width="100%" height="100%">
-			</div>
+			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+			<img src="../resources/images/banner-qna.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
 		</div>
 
 		<div class="text-center" id="qnaTitle">
-			<h3 id="board_title">BookClub</h3>
+			<h3 id="board_title">QnA</h3>
+				<ul class="category">
+					<li><a href="/qna/main" class="list-item">전체</a></li>
+					<li><a href="/qna/board?g=1&p=1" class="list-item">소설/시/희곡</a></li>
+					<li><a href="/qna/board?g=2&p=1" class="list-item">에세이</a></li>
+					<li><a href="/qna/board?g=3&p=1" class="list-item">인문학</a></li>
+					<li><a href="/qna/board?g=4&p=1" class="list-item">경제경영</a></li>
+					<li><a href="/qna/board?g=5&p=1" class="list-item">사회과학</a></li>
+					<li><a href="/qna/board?g=6&p=1" class="list-item">종교</a></li>
+					<li><a href="/qna/board?g=7&p=1" class="list-item">예술</a></li>
+				</ul>
 		</div>
-
 		<div class="container">
+
 			<c:if test="${boardViewList.boardList.size() == 0 }">
 				<!-- 글 개수가 0개일 때 -->
 				<div class="content">글이 존재하지 않습니다.</div>
@@ -96,6 +104,7 @@
 					<thead>
 						<tr>
 							<th class="col-sm-1" scope="col">번 호</th>
+							<th class="col-sm-1" scope="col">장 르</th>
 							<th class="col-sm-4" scope="col">제 목</th>
 							<th class="col-sm-2" scope="col">작성자</th>
 							<th class="col-sm-3" scope="col">작성일</th>
@@ -103,8 +112,9 @@
 					</thead>
 					<tbody>
 						<c:forEach var="board" items="${boardViewList.boardList }">
-							<tr onclick="location.href='/club/detail?b=${board.id }'">
+							<tr onclick="location.href='/qna/detail?b=${board.id }'">
 								<td>${board.id }</td>
+								<td id="${genre.id}">${board.genre}</td>
 								<td>${board.title }</td>
 								<td>${board.writer }</td>
 								<td>${board.wtDate }</td>
@@ -115,9 +125,11 @@
 			</c:if>
 			<!-- 글쓰기 버튼 -->
 			<div class="container write-div">
-				<a class="btn pull-right write-button" href="/club/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
+				<a class="btn pull-right write-button" href="/qna/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
 			</div>
 		</div>
+
+
 		<!-- 검색 창 -->
 		<div class="container">
 			<form class="ml">
@@ -136,9 +148,10 @@
 				</div>
 			</form>
 		</div>
-		
+
 		<!-- 페이지네이션 -->
 		<div class="container text-center">
+
 			<c:if test="${boardViewList.boardList.size() > 0 }">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">

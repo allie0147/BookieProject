@@ -23,7 +23,7 @@ public class KakaoController {
 			RequestMethod.POST })
 	public String kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session,
 			HttpServletResponse response, Model m) throws IOException {
-		System.out.println("kakao code: " + code);
+//		System.out.println("kakao code: " + code);
 		JsonNode accessToken;
 
 		// JsonNode트리형태로 토큰받아온다
@@ -31,7 +31,7 @@ public class KakaoController {
 		// 여러 json객체 중 access_token을 가져온다
 		accessToken = jsonToken.get("access_token");
 
-		System.out.println("access_token : " + accessToken);
+//		System.out.println("access_token : " + accessToken);
 
 		// access_token을 통해 사용자 정보 요청
 		JsonNode userInfo = KakaoUserInfo.getKakaoUserInfo(accessToken);
@@ -45,9 +45,9 @@ public class KakaoController {
 		String nickname = properties.path("nickname").asText();
 		String uEmail = kakao_account.path("email").asText();
 
-		System.out.println("id : " + id);
-		System.out.println("nickname : " + nickname);
-		System.out.println("uEmail : " + uEmail);
+//		System.out.println("id : " + id);
+//		System.out.println("nickname : " + nickname);
+//		System.out.println("uEmail : " + uEmail);
 
 		m.addAttribute("nickname", nickname);
 		m.addAttribute("uEmail", uEmail);

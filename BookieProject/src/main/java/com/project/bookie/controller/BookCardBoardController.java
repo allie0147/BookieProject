@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.project.bookie.dto.board.BookCardBoard;
 import com.project.bookie.dto.boardViewList.BookCardBoardViewList;
 import com.project.bookie.service.BookCardBoardService;
@@ -39,7 +38,7 @@ public class BookCardBoardController {
 
 		BookCardBoardViewList boardVL = viewListService.getViewListService(p);
 		m.addAttribute("boardViewList", boardVL);
-		List<BookCardBoard> boardViewListBest = service.getBoardListToMainBest3();
+		List<BookCardBoard> boardViewListBest = service.getBoardListBest3();
 		m.addAttribute("boardViewListBest", boardViewListBest);
 
 		// 랜덤으로 이미지 불러오기
@@ -69,7 +68,7 @@ public class BookCardBoardController {
 			while (p > 5 * i) {
 				i++;
 			}
-			System.out.println("현재 페이지네이션 범위 : " + (i - 1) * 5 + "~" + i * 5); // p가 5*i보다 작아지게 된 i의 값
+//			System.out.println("현재 페이지네이션 범위 : " + (i - 1) * 5 + "~" + i * 5); // p가 5*i보다 작아지게 된 i의 값
 			startNum = 5 * (i - 1) + 1;
 
 			for (int j = startNum; j <= endNum; j++) {
@@ -91,11 +90,21 @@ public class BookCardBoardController {
 		m.addAttribute("p", p);
 		return "bookCard/bookcardMain.jsp?p=" + p;
 	}
-
+	
+	@GetMapping("/search")
+	public String getBoardListBySearchInfo(Model m, 
+			@RequestParam(value = "query") String query,
+			@RequestParam(value = "p", defaultValue = "1", required = false) int p) {
+		List<BookCardBoard> boardList = service.getBoardListBySearchInfo(query);
+		BookCardBoardViewList boardViewList = viewListService.getViewListSearch(p, boardList);
+		m.addAttribute("boardViewList", boardViewList);
+		
+		return "bookCard/search_result.jsp?query=" + query + "&b=" + p;
+	}
+	
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String writeOnBookCardBoard(@Param("userId") String userId, @Param("content") String content) {
-		System.out.println("userId" + userId + "content" + content);
 		try {
 			service.writeOnBoard(userId, content);
 		} catch (Exception e) {
@@ -108,7 +117,6 @@ public class BookCardBoardController {
 	@PostMapping(value = "/edit", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String editOnBookCardBoard(@Param("id") String id, @Param("content") String content) {
-		System.out.println("boardId" + id + "content" + content);
 		try {
 			service.editOnBoard(id, content);
 		} catch (Exception e) {

@@ -15,16 +15,10 @@ public interface BookCardBoardMapper {
 	public List<BookCardBoard> getBoardListToMain();
 
 	// 메인화면에 표시할 좋아요 높은 글 조회
-	public List<BookCardBoard> getBoardListToMainBest();
-
-	// 조건(글 제목)에 따른 검색(게시판 내에서의 검색)
-	public List<BookCardBoard> getListByTitle(@Param("searchInfo") String searchInfo);
-
-	// 조건(내용)에 따른 검색(게시판 내에서의 검색)
-	public List<BookCardBoard> getListByContent(@Param("searchInfo") String searchInfo);
-
-	// 조건(작성자)에 따른 검색(게시판 내에서의 검색)
-	public List<BookCardBoard> getListByWriter(@Param("searchInfo") String searchInfo);
+	public List<BookCardBoard> getBoardListBest();
+	
+	//조건(내용 혹은 작성자)에 따른 검색
+	public List<BookCardBoard> getListByContentOrWriter(@Param("query")String query);
 
 	// 작성자에 따른 검색(사용자의 자신이 쓴 글 조회 기능)
 	public List<BookCardBoard> getListByUserId(long userId); // select * from board.user_id = #{작성자 id}(로그인 되어있는 세션에서
@@ -63,5 +57,7 @@ public interface BookCardBoardMapper {
 
 	// 총 게시글 수
 	public int getCountOfTotalBoard();
+
+	
 
 }

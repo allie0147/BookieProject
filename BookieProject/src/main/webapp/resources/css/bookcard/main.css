@@ -3,13 +3,11 @@
 	text-align: center;
 	margin: auto;
 }
-
 #boardList {
 	width: 600px;
 	margin: auto;
 	height: 500px;
 }
-
 .img {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -37,7 +35,6 @@
 	user-select: none;
 	color: #ffffff;
 }
-
 .writer {
 	color: #ffffff;
 	font-size: 15px;
@@ -50,7 +47,6 @@
 	-khtml-user-select: none;
 	user-select: none;
 }
-
 .like {
 	color: #ffffff;
 	font-size: 15px;
@@ -58,27 +54,22 @@
 	position: absolute;
 	left: 71%;
 }
-
 .write-button {
 	background: #0f4c75;
 	color: #ffffff;
 }
-
 .write-button:hover {
 	background: #0f4c75;
 	color: #ffffff;
 }
-
 .write-button:active {
 	background: #0f4c75;
 	color: #ffffff;
 }
-
 .write-button:focus {
 	background: #0f4c75;
 	color: #ffffff;
 }
-
 .board_qna {
 	border: 1px solid black;
 	border-radius: 7px;
@@ -86,7 +77,6 @@
 	height: 100%;
 	text-align: center;
 }
-
 .board_qna tr {
 	border: 1px solid black;
 }
@@ -94,13 +84,11 @@
 thead>tr {
 	color: black;
 }
-
 .page {
 	text-align: center;
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
-
 .pagenation {
 	list-style: none;
 	display: inline-block;
@@ -110,58 +98,47 @@ thead>tr {
 	text-align: center;
 	text-decoration: none;
 }
-
 .pagenation li {
 	display: inline;
 	text-align: center;
 }
-
 .pagenation a {
 	display: inline-block;
 	text-decoration: none;
 	color: black;
 	padding: 5px 12px;
 }
-
 .pagenation a:hover {
 	background-color: lightgray;
 	border-radius: 4px;
 }
-
 .pageNumber {
 	margin: auto 5px auto 5px;
 	text-decoration: none;
 	color: black;
 }
-
 .pagination>li>a {
 	color: #000000;
 }
-
 .pagination>li>a:focus, .pagination>li>a:hover {
 	color: #000000;
 }
-
 .searchBar {
 	margin: auto;
 	width: 600px;
 	text-align: right;
 }
-
 /*glyphcon aTag*/
 .glyph {
 	color: white;
 	font-size: 1.2em;
 }
-
 .glypicon-heart-empty {
 	font-size: 1.5em;
 }
-
 .glypicon-heart {
 	font-size: 1.5em;
 }
-
 .wrapGlyph {
 	height: 23.333px;
 	position: relative;
@@ -180,7 +157,6 @@ thead>tr {
 	font-size: 0.8em;
 	font-weight: 900;
 }
-
 .submit_card {
 	display: block;
 	margin-top: 5px;
@@ -188,28 +164,23 @@ thead>tr {
 	color: #ffffff;
 	border: none;
 }
-
 .submit_card:hover {
 	background: #0f4c75;
 	color: #ffffff;
 }
-
 .submit_card:active {
 	background: #0f4c75;
 	color: #ffffff;
 }
-
 .submit_card:focus {
 	background: #0f4c75;
 	color: #ffffff;
 }
-
 #textarea {
 	resize: none;
 	height: 40px;
 	width: 40%;
 }
-
 #textarea_edit {
 	resize: none;
 	height: 300px;
@@ -217,11 +188,9 @@ thead>tr {
 	border: 1px solid #444444;
 	border-radius: 5px;
 }
-
 #textarea_edit:focus {
 	outline: none;
 }
-
 .div_edit {
 	width: 33%;
 	position: relative;
@@ -229,14 +198,12 @@ thead>tr {
 	top: 1000px;
 	z-index: 9;
 }
-
 .exit {
 	position: relative;
 	left: 96%;
 	color: white;
 	font-size: 1.1em;
 }
-
 /*black box*/
 .black_box {
 	height: 214.5%;
@@ -246,7 +213,6 @@ thead>tr {
 	background-color: #000000;
 	z-index: 9;
 }
-
 .loader_card {
 	border: 10px solid rgba(255, 255, 255, 0.67);
 	border-radius: 50%;

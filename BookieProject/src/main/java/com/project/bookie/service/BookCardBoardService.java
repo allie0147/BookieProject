@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.project.bookie.dto.board.BookCardBoard;
 import com.project.bookie.mapper.board.BookCardBoardMapper;
 
@@ -18,8 +17,8 @@ public class BookCardBoardService {
 		return bookCardBoardList;
 	}
 
-	public List<BookCardBoard> getBoardListToMainBest3() {
-		List<BookCardBoard> bookCardBoradListBest = mapper.getBoardListToMainBest();
+	public List<BookCardBoard> getBoardListBest3() {
+		List<BookCardBoard> bookCardBoradListBest = mapper.getBoardListBest();
 		return bookCardBoradListBest;
 	}
 
@@ -49,5 +48,12 @@ public class BookCardBoardService {
 
 	public int getLikeCnt(int id) {
 		return mapper.selectLikeCnt(id);
+	}
+
+//	검색 기능
+	public List<BookCardBoard> getBoardListBySearchInfo(String query) {
+		List<BookCardBoard> boardList = null;
+		boardList = mapper.getListByContentOrWriter(query);
+		return boardList;
 	}
 }

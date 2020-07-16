@@ -26,7 +26,6 @@ public class ClubBoardService {
 //	게시글 + 댓글 + 대댓글
 	public Board getBoardByBoardById(long boardId) {
 		Board board = mapper.getBoardByBoardIdWithComment(boardId);
-		System.out.println(board);
 		List<Comment> commentList = board.getCommentList();
 		for (Comment comment : commentList) {
 			String commentStr = comment.getWtDate().toString();
@@ -42,7 +41,19 @@ public class ClubBoardService {
 		board.setWtDate_str(boardDate);
 		return board;
 	}
-
+//	검색 기능
+	public List<Board> getBoardListBySearchInfo(String option, String query) {
+		List<Board> boardList = null;
+		if (option.equals("title")) {
+			boardList = mapper.getListByTitle(query);
+		} else if (option.equals("content")) {
+			boardList = mapper.getListByContent(query);
+		} else { // option.equals("writer")
+			boardList = mapper.getListByWriter(query);
+		}
+		return boardList;
+	}
+	
 //  메인에 보여질 최신글 5개
 	public List<Board> getBoardListLatest() {
 		List<Board> boardList = mapper.getBoardListToMain();
@@ -58,7 +69,6 @@ public class ClubBoardService {
 //	insert board
 	public long writeOnBoard(Board board) {
 		mapper.insertBoard(board);
-		System.out.println(board.getId());
 		return board.getId(); // board id
 	}
 
@@ -76,9 +86,7 @@ public class ClubBoardService {
 //	insert comment
 	public String writeComment(Comment comment) {
 		commentMapper.addComment(comment);
-		System.out.println(comment.getId());
 		String date = commentMapper.getCommentWdate(comment.getId());
-		System.out.println(date);
 		return date;
 	}
 

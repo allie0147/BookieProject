@@ -41,9 +41,9 @@ public class LogInController {
 	@PostMapping("/loginProc")
 	public void getInfo(@Param("uEmail") String uEmail, @Param("uPwd") String uPwd) {
 		// 시큐리티적용
-		System.out.println("login컨트롤러");
-		System.out.println("입력한 uEmail : " + uEmail);
-		System.out.println("입력한 uPwd : " + uPwd); // 입력값 그대로
+//		System.out.println("login컨트롤러");
+//		System.out.println("입력한 uEmail : " + uEmail);
+//		System.out.println("입력한 uPwd : " + uPwd); // 입력값 그대로
 		try {
 			userDetailsService.loadUserByUsername(uEmail);
 		} catch (UsernameNotFoundException e) {

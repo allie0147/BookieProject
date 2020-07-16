@@ -22,14 +22,6 @@
 </head>
 <body onload="showImage()">
 	<div class="main-body">
-		<!-- 주소 이걸로 쓰면됨 -->
-		<!-- <a href="/bookie/main">메인</a><br /> 
-<a href="/bookie/bookcard">북카드</a><br />
-<a href="/bookie/QnA">QnA</a><br />
-<a href="/bookie/bookclub">북클럽</a><br />
-<a href="/bookie/mypage">마이페이지</a><br />
-<a href="/bookie/cs">고객센터</a><br /> 
-<a href="/bookie/login">로그인</a> -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -98,7 +90,7 @@
 					<a href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4346197" target="blank">
 					<div class="col-xs-6 slide-div">
 						<img src="../resources/images/books-${slideBooksWithId8.img}.jpg" alt="test"
-							style="width: 65%; height: 310px;">
+							style="width: 45%; height: 310px;">
 					</div>
 					<div class="col-xs-6" style="color:black">
 							 <div>
@@ -126,7 +118,7 @@
 					<a href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4015026" target="blank">
 					<div class="col-xs-6 slide-div">
 						<img src="../resources/images/books-${slideBooksWithId7.img}.jpg" alt="test"
-							style="width: 65%; height: 310px;">
+							style="width: 45%; height: 310px;">
 					</div>
 					<div class="col-xs-6" style="color:black">
 							 <div><br><br>
@@ -151,7 +143,7 @@
 					<a href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4320524" target="blank">
 					<div class="col-xs-6 slide-div">
 						<img src="../resources/images/books-${slideBooksWithId6.img}.jpg" alt="test"
-							style="width: 65%; height: 310px;">
+							style="width: 45%; height: 310px;">
 					</div>
 					<div class="col-xs-6" style="color:black">
 							 <div><br><br>
@@ -187,10 +179,6 @@
 				</a>
 			</div>
 		</div>
-
-
-		<!-- 각 게시판 제목 보다 오른쪽으로 이동 -->
-		<!-- 이 곳 a 태그들에 따로 디자인 주기(a태그 안의 텍스트에 폰트 변경, 크기 키우기 -->
 		<div class="container">
 			<h2>
 				<a href="/bookcard/main">BookCard</a>
@@ -203,6 +191,9 @@
 							<div class="img">
 								<!-- background-image:url('../resources/images/bookcard-images-${randomImageNumIter.next()}.jpg')" -->
 								<p class="cap">${board.content }</p>
+								<div>
+									<p class="writer">${board.writer }</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -217,7 +208,7 @@
 				<ul class="qnaUl">
 					<c:forEach var="board" items="${MainQnaBoardList }"
 						varStatus="status">
-						<li><a href="qna/detail?b=${board.id }"><em>${status.index +1}</em>${board.title }</a></li>
+						<li><a href="qna/detail?b=${board.id }"><em>${status.index +1}</em>.&nbsp;${board.title }</a></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -228,14 +219,12 @@
 				<ul class="qnaUl">
 					<c:forEach var="board" items="${MainClubBoardList }"
 						varStatus="status">
-						<!-- <a href="qna/detail?b=${status.index }"> a 태그 클릭시 이동 페이지 status.index 수정 -->
-						<li><a href="club/detail?b=${board.id}"><em>${status.index +1}</em>${board.title }</a></li>
+						<li><a href="club/detail?b=${board.id}"><em>${status.index +1}</em>.&nbsp;${board.title }</a></li>
 					</c:forEach>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<!-- store의 글자들 클릭한 뒤 다시 뒤로가기 해도 글자색 변경되지 않게 -->
 	<footer id="footerBg">
 		<div class="container">
 			<br>
@@ -265,7 +254,6 @@
 					<h5>
 						<a href="https://www.aladin.co.kr/" target="_blank">aladin</a>
 					</h5>
-					<!-- target 설정: 새창으로 변경 -->
 					<h5>
 						<a href="http://www.bandinlunis.com/" target="_blank">bandinluis</a>
 					</h5>

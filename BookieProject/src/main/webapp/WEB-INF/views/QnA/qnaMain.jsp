@@ -18,7 +18,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resources/js/QnA/main.js"></script>
+<script src="/resources/js/QnA/main.js"></script>
 </head>
 <body>
 	<div class="main-body">
@@ -136,17 +136,17 @@
 		<div class="container">
 			<form class="ml">
 				<div class="form-group col-xs-2">
-					<select class="form-control">
+					<select name="option" class="form-control">
 						<option value="title">제목</option>
 						<option value="content">내용</option>
 						<option value="writer">글쓴이</option>
 					</select>
 				</div>
 				<div class="form-group col-xs-3">
-					<input class="form-control" type="text" name="searchInfo" />
+					<input name="query" class="form-control" type="text" />
 				</div>
 				<div class="form-group col-xs-2">
-					<input class="btn btn-default" type="submit" value="검색" />
+					<input type="submit" value="검색" class="btn btn-default"  />
 				</div>
 			</form>
 		</div>

@@ -7,8 +7,8 @@
 	<resultMap type="bookCardBoard" id="bcb">
 		<id property="id" column="id" />
 		<result property="userId" column="user_id" />
-		<result property="content" column="content" />
 		<result property="writer" column="writer" />
+		<result property="content" column="content" />
 		<result property="wtDate" column="w_date" />
 		<result property="upDate" column="u_date" />
 		<result property="likeCnt" column="like_cnt" />
@@ -18,21 +18,25 @@
 	<!-- 글 전체 조회 -->
 	<select id="getAllBoards" resultMap="bcb">
 		select bookcard_board.id,
-		user.nickname as writer, w_date, u_date, like_cnt, bookmark_cnt
-		from
-		bookcard_board join user on bookcard_board.user_id = user.id
+		user.nickname as writer, content, w_date, u_date, like_cnt, bookmark_cnt
+		from 
+		bookcard_board 
+		join user on bookcard_board.user_id = user.id
 	</select>
 
 	<!-- 메인화면에 표시할 최신 글 조회 -->
 	<select id="getBoardListToMain" resultMap="bcb">
-		select *
+		select 
+		bookcard_board.id,
+		user.nickname as writer, content, w_date, u_date, like_cnt, bookmark_cnt
 		from
-		bookcard_board
+		bookcard_board 
+		join user on bookcard_board.user_id = user.id
 		order by id desc limit 3
 	</select>
 
 	<!-- 북카드 메인화면에 표시할 좋아요 높은 글 3개 -->
-	<select id="getBoardListToMainBest" resultMap="bcb">
+	<select id="getBoardListBest" resultMap="bcb">
 		select
 		bookcard_board.id, user_id, user.nickname as writer, content, w_date,
 		like_cnt, bookmark_cnt
@@ -41,32 +45,16 @@
 		order by like_cnt desc limit 3;
 	</select>
 
-	<!-- 제목으로 글 검색 -->
-	<select id="getListByTitle" resultMap="bcb">
-		select bookcard_board.id,
-		user.nickname as writer, w_date, u_date like_cnt, bookmark_cnt
-		from
+	<!-- 내용/작성자명으로 글 검색 -->
+	<select id="getListByContentOrWriter" resultMap="bcb">
+		select 
+		bookcard_board.id, user.nickname as writer, content, like_cnt, bookmark_cnt
+		from 
 		bookcard_board join user on bookcard_board.user_id = user.id
-		where
-		title like concat('%',#{searchInfo},'%')
-	</select>
-	<!-- 내용으로 글 검색 -->
-	<select id="getListByContent" resultMap="bcb">
-		select
-		bookcard_board.id, user.nickname as writer, w_date, u_date like_cnt,
-		bookmark_cnt
-		from bookcard_board join user on bookcard_board.user_id =
-		user.id
-		where content like concat('%',#{searchInfo},'%')
-	</select>
-	<!-- 작성자 명으로 글 검색 -->
-	<select id="getListByWriter" resultMap="bcb">
-		select bookcard_board.id,
-		user.nickname as writer, w_date, u_date like_cnt, bookmark_cnt
-		from
-		bookcard_board join user on bookcard_board.user_id = user.id
-		where
-		user.nickname like concat('%',#{searchInfo},'%')
+		where 
+		content like concat('%',#{query},'%')
+		or
+		user.nickname like concat('%',#{query},'%')
 	</select>
 
 	<!-- 회원이 작성한 글 목록 -->

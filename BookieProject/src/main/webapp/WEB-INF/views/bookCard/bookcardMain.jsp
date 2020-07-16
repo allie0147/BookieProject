@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글 귀</title>
+<title>글귀</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resources/js/bookcard/main.js"></script>
+<script src="/resources/js/bookcard/main.js"></script>
 <script src="/resources/js/randomImage.js"></script>
 </head>
 <body onload="showImage()">
@@ -122,18 +122,17 @@
 						class="glyphicon glyphicon-pencil"></span><span id="id"
 						style="display: none;">${userId}</span>&nbsp글쓰기</a>
 				</sec:authorize>
+
 				<div id="searchButton" class="input-group col-xs-4 ">
-					<input type="text" class="form-control" placeholder="검색"
-						name="search">
+					<input type="text" class="form-control" placeholder="검색" name="query">
 					<div class="input-group-btn">
-						<button class="btn btn-default" type="submit">
+						<button id="bcbSearchSb" class="btn btn-default" type="submit">
 							<i class="glyphicon glyphicon-search"></i>
 						</button>
 					</div>
 				</div>
 			</div>
 			<hr>
-			<!-- 보다 왼쪽으로(화면상 row의 양 옆 마진이 위의 Best3와 같게 -->
 			<div class="container">
 				<h2>Recommend</h2>
 				<div class="row">

@@ -182,4 +182,16 @@ $(function () {
         }); //ajax end
         return false;
     });
+    
+//	검색
+	$("#bcbSearchSb").on("click", function(){
+		let query = $("input[name=query]").val();
+		
+		if(query !== ""){
+			location.href="/bookcard/search?query="+query;
+		}else{
+			alert("검색하고자 하는 내용 혹은 글쓴이를 입력하세요.");
+		}
+		
+	});
 });

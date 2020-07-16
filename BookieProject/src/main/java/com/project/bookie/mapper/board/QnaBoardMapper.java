@@ -26,13 +26,13 @@ public interface QnaBoardMapper {
 	public List<Board> getBoardListToMain();
 
 	// 조건(글 제목)에 따른 검색(게시판 내에서의 검색)
-	public List<Board> getListByTitle(@Param("searchInfo") String searchInfo);
+	public List<Board> getListByTitle(@Param("query") String query);
 
 	// 조건(내용)에 따른 검색(게시판 내에서의 검색)
-	public List<Board> getListByContent(@Param("searchInfo") String searchInfo);
+	public List<Board> getListByContent(@Param("query") String query);
 
 	// 조건(작성자)에 따른 검색(게시판 내에서의 검색)
-	public List<Board> getListByWriter(@Param("searchInfo") String searchInfo);
+	public List<Board> getListByWriter(@Param("query") String query);
 
 	// 작성자에 따른 검색(사용자의 자신이 쓴 글 조회 기능)
 	public List<Board> getListByUserId(int id); // select * from board.user_id = #{작성자 id}(로그인 되어있는 세션에서 정보를 받아옴)

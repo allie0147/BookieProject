@@ -7,13 +7,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>독서 클럽</title>
+<title>독서클럽 검색 결과</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
-<link rel="stylesheet" href="/resources/css/bookclub/main.css">
+<link rel="stylesheet" href="/resources/css/QnA/main.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -73,19 +73,14 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container">
-			<div
-				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-				<img src="../resources/images/banner-club.jpg" class="img-rounded"
-					alt="Cinque Terre" width="100%" height="100%">
-			</div>
-		</div>
 
-		<div class="text-center" id="qnaTitle">
-			<h3 id="board_title">BookClub</h3>
+		<div class="container">
+			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+			<img src="../resources/images/banner-club.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
 		</div>
 
 		<div class="container">
+
 			<c:if test="${boardViewList.boardList.size() == 0 }">
 				<!-- 글 개수가 0개일 때 -->
 				<div class="content">글이 존재하지 않습니다.</div>
@@ -115,9 +110,11 @@
 			</c:if>
 			<!-- 글쓰기 버튼 -->
 			<div class="container write-div">
-				<a class="btn pull-right write-button" href="/club/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
+				<a class="btn pull-right write-button" href="/qna/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
 			</div>
 		</div>
+
+
 		<!-- 검색 창 -->
 		<div class="container">
 			<form class="ml">
@@ -136,9 +133,10 @@
 				</div>
 			</form>
 		</div>
-		
+
 		<!-- 페이지네이션 -->
 		<div class="container text-center">
+
 			<c:if test="${boardViewList.boardList.size() > 0 }">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">

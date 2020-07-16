@@ -25,11 +25,6 @@ public class QnaBoardViewListService {
 		int firstRow = (pageNum - 1) * BOARD_COUNT_PER_PAGE;
 		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
 
-		System.out.println("pageNum : " + pageNum);
-		System.out.println("firstRow : " + firstRow);
-		System.out.println("endRow : " + endRow);
-		System.out.println("BOARD_COUNT_PER_PAGE : " + BOARD_COUNT_PER_PAGE);
-
 		int boardTotalCount = mapper.getCountOfTotalBoard();
 		List<Board> boardList = mapper.getBoardListByCurrentPage(firstRow, BOARD_COUNT_PER_PAGE);
 		boardViewList = new BoardViewList(boardTotalCount, BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow, endRow);
@@ -51,10 +46,6 @@ public class QnaBoardViewListService {
 		int firstRow = (pageNum - 1) * BOARD_COUNT_PER_PAGE;
 		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
 
-		System.out.println("pageNum : " + pageNum);
-		System.out.println("firstRow : " + firstRow);
-		System.out.println("endRow : " + endRow);
-		System.out.println("BOARD_COUNT_PER_PAGE : " + BOARD_COUNT_PER_PAGE);
 		int boardTotalCount = mapper.getCountOfTotalGenreBoard(genreId);
 		List<Board> boardList = mapper.getBoardByCurrentGenrePage(genreId, firstRow, BOARD_COUNT_PER_PAGE);
 		boardViewList = new BoardViewList(boardTotalCount, BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow, endRow);
