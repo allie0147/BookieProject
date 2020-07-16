@@ -88,15 +88,13 @@ public class ClubBoardController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
 		Board board = service.getBoardByBoardById(boardId);
-		if (uEmail.equals("anonymousUser")) {
-			m.addAttribute("board", board);
-		} else {
+		if (!uEmail.equals("anonymousUser")) {
 			long userId = userService.getUserIdByEmail(uEmail);
 			String nickname = userService.getUserNickname(uEmail);
-			m.addAttribute("board", board);
 			m.addAttribute("userId", userId);
 			m.addAttribute("nickname", nickname);
 		}
+		m.addAttribute("board", board);
 		return "bookClub/bookClubBoardDetail.jsp?b=" + boardId;
 	}
 

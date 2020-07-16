@@ -8,7 +8,27 @@ hr {
 }
 
 #qnaTitle {
+	height: 60px;
 	margin-bottom: 20px;
+}
+
+.category {
+	text-align: center;
+	display: -webkit-box;
+	height: 28px;
+	list-style: none;
+	position: absolute;
+	left: 24%;
+	margin-top: 14px;
+}
+
+.list-item {
+	font-size: 15px;
+	width: 100px;
+	background-color: #0f4c75;
+	color: #ffffff;
+	padding: 3px 6px;
+	border-radius: 3px;
 }
 
 thead>tr {
@@ -55,23 +75,28 @@ thead>tr {
 .pagination>li>a:focus, .pagination>li>a:hover {
 	color: #000000;
 }
-.write-div{
+
+.write-div {
 	width: 815px;
 }
-.write-button{
-	margin-top:5px;
+
+.write-button {
+	margin-top: 5px;
 	background: #0f4c75;
 	color: #ffffff;
 }
-.write-button:hover{
+
+.write-button:hover {
 	background: #0f4c75;
 	color: #ffffff;
 }
-.write-button:active{
+
+.write-button:active {
 	background: #0f4c75;
 	color: #ffffff;
 }
-.write-button:focus{
+
+.write-button:focus {
 	background: #0f4c75;
 	color: #ffffff;
 }

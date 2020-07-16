@@ -79,13 +79,19 @@
 			<img src="../resources/images/banner-qna.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
 		</div>
 
-
-
 		<div class="text-center" id="qnaTitle">
 			<h3 id="board_title">QnA</h3>
+				<ul class="category">
+					<li><a href="/qna/main" class="list-item">전체</a></li>
+					<li><a href="/qna/board?g=1&p=1" class="list-item">소설/시/희곡</a></li>
+					<li><a href="/qna/board?g=2&p=1" class="list-item">에세이</a></li>
+					<li><a href="/qna/board?g=3&p=1" class="list-item">인문학</a></li>
+					<li><a href="/qna/board?g=4&p=1" class="list-item">경제경영</a></li>
+					<li><a href="/qna/board?g=5&p=1" class="list-item">사회과학</a></li>
+					<li><a href="/qna/board?g=6&p=1" class="list-item">종교</a></li>
+					<li><a href="/qna/board?g=7&p=1" class="list-item">예술</a></li>
+				</ul>
 		</div>
-
-
 		<div class="container">
 
 			<c:if test="${boardViewList.boardList.size() == 0 }">

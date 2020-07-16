@@ -3,7 +3,6 @@ $(function () {
 	$("button[name=delBtn]").on("click", function () {
         const boardId = document.getElementsByName('board_id')[0].value;
         if (confirm("정말 삭제하시겠습니까?")) {
-        	$("button[name=delBtn]").css({'opacity':'0.3','cursor':'default'});
             window.location.replace('/club/del?b=' + boardId);
         } else {
             return false;
