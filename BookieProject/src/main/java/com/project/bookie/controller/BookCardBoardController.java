@@ -96,14 +96,13 @@ public class BookCardBoardController {
 	
 	@GetMapping("/search")
 	public String getBoardListBySearchInfo(Model m, 
-			@RequestParam(value = "option") String option,
 			@RequestParam(value = "query") String query,
 			@RequestParam(value = "p", defaultValue = "1", required = false) int p) {
-		List<BookCardBoard> boardList = service.getBoardListBySearchInfo(option, query);
+		List<BookCardBoard> boardList = service.getBoardListBySearchInfo(query);
 		BookCardBoardViewList boardViewList = viewListService.getViewListSearch(p, boardList);
 		m.addAttribute("boardViewList", boardViewList);
 		
-		return "bookClub/search_result.jsp?option=" + option + "&query=" + query + "&b=" + p;
+		return "bookCard/search_result.jsp?query=" + query + "&b=" + p;
 	}
 	
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")

@@ -180,9 +180,6 @@
 			</div>
 		</div>
 
-
-		<!-- 각 게시판 제목 보다 오른쪽으로 이동 -->
-		<!-- 이 곳 a 태그들에 따로 디자인 주기(a태그 안의 텍스트에 폰트 변경, 크기 키우기 -->
 		<div class="container">
 			<h2>
 				<a href="/bookcard/main">BookCard</a>

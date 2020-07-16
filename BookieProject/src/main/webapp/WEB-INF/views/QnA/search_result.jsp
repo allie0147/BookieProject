@@ -20,7 +20,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="/resources/js/QnA/main.js"></script>
 </head>
-<body id="searchResultPgQna">
+<body>
 	<div class="main-body">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">

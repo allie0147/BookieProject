@@ -11,19 +11,3 @@ $(function search() {
 		return false;
 	});
 });
-
-$(function searchResult(option){
-	$("#searchResultPgClub").on("load", function(){
-		console.log("search_result.jsp의 body 실행");
-		console.log("option : "+option);
-		
-		var optionArr = document.querySelectorAll("option"); //ml option
-		optionArr.forEach(function(opt){
-			console.dir(opt);
-			if(opt.value == option){
-				opt.selected = true;
-			}
-				
-		});		
-	});
-});

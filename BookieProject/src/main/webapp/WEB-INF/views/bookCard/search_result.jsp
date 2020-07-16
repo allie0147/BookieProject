@@ -7,20 +7,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA게시판 검색 결과</title>
+<title>글귀게시판 검색 결과</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/totalCss.css">
-<link rel="stylesheet" href="/resources/css/QnA/main.css">
+<link rel="stylesheet" href="/resources/css/bookcard/main.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/resources/js/QnA/main.js"></script>
+<script src="/resources/js/bookcard/main.js"></script>
+<script src="/resources/js/randomImage.js"></script>
 </head>
-<body id="searchResultPgQna">
+<body onload="showImage()">
 	<div class="main-body">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
@@ -76,83 +77,62 @@
 
 		<div class="container">
 			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-			<img src="../resources/images/banner-qna.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
+			<img src="../resources/images/banner-card.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
 		</div>
-
-		<div class="text-center" id="qnaTitle">
-			<h3 id="board_title">QnA</h3>
-				<ul class="category">
-					<li><a href="/qna/main" class="list-item">전체</a></li>
-					<li><a href="/qna/board?g=1&p=1" class="list-item">소설/시/희곡</a></li>
-					<li><a href="/qna/board?g=2&p=1" class="list-item">에세이</a></li>
-					<li><a href="/qna/board?g=3&p=1" class="list-item">인문학</a></li>
-					<li><a href="/qna/board?g=4&p=1" class="list-item">경제경영</a></li>
-					<li><a href="/qna/board?g=5&p=1" class="list-item">사회과학</a></li>
-					<li><a href="/qna/board?g=6&p=1" class="list-item">종교</a></li>
-					<li><a href="/qna/board?g=7&p=1" class="list-item">예술</a></li>
-				</ul>
-		</div>
+		
 		<div class="container">
-
-			<c:if test="${boardViewList.boardList.size() == 0 }">
-				<!-- 글 개수가 0개일 때 -->
-				<div class="content">글이 존재하지 않습니다.</div>
-			</c:if>
-			<c:if test="${boardViewList.boardList.size() > 0 }">
-				<!-- 글 개수가 1개이상일 때 -->
-				<table class="table table-hover table-bordered">
-					<thead>
-						<tr>
-							<th class="col-sm-1" scope="col">번 호</th>
-							<th class="col-sm-1" scope="col">장 르</th>
-							<th class="col-sm-4" scope="col">제 목</th>
-							<th class="col-sm-2" scope="col">작성자</th>
-							<th class="col-sm-3" scope="col">작성일</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="board" items="${boardViewList.boardList }">
-							<tr onclick="location.href='/qna/detail?b=${board.id }'">
-								<td>${board.id }</td>
-								<td id="${genre.id}">${board.genre}</td>
-								<td>${board.title }</td>
-								<td>${board.writer }</td>
-								<td>${board.wtDate }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</c:if>
+			<div class="row">
+				<c:if test="${boardViewList.bookCardBoardList.size() == 0}">
+					<div class="content">글이 존재하지 않습니다.</div>
+				</c:if>
+				<c:if test="${boardViewList.bookCardBoardList.size() > 0 }">
+					<c:forEach var="board" items="${boardViewList.bookCardBoardList }" varStatus="status">
+						<div class="col-md-4">
+							<div class="thumbnail">
+								<div class="img">
+									<div class="wrapGlyph">
+										<c:if test="${board.userId == userId}">
+											<a class="glyph edit"><span
+												class="glyphicon glyphicon-edit"></span></a>
+											<a class="glyph delete"><span
+												class="glyphicon glyphicon-trash"></span></a>
+										</c:if>
+									</div>
+									<p class="content">${board.content }</p>
+									<div>
+										<p class="writer">${board.writer }</p>
+										<p class="like">
+											<a class="glyph"><span
+												class='glyphicon glyphicon-heart-empty'></span></a>${board.likeCnt }</p>
+										<!-- <span class='glyphicon glyphicon-heart'></span> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</c:if>
+			</div>
+			
 			<!-- 글쓰기 버튼 -->
 			<div class="container write-div">
 				<a class="btn pull-right write-button" href="/qna/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
 			</div>
 		</div>
-
-
+	
 		<!-- 검색 창 -->
-		<div class="container">
-			<form class="ml">
-				<div class="form-group col-xs-2">
-					<select name="option" class="form-control">
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="writer">글쓴이</option>						
-					</select>
-				</div>
-				<div class="form-group col-xs-3">
-					<input name="query" class="form-control" type="text" />
-				</div>
-				<div class="form-group col-xs-2">
-					<input type="submit" value="검색" class="btn btn-default"  />
-				</div>
-			</form>
+		<div id="searchButton" class="input-group col-xs-4 ">
+			<input type="text" class="form-control" placeholder="검색" name="query">
+			<div class="input-group-btn">
+				<button id="bcbSearchSb" class="btn btn-default" type="submit">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
 		</div>
 
 		<!-- 페이지네이션 -->
 		<div class="container text-center">
 
-			<c:if test="${boardViewList.boardList.size() > 0 }">
+			<c:if test="${boardViewList.bookCardBoardList.size() > 0 }">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
 						<c:if test="${p>5}">

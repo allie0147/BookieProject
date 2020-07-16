@@ -35,13 +35,9 @@ public class BookCardBoardService {
 	}
 
 //	검색 기능
-	public List<BookCardBoard> getBoardListBySearchInfo(String option, String query) {
+	public List<BookCardBoard> getBoardListBySearchInfo(String query) {
 		List<BookCardBoard> boardList = null;
-		if (option.equals("content")) {
-			boardList = mapper.getListByContent(query);
-		} else { // option.equals("writer")
-			boardList = mapper.getListByWriter(query);
-		}
+		boardList = mapper.getListByContentOrWriter(query);
 		return boardList;
 	}
 }

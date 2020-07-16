@@ -22,7 +22,6 @@
 </head>
 <body>
 	<div class="main-body">
-		<!--로고 글귀 q&a 독서클럽 고객센터 마이페이지 로그인-->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">

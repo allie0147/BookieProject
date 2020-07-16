@@ -64,7 +64,7 @@ public class ClubBoardController {
 			while (p > 5 * i) {
 				i++;
 			}
-			System.out.println("현재 페이지네이션 범위 : " + (i - 1) * 5 + "~" + i * 5); // p가 5*i보다 작아지게 된 i의 값
+//			System.out.println("현재 페이지네이션 범위 : " + (i - 1) * 5 + "~" + i * 5); // p가 5*i보다 작아지게 된 i의 값
 			startNum = 5 * (i - 1) + 1;
 
 			for (int j = startNum; j <= endNum; j++) {
@@ -97,6 +97,7 @@ public class ClubBoardController {
 		m.addAttribute("board", board);
 		return "bookClub/bookClubBoardDetail.jsp?b=" + boardId;
 	}
+	
 //	검색 기능
 	@GetMapping("/search")
 	public String getBoardListBySearchInfo(Model m, 
