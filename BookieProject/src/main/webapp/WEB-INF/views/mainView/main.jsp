@@ -179,7 +179,6 @@
 				</a>
 			</div>
 		</div>
-
 		<div class="container">
 			<h2>
 				<a href="/bookcard/main">BookCard</a>
@@ -192,6 +191,9 @@
 							<div class="img">
 								<!-- background-image:url('../resources/images/bookcard-images-${randomImageNumIter.next()}.jpg')" -->
 								<p class="cap">${board.content }</p>
+								<div>
+									<p class="writer">${board.writer }</p>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -18,21 +18,25 @@
 	<!-- 글 전체 조회 -->
 	<select id="getAllBoards" resultMap="bcb">
 		select bookcard_board.id,
-		user.nickname as writer, w_date, u_date, like_cnt, bookmark_cnt
-		from
-		bookcard_board join user on bookcard_board.user_id = user.id
+		user.nickname as writer, content, w_date, u_date, like_cnt, bookmark_cnt
+		from 
+		bookcard_board 
+		join user on bookcard_board.user_id = user.id
 	</select>
 
 	<!-- 메인화면에 표시할 최신 글 조회 -->
 	<select id="getBoardListToMain" resultMap="bcb">
-		select *
+		select 
+		bookcard_board.id,
+		user.nickname as writer, content, w_date, u_date, like_cnt, bookmark_cnt
 		from
-		bookcard_board
+		bookcard_board 
+		join user on bookcard_board.user_id = user.id
 		order by id desc limit 3
 	</select>
 
 	<!-- 북카드 메인화면에 표시할 좋아요 높은 글 3개 -->
-	<select id="getBoardListToMainBest" resultMap="bcb">
+	<select id="getBoardListBest" resultMap="bcb">
 		select
 		bookcard_board.id, user_id, user.nickname as writer, content, w_date,
 		like_cnt, bookmark_cnt

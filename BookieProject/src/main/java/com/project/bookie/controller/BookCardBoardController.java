@@ -41,7 +41,7 @@ public class BookCardBoardController {
 
 		BookCardBoardViewList boardVL = viewListService.getViewListService(p);
 		m.addAttribute("boardViewList", boardVL);
-		List<BookCardBoard> boardViewListBest = service.getBoardListToMainBest3();
+		List<BookCardBoard> boardViewListBest = service.getBoardListBest3();
 		m.addAttribute("boardViewListBest", boardViewListBest);
 
 		// 랜덤으로 이미지 불러오기

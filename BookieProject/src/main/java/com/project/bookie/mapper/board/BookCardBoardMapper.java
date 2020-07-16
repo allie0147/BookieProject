@@ -15,7 +15,7 @@ public interface BookCardBoardMapper {
 	public List<BookCardBoard> getBoardListToMain();
 
 	// 메인화면에 표시할 좋아요 높은 글 조회
-	public List<BookCardBoard> getBoardListToMainBest();
+	public List<BookCardBoard> getBoardListBest();
 	
 	//조건(내용 혹은 작성자)에 따른 검색
 	public List<BookCardBoard> getListByContentOrWriter(@Param("query")String query);
