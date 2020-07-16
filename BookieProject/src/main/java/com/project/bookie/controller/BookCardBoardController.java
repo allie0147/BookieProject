@@ -90,18 +90,17 @@ public class BookCardBoardController {
 		m.addAttribute("p", p);
 		return "bookCard/bookcardMain.jsp?p=" + p;
 	}
-	
+
 	@GetMapping("/search")
-	public String getBoardListBySearchInfo(Model m, 
-			@RequestParam(value = "query") String query,
+	public String getBoardListBySearchInfo(Model m, @RequestParam(value = "query") String query,
 			@RequestParam(value = "p", defaultValue = "1", required = false) int p) {
 		List<BookCardBoard> boardList = service.getBoardListBySearchInfo(query);
 		BookCardBoardViewList boardViewList = viewListService.getViewListSearch(p, boardList);
 		m.addAttribute("boardViewList", boardViewList);
-		
+
 		return "bookCard/search_result.jsp?query=" + query + "&b=" + p;
 	}
-	
+
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String writeOnBookCardBoard(@Param("userId") String userId, @Param("content") String content) {
@@ -144,10 +143,11 @@ public class BookCardBoardController {
 	public String countLikes(@Param("id") int id, @Param("likeCnt") String likeCnt) {
 		System.out.println("board id: " + id + ", like count: " + likeCnt);
 		if (likeCnt.equals("like")) {
-			System.out.println("up: " + String.valueOf(service.likeCntUp(id)));
-			return String.valueOf(service.likeCntUp(id));
+			String count = String.valueOf(service.likeCntUp(id));
+			System.out.println(count);
+			return count;
 		} else if (likeCnt.equals("dislike")) {
-			return String.valueOf("down: " + service.likeCntDown(id));
+			return String.valueOf(service.likeCntDown(id));
 		} else {
 			return "-1"; // false;
 		}

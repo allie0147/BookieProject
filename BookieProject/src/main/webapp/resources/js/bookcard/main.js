@@ -143,8 +143,7 @@ $(function () {
     // 좋아요 기능
     $('.heart').on("click", function () {
         let like_dislike;
-        const text = $(this).next().text();
-        console.dir(text);
+        const heart_count = $(this).next();
         const div = $(this).parent().parent().parent();
         const id = $(':nth-child(2)', div).eq(0).text();
         $(":first-child", $(this)).toggleClass('glyphicon-heart');
@@ -155,9 +154,6 @@ $(function () {
         } else if ($(":first-child", $(this)).hasClass('glyphicon-heart-empty')) {
             like_dislike = 'dislike';
         }
-        console.log(id);
-        console.log(like_dislike);
-
         $.ajax({
             url: "/bookcard/likes",
             type: "post",
@@ -166,16 +162,14 @@ $(function () {
                 "likeCnt": like_dislike
             },
             success: function (like) {
-            	console.log(like);
                 if (like === "-1") {
                     alert("오류가 발생했습니다. 재시도 해주세요.");
                     return false;
                 } else {
-                	text.innerText = like;
+                	heart_count.text(like);
                 }
             },
             error: function () {
-            	alert("에러");
                 alert("오류가 발생했습니다. 재시도 해주세요.");
                 return false;
             }

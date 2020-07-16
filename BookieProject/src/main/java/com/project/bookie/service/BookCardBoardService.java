@@ -22,32 +22,41 @@ public class BookCardBoardService {
 		return bookCardBoradListBest;
 	}
 
+//	board CRUD
+//	insert
 	public void writeOnBoard(String userId, String content) {
 		mapper.insertBoard(userId, content);
 	}
 
+//	update
 	public void editOnBoard(String id, String content) {
 		mapper.updateBoard(id, content);
 	}
 
+//	delete
 	public void deleteOnBoard(String id) {
 		mapper.deleteBoard(Integer.parseInt(id));
 	}
 
+//	select like_cnt	
+	public int getLikeCnt(int id) {
+		return mapper.selectLikeCnt(id);
+	}
+
+//	likeUp
 	public int likeCntUp(int id) {
 		int count = mapper.selectLikeCnt(id) + 1;
+		System.out.println("up count: " + count);
 		mapper.likeCntUp(count, id);
 		return count;
 	}
 
+//	likeDown
 	public int likeCntDown(int id) {
 		int count = mapper.selectLikeCnt(id) - 1;
+		System.out.println("down count: " + count);
 		mapper.likeCntDown(count, id);
 		return count;
-	}
-
-	public int getLikeCnt(int id) {
-		return mapper.selectLikeCnt(id);
 	}
 
 //	검색 기능

@@ -33,8 +33,7 @@
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	user-select: none;
-	color: #ffffff;
-}
+	color: #ffffff;}
 .writer {
 	color: #ffffff;
 	font-size: 15px;
@@ -147,6 +146,13 @@ thead>tr {
 .count {
 	display: inline;
 	margin: 0;
+	/*드래그 금지*/
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+	color: #ffffff;
 }
 /*동적 js요소*/
 #counter {
