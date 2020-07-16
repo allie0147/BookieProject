@@ -37,7 +37,7 @@ public class ClubBoardViewListService {
 		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
 
 		boardViewList = new BoardViewList(boardList.size(), BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow, endRow);
-
+		
 		return boardViewList;
 	}
 }

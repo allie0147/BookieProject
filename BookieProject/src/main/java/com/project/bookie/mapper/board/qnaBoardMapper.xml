@@ -42,7 +42,7 @@
 	<select id="getBoardByBoardIdWithComment" resultMap="brd">
 		select
 		qna_board.id as id, qna_board.user_id, title, content, user.nickname
-		as writer, w_date, u_date, qna_genre_id, genre.name
+		as writer, w_date, u_date, qna_genre_id, genre.name as name
 		from qna_board join
 		genre on genre.id=qna_genre_id join user on qna_board.user_id =
 		user.id where qna_board.id
@@ -62,8 +62,7 @@
 	<!-- 댓글 하나에 달린 모든 리플 조회(댓글 수 만큼 반복 필요) -->
 	<select id="getReplyByCommentId" resultMap="rpl">
 		select qna_reply.id
-		as id, qna_board_id, qna_comment_id, user_id, user.nickname as writer,
-		message, w_date
+		as id, qna_board_id, qna_comment_id, user_id, user.nickname as writer, message, w_date 
 		from qna_reply join user on qna_reply.user_id = user.id
 		where qna_comment_id=#{commentId} order by qna_reply.id
 	</select>
@@ -71,78 +70,71 @@
 	<!-- 글 전체 -->
 	<select id="getAllBoards" resultMap="brd">
 		select qna_board.id as id,
-		user_id, title, content, user.nickname as writer, w_date, u_date,
-		qna_genre_id, genre.name
-		from qna_board join genre on
-		genre.id=qna_genre_id join user on qna_board.user_id = user.id
+		user_id, title, content, user.nickname as writer, w_date, u_date, qna_genre_id, genre.name as name
+		from qna_board 
+		join genre on genre.id=qna_genre_id join user on qna_board.user_id = user.id
 	</select>
 
 	<!-- 메인화면에 표시할 최신 글 조회 -->
 	<select id="getBoardListToMain" resultMap="brd">
-		select qna_board.id as
-		id, user_id, title, content, user.nickname as writer, w_date,
-		genre.name
-		from qna_board join genre on genre.id=qna_genre_id join user
-		on qna_board.user_id = user.id
+		select qna_board.id as id, user_id, title, content, user.nickname as writer, w_date, genre.name as name 
+		from qna_board join genre on genre.id=qna_genre_id join user 
+		on qna_board.user_id = user.id 
 		order by id desc limit 5
 	</select>
 
 	<!-- 제목으로 글 검색 -->
 	<select id="getListByTitle" resultMap="brd">
-		select qna_board.id as id,
-		user_id, title, content, user.nickname as writer, w_date, u_date
+		select qna_board.id as id, user_id, title, content, user.nickname as writer, w_date, genre.name as name  
 		from qna_board 
-		join user on qna_board.user_id = user.id
+		join user on qna_board.user_id = user.id 
+		join genre on qna_board.qna_genre_id = genre.id 
 		where title like concat('%',#{query},'%')
 	</select>
 
 	<!-- 내용으로 글 검색 -->
 	<select id="getListByContent" resultMap="brd">
-		select qna_board.id as
-		id, user_id, title, content, user.nickname as writer, w_date, u_date
+		select qna_board.id as id, user_id, title, content, user.nickname as writer, w_date, genre.name as name  
 		from qna_board 
-		join user on qna_board.user_id = user.id
+		join user on qna_board.user_id = user.id 
+		join genre on qna_board.qna_genre_id = genre.id 
 		where content like concat('%',#{query},'%')
 	</select>
 
 	<!-- 작성자 명으로 글 검색 -->
 	<select id="getListByWriter" resultMap="brd">
-		select qna_board.id as
-		id, user_id, title, content, user.nickname as writer, w_date, u_date
+		select qna_board.id as id, user_id, title, content, user.nickname as writer, w_date, genre.name as name  
 		from qna_board 
-		join user on qna_board.user_id = user.id
+		join user on qna_board.user_id = user.id 
+		join genre on qna_board.qna_genre_id = genre.id 
 		where user.nickname like concat('%',#{query},'%')
 	</select>
 
 	<!-- 회원이 작성한 글 목록 -->
 	<select id="getListByUserId" resultMap="brd">
-		select qna_board.id as
-		id, user_id, title, content, user.nickname as writer, w_date, u_date,
-		qna_genre_id, genre.name
-		from qna_board join genre on genre.id =
-		qna_genre_id where user_id = #{id}
+		select qna_board.id as id, user_id, title, content, user.nickname as writer, w_date, u_date, qna_genre_id, genre.name as name 
+		from qna_board join genre on genre.id = qna_genre_id where user_id = #{id}
 	</select>
 
 	<!-- 글 조회 -->
 	<select id="selectBoard" parameterType="String"
 		resultType="board">
-		select qna_board.id, title, user_id, content, w_date,
-		u_date, qna_genre_id as genreId from qna_board where qna_board.id
-		=#{id}
+		select qna_board.id, title, user_id, content, w_date, u_date, qna_genre_id as genreId 
+		from qna_board 
+		where qna_board.id=#{id}
 	</select>
 
 	<!-- 글 등록(id는 auto_incement, w_date는 기본값이 current_timestamp로 자동 생성 -->
 	<insert id="insertBoard" parameterType="board" keyProperty="id"
 		useGeneratedKeys="true">
-		insert into qna_board(title, qna_genre_id, user_id,
-		content) values(#{title}, #{genreId} ,#{userId}, #{content})
+		insert into qna_board(title, qna_genre_id, user_id, content) 
+		values(#{title}, #{genreId} ,#{userId}, #{content})
 	</insert>
 
 	<!-- 글 수정 -->
 	<update id="updateBoard" parameterType="String">
-		update qna_board set
-		title=#{title}, qna_genre_id=#{genreId}, content=#{content,
-		jdbcType=LONGVARCHAR} where id=#{id, jdbcType=BIGINT}
+		update qna_board set title=#{title}, qna_genre_id=#{genreId}, content=#{content}, jdbcType=LONGVARCHAR} 
+		where id=#{id, jdbcType=BIGINT}
 	</update>
 
 	<!-- 글 삭제(글의 id 필요) -->
@@ -153,38 +145,32 @@
 	<!-- 페이지네이션 -->
 	<!-- 한 페이지에 보여질 게시글 리스트 -->
 	<select id="getBoardListByCurrentPage" resultMap="brd">
-		select
-		qna_board.id as id, user_id, title, content, user.nickname as writer,
-		w_date, qna_genre_id, genre.name
-		from qna_board join genre on
-		genre.id=qna_genre_id join user on qna_board.user_id = user.id
-		order by
-		id desc limit #{firstRow}, #{endRow}
+		select qna_board.id as id, user_id, title, content, user.nickname as writer, w_date, qna_genre_id, genre.name as name 
+		from qna_board 
+		join genre on genre.id=qna_genre_id join user on qna_board.user_id = user.id
+		order by id desc limit #{firstRow}, #{endRow}
 	</select>
 
 	<!-- 전체 게시글 수 -->
 	<select id="getCountOfTotalBoard" resultType="int">
-		select count(*)
-		from qna_board
+		select count(*) from qna_board
 	</select>
 
 	<!-- 장르별 총 게시글 수 -->
 	<select id="getCountOfTotalGenreBoard" parameterType="int"
 		resultType="int">
-		select count(*) from qna_board where
-		qna_genre_id=#{genreId}
+		select count(*) 
+		from qna_board 
+		where qna_genre_id=#{genreId}
 	</select>
 
 	<!-- 페이지네이션 -->
 	<!-- 장르별 게시글 -->
 	<select id="getBoardByCurrentGenrePage" resultMap="brd">
-		select
-		qna_board.id as
-		id, user_id, title, content, user.nickname as writer,
-		w_date,
-		qna_genre_id, genre.name from qna_board join genre on
-		genre.id=qna_genre_id join user on qna_board.user_id=user.id where
-		qna_genre_id=#{genreId} order by
-		id desc limit #{firstRow}, #{endRow}
+		select qna_board.id as id, user_id, title, content, user.nickname as writer, w_date, qna_genre_id, genre.name 
+		from qna_board 
+		join genre on genre.id=qna_genre_id join user on qna_board.user_id=user.id 
+		where qna_genre_id=#{genreId} 
+		order by id desc limit #{firstRow}, #{endRow}
 	</select>
 </mapper>

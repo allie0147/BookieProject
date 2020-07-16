@@ -1,10 +1,10 @@
 $(function search() {
     $(".ml").on("submit", function () {
-		var option = $("select option:selected").val();
+		let option = $("select option:selected").val();
 		let query = $("input[name=query]").val();
-		
+
 		if (query !== "") {
- 			window.location.href="/qna/search?option="+option+"&query="+query;
+ 			window.location.href="/club/search?option="+option+"&query="+query;
 		} else {
 			alert("검색 요소를 입력해주세요.");
 		}

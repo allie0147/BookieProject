@@ -76,7 +76,7 @@
 
 		<div class="container">
 			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-			<img src="../resources/images/banner-qna.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
+			<img src="../resources/images/banner-club.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
 		</div>
 
 		<div class="container">
@@ -91,7 +91,6 @@
 					<thead>
 						<tr>
 							<th class="col-sm-1" scope="col">번 호</th>
-							<th class="col-sm-1" scope="col">장 르</th>
 							<th class="col-sm-4" scope="col">제 목</th>
 							<th class="col-sm-2" scope="col">작성자</th>
 							<th class="col-sm-3" scope="col">작성일</th>
@@ -99,9 +98,8 @@
 					</thead>
 					<tbody>
 						<c:forEach var="board" items="${boardViewList.boardList }">
-							<tr onclick="location.href='/qna/detail?b=${board.id }'">
+							<tr onclick="location.href='/club/detail?b=${board.id }'">
 								<td>${board.id }</td>
-								<td id="${genre.id}">${board.genre}</td>
 								<td>${board.title }</td>
 								<td>${board.writer }</td>
 								<td>${board.wtDate }</td>

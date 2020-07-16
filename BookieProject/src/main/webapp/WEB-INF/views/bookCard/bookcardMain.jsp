@@ -122,18 +122,25 @@
 						class="glyphicon glyphicon-pencil"></span><span id="id"
 						style="display: none;">${userId}</span>&nbsp글쓰기</a>
 				</sec:authorize>
+				<script type="text/javascript">
+					$("#bcbSearchSb").on("click", function(){
+						var query = $("input[name=query]").val();
+						if(query !== ""){
+							location.href="bookcard/search?query="+query;
+						}
+					});
+				</script>
 				<div id="searchButton" class="input-group col-xs-4 ">
 					<input type="text" class="form-control" placeholder="검색"
-						name="search">
+						name="query">
 					<div class="input-group-btn">
-						<button class="btn btn-default" type="submit">
+						<button id="bcbSearchSb" class="btn btn-default" type="submit">
 							<i class="glyphicon glyphicon-search"></i>
 						</button>
 					</div>
 				</div>
 			</div>
 			<hr>
-			<!-- 보다 왼쪽으로(화면상 row의 양 옆 마진이 위의 Best3와 같게 -->
 			<div class="container">
 				<h2>Recommend</h2>
 				<div class="row">

@@ -1,6 +1,6 @@
 $(function search() {
     $(".ml").on("submit", function () {
-		var option = $("select option:selected").val();
+		let option = $("select option:selected").val();
 		let query = $("input[name=query]").val();
 		
 		if (query !== "") {

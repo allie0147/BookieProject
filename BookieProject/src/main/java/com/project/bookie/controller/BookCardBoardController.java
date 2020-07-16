@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.bookie.dto.board.Board;
 import com.project.bookie.dto.board.BookCardBoard;
+import com.project.bookie.dto.boardViewList.BoardViewList;
 import com.project.bookie.dto.boardViewList.BookCardBoardViewList;
 import com.project.bookie.service.BookCardBoardService;
 import com.project.bookie.service.BookCardBoardViewListService;
@@ -91,7 +93,19 @@ public class BookCardBoardController {
 		m.addAttribute("p", p);
 		return "bookCard/bookcardMain.jsp?p=" + p;
 	}
-
+	
+	@GetMapping("/search")
+	public String getBoardListBySearchInfo(Model m, 
+			@RequestParam(value = "option") String option,
+			@RequestParam(value = "query") String query,
+			@RequestParam(value = "p", defaultValue = "1", required = false) int p) {
+		List<BookCardBoard> boardList = service.getBoardListBySearchInfo(option, query);
+		BookCardBoardViewList boardViewList = viewListService.getViewListSearch(p, boardList);
+		m.addAttribute("boardViewList", boardViewList);
+		
+		return "bookClub/search_result.jsp?option=" + option + "&query=" + query + "&b=" + p;
+	}
+	
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String writeOnBookCardBoard(@Param("userId") String userId, @Param("content") String content) {

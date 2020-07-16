@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.project.bookie.dto.board.BookCardBoard;
 import com.project.bookie.mapper.board.BookCardBoardMapper;
 
@@ -33,5 +32,16 @@ public class BookCardBoardService {
 
 	public void deleteOnBoard(String id) {
 		mapper.deleteBoard(Long.valueOf(id));
+	}
+
+//	검색 기능
+	public List<BookCardBoard> getBoardListBySearchInfo(String option, String query) {
+		List<BookCardBoard> boardList = null;
+		if (option.equals("content")) {
+			boardList = mapper.getListByContent(query);
+		} else { // option.equals("writer")
+			boardList = mapper.getListByWriter(query);
+		}
+		return boardList;
 	}
 }
