@@ -79,8 +79,9 @@
 			<img src="../resources/images/banner-qna.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
 		</div>
 
-		<div class="text-center" id="qnaTitle">
+		<div class="container text-center" id="qnaTitle">
 			<h3 id="board_title">QnA</h3>
+			<div class="container">
 				<ul class="category">
 					<li><a href="/qna/main" class="list-item">전체</a></li>
 					<li><a href="/qna/board?g=1&p=1" class="list-item">소설/시/희곡</a></li>
@@ -91,6 +92,7 @@
 					<li><a href="/qna/board?g=6&p=1" class="list-item">종교</a></li>
 					<li><a href="/qna/board?g=7&p=1" class="list-item">예술</a></li>
 				</ul>
+				</div>
 		</div>
 		<div class="container">
 
@@ -104,7 +106,7 @@
 					<thead>
 						<tr>
 							<th class="col-sm-1" scope="col">번 호</th>
-							<th class="col-sm-1" scope="col">장 르</th>
+							<th class="col-sm-2" scope="col">장 르</th>
 							<th class="col-sm-4" scope="col">제 목</th>
 							<th class="col-sm-2" scope="col">작성자</th>
 							<th class="col-sm-3" scope="col">작성일</th>

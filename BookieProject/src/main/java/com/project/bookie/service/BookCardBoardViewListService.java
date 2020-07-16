@@ -16,20 +16,21 @@ import lombok.NoArgsConstructor;
 public class BookCardBoardViewListService {
 	private static final int BOARD_COUNT_PER_PAGE = 9;
 	private BookCardBoardViewList boardViewList;
-	
+
 	@Autowired
 	BookCardBoardMapper mapper;
 
 	public BookCardBoardViewList getViewListService(int pageNum) {
-		int firstRow = (pageNum - 1)*BOARD_COUNT_PER_PAGE;
+		int firstRow = (pageNum - 1) * BOARD_COUNT_PER_PAGE;
 		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
-		System.out.println("Count of total board : "+mapper.getCountOfTotalBoard()); 
+		System.out.println("Count of total board : " + mapper.getCountOfTotalBoard());
 		int boardTotalCount = mapper.getCountOfTotalBoard();
-		
-		List<BookCardBoard> boardList = mapper.getBoardListByCurrentPage(firstRow, endRow);
-		boardViewList = new BookCardBoardViewList(boardTotalCount, BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow, endRow);
-		
+
+		List<BookCardBoard> boardList = mapper.getBoardListByCurrentPage(firstRow, BOARD_COUNT_PER_PAGE);
+		boardViewList = new BookCardBoardViewList(boardTotalCount, BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow,
+				endRow);
+
 		return boardViewList;
 	}
-	
+
 }

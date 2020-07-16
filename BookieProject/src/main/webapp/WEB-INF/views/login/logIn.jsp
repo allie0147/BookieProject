@@ -115,8 +115,7 @@
 							</p>
 						</div>
 						<hr>
-						<a class="btn btn-success btn-block" href="https://www.naver.com/">네이버
-							로그인</a> <a class="btn btn-block btn-warning"
+						<a class="btn btn-block btn-warning"
 							href="https://kauth.kakao.com/oauth/authorize?client_id=cd1ddf2d9fa9a72e806a543b015dd1bd&redirect_uri=http://localhost:8080/kakaologin&response_type=code">카카오
 							로그인</a>
 					</div>

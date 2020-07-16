@@ -106,7 +106,7 @@ a:focus {
     width: 90px;
     height: 90px;
     animation: spin 2s linear infinite;
-    z-index: 2;
+    z-index: 11;
     left: 47%;
     top: 60%;
 }
@@ -130,10 +130,10 @@ a:focus {
 }
 
 .black-box {
-    height: 1100px;
+	height: 1100px;
     opacity: 0.3;
     position: absolute;
     width: -webkit-fill-available;
     background-color: #000000;
-    z-index: 1;
+    z-index: 9;
 }

@@ -2,104 +2,137 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.bookie.mapper.board.BookCardBoardMapper" >
+<mapper
+	namespace="com.project.bookie.mapper.board.BookCardBoardMapper">
 	<resultMap type="bookCardBoard" id="bcb">
-		<id property="id" column="id"/>
-		<result property="title" column="title"/>
-		<result property="content" column="content"/>
-		<result property="userId" column="user_id"/>
-		<result property="content" column="content"/>
-		<result property="wtDate" column="w_date"/>
-		<result property="upDate" column="u_date"/>
-		<result property="likeCnt" column="like_cnt"/>
-		<result property="bookmarkCnt" column="bookmark_cnt"/>
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="content" column="content" />
+		<result property="writer" column="writer" />
+		<result property="wtDate" column="w_date" />
+		<result property="upDate" column="u_date" />
+		<result property="likeCnt" column="like_cnt" />
+		<result property="bookmarkCnt" column="bookmark_cnt" />
 	</resultMap>
 
-	<!-- 글 전체 조회-->
+	<!-- 글 전체 조회 -->
 	<select id="getAllBoards" resultMap="bcb">
-		select bookcard_board.id, user.nickname as writer, w_date, u_date, like_cnt, bookmark_cnt 
-		from bookcard_board join user on bookcard_board.user_id = user.id
+		select bookcard_board.id,
+		user.nickname as writer, w_date, u_date, like_cnt, bookmark_cnt
+		from
+		bookcard_board join user on bookcard_board.user_id = user.id
 	</select>
-	
+
 	<!-- 메인화면에 표시할 최신 글 조회 -->
 	<select id="getBoardListToMain" resultMap="bcb">
-		select * 
-		from bookcard_board  
+		select *
+		from
+		bookcard_board
 		order by id desc limit 3
 	</select>
-	
+
 	<!-- 북카드 메인화면에 표시할 좋아요 높은 글 3개 -->
 	<select id="getBoardListToMainBest" resultMap="bcb">
-		select * from bookcard_board order by bookmark_cnt desc limit 3;
+		select
+		bookcard_board.id, user_id, user.nickname as writer, content, w_date,
+		like_cnt, bookmark_cnt
+		from bookcard_board join user on
+		bookcard_board.user_id = user.id
+		order by like_cnt desc limit 3;
 	</select>
-	
+
 	<!-- 제목으로 글 검색 -->
 	<select id="getListByTitle" resultMap="bcb">
-		select bookcard_board.id, user.nickname as writer, w_date, u_date like_cnt, bookmark_cnt 
-		from bookcard_board join user on bookcard_board.user_id = user.id 
-		where title like concat('%',#{searchInfo},'%')
+		select bookcard_board.id,
+		user.nickname as writer, w_date, u_date like_cnt, bookmark_cnt
+		from
+		bookcard_board join user on bookcard_board.user_id = user.id
+		where
+		title like concat('%',#{searchInfo},'%')
 	</select>
 	<!-- 내용으로 글 검색 -->
 	<select id="getListByContent" resultMap="bcb">
-		select bookcard_board.id, user.nickname as writer, w_date, u_date like_cnt, bookmark_cnt 
-		from bookcard_board join user on bookcard_board.user_id = user.id 
+		select
+		bookcard_board.id, user.nickname as writer, w_date, u_date like_cnt,
+		bookmark_cnt
+		from bookcard_board join user on bookcard_board.user_id =
+		user.id
 		where content like concat('%',#{searchInfo},'%')
 	</select>
 	<!-- 작성자 명으로 글 검색 -->
 	<select id="getListByWriter" resultMap="bcb">
-		select bookcard_board.id, user.nickname as writer, w_date, u_date like_cnt, bookmark_cnt 
-		from bookcard_board join user on bookcard_board.user_id = user.id 
-		where user.nickname like concat('%',#{searchInfo},'%')
+		select bookcard_board.id,
+		user.nickname as writer, w_date, u_date like_cnt, bookmark_cnt
+		from
+		bookcard_board join user on bookcard_board.user_id = user.id
+		where
+		user.nickname like concat('%',#{searchInfo},'%')
 	</select>
-	
+
 	<!-- 회원이 작성한 글 목록 -->
 	<select id="getListByUserId" resultMap="bcb">
-		select id, user.nickname as writer, w_date, u_date like_cnt, bookmark_cnt 
-		from bookcard_board where user_id = #{id}
+		select id, user.nickname,
+		content
+		as writer, w_date, u_date like_cnt, bookmark_cnt
+		from
+		bookcard_board
+		where user_id = #{userId}
 	</select>
-	
+
+	<!-- 글 조회 -->
+	<select id="selectBoard" parameterType="String" resultMap="bcb">
+		select bookcard_board.id, user_id, user.nickname as writer, content,
+		w_date, like_cnt, bookmark_cnt
+		from bookcard_board join user on
+		bookcard_board.user_id = user.id
+	</select>
+
 	<!-- 글 등록(id는 auto_incement, w_date는 기본값이 current_timestamp로 자동 생성 -->
-	<insert id="insertBoard" parameterType="bookCardBoard"><!--  @Param("board")Board board, @Param("userId")int userId -->
-		insert into bookcard_board(user_id, content) values(#{userId}, #{content})
+	<insert id="insertBoard" parameterType="String">
+		insert into bookcard_board(user_id, content, rand_id) values(#{userId}, #{content}, FLOOR((RAND()*100000000)))
 	</insert>
-	
+
 	<!-- 글 수정 -->
-	<update id="updateBoard" parameterType="bookCardBoard">
-		update bookcard_board set content=#{content} where id=#{id}
+	<update id="updateBoard" parameterType="String">
+		update bookcard_board set
+		content=#{content}, rand_id=FLOOR((RAND()*100000000)) where id=#{id}
 	</update>
-	
+
 	<!-- 글 삭제(글의 id 필요) -->
 	<delete id="deleteBoard">
 		delete from bookcard_board where id=#{id}
 	</delete>
-	
+
 	<!-- 좋아요 버튼 클릭시 like_cnt = like_cnt + 1 -->
 	<select id="likeCntUp">
-		update bookcard_board set like_cnt= ike_cnt+1
+		update bookcard_board set like_cnt= #{likeCnt} where id =#{id}
 	</select>
 	<!-- 좋아요 버튼 다시 클릭시 like_cnt = like_cnt - 1 -->
 	<select id="likeCntDown">
-		update bookcard_board set like_cnt=like_cnt-1
+		update bookcard_board set like_cnt= #{likeCnt} where id =#{id}
 	</select>
-	
+
 	<!-- 북마크 추가 -->
 	<select id="addBookmark">
-		update bookcard_board set bookmark_cnt=bookmark_cnt+1
+		update bookcard_board set bookmark_cnt=#{bookmarkCnt} where id =#{id}
 	</select>
 	<!-- 북마크 제거 -->
 	<select id="deleteBookmark">
-		update bookcard_board set bookmark_cnt=bookmark_cnt-1
+		update bookcard_board set bookmark_cnt=#{bookmarkCnt} where id =#{id}
 	</select>
-	
+
 	<!-- 페이지 네이션 -->
 	<!-- 한 페이지에 보여질 게시글 리스트 -->
+	<!-- random -->
 	<select id="getBoardListByCurrentPage" resultMap="bcb">
-		select bookcard_board.id, user.nickname as writer, w_date 
-		from bookcard_board join user on bookcard_board.user_id = user.id 
-		order by id desc limit #{firstRow}, #{endRow}
+		select bookcard_board.id, user_id, user.nickname as writer, content, w_date,
+		like_cnt, bookmark_cnt from bookcard_board join user on bookcard_board.user_id = user.id
+		WHERE rand_id >= FLOOR((RAND()*10000000)) order by rand_id desc limit #{firstRow}, #{endRow}
 	</select>
+	
 	<!-- 총 게시글 수 -->
 	<select id="getCountOfTotalBoard" resultType="int">
-		select count(*) from bookcard_board order by id
+		select count(*)
+		from bookcard_board
 	</select>
 </mapper>

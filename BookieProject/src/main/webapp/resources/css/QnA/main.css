@@ -35,21 +35,28 @@ hr {
 	padding: 3px 6px;
 	border-radius: 3px;
 }
-
-thead>tr {
-	color: black;
+.list-item:hover{
+	color:#ffffff;
+	background:#1e6fa6;
+}
+.list-item:active{
+	color:#ffffff;
+	background:#1e6fa6;
 }
 
-.page {
+
+thead{
+	background: #d9edf794;
+	font-size: 13px;
+}
+thead>tr>th{
 	text-align: center;
 }
-
-thead>tr {
-	color: black;
-}
-
-.page {
-	text-align: center;
+tbody{
+	background: #ffffff;
+	font-size: 13px;
+	cursor: pointer;
+	white-space: nowrap;
 }
 
 .ml {
@@ -94,14 +101,17 @@ thead>tr {
 .write-button:hover {
 	background: #0f4c75;
 	color: #ffffff;
+	background:#1e6fa6;
 }
 
 .write-button:active {
 	background: #0f4c75;
 	color: #ffffff;
+	background:#1e6fa6;
 }
 
 .write-button:focus {
 	background: #0f4c75;
 	color: #ffffff;
+	background:#1e6fa6;
 }

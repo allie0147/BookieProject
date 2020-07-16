@@ -78,7 +78,7 @@
 				<div class="col-md-4 col-sm-4 col-xs-12">
 					<form class="form-container" action="/userForm" method="post">
 						<!-- spring 유효성 검사로 post : SignUpController.java-->
-						<h1>회원 가입 폼폼이</h1>
+						<h1>회원 가입</h1>
 						<div>
 							<span>이메일</span><span>*필수</span>
 						</div>

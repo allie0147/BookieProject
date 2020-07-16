@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class BookCardBoard{
 	private long id;
 	private long userId;
-	private String Writer; //게시판에서 board의 '작성자id'가 아닌 '작성자명'으로 가져오기 위해 변경
+	private String writer; //게시판에서 board의 '작성자id'가 아닌 '작성자명'으로 가져오기 위해 변경
 	private String content;
 	@DateTimeFormat
 	private LocalDateTime wtDate;

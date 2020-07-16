@@ -12,7 +12,6 @@ $(function() {
 	$("form").on("submit", function() {
 		$('.black-box').show();
 		$('.loader').show();
-		$('button[name=submitButton]').css({'opacity':'0.3','cursor':'default'});
 		let formData = $("form").eq(1).serialize();
 		let title = document.getElementsByName("title")[0].value;
 		let genre = document.getElementsByName("genreId")[0].value;
@@ -31,7 +30,6 @@ $(function() {
 				error : function() {
 					$('.loader').hide();
 					$('.black-box').hide();
-					$("input[name=submitButton]").css({'opacity':'','cursor':'pointer'});
 					alert("글 작성에 실패 했습니다.");
 					return false;
 				}
@@ -40,13 +38,11 @@ $(function() {
 		} else if (title == "") {
 			$('.loader').hide();
 			$('.black-box').hide();
-			$("input[name=submitButton]").css({'opacity':'','cursor':'pointer'});
 			alert("제목을 입력하세요");
 			return false;
 		} else if (genre == 0) {
 			$('.loader').hide();
 			$('.black-box').hide();
-			$("input[name=submitButton]").css({'opacity':'','cursor':'pointer'});
 			alert("장르를 선택하세요");
 			return false;
 		}
@@ -55,7 +51,6 @@ $(function() {
 	$("button[name=editButton]").on('click', function() {
 		$('.black-box').show();
 		$('.loader').show();
-		$("input[name=editButton]").css({'opacity':'','cursor':'default'});
 		const boardId = document.getElementById('board_id').value;
 		const title = document.getElementsByName('title')[0].value;
 		const genre = document.getElementsByName("genreId")[0].value;
@@ -80,7 +75,6 @@ $(function() {
 				error : function() {
 					$('.loader').hide();
 					$('.black-box').hide();
-					$("input[name=editButton]").css({'opacity':'','cursor':'pointer'});
 					alert('수정 실패 했습니다.');
 					return false;
 				}
@@ -88,13 +82,11 @@ $(function() {
 		} else if (genre == 0) {
 			$('.loader').hide();
 			$('.black-box').hide();
-			$("input[name=editButton]").css({'opacity':'','cursor':'pointer'});
 			alert('장르를 선택하세요.');
 			return false;
 		} else {
 			$('.loader').hide();
 			$('.black-box').hide();
-			$("input[name=editButton]").css({'opacity':'','cursor':'pointer'});
 			alert("내용 또는 제목을 입력하세요.");
 			return false;
 		}

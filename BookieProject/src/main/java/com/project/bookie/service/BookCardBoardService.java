@@ -12,15 +12,26 @@ import com.project.bookie.mapper.board.BookCardBoardMapper;
 public class BookCardBoardService {
 	@Autowired
 	BookCardBoardMapper mapper;
-	
-	public List<BookCardBoard> getBoardListLatest(){
+
+	public List<BookCardBoard> getBoardListLatest() {
 		List<BookCardBoard> bookCardBoardList = mapper.getBoardListToMain();
 		return bookCardBoardList;
 	}
-	
-	public List<BookCardBoard> getBoardListToMainBest3(){
+
+	public List<BookCardBoard> getBoardListToMainBest3() {
 		List<BookCardBoard> bookCardBoradListBest = mapper.getBoardListToMainBest();
 		return bookCardBoradListBest;
-		
+	}
+
+	public void writeOnBoard(String userId, String content) {
+		mapper.insertBoard(userId, content);
+	}
+
+	public void editOnBoard(String id, String content) {
+		mapper.updateBoard(id, content);
+	}
+
+	public void deleteOnBoard(String id) {
+		mapper.deleteBoard(Long.valueOf(id));
 	}
 }
