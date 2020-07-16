@@ -91,28 +91,27 @@
 	<select id="getListByTitle" resultMap="brd">
 		select qna_board.id as id,
 		user_id, title, content, user.nickname as writer, w_date, u_date
-		from
-		qna_board join user on qna_board.user_id = user.id
-		where title like
-		concat('%',#{searchInfo},'%')
+		from qna_board 
+		join user on qna_board.user_id = user.id
+		where title like concat('%',#{query},'%')
 	</select>
 
 	<!-- 내용으로 글 검색 -->
 	<select id="getListByContent" resultMap="brd">
 		select qna_board.id as
 		id, user_id, title, content, user.nickname as writer, w_date, u_date
-		from qna_board join user on qna_board.user_id = user.id
-		where content
-		like concat('%',#{searchInfo},'%')
+		from qna_board 
+		join user on qna_board.user_id = user.id
+		where content like concat('%',#{query},'%')
 	</select>
 
 	<!-- 작성자 명으로 글 검색 -->
 	<select id="getListByWriter" resultMap="brd">
 		select qna_board.id as
 		id, user_id, title, content, user.nickname as writer, w_date, u_date
-		from qna_board join user on qna_board.user_id = user.id
-		where
-		user.nickname like concat('%',#{searchInfo},'%')
+		from qna_board 
+		join user on qna_board.user_id = user.id
+		where user.nickname like concat('%',#{query},'%')
 	</select>
 
 	<!-- 회원이 작성한 글 목록 -->

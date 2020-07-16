@@ -147,14 +147,16 @@ public class QnaBoardController {
 	}
 
 //	검색기능
-	@PostMapping("/main")
-	@ResponseBody
-	public BoardViewList getBoardListBySearchInfo(@RequestParam(value = "option") String option,
-			@RequestParam(value = "searchInfo") String searchInfo,
-			@RequestParam(value = "p", defaultValue = "1", required = false) int pageNum) {
-		List<Board> boardList = service.getBoardListBySearchInfo(option, searchInfo);
-		BoardViewList boardViewList = viewListService.getViewListSearch(pageNum, boardList);
-		return boardViewList;
+	@GetMapping("/search")
+	public String getBoardListBySearchInfo(Model m, 
+			@RequestParam(value = "option") String option,
+			@RequestParam(value = "query") String query,
+			@RequestParam(value = "p", defaultValue = "1", required = false) int p) {
+		List<Board> boardList = service.getBoardListBySearchInfo(option, query);
+		BoardViewList boardViewList = viewListService.getViewListSearch(p, boardList);
+		m.addAttribute("boardViewList", boardViewList);
+		
+		return "QnA/search_result.jsp?option="+option+"&query="+query+"&b=" + p;
 	}
 
 //	게시글 작성 페이지 전환 GET

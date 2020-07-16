@@ -13,8 +13,6 @@
 			jdbcType="LONGVARCHAR" javaType="String" />
 		<result property="wtDate" column="w_date" />
 		<result property="upDate" column="u_date" />
-		<result property="genreId" column="club_genre_id" />
-		<result property="genre" column="name" />
 		<collection property="commentList" column="id"
 			select="getAllCommentListByBoardId" />
 	</resultMap>
@@ -42,9 +40,8 @@
 	<select id="getBoardByBoardIdWithComment" resultMap="brd">
 		select
 		club_board.id as id, user_id, title, content, user.nickname as writer,
-		w_date, u_date, club_genre_id, genre.name
-		from club_board join genre on
-		genre.id=club_genre_id join user on club_board.user_id = user.id where
+		w_date, u_date 
+		from club_board join user on club_board.user_id = user.id where
 		club_board.id = #{boardId}
 	</select>
 
@@ -69,64 +66,72 @@
 	<!-- 글 전체 for user-->
 	<select id="getAllBoards" resultMap="brd">
 		select club_board.id as id,
-		title, user.nickname as writer, w_date, u_date, club_genre_id, genre.name
-		from club_board join genre on genre.id=club_genre_id join user on club_board.user_id = user.id
+		title, user.nickname as writer, w_date, u_date 
+		from club_board join user on club_board.user_id=user.id
 	</select>
 
 	<!-- 메인화면에 표시할 최신 글 조회 -->
 	<select id="getBoardListToMain" resultMap="brd">
 		select club_board.id
-		as id, title, user.nickname as writer, w_date, genre.name
-		from club_board join genre on genre.id=club_genre_id join user on club_board.user_id = user.id
+		as id, title, user.nickname as writer, w_date 
+		from club_board join user on club_board.user_id=user.id 
 		order by id desc limit 5
 	</select>
 
 	<!-- 제목으로 글 검색 -->
 	<select id="getListByTitle" resultMap="brd">
-		select club_board.id as
-		id, title, user.nickname as writer, w_date, u_date
-		from club_board join user on club_board.user_id = user.id
+		select club_board.id as id, 
+		title, user.nickname as writer, w_date, u_date
+		from club_board 
+		join user on club_board.user_id = user.id
 		where title like concat('%',#{searchInfo},'%')
 	</select>
+	
 	<!-- 내용으로 글 검색 -->
 	<select id="getListByContent" resultMap="brd">
 		select club_board.id as
 		id, title, user.nickname as writer, w_date, u_date
-		from club_board join user on club_board.user_id = user.id
+		from club_board 
+		join user on club_board.user_id = user.id
 		where content like concat('%',#{searchInfo},'%')
 	</select>
+	
 	<!-- 작성자 명으로 글 검색 -->
 	<select id="getListByWriter" resultMap="brd">
 		select club_board.id as
 		id, title, user.nickname as writer, w_date, u_date
-		from club_board join user on club_board.user_id = user.id
+		from club_board 
+		join user on club_board.user_id = user.id
 		where user.nickname like concat('%',#{searchInfo},'%')
 	</select>
 
 	<!-- 회원이 작성한 글 목록 -->
 	<select id="getListByUserId" resultMap="brd">
 		select club_board.id as
-		id, title, user.nickname as writer, w_date, u_date, club_genre_id, genre.name
-		from club_board join genre on genre.id = club_genre_id where user_id = #{id}
+		id, title, user.nickname as writer, w_date, u_date 
+		from club_board 
+		where user_id = #{id}
 	</select>
 
 	<!-- 글 조회 -->
 	<select id="selectBoard" parameterType="String"	resultType="board">
-		select club_board.id, title, user_id, content, w_date, u_date, club_genre_id as genreId from club_board where club_board.id =#{id}
+		select club_board.id, title, user_id, content, w_date, u_date 
+		from club_board 
+		where club_board.id =#{id}
 	</select>
 
 	<!-- 글 등록(id는 auto_incement, w_date는 기본값이 current_timestamp로 자동 생성 -->
 	<insert id="insertBoard" parameterType="board" keyProperty="id"
 		useGeneratedKeys="true"><!-- @Param("board")Board board, @Param("userId")long 
 			userId -->
-		insert into club_board(title, club_genre_id, user_id, content)
-		values(#{title}, #{genreId}, #{userId}, #{content})
+		insert into club_board(title, user_id, content)
+		values(#{title}, #{userId}, #{content})
 	</insert>
 
 	<!-- 글 수정 -->
 	<update id="updateBoard" parameterType="String">
 		update club_board set
-		title=#{title}, club_genre_id=#{genreId} ,content=#{content,
+		title=#{title}, content=#{content,
 		jdbcType=LONGVARCHAR} where id=#{id, jdbcType=BIGINT}
 	</update>
 
@@ -139,9 +144,9 @@
 	<!-- 한 페이지에 보여질 게시글 리스트 -->
 	<select id="getBoardListByCurrentPage" resultMap="brd">
 		select
-		club_board.id as id, user_id, title, user.nickname as writer, content,
-		w_date, club_genre_id, genre.name from club_board join user on
-		club_board.user_id = user.id join genre on genre.id=club_genre_id
+		club_board.id as id, title, user.nickname as writer, w_date 
+		from club_board 
+		join user on club_board.user_id = user.id 
 		order by id desc limit #{firstRow}, #{endRow}
 	</select>
 

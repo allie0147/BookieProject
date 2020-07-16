@@ -96,7 +96,6 @@
 					<thead>
 						<tr>
 							<th class="col-sm-1" scope="col">번 호</th>
-							<th class="col-sm-1" scope="col">장 르</th>
 							<th class="col-sm-4" scope="col">제 목</th>
 							<th class="col-sm-2" scope="col">작성자</th>
 							<th class="col-sm-3" scope="col">작성일</th>
@@ -106,7 +105,6 @@
 						<c:forEach var="board" items="${boardViewList.boardList }">
 							<tr onclick="location.href='/club/detail?b=${board.id }'">
 								<td>${board.id }</td>
-								<td id="${genre.id}">${board.genre}</td>
 								<td>${board.title }</td>
 								<td>${board.writer }</td>
 								<td>${board.wtDate }</td>
@@ -120,21 +118,21 @@
 				<a class="btn pull-right write-button" href="/club/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
 			</div>
 		</div>
-				<!-- 검색 창 -->
+		<!-- 검색 창 -->
 		<div class="container">
 			<form class="ml">
 				<div class="form-group col-xs-2">
-					<select class="form-control">
+					<select name="option" class="form-control">
 						<option value="title">제목</option>
 						<option value="content">내용</option>
-						<option value="writer">글쓴이</option>
+						<option value="writer">글쓴이</option>						
 					</select>
 				</div>
 				<div class="form-group col-xs-3">
-					<input class="form-control" type="text" name="searchInfo" />
+					<input name="query" class="form-control" type="text" />
 				</div>
 				<div class="form-group col-xs-2">
-					<input class="btn btn-default" type="submit" value="검색" />
+					<input type="submit" value="검색" class="btn btn-default"  />
 				</div>
 			</form>
 		</div>

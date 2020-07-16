@@ -82,7 +82,7 @@ public class ClubBoardController {
 		return "bookClub/bookclubMain.jsp?p=" + p;
 	}
 
-//한 페이지 
+//	한 페이지 
 	@GetMapping("/detail")
 	public String goDetailPage(Model m, @RequestParam(value = "b", defaultValue = "1", required = false) long boardId) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -97,7 +97,21 @@ public class ClubBoardController {
 		m.addAttribute("board", board);
 		return "bookClub/bookClubBoardDetail.jsp?b=" + boardId;
 	}
-
+//	검색 기능
+	@GetMapping("/search")
+	public String getBoardListBySearchInfo(Model m, 
+			@RequestParam(value = "option") String option,
+			@RequestParam(value = "query") String query,
+			@RequestParam(value = "p", defaultValue = "1", required = false) int p) {
+		System.out.println("Ctr에서의 option : "+option);
+		System.out.println("Ctr에서의 query : "+query);
+		List<Board> boardList = service.getBoardListBySearchInfo(option, query);
+		BoardViewList boardViewList = viewListService.getViewListSearch(p, boardList);
+		m.addAttribute("boardViewList", boardViewList);
+		
+		return "bookClub/search_result.jsp?option=" + option + "&query=" + query + "&b=" + p;
+	}
+	
 //	게시글 작성 페이지 get
 	@GetMapping("/write")
 	public String getWriteOnClubBoard(Model m) {

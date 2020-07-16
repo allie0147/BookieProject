@@ -20,15 +20,24 @@ public class ClubBoardViewListService {
 	@Autowired
 	ClubBoardMapper mapper;
 
+//	전체 페이지
 	public BoardViewList getViewListService(int pageNum) {
 		int firstRow = (pageNum - 1)*BOARD_COUNT_PER_PAGE;
 		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
-		System.out.println("Count of total board : "+mapper.getCountOfTotalBoard()); 
-		int boardTotalCount = mapper.getCountOfTotalBoard();
 		
+		int boardTotalCount = mapper.getCountOfTotalBoard();
 		List<Board> boardList = mapper.getBoardListByCurrentPage(firstRow, BOARD_COUNT_PER_PAGE);
 		boardViewList = new BoardViewList(boardTotalCount, BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow, endRow);
 		
+		return boardViewList;
+	}
+
+	public BoardViewList getViewListSearch(int pageNum, List<Board> boardList) {
+		int firstRow = (pageNum - 1) * BOARD_COUNT_PER_PAGE;
+		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
+
+		boardViewList = new BoardViewList(boardList.size(), BOARD_COUNT_PER_PAGE, boardList, pageNum, firstRow, endRow);
+
 		return boardViewList;
 	}
 }

@@ -93,20 +93,7 @@
 		<div class="container">
 			<form class="form-container text-center">
 				<div class="form-group text-left row">
-					<div class="col-xs-2">
-						<select class="form-control" id="selectbox" name="genreId" style="cursor: pointer;">
-							<option value="0" selected="selected">장르 선택</option>
-							<option id="genre_id" value="${board.genreId}" hidden="hidden"></option>
-							<option value="1">소설/시/희곡</option>
-							<option value="2">에세이</option>
-							<option value="3">인문학</option>
-							<option value="4">경제경영</option>
-							<option value="5">사회과학</option>
-							<option value="6">종교</option>
-							<option value="7">예술</option>
-						</select>
-					</div>
-					<div class="col-xs-10">
+					<div class="col-xs-12">
 						<c:choose>
 							<c:when test="${not empty board.title}">
 								<input type="text" class="form-control" name="title"

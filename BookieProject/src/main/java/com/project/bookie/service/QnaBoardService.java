@@ -43,18 +43,15 @@ public class QnaBoardService {
 		return board;
 	}
 
-// 	검색기능
-	public List<Board> getBoardListBySearchInfo(String option, String searchInfo) {
+// 	검색 기능
+	public List<Board> getBoardListBySearchInfo(String option, String query) {
 		List<Board> boardList = null;
 		if (option.equals("title")) {
-			boardList = mapper.getListByTitle(searchInfo);
-
+			boardList = mapper.getListByTitle(query);
 		} else if (option.equals("content")) {
-			boardList = mapper.getListByContent(searchInfo);
-
+			boardList = mapper.getListByContent(query);
 		} else { // option.equals("writer")
-			boardList = mapper.getListByWriter(searchInfo);
-
+			boardList = mapper.getListByWriter(query);
 		}
 		return boardList;
 	}

@@ -13,7 +13,7 @@ $(function search() {
 });
 
 $(function searchResult(option){
-	$("#searchResultPgQna").on("load", function(){
+	$("#searchResultPgClub").on("load", function(){
 		console.log("search_result.jsp의 body 실행");
 		console.log("option : "+option);
 		

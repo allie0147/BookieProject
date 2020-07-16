@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA게시판</title>
+<title>QnA게시판 검색 결과</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="/resources/js/QnA/main.js"></script>
 </head>
-<body>
+<body id="searchResultPgQna">
 	<div class="main-body">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
@@ -137,7 +137,7 @@
 					<select name="option" class="form-control">
 						<option value="title">제목</option>
 						<option value="content">내용</option>
-						<option value="writer">글쓴이</option>
+						<option value="writer">글쓴이</option>						
 					</select>
 				</div>
 				<div class="form-group col-xs-3">
