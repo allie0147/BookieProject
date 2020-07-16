@@ -11,20 +11,18 @@ hr {
 	margin-bottom: 20px;
 }
 
-thead>tr {
-	color: black;
+thead{
+	background: #d9edf794;
+	font-size: 13px;
 }
-
-.page {
+thead>tr>th{
 	text-align: center;
 }
-
-thead>tr {
-	color: black;
-}
-
-.page {
-	text-align: center;
+tbody{
+	background: #ffffff;
+	font-size: 13px;
+	cursor: pointer;
+	white-space: nowrap;
 }
 
 .ml {

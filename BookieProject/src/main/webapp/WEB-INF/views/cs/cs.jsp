@@ -102,14 +102,13 @@
 				<div class="col-md-8">
 					<h2>FAQ</h2>
 					<ul class="nav nav-tabs">
-						<li class="active"><a data-toggle="tab" href="#home">서비스
-								공지</a></li>
-						<li><a data-toggle="tab" href="#menu1">약관/방침</a></li>
+						<li><a data-toggle="tab" href="#home">서비스 공지</a></li>
+						<li class="active"><a data-toggle="tab" href="#menu1">약관/방침</a></li>
 						<li><a data-toggle="tab" href="#menu2">로그인/계정</a></li>
 						<li><a data-toggle="tab" href="#menu3">기타문의/제안</a></li>
 					</ul>
 					<div class="tab-content">
-						<div id="home" class="tab-pane fade in active">
+						<div id="home" class="tab-pane fade">
 							<h3>서비스 공지사항입니다</h3>
 							<div class="panel-group" id="accordion">
 								<div class="panel panel-default">
@@ -160,7 +159,7 @@
 							</div>
 						</div>
 
-						<div id="menu1" class="tab-pane fade">
+						<div id="menu1" class="tab-pane fade in active">
 							<h3>약관 및 개인정보 처리 방침입니다</h3>
 							<div class="panel-group" id="accordion2">
 								<div class="panel panel-default">

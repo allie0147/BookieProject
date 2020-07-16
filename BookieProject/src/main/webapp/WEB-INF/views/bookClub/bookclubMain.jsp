@@ -96,7 +96,7 @@
 					<thead>
 						<tr>
 							<th class="col-sm-1" scope="col">번 호</th>
-							<th class="col-sm-1" scope="col">장 르</th>
+							<th class="col-sm-2" scope="col">장 르</th>
 							<th class="col-sm-4" scope="col">제 목</th>
 							<th class="col-sm-2" scope="col">작성자</th>
 							<th class="col-sm-3" scope="col">작성일</th>
