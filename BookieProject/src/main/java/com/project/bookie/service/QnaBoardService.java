@@ -71,7 +71,6 @@ public class QnaBoardService {
 //	insert board
 	public long writeOnBoard(Board board) {
 		mapper.insertBoard(board);
-		System.out.println(board.getId());
 		return board.getId(); // board id
 	}
 //	update board
@@ -88,9 +87,7 @@ public class QnaBoardService {
 //	insert comment
 	public String writeComment(Comment comment) {
 		commentMapper.addComment(comment);
-		System.out.println(comment.getId());
 		String date = commentMapper.getCommentWdate(comment.getId());
-		System.out.println(date);
 		return date;
 	}
 

@@ -199,7 +199,6 @@ public class QnaBoardController {
 	@ResponseBody
 	public String editOnQnABoard(@RequestParam(value = "b") String boardId, @Param("genreId") String genreId,
 			@Param("content") String content, @Param("title") String title) {
-		System.out.println(boardId);
 		service.updateOnBoard(boardId, genreId, title, content);
 		return boardId;
 	}
@@ -237,7 +236,6 @@ public class QnaBoardController {
 		String tail = date.substring(11, 16);
 		date = head + " " + tail;
 		c.setWtDate_str(date);
-		System.out.println(c);
 		return c;
 	}
 
@@ -245,8 +243,6 @@ public class QnaBoardController {
 	@PostMapping(value = "/comment/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
 	public String updateCommentOnQnABoard(@Param("commentId") String commentId, @Param("comment") String comment) {
-		System.out.println(comment);
-		System.out.println(commentId);
 		try {
 			service.updateComment(commentId, comment);
 		} catch (Exception e) {
@@ -277,7 +273,6 @@ public class QnaBoardController {
 	public Reply setReplyOnQnABoard(Reply reply) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
-		System.out.println(uEmail);
 		reply.setUserId(userService.getUserIdByEmail(uEmail));
 		reply.setWriter(userService.getUserNickname(uEmail));
 		String date = service.writeReply(reply);
@@ -292,8 +287,6 @@ public class QnaBoardController {
 	@PostMapping(value = "/reply/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
 	public String updateReplyOnQnABoard(@Param("replyId") String replyId, @Param("reply") String reply) {
-		System.out.println(replyId);
-		System.out.println(reply);
 		try {
 			service.updateReply(replyId, reply);
 		} catch (Exception e) {
@@ -307,7 +300,6 @@ public class QnaBoardController {
 	@PostMapping(value = "/reply/del", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String deleteReplyOnQnABoard(@Param("replyId") String replyId) {
-		System.out.println(replyId);
 		try {
 			service.deleteReply(replyId);
 		} catch (Exception e) {

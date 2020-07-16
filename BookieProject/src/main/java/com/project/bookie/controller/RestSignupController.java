@@ -17,14 +17,14 @@ public class RestSignupController {
 	@GetMapping(value = "/chkEmail", produces = "text/plain")
 	@ResponseBody
 	public String chkEmail(@RequestParam("email") String uEmail) {
-		System.out.println(uEmail);
+//		System.out.println(uEmail);
 		return String.valueOf(userService.emailCheck(uEmail));
 	}
 
 	@GetMapping(value = "/chkNick", produces = "text/plain")
 	@ResponseBody
 	public String chkNick(String nickname) {
-		System.out.println(nickname);
+//		System.out.println(nickname);
 		return String.valueOf(userService.nickCheck(nickname));
 	}
 

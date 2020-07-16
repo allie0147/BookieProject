@@ -39,8 +39,8 @@ public class RestLogInController {
 	@PostMapping(value = "/loginChk", produces = "text/html; charset=utf8")
 	public String loginChk(@RequestParam("uEmail") String uEmail, @RequestParam("uPwd") String uPwd,
 			HttpServletRequest request, HttpServletResponse response, Authentication auth) {
-		System.out.println("1. ajax controller: " + uEmail);
-		System.out.println("2. ajax controller: " + uPwd);
+//		System.out.println("1. ajax controller: " + uEmail);
+//		System.out.println("2. ajax controller: " + uPwd);
 		String password = userDetailsService.loadUserByUsername(uEmail).getPassword();
 		CustomUser u = (CustomUser) userDetailsService.loadUserByUsername(uEmail);
 		if (userDetailsService.loadUserByUsername(uEmail) == null) { // 권한 없음?
@@ -50,7 +50,7 @@ public class RestLogInController {
 				UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(u.getUsername(),
 						u.getPassword());
 				SecurityContextHolder.getContext().setAuthentication(token); // user chk 생성
-				System.out.println("SecurityContextHolder.getContext().getAuthentication()"+ SecurityContextHolder.getContext().getAuthentication());
+//				System.out.println("SecurityContextHolder.getContext().getAuthentication()"+ SecurityContextHolder.getContext().getAuthentication());
 				try {
 					accessSuccessHandler.onAuthenticationSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
 				} catch (IOException | ServletException e) {

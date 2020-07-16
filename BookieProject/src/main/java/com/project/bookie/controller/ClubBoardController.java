@@ -103,8 +103,6 @@ public class ClubBoardController {
 			@RequestParam(value = "option") String option,
 			@RequestParam(value = "query") String query,
 			@RequestParam(value = "p", defaultValue = "1", required = false) int p) {
-		System.out.println("Ctr에서의 option : "+option);
-		System.out.println("Ctr에서의 query : "+query);
 		List<Board> boardList = service.getBoardListBySearchInfo(option, query);
 		BoardViewList boardViewList = viewListService.getViewListSearch(p, boardList);
 		m.addAttribute("boardViewList", boardViewList);
@@ -130,7 +128,6 @@ public class ClubBoardController {
 		// user id , user nickname board에 추가
 		board.setUserId(userId);
 		board.setWriter(userService.getUserNickname(board.getUEmail()));
-		System.out.println("board 정보 완성 : " + board);
 		long boardId = service.writeOnBoard(board);
 		return String.valueOf(boardId); // front에서 '/club/detail?b=boardId'로 redirect
 	}
@@ -152,7 +149,6 @@ public class ClubBoardController {
 	@ResponseBody
 	public String editOnClubBoard(@RequestParam(value = "b") String boardId, @Param("genre") String genreId,
 			@Param("content") String content, @Param("title") String title) {
-		System.out.println(boardId);
 		service.updateOnBoard(boardId, genreId, title, content);
 		return boardId;
 	}
@@ -178,17 +174,15 @@ public class ClubBoardController {
 	@PostMapping(value = "/comment", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Comment insertCommentOnClubBoard(@Param("boardId") String boardId, @Param("comment") String comment) {
-		System.out.println(boardId);
-		System.out.println(comment);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
-		System.out.println(uEmail);
+		
 		Comment c = new Comment();
 		c.setUserId(userService.getUserIdByEmail(uEmail));
 		c.setWriter(userService.getUserNickname(uEmail));
 		c.setBoardId(Integer.parseInt(boardId));
 		c.setMessage(comment);
-		System.out.println(c);
+		
 		String date = service.writeComment(c);
 		String head = date.substring(0, 10);
 		String tail = date.substring(11, 16);
@@ -201,8 +195,6 @@ public class ClubBoardController {
 	@PostMapping(value = "/comment/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
 	public String updateCommentOnClubBoard(@Param("commentId") String commentId, @Param("comment") String comment) {
-		System.out.println(comment);
-		System.out.println(commentId);
 		try {
 			service.updateComment(commentId, comment);
 		} catch (Exception e) {
@@ -233,7 +225,7 @@ public class ClubBoardController {
 	public Reply setReplyOnClubBoard(Reply reply) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
-		System.out.println(uEmail);
+		
 		reply.setUserId(userService.getUserIdByEmail(uEmail));
 		reply.setWriter(userService.getUserNickname(uEmail));
 		String date = service.writeReply(reply);
@@ -248,8 +240,7 @@ public class ClubBoardController {
 	@PostMapping(value = "/reply/update", produces = "text/plain; charset=utf-8 ")
 	@ResponseBody
 	public String updateReplyOnClubBoard(@Param("replyId") String replyId, @Param("reply") String reply) {
-		System.out.println(replyId);
-		System.out.println(reply);
+		
 		try {
 			service.updateReply(replyId, reply);
 		} catch (Exception e) {
@@ -263,7 +254,7 @@ public class ClubBoardController {
 	@PostMapping(value = "/reply/del", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String deleteReplyOnClubBoard(@Param("replyId") String replyId) {
-		System.out.println(replyId);
+		
 		try {
 			service.deleteReply(replyId);
 		} catch (Exception e) {

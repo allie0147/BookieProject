@@ -23,7 +23,6 @@ public class BookCardBoardViewListService {
 	public BookCardBoardViewList getViewListService(int pageNum) {
 		int firstRow = (pageNum - 1) * BOARD_COUNT_PER_PAGE;
 		int endRow = firstRow + BOARD_COUNT_PER_PAGE;
-		System.out.println("Count of total board : " + mapper.getCountOfTotalBoard());
 		int boardTotalCount = mapper.getCountOfTotalBoard();
 
 		List<BookCardBoard> boardList = mapper.getBoardListByCurrentPage(firstRow, BOARD_COUNT_PER_PAGE);

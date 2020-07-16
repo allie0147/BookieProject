@@ -35,7 +35,6 @@ public class SignUpController {
 	@GetMapping("/userForm")
 	public String getForm() {
 //		회원가입페이지 이동
-		System.out.println("get");
 		return "signUp/signupForm";
 	}
 
@@ -43,17 +42,14 @@ public class SignUpController {
 	public String signupProc(Model m, @ModelAttribute @Valid User user, BindingResult bindingResult,
 			RedirectAttributes rttr, HttpServletRequest request) {
 //		회원가입 완료 후 페이지 이동(alert만 있는 logInAgain)
-		System.out.println("post: " + user);
 		if (bindingResult.hasErrors()) {
-			System.out.println(bindingResult);
 			List<FieldError> errors = bindingResult.getFieldErrors();
 			for (FieldError fe : errors) {
-				System.out.println(fe.getField());
+//				System.out.println(fe.getField());
 				m.addAttribute("E" + fe.getField(), fe.getField());
 			}
 			return "signUp/signupForm";
 		} else {
-			System.out.println("인증 메일이 발송되었습니다. 확인 후 다시 로그인 해주세요.");
 			// 패스워드 인코딩
 			String uPwd = user.getUPwd();
 			String encodePwd = pwdEncoder.encode(uPwd);

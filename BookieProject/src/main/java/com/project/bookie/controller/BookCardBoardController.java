@@ -69,7 +69,7 @@ public class BookCardBoardController {
 			while (p > 5 * i) {
 				i++;
 			}
-			System.out.println("현재 페이지네이션 범위 : " + (i - 1) * 5 + "~" + i * 5); // p가 5*i보다 작아지게 된 i의 값
+//			System.out.println("현재 페이지네이션 범위 : " + (i - 1) * 5 + "~" + i * 5); // p가 5*i보다 작아지게 된 i의 값
 			startNum = 5 * (i - 1) + 1;
 
 			for (int j = startNum; j <= endNum; j++) {
@@ -95,7 +95,6 @@ public class BookCardBoardController {
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String writeOnBookCardBoard(@Param("userId") String userId, @Param("content") String content) {
-		System.out.println("userId" + userId + "content" + content);
 		try {
 			service.writeOnBoard(userId, content);
 		} catch (Exception e) {
@@ -108,7 +107,6 @@ public class BookCardBoardController {
 	@PostMapping(value = "/edit", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String editOnBookCardBoard(@Param("id") String id, @Param("content") String content) {
-		System.out.println("boardId" + id + "content" + content);
 		try {
 			service.editOnBoard(id, content);
 		} catch (Exception e) {
@@ -120,7 +118,6 @@ public class BookCardBoardController {
 	@PostMapping(value = "/delete", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String editOnBookCardBoard(@Param("id") String id) {
-		System.out.println("boardId" + id );
 		try {
 			service.deleteOnBoard(id);
 		} catch (Exception e) {
