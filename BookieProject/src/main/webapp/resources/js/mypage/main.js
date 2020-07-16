@@ -15,10 +15,12 @@ $(function() {
 						location.replace("/logout");
 					} else {
 						alert("오류가 발생했습니다. 재시도 해주세요.");
+						return false;
 					}
 				},
 				error : function() {
 					alert("오류가 발생했습니다. 재시도 해주세요.");
+					return false;
 				}
 			});
 		} else {
