@@ -98,7 +98,7 @@
 
 			<c:if test="${boardViewList.boardList.size() == 0 }">
 				<!-- 글 개수가 0개일 때 -->
-				<div class="content">글이 존재하지 않습니다.</div>
+				<div class="content" style="text-align: center">글이 존재하지 않습니다.</div>
 			</c:if>
 			<c:if test="${boardViewList.boardList.size() > 0 }">
 				<!-- 글 개수가 1개이상일 때 -->

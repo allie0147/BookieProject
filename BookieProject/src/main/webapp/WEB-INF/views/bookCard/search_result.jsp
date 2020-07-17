@@ -117,7 +117,7 @@
 				<sec:authorize access="isAuthenticated()">
 					<a class="btn write-button"><span
 						class="glyphicon glyphicon-pencil"></span><span id="id"
-						style="display: none;">${userId}</span>&nbsp글쓰기</a>
+						style="display: none;">${userId}</span>&nbsp;글쓰기</a>
 				</sec:authorize>
 
 				<div id="searchButton" class="input-group col-xs-4 ">
