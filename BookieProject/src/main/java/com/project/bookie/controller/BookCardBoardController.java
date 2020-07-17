@@ -94,6 +94,12 @@ public class BookCardBoardController {
 	@GetMapping("/search")
 	public String getBoardListBySearchInfo(Model m, @RequestParam(value = "query") String query,
 			@RequestParam(value = "p", defaultValue = "1", required = false) int p) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String uEmail = auth.getName();
+		if (!uEmail.equals("anonymousUser")) {
+			long userId = userService.getUserIdByEmail(uEmail);
+			m.addAttribute("userId", userId);
+		}
 		List<BookCardBoard> boardList = service.getBoardListBySearchInfo(query);
 		BookCardBoardViewList boardViewList = viewListService.getViewListSearch(p, boardList);
 		m.addAttribute("boardViewList", boardViewList);
@@ -104,6 +110,7 @@ public class BookCardBoardController {
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String writeOnBookCardBoard(@Param("userId") String userId, @Param("content") String content) {
+		System.out.println("userId : "+userId+", content : "+content);
 		try {
 			service.writeOnBoard(userId, content);
 		} catch (Exception e) {

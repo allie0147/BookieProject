@@ -22,6 +22,8 @@ $(function () {
             $('.loader_card').show();
             const userId = $('#id').text();
             const content = $('#textarea').val();
+			alert("userId : "+userId);
+			alert("content : "+content);
             $.ajax({
                 url: "/bookcard/write",
                 type: "post",

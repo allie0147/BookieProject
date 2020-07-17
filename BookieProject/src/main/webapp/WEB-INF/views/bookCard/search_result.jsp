@@ -113,21 +113,22 @@
 				</c:if>
 			</div>
 			
-			<!-- 글쓰기 버튼 -->
-			<div class="container write-div">
-				<a class="btn pull-right write-button" href="/qna/write"><span class="glyphicon glyphicon-pencil"></span>&nbsp글쓰기</a>
+			<div class="container" id="wrapBtn">
+				<sec:authorize access="isAuthenticated()">
+					<a class="btn write-button"><span
+						class="glyphicon glyphicon-pencil"></span><span id="id"
+						style="display: none;">${userId}</span>&nbsp글쓰기</a>
+				</sec:authorize>
+
+				<div id="searchButton" class="input-group col-xs-4 ">
+					<input type="text" class="form-control" placeholder="검색" name="query">
+					<div class="input-group-btn">
+						<button id="bcbSearchSb" class="btn btn-default" type="submit">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
 			</div>
-		</div>
-	
-		<!-- 검색 창 -->
-		<div id="searchButton" class="input-group col-xs-4 ">
-			<input type="text" class="form-control" placeholder="검색" name="query">
-			<div class="input-group-btn">
-				<button id="bcbSearchSb" class="btn btn-default" type="submit">
-					<i class="glyphicon glyphicon-search"></i>
-				</button>
-			</div>
-		</div>
 
 		<!-- 페이지네이션 -->
 		<div class="container text-center">
