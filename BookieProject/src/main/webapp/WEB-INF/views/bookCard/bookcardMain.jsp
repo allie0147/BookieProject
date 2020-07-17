@@ -94,6 +94,7 @@
 							<div class="thumbnail">
 								<div class="img">
 									<div class="wrapGlyph">
+									<p id="board_id" style="display: none">${board.id}</p>
 										<c:if test="${board.userId == userId}">
 											<a class="glyph edit"><span
 												class="glyphicon glyphicon-edit"></span></a>
@@ -101,7 +102,6 @@
 												class="glyphicon glyphicon-trash"></span></a>
 										</c:if>
 									</div>
-									<p id="board_id" style="display: none">${board.id}</p>
 									<p class="content">${board.content }</p>
 									<div>
 										<p class="writer">${board.writer }</p>
@@ -146,6 +146,7 @@
 								<div class="thumbnail">
 									<div class="img">
 										<div class="wrapGlyph">
+										<p id="board_id" style="display: none">${board.id}</p>
 											<c:if test="${board.userId == userId}">
 												<a class="glyph edit"><span
 													class="glyphicon glyphicon-edit"></span></a>
@@ -153,7 +154,6 @@
 													class="glyphicon glyphicon-trash"></span></a>
 											</c:if>
 										</div>
-										<p id="board_id" style="display: none">${board.id}</p>
 										<p class="content">${board.content }</p>
 										<div>
 											<p class="writer">${board.writer }</p>
