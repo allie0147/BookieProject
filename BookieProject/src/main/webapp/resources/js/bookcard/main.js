@@ -4,7 +4,7 @@ $(function () {
     var click = true;
 //    write
     $('.write-button').on("click", function () {
-        const cardForm = '<div class="write_div"><form name="write_card"><textarea autofocus="autofocus" maxlength="111" rows="1" placeholder="나만의 글귀를 작성해보세요" name="content" id="textarea" style="resize:none;height: 40px;width: 40%;"></textarea><span id="counter">###</span><input class="btn btn-default submit_card" type="submit" value="등록"/></form></div>';
+        const cardForm = '<div class="write_div container"><a class="exit_reg"><span class="glyphicon glyphicon-remove"></span></a><form name="write_card"><textarea autofocus="autofocus" maxlength="111" rows="1" placeholder="나만의 글귀를 작성해보세요" name="content" id="textarea" style="resize:none;height: 40px;width: 40%;"></textarea><span id="counter">###</span><input class="btn btn-default submit_card" type="submit" value="등록"/></form></div>';
         if (click == true) {
             $('#wrapBtn').after(cardForm);
             $('#textarea').on("keyup", function () {
@@ -52,14 +52,17 @@ $(function () {
             });
             return false;
         });
+        $('.exit_reg').on("click", function () {
+            $('.write_div').detach();
+        });
     });
 //    수정
     $('.edit').on("click", function () {
-        $('.black-box').show();
-        const div = $(this).parent().next();
-        const inner = div.next().text();
+        $('.black_box').show();
+    	const div = $(this).parent().next();
+        const inner = div.text();
         const div_form = '<div class="div_edit"><a class="exit"><span class="glyphicon glyphicon-remove"></span></a><form name="edit_card"><textarea autofocus="autofocus" maxlength="111" rows="1" name="content" id="textarea_edit">' + inner + '</textarea><span id="counter" style="float: right;">###</span><input class="btn btn-default submit_card" type="submit" value="수정"/></form></div>';
-        $('.black-box').after(div_form);
+        $('.black_box').after(div_form);
         $('#textarea_edit').on("keyup", function () {
             var content = $(this).val();
             $('#counter').html(content.length + '/111');
@@ -70,7 +73,7 @@ $(function () {
             console.log($(this));
             $('.loader').show();
             const content = $('#textarea_edit').val();
-            const id = div.text();
+            const id = div.prev().children(1).text();
             $.ajax({
                 url: "/bookcard/edit",
                 type: "post",
@@ -81,7 +84,7 @@ $(function () {
                 success: function (e) {
                     if (e == "true") {
                         $('.div_edit').remove();
-                        $('.black-box').hide();
+                        $('.black_box').hide();
                         $('.loader').hide();
                         console.log(content);
                         div.text(content);
@@ -103,15 +106,15 @@ $(function () {
 
         $('.exit').on("click", function () {
             $('.div_edit').detach();
-            $('.black-box').hide();
+            $('.black_box').hide();
         });
     });
     // 삭제
     $('.delete').on("click", function () {
         if (confirm("정말 삭제하시겠습니까?")) {
-            $('.black-box').show();
+            $('.black_box').show();
             $('.loader').show();
-            const id = $(this).parent().next().text();
+            const id = $(this).parent().children(1).text();
             $.ajax({
                 url: "/bookcard/delete",
                 type: "post",
@@ -120,7 +123,7 @@ $(function () {
                 },
                 success: function (e) {
                     if (e == "true") {
-                        $('.black-box').hide();
+                        $('.black_box').hide();
                         $('.loader').hide();
                         alert('삭제 되었습니다!');
                         location.replace("/bookcard/main");
@@ -146,8 +149,8 @@ $(function () {
     $('.heart').on("click", function () {
         let like_dislike;
         const heart_count = $(this).next();
-        const div = $(this).parent().parent().parent();
-        const id = $(':nth-child(2)', div).eq(0).text();
+        const div = $(this).parent().parent();
+        const id= div.siblings().eq(0).children(1).text();
         $(":first-child", $(this)).toggleClass('glyphicon-heart');
         $(":first-child", $(this)).toggleClass('glyphicon-heart-empty');
 
