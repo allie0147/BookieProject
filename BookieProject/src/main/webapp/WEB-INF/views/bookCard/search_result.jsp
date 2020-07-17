@@ -18,11 +18,12 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/resources/js/bookcard/main.js"></script>
+<script src="/resources/js/bookcard/search.js"></script>
 <script src="/resources/js/randomImage.js"></script>
 </head>
 <body onload="showImage()">
 	<div class="main-body">
+		<!--로고 글귀 q&a 독서클럽 고객센터 마이페이지 로그인-->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -74,7 +75,8 @@
 				</div>
 			</div>
 		</nav>
-
+		<div class='loader_card'></div>
+		<div class="black_box main-body"></div>
 		<div class="container">
 			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
 			<img src="../resources/images/banner-card.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
@@ -91,6 +93,7 @@
 							<div class="thumbnail">
 								<div class="img">
 									<div class="wrapGlyph">
+									<p id="board_id" style="display: none">${board.id}</p>
 										<c:if test="${board.userId == userId}">
 											<a class="glyph edit"><span
 												class="glyphicon glyphicon-edit"></span></a>
@@ -101,9 +104,9 @@
 									<p class="content">${board.content }</p>
 									<div>
 										<p class="writer">${board.writer }</p>
-										<p class="like">
-											<a class="glyph"><span
-												class='glyphicon glyphicon-heart-empty'></span></a>${board.likeCnt }</p>
+										<div class="like">
+											<a class="heart glyph"><span
+												class='glyphicon glyphicon-heart-empty'></span></a><p class="count">${board.likeCnt}</p></div>
 										<!-- <span class='glyphicon glyphicon-heart'></span> -->
 									</div>
 								</div>
@@ -132,7 +135,6 @@
 
 		<!-- 페이지네이션 -->
 		<div class="container text-center">
-
 			<c:if test="${boardViewList.bookCardBoardList.size() > 0 }">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">

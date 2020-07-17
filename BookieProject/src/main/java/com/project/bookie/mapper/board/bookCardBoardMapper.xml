@@ -48,7 +48,7 @@
 	<!-- 내용/작성자명으로 글 검색 -->
 	<select id="getListByContentOrWriter" resultMap="bcb">
 		select 
-		bookcard_board.id, user.nickname as writer, content, like_cnt, bookmark_cnt
+		bookcard_board.id, user_id, user.nickname as writer, content, like_cnt, bookmark_cnt
 		from 
 		bookcard_board join user on bookcard_board.user_id = user.id
 		where 

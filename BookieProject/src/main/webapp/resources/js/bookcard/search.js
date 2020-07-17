@@ -110,41 +110,43 @@ $(function () {
         });
     });
     
-    // 삭제
-    $('.delete').on("click", function () {
-        if (confirm("정말 삭제하시겠습니까?")) {
-            $('.black_box').show();
-            $('.loader').show();
-            const id = $(this).parent().children(1).text();
-            $.ajax({
-                url: "/bookcard/delete",
-                type: "post",
-                data: {
-                    "id": id,
-                },
-                success: function (e) {
-                    if (e == "true") {
-                        $('.black_box').hide();
-                        $('.loader').hide();
-                        alert('삭제 되었습니다!');
-                        location.replace("/bookcard/main");
-                    } else {
-                        $('.loader').hide();
-                        alert("오류가 발생했습니다. 재시도 해주세요.");
-                        return false;
-                    }
-                },
-                error: function () {
-                    $('.loader').hide();
-                    alert("오류가 발생했습니다. 재시도 해주세요.");
-                    return false;
-                }
-            }); //ajax end
-            return false;
-        } else {
-            alert('취소 되었습니다.');
-            return false;
-        }
+ // 삭제
+    $('.delete').on("click", function() {
+    	if (confirm("정말 삭제하시겠습니까?")) {
+    		$('.black_box').show();
+    		$('.loader').show();
+    		const id = $(this).parent().children(1).text();
+    		const param=location.search;
+    		param == null ? "" : decodeURIComponent(param);
+    		$.ajax({
+    			url : "/bookcard/delete",
+    			type : "post",
+    			data : {
+    				"id" : id,
+    			},
+    			success : function(e) {
+    				if (e == "true") {
+    					$('.black_box').hide();
+    					$('.loader').hide();
+    					alert('삭제 되었습니다!');
+    					location.replace("/bookcard/search"+param);
+    				} else {
+    					$('.loader').hide();
+    					alert("오류가 발생했습니다. 재시도 해주세요.");
+    					return false;
+    				}
+    			},
+    			error : function() {
+    				$('.loader').hide();
+    				alert("오류가 발생했습니다. 재시도 해주세요.");
+    				return false;
+    			}
+    		}); // ajax end
+    		return false;
+    	} else {
+    		alert('취소 되었습니다.');
+    		return false;
+    	}
     });
  
     // 좋아요 기능
