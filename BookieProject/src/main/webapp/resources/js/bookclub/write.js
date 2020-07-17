@@ -1,27 +1,21 @@
 $(function() {
 	$('.black-box').hide();
 	$('.loader').hide();
-//	수정시, selectbox value 변경
-	const genreId_temp=$('#genre_id').val();
-	console.log(genreId_temp);
-	const id= parseInt(genreId_temp)+1;
-	if (genreId_temp!='0'){
-		$('#selectbox option:eq('+id+')').attr("selected","selected");
-	}
+
 	// 작성
-	$("form").on("submit", function() {
+	$("button[type=submit]").on("click", function() {
 		$('.black-box').show();
 		$('.loader').show();
 		let formData = $("form").eq(1).serialize();
 		let title = document.getElementsByName("title")[0].value;
-		let genre = document.getElementsByName("genreId")[0].value;
-		if (title != "" && genre != 0) {
+		if (title != "") {
 			$.ajax({
 				url : "/club/write",
 				type : "post",
 				data : formData,
 				dataType : "json",
 				success : function(data) {
+					console.log("받아온 데이터 : "+data);
 					$('.black-box').hide();
 					$('.loader').hide();
 					alert("작성 되었습니다.");
@@ -40,11 +34,6 @@ $(function() {
 			$('.black-box').hide();
 			alert("제목을 입력하세요");
 			return false;
-		} else if (genre == 0) {
-			$('.loader').hide();
-			$('.black-box').hide();
-			alert("장르를 선택하세요");
-			return false;
 		}
 	});
 	// 수정
@@ -53,18 +42,16 @@ $(function() {
 		$('.loader').show();
 		const boardId = document.getElementById('board_id').value;
 		const title = document.getElementsByName('title')[0].value;
-		const genre = document.getElementsByName("genreId")[0].value;
 //		summernote content 가져 오는 방법 
 		const content = $('#summernote').summernote('code');
 		console.log(content);
-		if (title != "" && content != "" && genre != 0) {
+		if (title != "" && content != "") {
 			$.ajax({
 				url : "/club/write/edit?b=" + boardId,
 				type : "post",
 				data : {
 					"title" : title,
-					"content" : content,
-					"genreId": genre
+					"content" : content
 				},
 				success : function(board) {
 					$('.loader').hide();
@@ -79,11 +66,6 @@ $(function() {
 					return false;
 				}
 			}); // ajax end
-		} else if (genre == 0) {
-			$('.loader').hide();
-			$('.black-box').hide();
-			alert('장르를 선택하세요.');
-			return false;
 		} else {
 			$('.loader').hide();
 			$('.black-box').hide();

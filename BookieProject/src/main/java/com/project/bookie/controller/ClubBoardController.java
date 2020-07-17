@@ -130,6 +130,7 @@ public class ClubBoardController {
 		board.setUserId(userId);
 		board.setWriter(userService.getUserNickname(board.getUEmail()));
 		long boardId = service.writeOnBoard(board);
+		System.out.println("userId : "+userId+", board : "+board);
 		return String.valueOf(boardId); // front에서 '/club/detail?b=boardId'로 redirect
 	}
 
