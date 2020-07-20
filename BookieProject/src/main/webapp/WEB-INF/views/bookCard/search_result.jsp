@@ -78,22 +78,26 @@
 		<div class='loader_card'></div>
 		<div class="black_box main-body"></div>
 		<div class="container">
-			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-			<img src="../resources/images/banner-card.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
+			<div
+				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+				<img src="../resources/images/banner-card.jpg" class="img-rounded"
+					alt="Cinque Terre" width="100%" height="100%">
+			</div>
 		</div>
-		
+
 		<div class="container">
 			<div class="row">
 				<c:if test="${boardViewList.bookCardBoardList.size() == 0}">
 					<div class="content">글이 존재하지 않습니다.</div>
 				</c:if>
 				<c:if test="${boardViewList.bookCardBoardList.size() > 0 }">
-					<c:forEach var="board" items="${boardViewList.bookCardBoardList }" varStatus="status">
+					<c:forEach var="board" items="${boardViewList.bookCardBoardList }"
+						varStatus="status">
 						<div class="col-md-4">
 							<div class="thumbnail">
 								<div class="img">
 									<div class="wrapGlyph">
-									<p id="board_id" style="display: none">${board.id}</p>
+										<p id="board_id" style="display: none">${board.id}</p>
 										<c:if test="${board.userId == userId}">
 											<a class="glyph edit"><span
 												class="glyphicon glyphicon-edit"></span></a>
@@ -105,9 +109,16 @@
 									<div>
 										<p class="writer">${board.writer }</p>
 										<div class="like">
-											<a class="heart glyph"><span
-												class='glyphicon glyphicon-heart-empty'></span></a><p class="count">${board.likeCnt}</p></div>
-										<!-- <span class='glyphicon glyphicon-heart'></span> -->
+											<sec:authorize access="isAuthenticated()">
+												<a class="heart glyph"><span
+													class='glyphicon glyphicon-heart-empty'></span></a>
+												<p class="count">${board.likeCnt }</p>
+											</sec:authorize>
+											<sec:authorize access="isAnonymous()">
+												<a class="any_heart glyph"><span class='glyphicon glyphicon-heart'></span></a>
+												<p class="count">${board.likeCnt }</p>
+											</sec:authorize>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -115,7 +126,7 @@
 					</c:forEach>
 				</c:if>
 			</div>
-			
+
 			<div class="container" id="wrapBtn">
 				<sec:authorize access="isAuthenticated()">
 					<a class="btn write-button"><span
@@ -124,7 +135,8 @@
 				</sec:authorize>
 
 				<div id="searchButton" class="input-group col-xs-4 ">
-					<input type="text" class="form-control" placeholder="검색" name="query">
+					<input type="text" class="form-control" placeholder="검색"
+						name="query">
 					<div class="input-group-btn">
 						<button id="bcbSearchSb" class="btn btn-default" type="submit">
 							<i class="glyphicon glyphicon-search"></i>
@@ -133,79 +145,79 @@
 				</div>
 			</div>
 
-		<!-- 페이지네이션 -->
-		<div class="container text-center">
-			<c:if test="${boardViewList.bookCardBoardList.size() > 0 }">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<c:if test="${p>5}">
-							<li class="page-item"><a class="page-link"
-								href="main?p=${pageArray.get(0)-5 }">&lt;&lt;</a></li>
-						</c:if>
-						<c:forEach var="pageNum" items="${pageArray }">
-							<c:choose>
-								<c:when test="${pageNum == boardViewList.currentPageNumber }">
-									<li class="page-item"><a class="page-link"
-										href="main?p=${pageNum }"><b>${pageNum }</b></a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item"><a class="page-link"
-										href="main?p=${pageNum }">${pageNum }</a></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${pageArray.size()==5}">
-							<li class="page-item"><a class="page-link"
-								href="main?p=${nextNum }">&gt;&gt;</a></li>
-						</c:if>
-					</ul>
-				</nav>
-			</c:if>
-		</div>
-	</div>
-	<footer id="footerBg">
-		<div class="container">
-			<br>
-			<div class="row" id="footerFont">
-				<div class="col-sm-4">
-					<h4>Introduce</h4>
-					<p>I have studied Java, HTML, Python, Jquari, etc. and I want
-						to make a space where I can exchange questions and answers related
-						to books.</p>
-				</div>
-				<div class="col-sm-4">
-					<h4>Contact</h4>
-					<p>
-						<span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-phone"></span>Phone: +82
-						1082747414
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-envelope"></span>Email:
-						hth0411@naver.com
-					</p>
-				</div>
-				<div class="col-sm-4">
-					<h4>store</h4>
-					<h5>
-						<a href="https://www.aladin.co.kr/">aladin</a>
-					</h5>
-					<h5>
-						<a href="http://www.bandinlunis.com/">bandinluis</a>
-					</h5>
-					<h5>
-						<a href="http://www.yes24.com/">yes24</a>
-					</h5>
-				</div>
-				<br>
-				<div class="col-sm-12 text-center">
-					<h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5>
-					<h5>Allie Dohee Kim</h5>
-				</div>
+			<!-- 페이지네이션 -->
+			<div class="container text-center">
+				<c:if test="${boardViewList.bookCardBoardList.size() > 0 }">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<c:if test="${p>5}">
+								<li class="page-item"><a class="page-link"
+									href="main?p=${pageArray.get(0)-5 }">&lt;&lt;</a></li>
+							</c:if>
+							<c:forEach var="pageNum" items="${pageArray }">
+								<c:choose>
+									<c:when test="${pageNum == boardViewList.currentPageNumber }">
+										<li class="page-item"><a class="page-link"
+											href="main?p=${pageNum }"><b>${pageNum }</b></a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item"><a class="page-link"
+											href="main?p=${pageNum }">${pageNum }</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${pageArray.size()==5}">
+								<li class="page-item"><a class="page-link"
+									href="main?p=${nextNum }">&gt;&gt;</a></li>
+							</c:if>
+						</ul>
+					</nav>
+				</c:if>
 			</div>
 		</div>
-	</footer>
+		<footer id="footerBg">
+			<div class="container">
+				<br>
+				<div class="row" id="footerFont">
+					<div class="col-sm-4">
+						<h4>Introduce</h4>
+						<p>I have studied Java, HTML, Python, Jquari, etc. and I want
+							to make a space where I can exchange questions and answers
+							related to books.</p>
+					</div>
+					<div class="col-sm-4">
+						<h4>Contact</h4>
+						<p>
+							<span class="glyphicon glyphicon-map-marker"></span>Jongak, Seoul
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-phone"></span>Phone: +82
+							1082747414
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-envelope"></span>Email:
+							hth0411@naver.com
+						</p>
+					</div>
+					<div class="col-sm-4">
+						<h4>store</h4>
+						<h5>
+							<a href="https://www.aladin.co.kr/">aladin</a>
+						</h5>
+						<h5>
+							<a href="http://www.bandinlunis.com/">bandinluis</a>
+						</h5>
+						<h5>
+							<a href="http://www.yes24.com/">yes24</a>
+						</h5>
+					</div>
+					<br>
+					<div class="col-sm-12 text-center">
+						<h5>Copyright &copy; 2020.ALL RIGHTS RESERVED.</h5>
+						<h5>Allie Dohee Kim</h5>
+					</div>
+				</div>
+			</div>
+		</footer>
 </body>
 </html>

@@ -147,7 +147,7 @@ $(function () {
         }
     });
  
-    // 좋아요 기능
+    // 좋아요 기능: 로그인 후 
     $('.heart').on("click", function () {
         let like_dislike;
         const heart_count = $(this).next();
@@ -182,6 +182,11 @@ $(function () {
             }
         }); //ajax end
         return false;
+    });
+    
+//    좋아요 기능: 로그인 전
+    $('.any_heart').on("click", function () {
+    	alert("로그인 후 가능합니다.");
     });
     
 //	검색

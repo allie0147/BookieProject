@@ -94,7 +94,7 @@
 							<div class="thumbnail">
 								<div class="img">
 									<div class="wrapGlyph">
-									<p id="board_id" style="display: none">${board.id}</p>
+										<p id="board_id" style="display: none">${board.id}</p>
 										<c:if test="${board.userId == userId}">
 											<a class="glyph edit"><span
 												class="glyphicon glyphicon-edit"></span></a>
@@ -106,9 +106,16 @@
 									<div>
 										<p class="writer">${board.writer }</p>
 										<div class="like">
-											<a class="heart glyph"><span
-												class='glyphicon glyphicon-heart-empty'></span></a><p class="count">${board.likeCnt }</p></div>
-										<!-- <span class='glyphicon glyphicon-heart'></span> -->
+											<sec:authorize access="isAuthenticated()">
+												<a class="heart glyph"><span
+													class='glyphicon glyphicon-heart-empty'></span></a>
+												<p class="count">${board.likeCnt }</p>
+											</sec:authorize>
+											<sec:authorize access="isAnonymous()">
+												<a class="any_heart glyph"><span class='glyphicon glyphicon-heart'></span></a>
+												<p class="count">${board.likeCnt }</p>
+											</sec:authorize>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -124,7 +131,8 @@
 				</sec:authorize>
 
 				<div id="searchButton" class="input-group col-xs-4 ">
-					<input type="text" class="form-control" placeholder="검색" name="query">
+					<input type="text" class="form-control" placeholder="검색"
+						name="query">
 					<div class="input-group-btn">
 						<button id="bcbSearchSb" class="btn btn-default" type="submit">
 							<i class="glyphicon glyphicon-search"></i>
@@ -146,7 +154,7 @@
 								<div class="thumbnail">
 									<div class="img">
 										<div class="wrapGlyph">
-										<p id="board_id" style="display: none">${board.id}</p>
+											<p id="board_id" style="display: none">${board.id}</p>
 											<c:if test="${board.userId == userId}">
 												<a class="glyph edit"><span
 													class="glyphicon glyphicon-edit"></span></a>
@@ -158,9 +166,17 @@
 										<div>
 											<p class="writer">${board.writer }</p>
 											<div class="like">
-												<a class="heart glyph"><span
-													class='glyphicon glyphicon-heart-empty'></span></a><p class="count">${board.likeCnt}</p></div>
-											<!-- <span class='glyphicon glyphicon-heart'></span> -->
+												<sec:authorize access="isAuthenticated()">
+													<a class="heart glyph"><span
+														class='glyphicon glyphicon-heart-empty'></span></a>
+													<p class="count">${board.likeCnt }</p>
+												</sec:authorize>
+												<sec:authorize access="isAnonymous()">
+													<a class="any_heart glyph"><span
+														class='glyphicon glyphicon-heart'></span></a>
+													<p class="count">${board.likeCnt }</p>
+												</sec:authorize>
+											</div>
 										</div>
 									</div>
 								</div>

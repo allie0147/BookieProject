@@ -186,6 +186,11 @@ $(function () {
         return false;
     });
     
+//  좋아요 기능: 로그인 전
+    $('.any_heart').on("click", function () {
+    	alert("로그인 후 가능합니다.");
+    });
+    
 //	검색
 	$("#bcbSearchSb").on("click", function(){
 		let query = $("input[name=query]").val();
