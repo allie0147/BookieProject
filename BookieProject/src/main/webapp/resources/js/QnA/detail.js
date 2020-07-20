@@ -205,13 +205,39 @@ $(function () {
                     success: function (reply) {
                         $('.temp').detach();
                         toggle_bool = true;
-                        const div = "<li class='comment_list'><div class = 'container boardContainer replyContainer'><div class = 'commentContainer'><div class = 'reply_rep'><span class = 'glyphicon glyphicon-hand-right'></span></div>" +
-                            "<div class = 'reply_writer writer'><span>" + reply.writer + "</span></div><div class = 'reply_message' id ='" + reply.id + "'><span>" + reply.message + "</span></div><div class = 'comment_index'><span class='wdate'>" + reply.wtDate_str + "</span></div><div class = 'reply_aTag'><a class = 'replyUp' id='" + reply.id + "'> 수정 </a><a class = 'replyDel' id = '" + reply.id + "'> 삭제 </a></div></div> </div></li>";
-                        if ($('#li_' + commentId).children().first() == undefined) {
-                            div = '<ul id="ul_"' + commentId + '>' + div + '</ul>';
-                        }
-                        $('#ul_' + commentId).eq(0).last().append(div);
-                    },
+                        const div = "<li class='comment_list'><div class = 'container boardContainer replyContainer'><div class = 'commentContainer'><div class = 'reply_rep'><span class = 'glyphicon glyphicon-hand-right'></span></div>"
+							+ "<div class = 'reply_writer writer'><span>"
+							+ reply.writer
+							+ "</span></div><div class = 'reply_message' id ='"
+							+ reply.id
+							+ "'><span>"
+							+ reply.message
+							+ "</span></div><div class = 'comment_index'><span class='wdate'>"
+							+ reply.wtDate_str
+							+ "</span></div><div class = 'reply_aTag'><a class = 'replyUp' id='"
+							+ reply.id
+							+ "'> 수정 </a><a class = 'replyDel' id = '"
+							+ reply.id
+							+ "'> 삭제 </a></div></div> </div></li>";
+					if ($(
+							'#li_'
+									+ commentId)
+							.children()
+							.first() == undefined) {
+						div = '<ul id="ul_"'
+								+ commentId
+								+ '>'
+								+ div
+								+ '</ul>';
+					}
+					$(
+							'#ul_'
+									+ commentId)
+							.eq(0)
+							.last()
+							.append(
+									div);
+				},
                     error: function () {
                         alert('댓글 작성을 실패 했습니다.');
                         return false;
