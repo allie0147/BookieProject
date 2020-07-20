@@ -19,17 +19,24 @@ Bookie is...
     <li>Build : Maven</li>
     <li>Library : Lombok, Jacskon</li>
     <li>Database : MySQL</li>
-    <li>API
+    <li>APIs
       <ul>
-        <li>Kakao Login Api</li>
-        <li>Java Mail Api</li>
-        <li>Twilio Message Api</li>
+        <li>Kakao Login API</li>
+        <li>Java Mail API</li>
+        <li>Twilio Message API</li>
         <li>JDBC</li>
         <li>Bootstrap 3</li>
         <li>Summernote</li>
        </ul>
     </li>
-    <li>Language : Java, html, css, Javascript, JQuery</li>
+    <li>Language</li>
+    <ul>
+         <li>Java IDK 1.8</li>
+         <li>HTML5</li>
+         <li>CSS</li>
+         <li>JavaScript 1.8.5</li>
+         <li>JQuery 3.5.1</li> 
+    </ul>
   </ul>
   
 <h2>We are ...</h2>
