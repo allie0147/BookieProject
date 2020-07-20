@@ -7,7 +7,7 @@ Bookie is...
 
 <h2>We use ...</h2>
   <ul>
-    <li>Framwork</li>
+    <li>Framworks</li>
     <ul>
       <li>Spring STS 5.2.5</li>
       <li>Spring MVC</li>      
