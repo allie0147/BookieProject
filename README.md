@@ -7,7 +7,14 @@ Bookie is...
 
 <h2>We use ...</h2>
   <ul>
-    <li>Framwork : Spring STS 5.2.5, Spring MVC, Spring Security, MyBatis, Hibernate</li>
+    <li>Framwork</li>
+    <ul>
+      <li>Spring STS 5.2.5</li>
+      <li>Spring MVC</li>      
+      <li>Spring Security</li>
+      <li>MyBatis</li>
+      <li>Hibernate</li>
+    </ul>
     <li>Server : Apache Tomcat 9.0.25</li>
     <li>Build : Maven</li>
     <li>Library : Lombok, Jacskon</li>
