@@ -146,7 +146,7 @@
 								</div>
 							</div>
 						</li>
-						<ul class='ul_${comment.id }'>
+						<ul id='ul_${comment.id }'>
 						<c:forEach var="reply" items="${comment.replyList }">
 							<li class="comment_list">
 								<div class="container boardContainer replyContainer">
