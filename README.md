@@ -7,15 +7,19 @@ Bookie is...
 
 <h2>We use ...</h2>
   <ul>
-    <li>Framwork : Spring, Spring Security, Mybatis</li>
-    <li>Library : Lombok, ...</li>
+    <li>Framwork : Spring STS 5.2.5, Spring MVC, Spring Security, MyBatis, Hibernate</li>
+    <li>Server : Apache Tomcat 9.0.25</li>
+    <li>Build : Maven</li>
+    <li>Library : Lombok, Jacskon</li>
     <li>Database : MySQL</li>
     <li>API
       <ul>
-        <li>Naver login Api</li>
         <li>Kakao Login Api</li>
         <li>Java Mail Api</li>
         <li>Twilio Message Api</li>
+        <li>JDBC</li>
+        <li>Bootstrap 3</li>
+        <li>Summernote</li>
        </ul>
     </li>
     <li>Language : Java, html, css, Javascript, JQuery</li>
