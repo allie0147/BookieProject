@@ -3,7 +3,7 @@ $(function () {
 	$("button[name=delBtn]").on("click", function () {
         const boardId = document.getElementsByName('board_id')[0].value;
         if (confirm("정말 삭제하시겠습니까?")) {
-            window.location.replace('/club/del?b=' + boardId);
+            window.location.replace('/qna/del?b=' + boardId);
         } else {
             return false;
         }
@@ -192,9 +192,10 @@ $(function () {
         }
         $('form[name=replyForm]').on('submit', function () {
             const reply = document.getElementById('reply_comment').value;
+            
             if (reply != "") {
                 $.ajax({
-                    url: "/club/reply",
+                    url: "/qna/reply",
                     type: "post",
                     data: {
                         "boardId": boardId,

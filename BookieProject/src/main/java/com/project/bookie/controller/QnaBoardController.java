@@ -275,6 +275,7 @@ public class QnaBoardController {
 		String uEmail = auth.getName(); // 세션에 있는 유저이메일
 		reply.setUserId(userService.getUserIdByEmail(uEmail));
 		reply.setWriter(userService.getUserNickname(uEmail));
+		System.out.println(reply);
 		String date = service.writeReply(reply);
 		String head = date.substring(0, 10);
 		String tail = date.substring(11, 16);
