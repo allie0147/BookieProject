@@ -18,7 +18,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/resources/js/mypage/main.js"></script>
+<script src="/resources/js/mypage/unsub.js"></script>
 </head>
 <body>
 	<div class="main-body">
@@ -69,50 +69,29 @@
 			</div>
 		</nav>
 		<div class="container">
-			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-			<img src="../resources/images/banner-mypage.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
+			<div
+				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+				<img src="../resources/images/banner-mypage.jpg" class="img-rounded"
+					alt="Cinque Terre" width="100%" height="100%">
+			</div>
 		</div>
 		<div class="container">
 			<div class="container-fluid bg">
-				<div class="div-container">
-
-					<div class="container">
-						<b>Email</b>
-						<div id='user'>${mypageInfo.getUEmail()}</div>
+				<div class="div-container" style="padding: 40px 50px;">
+					<div class="form-group">
+						<form name="unsubscribe"
+							class="form-container has-warning has-feedback">
+							<div class="form-group">
+								<p id="user" style="display: none">${uEmail}</p>
+								<label class="control-label" for="password">비밀번호를 다시
+									입력해주세요.</label> <input class="form-control" type="password"
+									id="password" placeholder="비밀번호" autofocus="autofocus" />
+							</div>
+							<div class="col text-center">
+								<input type="submit" class="btn btn-warning" value="확 인" />
+							</div>
+						</form>
 					</div>
-					<div class="container">
-						<b>NICKNAME</b>
-						<div>${mypageInfo.nickname }</div>
-					</div>
-					<div class="container">
-						<b>PHONE</b>
-						<div>${mypageInfo.phone }</div>
-					</div>
-					<div class="container">
-						<b>INTEREST GENRE</b><br>
-						<div>
-							<c:forEach var="interest" items="${mypageInfo.interestList }"
-								varStatus="status">
-								<c:if
-									test="${status.index != mypageInfo.interestList.size() - 1 }">
-							${interest.genreName }, 
-						</c:if>
-								<c:if
-									test="${status.index == mypageInfo.interestList.size() - 1 }">
-							${interest.genreName }
-						</c:if>
-							</c:forEach>
-						</div>
-					</div>
-					<div class="container">
-						<b>가입일</b>
-						<div class="">${mypageInfo.regDate }</div>
-					</div>
-					<div class="text-center">
-						<a href="/mypage/updateForm" class="btn btn-md btn-success">수정하기</a>
-						<a href="/mypage/unsubscribe" id="unsubscribe" class="btn btn-md btn-danger">탈퇴하기</a>
-					</div>
-
 				</div>
 			</div>
 		</div>

@@ -23,6 +23,9 @@ public interface UserMapper {
 
 	// user nickname가져오기~
 	public String getUserNicknameByEmail(String uEmail);
+	
+	// user pwd 가져오기~~	
+	public String getUserPwd(String uEmail);
 
 	// 연락처로 회원 조회(아이디 찾기, 비밀번호 찾기)
 	public User getUserByPhone(String phone);

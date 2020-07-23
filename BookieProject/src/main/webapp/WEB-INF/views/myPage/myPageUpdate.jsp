@@ -122,7 +122,7 @@
 						<p>* Email과 가입일은 수정 할 수 없습니다</p>
 						<hr>
 						<div class="col text-center">
-							<input type="submit" value="수 정" class="btn btn-danger">
+							<input type="submit" value="수 정" class="btn btn-success">
 						</div>
 					</form>
 				</div>

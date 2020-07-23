@@ -33,6 +33,9 @@
 	<select id="getInterestByUserId" resultType="interest">
 		select i.genre_id as genreId, g.name as genreName from genre g join interest i on g.id = i.genre_id where i.user_id = #{id}
 	</select>
+	<select id="getUserPwd" resultType="String">
+		select u_pwd from user where u_email=#{uEmail}
+	</select>
 	<!-- 이메일로 비밀번호 찾기(일치하는 이메일 존재시 이메일 인증 필요 - 이메일로 비밀번호 전송 or 이메일 인증 성공시 페이지에서 
 		비밀번호 재설정 - 차후에 비밀번호 재설정 -->
 	<select id="getUserByEmail" resultMap="u">  <!-- result type으로 변경 -->

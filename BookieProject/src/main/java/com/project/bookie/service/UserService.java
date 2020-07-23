@@ -72,6 +72,11 @@ public class UserService {
 		return userMapper.getUserNicknameByEmail(uEmail);
 	}
 
+//	user pwd 가져오기
+	public String getUserPwd(String uEmail) {
+		return userMapper.getUserPwd(uEmail);
+	}
+
 //	 중복 체크 : 1->있음, 0->없음
 	public int emailCheck(String uEmail) {
 		return userMapper.countUserByEmail(uEmail);
