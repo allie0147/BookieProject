@@ -82,17 +82,17 @@
 		<div class="container text-center" id="qnaTitle">
 			<h3 id="board_title">QnA</h3>
 			<div class="container">
-				<ul class="category">
-					<li><a href="/qna/main" class="list-item">전체</a></li>
-					<li><a href="/qna/board?g=1&p=1" class="list-item">소설/시/희곡</a></li>
-					<li><a href="/qna/board?g=2&p=1" class="list-item">에세이</a></li>
-					<li><a href="/qna/board?g=3&p=1" class="list-item">인문학</a></li>
-					<li><a href="/qna/board?g=4&p=1" class="list-item">경제경영</a></li>
-					<li><a href="/qna/board?g=5&p=1" class="list-item">사회과학</a></li>
-					<li><a href="/qna/board?g=6&p=1" class="list-item">종교</a></li>
-					<li><a href="/qna/board?g=7&p=1" class="list-item">예술</a></li>
+				<ul class="breadcrumb">
+					<li><a href="/qna/main" class="active">전체</a></li>
+					<li><a href="/qna/board?g=1&p=1">소설/시/희곡</a></li>
+					<li><a href="/qna/board?g=2&p=1">에세이</a></li>
+					<li><a href="/qna/board?g=3&p=1">인문학</a></li>
+					<li><a href="/qna/board?g=4&p=1">경제경영</a></li>
+					<li><a href="/qna/board?g=5&p=1">사회과학</a></li>
+					<li><a href="/qna/board?g=6&p=1">종교</a></li>
+					<li><a href="/qna/board?g=7&p=1">예술</a></li>
 				</ul>
-				</div>
+			</div>
 		</div>
 		<div class="container">
 
