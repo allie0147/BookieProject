@@ -44,7 +44,7 @@ public class BookCardBoardService {
 	}
 
 //	likeUp
-	public int likeCntUp(int id) {
+	public int likeCntUp(long id) {
 		int count = mapper.selectLikeCnt(id) + 1;
 		System.out.println("up count: " + count);
 		mapper.likeCntUp(count, id);
@@ -52,11 +52,38 @@ public class BookCardBoardService {
 	}
 
 //	likeDown
-	public int likeCntDown(int id) {
+	public int likeCntDown(long id) {
 		int count = mapper.selectLikeCnt(id) - 1;
 		System.out.println("down count: " + count);
 		mapper.likeCntDown(count, id);
 		return count;
+	}
+
+//	bookmark-added
+	public int addedBookmark(long boardId, long userId) {
+		try {
+			mapper.addBookmark(boardId, userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+		return 0;
+	}
+
+// bookmark-removed
+	public int removedBookmark(long boardId, long userId) {
+		try {
+			mapper.deleteBookmark(boardId, userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+		return 0;
+	}
+
+//	get bookmark
+	public List<Long> getBookmark(long userId) {
+		return mapper.selectBookmark(userId);
 	}
 
 //	검색 기능

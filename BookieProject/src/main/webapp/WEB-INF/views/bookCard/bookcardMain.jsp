@@ -86,6 +86,7 @@
 				</div>
 			</div>
 			<div class="container">
+				<p id="bmList" style="display: none">${bookmark}</p>
 				<!-- 좋아요 수가 가장 많은 글 3개 -->
 				<h2>Best3</h2>
 				<div class="row">
@@ -94,12 +95,23 @@
 							<div class="thumbnail">
 								<div class="img">
 									<div class="wrapGlyph">
-										<p id="board_id" style="display: none">${board.id}</p>
-										<c:if test="${board.userId == userId}">
+										<p class="board_id" id="board_id" style="display: none">${board.id}</p>
+										<c:if test="${board.userId eq userId}">
 											<a class="glyph edit"><span
 												class="glyphicon glyphicon-edit"></span></a>
 											<a class="glyph delete"><span
 												class="glyphicon glyphicon-trash"></span></a>
+										</c:if>
+										<c:if test="${board.userId ne userId}">
+											<sec:authorize access="isAuthenticated()">
+												<!-- 유저 bookmark정보 가져오기 -->
+												<a class="bookmark bookmark_auth"><span
+													class='glyphicon glyphicon-bookmark'></span></a>
+											</sec:authorize>
+											<sec:authorize access="isAnonymous()">
+												<a class="bookmark any"><span
+													class='glyphicon glyphicon-bookmark'></span></a>
+											</sec:authorize>
 										</c:if>
 									</div>
 									<p class="content">${board.content }</p>
@@ -107,12 +119,14 @@
 										<p class="writer">${board.writer }</p>
 										<div class="like">
 											<sec:authorize access="isAuthenticated()">
-												<a class="heart glyph"><span
+												<!-- 유저 like 정보 가져오기 -->
+												<a class="heart heart_auth"><span
 													class='glyphicon glyphicon-heart-empty'></span></a>
 												<p class="count">${board.likeCnt }</p>
 											</sec:authorize>
 											<sec:authorize access="isAnonymous()">
-												<a class="any_heart glyph"><span class='glyphicon glyphicon-heart'></span></a>
+												<a class="heart any"><span
+													class='glyphicon glyphicon-heart-empty'></span></a>
 												<p class="count">${board.likeCnt }</p>
 											</sec:authorize>
 										</div>
@@ -154,12 +168,23 @@
 								<div class="thumbnail">
 									<div class="img">
 										<div class="wrapGlyph">
-											<p id="board_id" style="display: none">${board.id}</p>
-											<c:if test="${board.userId == userId}">
+											<p class="board_id" id="board_id" style="display: none">${board.id}</p>
+											<c:if test="${board.userId eq userId}">
 												<a class="glyph edit"><span
 													class="glyphicon glyphicon-edit"></span></a>
 												<a class="glyph delete"><span
 													class="glyphicon glyphicon-trash"></span></a>
+											</c:if>
+											<c:if test="${board.userId ne userId}">
+												<sec:authorize access="isAuthenticated()">
+													<!-- 유저 bookmark정보 가져오기 -->
+													<a class="bookmark bookmark_auth"><span
+														class='glyphicon glyphicon-bookmark'></span></a>
+												</sec:authorize>
+												<sec:authorize access="isAnonymous()">
+													<a class="bookmark any"><span
+														class='glyphicon glyphicon-bookmark'></span></a>
+												</sec:authorize>
 											</c:if>
 										</div>
 										<p class="content">${board.content }</p>
@@ -167,13 +192,14 @@
 											<p class="writer">${board.writer }</p>
 											<div class="like">
 												<sec:authorize access="isAuthenticated()">
-													<a class="heart glyph"><span
+													<!-- 유저 like 정보 가져오기 -->
+													<a class="heart heart_auth"><span
 														class='glyphicon glyphicon-heart-empty'></span></a>
 													<p class="count">${board.likeCnt }</p>
 												</sec:authorize>
 												<sec:authorize access="isAnonymous()">
-													<a class="any_heart glyph"><span
-														class='glyphicon glyphicon-heart'></span></a>
+													<a class="heart any"><span
+														class='glyphicon glyphicon-heart-empty'></span></a>
 													<p class="count">${board.likeCnt }</p>
 												</sec:authorize>
 											</div>

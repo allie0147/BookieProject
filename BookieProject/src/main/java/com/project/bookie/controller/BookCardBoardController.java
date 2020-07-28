@@ -79,18 +79,27 @@ public class BookCardBoardController {
 		if (p + 5 < boardVL.getPageTotalCount()) {
 			nextNum = p + 5;
 		}
+//		유저정보
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String uEmail = auth.getName();
-		if (!uEmail.equals("anonymousUser")) {
+		if (!uEmail.equals("anonymousUser")) { //반드시 유저가 로그인 했을시 진행 되어야 함 !
 			long userId = userService.getUserIdByEmail(uEmail);
 			m.addAttribute("userId", userId);
+//		북마크 가져오기
+			List<Long> bookmarkList = service.getBookmark(userId);
+			if (bookmarkList != null) {
+				m.addAttribute("bookmark", bookmarkList);
+			}
+//		좋아요 가져오기
 		}
 		m.addAttribute("nextNum", nextNum);
 		m.addAttribute("pageArray", pageArray);
 		m.addAttribute("p", p);
+
 		return "bookCard/bookcardMain.jsp?p=" + p;
 	}
 
+//	검색
 	@GetMapping("/search")
 	public String getBoardListBySearchInfo(Model m, @RequestParam(value = "query") String query,
 			@RequestParam(value = "p", defaultValue = "1", required = false) int p) {
@@ -107,10 +116,12 @@ public class BookCardBoardController {
 		return "bookCard/search_result.jsp?query=" + query + "&b=" + p;
 	}
 
+//	Board CRUD
+//	작성
 	@PostMapping(value = "/write", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String writeOnBookCardBoard(@Param("userId") String userId, @Param("content") String content) {
-		System.out.println("userId : "+userId+", content : "+content);
+		System.out.println("userId : " + userId + ", content : " + content);
 		try {
 			service.writeOnBoard(userId, content);
 		} catch (Exception e) {
@@ -120,6 +131,7 @@ public class BookCardBoardController {
 		return "true";
 	}
 
+//	수정
 	@PostMapping(value = "/edit", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String editOnBookCardBoard(@Param("id") String id, @Param("content") String content) {
@@ -132,6 +144,7 @@ public class BookCardBoardController {
 		return "true";
 	}
 
+//	삭제
 	@PostMapping(value = "/delete", produces = "text/plain; charset=utf8")
 	@ResponseBody
 	public String editOnBookCardBoard(@Param("id") String id) {
@@ -145,9 +158,10 @@ public class BookCardBoardController {
 		return "true";
 	}
 
+//	좋아요기능 
 	@PostMapping(value = "/likes", produces = "text/plain; charset=utf8")
 	@ResponseBody
-	public String countLikes(@Param("id") int id, @Param("likeCnt") String likeCnt) {
+	public String countLikes(@Param("id") long id, @Param("likeCnt") String likeCnt) {
 		System.out.println("board id: " + id + ", like count: " + likeCnt);
 		if (likeCnt.equals("like")) {
 			String count = String.valueOf(service.likeCntUp(id));
@@ -157,6 +171,24 @@ public class BookCardBoardController {
 			return String.valueOf(service.likeCntDown(id));
 		} else {
 			return "-1"; // false;
+		}
+	}
+
+//	북마크 기능
+	@PostMapping(value = "/bookmark", produces = "text/plain; charset=utf8")
+	@ResponseBody
+	public String chkBookmarked(@Param("boardId") long boardId, @Param("userId") long userId,
+			@Param("chk") String chk) {
+		System.out.println("boardId: " + boardId + ", userId: " + userId + ",chk: " + chk);
+		int i;
+		if (chk.equals("added")) {
+			i = service.addedBookmark(boardId, userId);
+			return (i == 0) ? "1" : "-1";
+		} else if (chk.equals("removed")) {
+			i = service.removedBookmark(boardId, userId);
+			return (i == 0) ? "0" : "-1";
+		} else {
+			return "-1";
 		}
 	}
 }

@@ -147,18 +147,59 @@ thead>tr {
 	width: 600px;
 	text-align: right;
 }
-/*glyphcon aTag*/
+/*glyphcon aTags*/
 .glyph {
-	color: white;
+	color: #ffffff;
 	font-size: 1.2em;
 }
 
-.glypicon-heart-empty {
-	font-size: 1.5em;
+/* heart */
+.heart {
+	color: #ffffff;
+	font-size: 1.2em;
 }
 
-.glypicon-heart {
-	font-size: 1.5em;
+.heart:hover {
+	color: #ee4957;
+}
+
+.herat:focus {
+	color: #ee4957;
+}
+
+.heart:active {
+	color: #ee4957;
+}
+
+.glyphicon-heart {
+	color: #ee4957;
+}
+
+/*bookmark*/
+.bookmark {
+	color: #ffffff;
+	font-size: 1.2em;
+}
+
+.bookmark:hover {
+	color: #fff224;
+}
+
+.bookmark:focus {
+	color: #fff224;
+}
+
+.bookmark:active {
+	color: #fff224;
+}
+
+.glyphicon-bookmark {
+	float: right;
+	padding-right: 15px;
+}
+
+.bookmarked {
+	color: #fff224;
 }
 
 .wrapGlyph {
