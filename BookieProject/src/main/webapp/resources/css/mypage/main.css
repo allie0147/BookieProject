@@ -8,5 +8,15 @@ div.div-container {
 	box-shadow: 1px 4px 26px 1px rgba(0, 0, 0, 0.75);
 	border-radius: 10px;
 	line-height: 30px;
-	width: 300px;
+}
+.menu-line>ul>li{
+	border-bottom: 1px solid #b0b0b0;
+	padding-right: 1px;
+}
+.menu-line>ul>li>a{
+	padding-right: 10px 0;
+}
+.col-md-4 {
+    width: 23.33333333%;
+    margin-right: 75px;
 }
