@@ -53,8 +53,10 @@
 	margin:300px auto 300px auto;
 }
 .slide-div{
-	margin: 20px 0;
 	text-align: right;
+}
+.slide-ex{
+	padding-right: 175px;
 }
 .h4{
 	line-height:30px; !important;
