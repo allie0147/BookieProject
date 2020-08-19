@@ -31,7 +31,7 @@ Bookie is...
     </li>
     <li>Language</li>
     <ul>
-         <li>Java IDK 1.8</li>
+         <li>Java JDK 1.8</li>
          <li>HTML5</li>
          <li>CSS</li>
          <li>JavaScript 1.8.5</li>
