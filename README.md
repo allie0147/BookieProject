@@ -14,6 +14,7 @@ For those who are interested in reading, after reading a book, they can leave si
       <li>Spring Security</li>
       <li>MyBatis</li>
       <li>Hibernate</li>
+      <li>Bootstrap 3</li>
     </ul>
     <li>Server : Apache Tomcat 9.0.25</li>
     <li>Build : Maven</li>
@@ -25,7 +26,6 @@ For those who are interested in reading, after reading a book, they can leave si
         <li>Java Mail API</li>
         <li>Twilio Message API</li>
         <li>JDBC</li>
-        <li>Bootstrap 3</li>
         <li>Summernote</li>
        </ul>
     </li>
