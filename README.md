@@ -3,7 +3,7 @@
 
 <h2>What is Bookie?</h2>
 &nbsp;This Repository is about 'Bookie'(<a href="https://localhost:8080/">go to Bookie</a>).<br>
-Bookie is...
+For those who are interested in reading, after reading a book, they can leave simple texts or ask and answer each other's questions, and through the reading club bulletin board, you can find a reading club and recruit club members.
 
 <h2>We use ...</h2>
   <ul>
