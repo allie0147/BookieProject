@@ -171,9 +171,10 @@
 			<div class="row" id="footerFont">
 				<div class="col-sm-4">
 					<h4>Introduce</h4>
-					<p>I have studied Java, HTML, Python, Jquari, etc. and I want
-						to make a space where I can exchange questions and answers related
-						to books.</p>
+					<p>For those who are interested in reading, after reading a book, 
+						they can leave simple texts or ask and answer each other's questions, 
+						and through the reading club bulletin board, you can find a reading club 
+						and recruit club members.</p>
 				</div>
 				<div class="col-sm-4">
 					<h4>Contact</h4>
