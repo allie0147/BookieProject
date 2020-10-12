@@ -74,7 +74,13 @@
 					alt="Cinque Terre" width="100%" height="100%">
 			</div>
 		</div>
+<<<<<<< HEAD
+=======
+		<div class="container">
+			<div class="row">
+>>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 
+<<<<<<< HEAD
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2">
@@ -111,15 +117,143 @@
 								varStatus="status">
 								<c:if
 									test="${status.index != mypageInfo.interestList.size() - 1 }">
+=======
+				<div class="col-md-4 menu-line">
+					<ul class="nav">
+						<li class="active"><a data-toggle="tab" href="#home"><h3>회원정보
+									조회</h3></a></li>
+						<br>
+						<li><a data-toggle="tab" href="#menu1"><h3>내가 쓴 글 조회</h3></a></li>
+						<br>
+						<li><a data-toggle="tab" href="#menu2"><h3>북마크한 글귀</h3></a></li>
+						<br>
+						<li><a data-toggle="tab" href="#menu3"><h3>좋아요한 글귀</h3></a></li>
+						<br>
+					</ul>
+				</div>
+
+				<div class="container-fluid bg col-md-8">
+					<div class="div-container">
+
+						<div class="tab-content">
+							<div id="home" class="tab-pane fade in active">
+								<h3>회원정보</h3>
+								<div class="panel-group my-info" id="accordion">
+									<div class="container">
+										<b>Email</b>
+										<div id='user'>${mypageInfo.getUEmail()}</div>
+									</div>
+									<div class="container">
+										<b>NICKNAME</b>
+										<div>${mypageInfo.nickname }</div>
+									</div>
+									<div class="container">
+										<b>PHONE</b>
+										<div>${mypageInfo.phone }</div>
+									</div>
+									<div class="container">
+										<b>INTEREST GENRE</b><br>
+										<div>
+											<c:forEach var="interest" items="${mypageInfo.interestList }"
+												varStatus="status">
+												<c:if
+													test="${status.index != mypageInfo.interestList.size() - 1 }">
+>>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 							${interest.genreName }, 
 						</c:if>
-								<c:if
-									test="${status.index == mypageInfo.interestList.size() - 1 }">
+												<c:if
+													test="${status.index == mypageInfo.interestList.size() - 1 }">
 							${interest.genreName }
 						</c:if>
-							</c:forEach>
+											</c:forEach>
+										</div>
+									</div>
+									<div class="container">
+										<b>가입일</b>
+										<div class="">${mypageInfo.regDate }</div>
+									</div>
+									<div class="text-center">
+										<a href="/mypage/updateForm" class="btn btn-md btn-success">수정하기</a>
+										<a href="/mypage/unsubscribe" id="unsubscribe"
+											class="btn btn-md btn-danger">탈퇴하기</a>
+									</div>
+								</div>
+							</div>
+
+							<div id="menu1" class="tab-pane fade">
+								<h3>내가 쓴 글</h3>
+								<ul class="nav nav-tabs">
+									<li class="active"><a data-toggle="tab" href="#card">글귀
+											게시글</a></li>
+									<li><a data-toggle="tab" href="#club">독서클럽 게시글</a></li>
+								</ul>
+								<div class="tab-content">
+									<div id="card" class="tab-pane fade in active">
+										<div class="panel-group">
+											<h4>글귀 게시글</h4>
+											<p>asdqw1231</p>
+											<p>asdqw1231</p>
+											<p>asdqw1231</p>
+											<p>asdqw1231</p>
+											<p>asdqw1231</p>
+
+										</div>
+									</div>
+									<div id="club" class="tab-pane fade">
+										<div class="panel-group">
+											<h4>독서클럽 게시글</h4>
+											<p>99090901</p>
+											<p>90909031</p>
+											<p>as9090w90931</p>
+											<p>awwwwwwww1</p>
+											<p>addddddd231</p>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div id="menu2" class="tab-pane fade">
+								<h3>북마크한 글귀</h3>
+								ㅎㄵ
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+							</div>
+
+							<div id="menu3" class="tab-pane fade">
+								<h3>좋아요한 글귀</h3>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+								<p>asas</p>
+							</div>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<div class="container">
 						<b>가입일</b>
 						<div class="">${mypageInfo.regDate }</div>
@@ -129,6 +263,8 @@
 						<a href="/mypage/unsubscribe" id="unsubscribe"
 							class="btn btn-md btn-danger">탈퇴하기</a>
 					</div>
+=======
+>>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 				</div>
 			</div>
 		</div>
@@ -139,9 +275,10 @@
 			<div class="row" id="footerFont">
 				<div class="col-sm-4">
 					<h4>Introduce</h4>
-					<p>I have studied Java, HTML, Python, Jquari, etc. and I want
-						to make a space where I can exchange questions and answers related
-						to books.</p>
+					<p>For those who are interested in reading, after reading a book, 
+						they can leave simple texts or ask and answer each other's questions, 
+						and through the reading club bulletin board, you can find a reading club 
+						and recruit club members.</p>
 				</div>
 				<div class="col-sm-4">
 					<h4>Contact</h4>
