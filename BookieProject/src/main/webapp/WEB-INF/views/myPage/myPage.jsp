@@ -18,7 +18,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/resources/js/mypage/main.js"></script>
 </head>
 <body>
 	<div class="main-body">
@@ -69,13 +68,30 @@
 			</div>
 		</nav>
 		<div class="container">
-			<div style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
-			<img src="../resources/images/banner-mypage.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="100%"></div>
+			<div
+				style="margin-top: 50px; background: lightgray; width: 95%; height: 250px; margin: 50px auto 50px auto">
+				<img src="../resources/images/banner-mypage.jpg" class="img-rounded"
+					alt="Cinque Terre" width="100%" height="100%">
+			</div>
 		</div>
-		<div class="container">
-			<div class="container-fluid bg">
-				<div class="div-container">
 
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					<ul class="list-group">
+						<li class="list-group-item"><a href="">내 정보 조회</a></li>
+						<li class="list-group-item"><a href="">내 정보 수정</a></li>
+						<li class="list-group-item" data-toggle="collapse"><a
+							href="#collapse1" class="dropdown-toggle" data-toggle="collapse"
+							aria-expanded="true">관심 글</a>
+							<ul id="collapse1" class="panel-collapse collapse">
+								<li class=""><a href="">북마크한 글</a></li>
+								<li class=""><a href="">좋아요한 글</a></li>
+							</ul></li>
+						<li class="list-group-item"><a href="">회원탈퇴</a></li>
+					</ul>
+				</div>
+				<div class="col-md-8">
 					<div class="container">
 						<b>Email</b>
 						<div id='user'>${mypageInfo.getUEmail()}</div>
@@ -110,9 +126,9 @@
 					</div>
 					<div class="text-center">
 						<a href="/mypage/updateForm" class="btn btn-md btn-success">수정하기</a>
-						<a href="/mypage/unsubscribe" id="unsubscribe" class="btn btn-md btn-danger">탈퇴하기</a>
+						<a href="/mypage/unsubscribe" id="unsubscribe"
+							class="btn btn-md btn-danger">탈퇴하기</a>
 					</div>
-
 				</div>
 			</div>
 		</div>
