@@ -74,50 +74,9 @@
 					alt="Cinque Terre" width="100%" height="100%">
 			</div>
 		</div>
-<<<<<<< HEAD
-=======
 		<div class="container">
 			<div class="row">
->>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 
-<<<<<<< HEAD
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2">
-					<ul class="list-group">
-						<li class="list-group-item"><a href="">내 정보 조회</a></li>
-						<li class="list-group-item"><a href="">내 정보 수정</a></li>
-						<li class="list-group-item" data-toggle="collapse"><a
-							href="#collapse1" class="dropdown-toggle" data-toggle="collapse"
-							aria-expanded="true">관심 글</a>
-							<ul id="collapse1" class="panel-collapse collapse">
-								<li class=""><a href="">북마크한 글</a></li>
-								<li class=""><a href="">좋아요한 글</a></li>
-							</ul></li>
-						<li class="list-group-item"><a href="">회원탈퇴</a></li>
-					</ul>
-				</div>
-				<div class="col-md-8">
-					<div class="container">
-						<b>Email</b>
-						<div id='user'>${mypageInfo.getUEmail()}</div>
-					</div>
-					<div class="container">
-						<b>NICKNAME</b>
-						<div>${mypageInfo.nickname }</div>
-					</div>
-					<div class="container">
-						<b>PHONE</b>
-						<div>${mypageInfo.phone }</div>
-					</div>
-					<div class="container">
-						<b>INTEREST GENRE</b><br>
-						<div>
-							<c:forEach var="interest" items="${mypageInfo.interestList }"
-								varStatus="status">
-								<c:if
-									test="${status.index != mypageInfo.interestList.size() - 1 }">
-=======
 				<div class="col-md-4 menu-line">
 					<ul class="nav">
 						<li class="active"><a data-toggle="tab" href="#home"><h3>회원정보
@@ -158,7 +117,6 @@
 												varStatus="status">
 												<c:if
 													test="${status.index != mypageInfo.interestList.size() - 1 }">
->>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 							${interest.genreName }, 
 						</c:if>
 												<c:if
@@ -253,18 +211,6 @@
 							</div>
 						</div>
 					</div>
-<<<<<<< HEAD
-					<div class="container">
-						<b>가입일</b>
-						<div class="">${mypageInfo.regDate }</div>
-					</div>
-					<div class="text-center">
-						<a href="/mypage/updateForm" class="btn btn-md btn-success">수정하기</a>
-						<a href="/mypage/unsubscribe" id="unsubscribe"
-							class="btn btn-md btn-danger">탈퇴하기</a>
-					</div>
-=======
->>>>>>> branch 'master' of https://github.com/allie0147/BookieProject.git
 				</div>
 			</div>
 		</div>
