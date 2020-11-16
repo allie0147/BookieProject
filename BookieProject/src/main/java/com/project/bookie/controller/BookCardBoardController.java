@@ -41,14 +41,6 @@ public class BookCardBoardController {
 		List<BookCardBoard> boardViewListBest = service.getBoardListBest3();
 		m.addAttribute("boardViewListBest", boardViewListBest);
 
-		// 랜덤으로 이미지 불러오기
-		Set<Integer> randomImageNum = new HashSet<>();
-		for (int i = 0; i < 50; i++) { // 순서 보장 X
-			randomImageNum.add(i);
-		}
-		Iterator<Integer> randomImageNumIter = randomImageNum.iterator();
-		m.addAttribute("randomImageNumIter", randomImageNumIter);
-
 		// 페이지네이션
 		List<Integer> pageArray = new ArrayList<>();
 		int startNum;

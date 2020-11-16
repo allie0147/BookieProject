@@ -113,7 +113,6 @@ public class LogInController {
 	// 이메일 찾기 - 3. 입력받은 핸드폰 번호가 존재 => 이 번호로 랜덤 키를 생성(세션에 저장)하고 이를 문자로 보냄
 	@GetMapping("/login/phoneCkForEmail")
 	public String findEmail(Model m, String uId) {
-		// 회원 아이디를 이용해 회원의
 		int certifVal = userService.sendMessageWithPhone(Integer.parseInt(uId));
 		m.addAttribute("certifVal", certifVal);
 		m.addAttribute("uId", uId);

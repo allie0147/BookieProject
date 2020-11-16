@@ -189,7 +189,6 @@
 					<div class="col-md-4">
 						<div class="thumbnail">
 							<div class="img">
-								<!-- background-image:url('../resources/images/bookcard-images-${randomImageNumIter.next()}.jpg')" -->
 								<p class="cap">${board.content }</p>
 								<div>
 									<p class="writer">${board.writer }</p>
