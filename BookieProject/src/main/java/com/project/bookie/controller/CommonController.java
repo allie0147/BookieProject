@@ -53,18 +53,6 @@ public class CommonController {
 		m.addAttribute("slideBooksWithId7", slideBooksWithId7);
 		m.addAttribute("slideBooksWithId8", slideBooksWithId8);
 		
-		
-//			main화면 보여주기
-		// 랜덤으로 이미지 불러오기
-		Random ran = new Random();
-		Set<Integer> randomImageNum = new HashSet<>();
-		while (randomImageNum.size() < 3) {
-			int randomNum = ran.nextInt(5);
-			randomImageNum.add(randomNum);
-		}
-		Iterator<Integer> randomImageNumIter = randomImageNum.iterator();
-		m.addAttribute("randomImageNumIter", randomImageNumIter);
-
 		List<BookCardBoard> bookCardBoardList = bcbService.getBoardListLatest();
 		List<Board> MainQnaBoardList = qbVService.getBoardListLatest();
 		List<Board> MainClubBoardList = cbService.getBoardListLatest();
