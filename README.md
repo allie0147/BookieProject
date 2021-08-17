@@ -24,7 +24,7 @@ For those who are interested in reading, after reading a book, they can leave si
       <ul>
         <li>Kakao Login API</li>
         <li>Java Mail API</li>
-        <li>Twilio Message API</li>
+        <li>Cool sms Message API</li>
         <li>JDBC</li>
         <li>Summernote</li>
        </ul>
